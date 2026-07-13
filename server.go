@@ -35,6 +35,13 @@ type Authenticator interface {
 	AuthenticateWithInstallationToken(context.Context, string) (context.Context, error)
 }
 
+// AppJWTAuthenticator optionally delegates validation of GitHub App JWTs to
+// the application. The server identifies only the three-segment JWT shape; the
+// application remains responsible for verifying the signature and claims.
+type AppJWTAuthenticator interface {
+	AuthenticateWithAppJWT(context.Context, string) (context.Context, error)
+}
+
 // New constructs a GitHub-compatible HTTP mux from the supplied service
 // implementations. Nil service fields simply leave their routes unregistered.
 func New(services Services, authenticator Authenticator) *http.ServeMux {
@@ -224,8 +231,7 @@ func serveOperationGroup(w http.ResponseWriter, r *http.Request, authenticator A
 			http.Error(w, invokeErr.Error(), http.StatusNotImplemented)
 			return
 		}
-		var requestErr *requestError
-		if errors.As(invokeErr, &requestErr) {
+		if requestErr, ok := errors.AsType[*requestError](invokeErr); ok {
 			http.Error(w, requestErr.Error(), http.StatusBadRequest)
 			return
 		}
@@ -285,7 +291,7 @@ func operationScore(op operation, accept string) int {
 }
 
 func headerContains(header, value string) bool {
-	for _, item := range strings.Split(header, ",") {
+	for item := range strings.SplitSeq(header, ",") {
 		if strings.EqualFold(strings.TrimSpace(strings.SplitN(item, ";", 2)[0]), value) {
 			return true
 		}
@@ -316,6 +322,13 @@ func authenticate(w http.ResponseWriter, r *http.Request, authenticator Authenti
 		ctx, err = authenticator.AuthenticateWithPAT(r.Context(), token)
 	case strings.HasPrefix(token, "ghs_"):
 		ctx, err = authenticator.AuthenticateWithInstallationToken(r.Context(), token)
+	case isJWT(token):
+		appAuthenticator, ok := authenticator.(AppJWTAuthenticator)
+		if !ok {
+			http.Error(w, "unsupported GitHub token type", http.StatusUnauthorized)
+			return nil, false
+		}
+		ctx, err = appAuthenticator.AuthenticateWithAppJWT(r.Context(), token)
 	default:
 		http.Error(w, "unsupported GitHub token type", http.StatusUnauthorized)
 		return nil, false
@@ -325,6 +338,11 @@ func authenticate(w http.ResponseWriter, r *http.Request, authenticator Authenti
 		return nil, false
 	}
 	return ctx, true
+}
+
+func isJWT(token string) bool {
+	parts := strings.Split(token, ".")
+	return len(parts) == 3 && parts[0] != "" && parts[1] != "" && parts[2] != ""
 }
 
 type requestError struct{ err error }
@@ -900,7 +918,7 @@ func decodeQuery(target reflect.Value, values url.Values) error {
 			continue
 		}
 		tag := definition.Tag.Get("url")
-		name := strings.Split(tag, ",")[0]
+		name, _, _ := strings.Cut(tag, ",")
 		if name == "" || name == "-" {
 			continue
 		}

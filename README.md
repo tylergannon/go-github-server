@@ -162,11 +162,28 @@ type Authenticator interface {
 }
 ```
 
+Applications that accept GitHub App JWTs can also implement the optional
+interface:
+
+```go
+type AppJWTAuthenticator interface {
+	AuthenticateWithAppJWT(context.Context, string) (context.Context, error)
+}
+```
+
 The adapter accepts both `Authorization: Bearer TOKEN` and
 `Authorization: token TOKEN` and passes the complete credential untouched:
 
 - `ghp_` and `github_pat_` call `AuthenticateWithPAT`.
 - `ghs_` calls `AuthenticateWithInstallationToken`.
+- Three-segment JWT-shaped credentials call `AuthenticateWithAppJWT` when the
+  authenticator implements `AppJWTAuthenticator`.
+
+The server does not parse or verify App JWTs. The application delegate must
+verify the signature and claims, then return a context containing the
+authenticated App identity. Service implementations remain responsible for
+endpoint-specific authorization, including requiring that App identity before
+issuing an installation access token.
 
 Unsupported authorization schemes and token types receive status 401. Requests
 without an Authorization header are allowed even when an authenticator is
