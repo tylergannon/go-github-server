@@ -45,4 +45,6 @@ decision: generated server implementation methods must expose the App JWT header
 
 ## Status
 
-- Implementation and local proof complete; commit, PR publication, exact-head CI, and merge follow-through remain.
+- Implementation commit `3ed86406153d832d512836272c6d32267d765ead` pushed.
+- PR #9 opened with runtime transcript and hygiene evidence: https://github.com/tylergannon/go-github-server/pull/9
+- This closeout update will be pushed as a final docs commit; exact-head CI and merge follow-through remain.
