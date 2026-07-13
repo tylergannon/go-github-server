@@ -3,6 +3,7 @@ package githubserver
 import (
 	"context"
 	"encoding/base64"
+	"errors"
 	"io"
 	"net/http"
 	"net/http/httptest"
@@ -543,6 +544,70 @@ func TestCompleteGeneratedSurfaceConstructsAndDispatches(t *testing.T) {
 	response := httptest.NewRecorder()
 	mux.ServeHTTP(response, request)
 	assert.Equal(t, http.StatusNotImplemented, response.Code)
+}
+
+func TestServiceErrorResponseRoundTripsThroughGoGitHubClient(t *testing.T) {
+	t.Parallel()
+
+	for _, status := range []int{
+		http.StatusUnauthorized,
+		http.StatusNotFound,
+		http.StatusConflict,
+		http.StatusUnprocessableEntity,
+	} {
+		status := status
+		t.Run(strconv.Itoa(status), func(t *testing.T) {
+			t.Parallel()
+			stub := repositoryHooksStub{
+				get: func(context.Context, string, string, int64) (*github.Hook, *github.Response, error) {
+					return nil, nil, &github.ErrorResponse{
+						Response: &http.Response{
+							StatusCode: status,
+							Header: http.Header{
+								"X-GitHub-Request-Id": []string{"request-123"},
+							},
+						},
+						Message:          http.StatusText(status),
+						Errors:           []github.Error{{Resource: "Hook", Field: "id", Code: "invalid"}},
+						DocumentationURL: "https://docs.github.test/errors",
+					}
+				},
+			}
+			server := httptest.NewServer(New(Services{Repositories: stub}, nil))
+			t.Cleanup(server.Close)
+			client := newGitHubClient(t, server.URL, "")
+
+			_, response, err := client.Repositories.GetHook(t.Context(), "octo", "demo", 1)
+			require.Error(t, err)
+			var errorResponse *github.ErrorResponse
+			require.ErrorAs(t, err, &errorResponse)
+			require.NotNil(t, response)
+			assert.Equal(t, status, response.StatusCode)
+			assert.Equal(t, "request-123", response.Header.Get("X-GitHub-Request-Id"))
+			assert.Equal(t, http.StatusText(status), errorResponse.Message)
+			assert.Equal(t, []github.Error{{Resource: "Hook", Field: "id", Code: "invalid"}}, errorResponse.Errors)
+			assert.Equal(t, "https://docs.github.test/errors", errorResponse.DocumentationURL)
+		})
+	}
+}
+
+func TestUnexpectedServiceErrorRemainsInternalServerError(t *testing.T) {
+	t.Parallel()
+	stub := repositoryHooksStub{
+		get: func(context.Context, string, string, int64) (*github.Hook, *github.Response, error) {
+			return nil, nil, errors.New("database unavailable")
+		},
+	}
+	server := httptest.NewServer(New(Services{Repositories: stub}, nil))
+	t.Cleanup(server.Close)
+
+	request, err := http.NewRequestWithContext(t.Context(), http.MethodGet, server.URL+"/repos/octo/demo/hooks/1", nil)
+	require.NoError(t, err)
+	result, err := http.DefaultClient.Do(request)
+	require.NoError(t, err)
+	t.Cleanup(func() { require.NoError(t, result.Body.Close()) })
+
+	assert.Equal(t, http.StatusInternalServerError, result.StatusCode)
 }
 
 func TestEveryGeneratedRouteHasAnUnambiguousRepresentativePath(t *testing.T) {

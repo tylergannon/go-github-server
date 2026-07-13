@@ -121,6 +121,8 @@ response.
   its underlying `*http.Response`.
 - Without an explicit response, a body defaults to status 200 and an empty
   result defaults to status 204.
+- A returned `*github.ErrorResponse` preserves the status and headers from its
+  underlying `*http.Response` and is encoded as a GitHub JSON error payload.
 - Ordinary implementation errors become status 500.
 - An unhandled `githubserver.ErrNotImplemented` becomes status 501.
 - Shared routes can fall through an embedded unimplemented method to another
@@ -134,6 +136,19 @@ return hook, &github.Response{Response: &http.Response{
 	StatusCode: http.StatusCreated,
 	Header:     make(http.Header),
 }}, nil
+```
+
+Return a `*github.ErrorResponse` to reproduce an expected GitHub API failure:
+
+```go
+return nil, nil, &github.ErrorResponse{
+	Response: &http.Response{
+		StatusCode: http.StatusNotFound,
+		Header:     http.Header{"X-GitHub-Request-Id": {"request-123"}},
+	},
+	Message:          "Not Found",
+	DocumentationURL: "https://docs.github.com/rest",
+}
 ```
 
 ## Authentication
