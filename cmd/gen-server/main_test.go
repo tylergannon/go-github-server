@@ -1,6 +1,7 @@
 package main
 
 import (
+	"go/types"
 	"strings"
 	"testing"
 
@@ -91,6 +92,35 @@ func TestGeneratorClassifiesEveryAnnotatedOperation(t *testing.T) {
 			}
 		}
 	}
+}
+
+func TestGeneratorBindsAppJWTForInstallationTokenMethods(t *testing.T) {
+	pkg, err := loadPackage()
+	require.NoError(t, err)
+	services, err := scan(pkg)
+	require.NoError(t, err)
+
+	found := 0
+	for _, service := range services {
+		if service.Name != "Apps" {
+			continue
+		}
+		for _, method := range service.Methods {
+			if method.Name != "CreateInstallationToken" && method.Name != "CreateInstallationTokenListRepos" {
+				continue
+			}
+			found++
+			assert.True(t, method.BindsAppJWT)
+			assert.Equal(t, []string{"ctx", "appJWT", "id", "body"}, method.ParamNames)
+			assert.Equal(t, types.Typ[types.String], method.Signature.Params().At(1).Type())
+			bindings, reasons := operationBindings(method, method.Routes[0])
+			assert.Contains(t, bindings, renderedBinding{kind: "bindingPath", index: 2, name: "p0"})
+			assert.Contains(t, bindings, renderedBinding{kind: "bindingAuthorization", index: 1})
+			assert.Contains(t, bindings, renderedBinding{kind: "bindingJSON", index: 3})
+			assert.NotContains(t, reasons, "unresolved path parameters")
+		}
+	}
+	assert.Equal(t, 2, found)
 }
 
 func TestServeMuxPatternsCanonicalizeWildcardNames(t *testing.T) {

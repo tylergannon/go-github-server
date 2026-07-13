@@ -1899,6 +1899,7 @@
     "path": "/app/installations/{installation_id}/access_tokens",
     "status": "generated-with-override",
     "reasons": [
+      "authorization header argument",
       "shared HTTP operation"
     ],
     "source": "apps.go:386"
@@ -1910,6 +1911,7 @@
     "path": "/app/installations/{installation_id}/access_tokens",
     "status": "generated-with-override",
     "reasons": [
+      "authorization header argument",
       "shared HTTP operation"
     ],
     "source": "apps.go:410"

@@ -182,34 +182,41 @@ type Authenticator interface {
 }
 ```
 
-Applications that accept GitHub App JWTs can also implement the optional
-interface:
-
-```go
-type AppJWTAuthenticator interface {
-	AuthenticateWithAppJWT(context.Context, string) (context.Context, error)
-}
-```
-
 The adapter accepts both `Authorization: Bearer TOKEN` and
 `Authorization: token TOKEN` and passes the complete credential untouched:
 
 - `ghp_` and `github_pat_` call `AuthenticateWithPAT`.
 - `ghs_` calls `AuthenticateWithInstallationToken`.
-- Three-segment JWT-shaped credentials call `AuthenticateWithAppJWT` when the
-  authenticator implements `AppJWTAuthenticator`.
 
-The server does not parse or verify App JWTs. The application delegate must
-verify the signature and claims, then return a context containing the
-authenticated App identity. Service implementations remain responsible for
-endpoint-specific authorization, including requiring that App identity before
-issuing an installation access token.
+App JWTs are not opaque-token middleware credentials. For GitHub's installation
+token issuance operation, the generated server methods expose the credential
+from the required `Authorization: Bearer <JWT>` header as an `appJWT` argument:
 
-Unsupported authorization schemes and token types receive status 401. Requests
-without an Authorization header are allowed even when an authenticator is
-configured, so the application remains responsible for endpoint-specific
-authorization policy. A context returned by the authenticator is installed on
-the request before invoking the service method.
+```go
+func (apps) CreateInstallationToken(
+	ctx context.Context,
+	appJWT string,
+	installationID int64,
+	body *github.InstallationTokenOptions,
+) (*github.InstallationToken, *github.Response, error) {
+	// Verify appJWT, authorize installationID and body restrictions, then issue
+	// the installation token.
+}
+```
+
+`CreateInstallationTokenListRepos` receives the same header and path arguments
+with its `*github.InstallationTokenListRepoOptions` body. These endpoint
+implementations are responsible for validating the App JWT signature and claims,
+confirming that the installation belongs to that App, enforcing requested scope
+narrowing, and issuing the installation token. The opaque-token `Authenticator`
+is not called for this operation.
+
+On routes handled by opaque-token middleware, unsupported authorization schemes
+and token types receive status 401. Requests without an Authorization header are
+allowed even when an authenticator is configured, so the application remains
+responsible for endpoint-specific authorization policy. A context returned by
+the authenticator is installed on the request before invoking the service
+method.
 
 ## Test through the real client
 
