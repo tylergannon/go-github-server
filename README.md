@@ -128,6 +128,26 @@ response.
 - Shared routes can fall through an embedded unimplemented method to another
   registered service implementation.
 
+## Unmatched-route telemetry
+
+Use `WithNotFoundCallback` to observe requests that do not match any registered
+generated operation:
+
+```go
+mux := githubserver.New(services, authenticator,
+	githubserver.WithNotFoundCallback(func(r *http.Request) {
+		log.Printf("unsupported GitHub operation: %s %s", r.Method, r.URL.RequestURI())
+	}),
+)
+```
+
+The callback receives the original request, including GitHub Enterprise
+prefixes such as `/api/v3` and `/api/uploads`. It runs immediately before the
+server writes its standard 404 response. Matched operations that return a
+resource-level 404 do not invoke it. Because HTTP requests may run concurrently,
+the callback must be safe for concurrent use and must treat the request as
+read-only.
+
 Endpoints with non-default success codes should return an explicit
 `*github.Response`:
 

@@ -132,6 +132,71 @@ func TestRepositoryHooksRoundTripThroughGoGitHubClient(t *testing.T) {
 	assert.Equal(t, []string{"create", "list", "get", "edit", "delete"}, calls)
 }
 
+func TestNotFoundCallbackObservesUnmatchedRequests(t *testing.T) {
+	t.Parallel()
+	var observed []*http.Request
+	mux := New(Services{Repositories: repositoryHooksStub{}}, nil, WithNotFoundCallback(func(r *http.Request) {
+		observed = append(observed, r)
+	}))
+
+	tests := []struct {
+		name   string
+		method string
+		target string
+	}{
+		{name: "unknown path", method: http.MethodGet, target: "/unknown?source=test"},
+		{name: "wrong method", method: http.MethodPost, target: "/repos/octo/demo/hooks/41"},
+		{name: "enterprise API prefix", method: http.MethodGet, target: "/api/v3/unknown"},
+		{name: "enterprise uploads prefix", method: http.MethodGet, target: "/api/uploads/unknown"},
+	}
+
+	for index, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			request := httptest.NewRequest(test.method, test.target, nil)
+			result := httptest.NewRecorder()
+
+			mux.ServeHTTP(result, request)
+
+			assert.Equal(t, http.StatusNotFound, result.Code)
+			require.Len(t, observed, index+1)
+			assert.Same(t, request, observed[index])
+			assert.Equal(t, test.method, observed[index].Method)
+			assert.Equal(t, test.target, observed[index].RequestURI)
+		})
+	}
+}
+
+func TestNotFoundCallbackDoesNotObserveMatchedResourceNotFound(t *testing.T) {
+	t.Parallel()
+	callbackCalls := 0
+	stub := repositoryHooksStub{
+		get: func(_ context.Context, _, _ string, _ int64) (*github.Hook, *github.Response, error) {
+			return nil, response(http.StatusNotFound), nil
+		},
+	}
+	mux := New(Services{Repositories: stub}, nil, WithNotFoundCallback(func(*http.Request) {
+		callbackCalls++
+	}))
+	request := httptest.NewRequest(http.MethodGet, "/repos/octo/demo/hooks/41", nil)
+	result := httptest.NewRecorder()
+
+	mux.ServeHTTP(result, request)
+
+	assert.Equal(t, http.StatusNotFound, result.Code)
+	assert.Zero(t, callbackCalls)
+}
+
+func TestNewWithoutOptionsRetainsDefaultNotFound(t *testing.T) {
+	t.Parallel()
+	mux := New(Services{}, nil)
+	request := httptest.NewRequest(http.MethodGet, "/unknown", nil)
+	result := httptest.NewRecorder()
+
+	mux.ServeHTTP(result, request)
+
+	assert.Equal(t, http.StatusNotFound, result.Code)
+}
+
 type authContextKey struct{}
 
 type recordingAuthenticator struct {

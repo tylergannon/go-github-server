@@ -42,11 +42,43 @@ type AppJWTAuthenticator interface {
 	AuthenticateWithAppJWT(context.Context, string) (context.Context, error)
 }
 
+// Option configures a server constructed by New.
+type Option interface {
+	apply(*serverOptions)
+}
+
+type optionFunc func(*serverOptions)
+
+func (f optionFunc) apply(options *serverOptions) {
+	f(options)
+}
+
+type serverOptions struct {
+	notFoundCallback func(*http.Request)
+}
+
+// WithNotFoundCallback configures a callback for requests that do not match a
+// generated operation. The callback receives the original request immediately
+// before the server writes its standard 404 response. It must not mutate the
+// request and must be safe for concurrent use. A nil callback disables it.
+func WithNotFoundCallback(callback func(*http.Request)) Option {
+	return optionFunc(func(options *serverOptions) {
+		options.notFoundCallback = callback
+	})
+}
+
 // New constructs a GitHub-compatible HTTP mux from the supplied service
 // implementations. Nil service fields simply leave their routes unregistered.
-func New(services Services, authenticator Authenticator) *http.ServeMux {
+// Options are applied in order.
+func New(services Services, authenticator Authenticator, options ...Option) *http.ServeMux {
+	configuration := serverOptions{}
+	for _, option := range options {
+		if option != nil {
+			option.apply(&configuration)
+		}
+	}
 	mux := http.NewServeMux()
-	registerOperations(mux, authenticator, generatedOperations(services))
+	registerOperations(mux, authenticator, generatedOperations(services), configuration.notFoundCallback)
 	return mux
 }
 
@@ -90,7 +122,7 @@ type operation struct {
 	Impl         any
 }
 
-func registerOperations(mux *http.ServeMux, authenticator Authenticator, operations []operation) {
+func registerOperations(mux *http.ServeMux, authenticator Authenticator, operations []operation, notFoundCallback func(*http.Request)) {
 	routes := buildRouteGroups(operations)
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		for _, route := range routes {
@@ -101,6 +133,9 @@ func registerOperations(mux *http.ServeMux, authenticator Authenticator, operati
 				serveOperationGroup(w, r, authenticator, route.operations)
 				return
 			}
+		}
+		if notFoundCallback != nil {
+			notFoundCallback(r)
 		}
 		http.NotFound(w, r)
 	})
