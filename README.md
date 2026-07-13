@@ -6,6 +6,9 @@
 `//meta:operation METHOD /path`; this module turns those descriptions into
 service interfaces and a GitHub-compatible `http.ServeMux`.
 
+For an agent-oriented setup guide and endpoint lookup workflow, see
+[`llms.txt`](./llms.txt).
+
 ## Use
 
 Implement one or more generated service interfaces. Embed the corresponding

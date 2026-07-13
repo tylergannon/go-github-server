@@ -1,0 +1,95 @@
+# go-github-server
+
+> A Go module that turns implementations of the typed service interfaces from `google/go-github` into a GitHub-compatible HTTP server. Use this file to set up a server, find the interface method for an HTTP endpoint, and locate the authoritative endpoint documentation.
+
+`go-github-server` is the server-side inverse of `github.com/google/go-github/v89/github`. Applications implement generated service methods and pass them to `githubserver.New`; the library handles routing, request decoding, authentication delegation, method invocation, and response encoding. The generated API currently covers 1,262 annotated GitHub REST routes across 1,229 service methods.
+
+Start a module with Go 1.26 or newer and add the server:
+
+```sh
+go get github.com/tylergannon/go-github-server@latest
+```
+
+Implement only the methods the application needs. Embed the matching `Unimplemented<Service>Service` so all other methods return `githubserver.ErrNotImplemented`:
+
+```go
+package main
+
+import (
+	"context"
+	"log"
+	"net/http"
+
+	githubserver "github.com/tylergannon/go-github-server"
+	"github.com/google/go-github/v89/github"
+)
+
+type repositories struct {
+	githubserver.UnimplementedRepositoriesService
+}
+
+func (repositories) GetHook(
+	ctx context.Context,
+	owner string,
+	repo string,
+	id int64,
+) (*github.Hook, *github.Response, error) {
+	return &github.Hook{ID: &id}, nil, nil
+}
+
+func main() {
+	mux := githubserver.New(githubserver.Services{
+		Repositories: repositories{},
+	}, nil)
+	log.Fatal(http.ListenAndServe(":8080", mux))
+}
+```
+
+Pass `nil` as the authenticator only when the application intentionally accepts all credentials without validation. To validate supported credentials, implement `githubserver.Authenticator`. The server accepts `Bearer` and `token` authorization schemes, delegates `ghp_` and `github_pat_` credentials to `AuthenticateWithPAT`, and delegates `ghs_` credentials to `AuthenticateWithInstallationToken`. The complete token is passed untouched. A request without an Authorization header is allowed, so service implementations must enforce any endpoint-specific authorization policy using the authenticated context.
+
+Register implementations only through `githubserver.Services`; do not recreate routes by hand. Nil service fields leave their routes unregistered. Shared HTTP routes are tried in deterministic order and can fall through from an embedded unimplemented method to another service implementation.
+
+The adapter decodes path parameters, query option structs, JSON bodies, form bodies, uploads, and raw bodies into the exact generated method signature. It encodes JSON values, streams, raw responses, redirects, status-only results, and response headers according to the method's return types. Return a non-nil `*github.Response` with an underlying `*http.Response` to set an endpoint-specific status or headers. Otherwise the default is 200 when a body is returned and 204 when no body is returned. A normal implementation error becomes HTTP 500; an unhandled `ErrNotImplemented` becomes HTTP 501.
+
+Find an endpoint by Go symbol when the service and method are known:
+
+```sh
+go doc github.com/tylergannon/go-github-server.RepositoriesService.CreateHook
+```
+
+Find the service and method from an HTTP operation:
+
+```sh
+jq -r '.[] | select(.http_method == "POST" and .path == "/repos/{owner}/{repo}/hooks") | "\(.service)Service.\(.method)"' coverage.json
+```
+
+Search by prose, symbol, or route when working in a clone:
+
+```sh
+rg -n -B8 -A3 'CreateHook|HTTP: POST /repos/\{owner\}/\{repo\}/hooks' zz_generated.go
+```
+
+Every generated interface method includes its upstream prose description, exact Go signature, effective HTTP method and path, and the corresponding GitHub API documentation URL. Follow that GitHub URL for permissions, request fields, response statuses, schemas, and examples. Three upstream methods use undocumented GitHub endpoints; their generated comments explicitly preserve that warning instead of inventing a documentation URL.
+
+Use a real `github.Client` against an `httptest.Server` for integration tests. This proves that the public client request is decoded into the intended service method and that the method result is encoded back into the response shape expected by `go-github`. Run `go test ./...` for the repository test suite. After upgrading `go-github`, run `go generate ./...` and `go run ./cmd/gen-server -check`.
+
+## Project documentation
+
+- [README](https://raw.githubusercontent.com/tylergannon/go-github-server/main/README.md): Concise setup, authentication behavior, generation, and coverage guidance.
+- [Generated service reference](https://github.com/tylergannon/go-github-server/blob/main/zz_generated.go): All service interfaces and per-method prose, signatures, routes, deprecations, and GitHub documentation links.
+- [Route coverage inventory](https://raw.githubusercontent.com/tylergannon/go-github-server/main/coverage.json): Machine-readable mapping from HTTP method and path to service and method.
+- [Server API and adapter](https://github.com/tylergannon/go-github-server/blob/main/server.go): Public constructor, authenticator contract, routing, decoding, invocation, and response behavior.
+- [Integration tests](https://github.com/tylergannon/go-github-server/blob/main/server_test.go): Runnable examples using real `go-github` clients against the generated server.
+- [Generator](https://github.com/tylergannon/go-github-server/blob/main/cmd/gen-server/main.go): AST and type-driven generation logic.
+
+## External documentation
+
+- [go-github-server package reference](https://pkg.go.dev/github.com/tylergannon/go-github-server): Rendered Go package and interface documentation after the module is published.
+- [go-github package reference](https://pkg.go.dev/github.com/google/go-github/v89/github): Upstream request, response, and option types used by service signatures.
+- [GitHub REST API](https://docs.github.com/en/rest): Authoritative endpoint behavior, permissions, parameters, status codes, schemas, and examples.
+- [GitHub REST API versioning](https://docs.github.com/en/rest/about-the-rest-api/api-versions): Version selection and compatibility policy.
+
+## Optional
+
+- [Coverage classifications](https://raw.githubusercontent.com/tylergannon/go-github-server/main/HANDOFF.md): Implementation inventory, generation classifications, proof commands, and known routing constraints.
+- [Third-party notices](https://raw.githubusercontent.com/tylergannon/go-github-server/main/THIRD_PARTY_NOTICES.md): License notice for documentation derived from `google/go-github`.
