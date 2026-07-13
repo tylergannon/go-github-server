@@ -63,7 +63,9 @@ Run `go generate ./...` after upgrading `go-github`. The generator uses
 emits:
 
 - `zz_generated.go`: all routed upstream services, interfaces, unimplemented
-  embeddings, and operation metadata.
+  embeddings, and operation metadata. Each interface method includes its
+  upstream description, GitHub API documentation link, and effective HTTP
+  method and path.
 - `coverage.json`: one classification for every upstream route annotation.
 
 `go run ./cmd/gen-server -check` fails when either generated artifact is stale.

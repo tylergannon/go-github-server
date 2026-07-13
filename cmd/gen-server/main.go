@@ -210,6 +210,50 @@ func routesFromDoc(doc *ast.CommentGroup) []route {
 	return routes
 }
 
+func methodDocumentation(method *method) string {
+	var sections []string
+	if method.Decl.Doc != nil {
+		if upstream := strings.TrimSpace(method.Decl.Doc.Text()); upstream != "" {
+			sections = append(sections, upstream)
+		}
+	}
+	var routes []string
+	for _, annotated := range method.Routes {
+		effective := effectiveRoute(method, annotated)
+		routes = append(routes, fmt.Sprintf("HTTP: %s %s", effective.Method, effective.Path))
+	}
+	if len(routes) > 0 {
+		sections = append(sections, strings.Join(routes, "\n"))
+	}
+	return strings.Join(sections, "\n\n")
+}
+
+func commentBlock(documentation string) string {
+	var result strings.Builder
+	for index, line := range strings.Split(documentation, "\n") {
+		if index > 0 {
+			result.WriteByte('\n')
+		}
+		result.WriteString("\t//")
+		if line != "" {
+			result.WriteByte(' ')
+			result.WriteString(line)
+		}
+	}
+	return result.String()
+}
+
+func effectiveRoute(method *method, annotated route) route {
+	effective := annotated
+	if method.Name == "GetLatestCodespaceExport" {
+		effective.Path = strings.Replace(effective.Path, "{export_id}", "latest", 1)
+	}
+	if method.Name == "DownloadArtifact" {
+		effective.Path = strings.Replace(effective.Path, "{archive_format}", "zip", 1)
+	}
+	return effective
+}
+
 func receiverName(function *ast.FuncDecl) string {
 	expression := function.Recv.List[0].Type
 	if pointer, ok := expression.(*ast.StarExpr); ok {
@@ -343,7 +387,7 @@ func analyzePathBuild(m *method, call *ast.CallExpr, definitions map[string]ast.
 	if format == "" {
 		return
 	}
-	pathFormat := strings.SplitN(format, "?", 2)[0]
+	pathFormat, _, _ := strings.Cut(format, "?")
 	argumentCount := strings.Count(pathFormat, "%v")
 	if argumentCount == 0 || argumentCount+1 > len(call.Args) {
 		return
@@ -376,13 +420,13 @@ func pathSkeleton(path string) string {
 
 func analyzeFormattedQuery(m *method, call *ast.CallExpr, definitions map[string]ast.Expr, params map[string]bool, info *types.Info) {
 	format := stringConstant(info, call.Args[0])
-	queryIndex := strings.Index(format, "?")
-	if queryIndex < 0 {
+	before, after, ok := strings.Cut(format, "?")
+	if !ok {
 		return
 	}
-	pathArguments := strings.Count(format[:queryIndex], "%v")
+	pathArguments := strings.Count(before, "%v")
 	queryArgument := 0
-	for _, part := range strings.Split(format[queryIndex+1:], "&") {
+	for part := range strings.SplitSeq(after, "&") {
 		if !strings.Contains(part, "%v") {
 			continue
 		}
@@ -391,7 +435,7 @@ func analyzeFormattedQuery(m *method, call *ast.CallExpr, definitions map[string
 		if argumentIndex >= len(call.Args) {
 			continue
 		}
-		name := strings.SplitN(part, "=", 2)[0]
+		name, _, _ := strings.Cut(part, "=")
 		dependencies := dependentParams(call.Args[argumentIndex], definitions, params, map[string]bool{})
 		if len(dependencies) != 1 {
 			continue
@@ -482,7 +526,7 @@ func compositeFieldName(literal *ast.CompositeLit, key ast.Expr, info *types.Inf
 		if structure.Field(index).Name() != ident.Name {
 			continue
 		}
-		name := strings.Split(reflect.StructTag(structure.Tag(index)).Get("json"), ",")[0]
+		name, _, _ := strings.Cut(reflect.StructTag(structure.Tag(index)).Get("json"), ",")
 		if name != "" && name != "-" {
 			return name
 		}
@@ -584,6 +628,7 @@ func render(services []*service) ([]byte, []coverageEntry, error) {
 		fmt.Fprintf(&declarations, "// %sService implements the annotated methods of github.%sService.\n", service.Name, service.Name)
 		fmt.Fprintf(&declarations, "type %sService interface {\n", service.Name)
 		for _, method := range service.Methods {
+			fmt.Fprintln(&declarations, commentBlock(methodDocumentation(method)))
 			fmt.Fprintf(&declarations, "\t%s%s\n", method.Name, signatureString(method.Signature, imports))
 		}
 		fmt.Fprintln(&declarations, "}")
@@ -617,14 +662,8 @@ func render(services []*service) ([]byte, []coverageEntry, error) {
 		fmt.Fprintf(&operations, "\tif services.%s != nil {\n", service.Name)
 		for _, method := range service.Methods {
 			for _, route := range method.Routes {
-				effectiveRoute := route
-				if method.Name == "GetLatestCodespaceExport" {
-					effectiveRoute.Path = strings.Replace(effectiveRoute.Path, "{export_id}", "latest", 1)
-				}
-				if method.Name == "DownloadArtifact" {
-					effectiveRoute.Path = strings.Replace(effectiveRoute.Path, "{archive_format}", "zip", 1)
-				}
-				bindings, reasons := operationBindings(method, effectiveRoute)
+				effective := effectiveRoute(method, route)
+				bindings, reasons := operationBindings(method, effective)
 				if slices.ContainsFunc(bindings, func(binding renderedBinding) bool { return binding.kind == "bindingAuto" }) {
 					reasons = appendUnique(reasons, "automatic parameter binding")
 				}
@@ -632,7 +671,7 @@ func render(services []*service) ([]byte, []coverageEntry, error) {
 					reasons = appendUnique(reasons, reason)
 				}
 				allReasons := append([]string{}, method.Override...)
-				if effectiveRoute.Path != route.Path {
+				if effective.Path != route.Path {
 					allReasons = appendUnique(allReasons, "actual literal route override")
 				}
 				for _, reason := range reasons {
@@ -640,8 +679,8 @@ func render(services []*service) ([]byte, []coverageEntry, error) {
 				}
 				isAlias := routeCounts[route.Method+" "+route.Path] > 1 && slices.Contains(reasons, "unresolved path parameters")
 				if !isAlias {
-					pattern := serveMuxPath(effectiveRoute.Path)
-					fmt.Fprintf(&operations, "\t\toperations = append(operations, operation{Service: %q, MethodName: %q, HTTPMethod: %q, Path: %q, Pattern: %q, ResponseKind: %q, Accept: %#v, Direct: %t, Source: %q, Impl: services.%s, Bindings: []binding{", service.Name, method.Name, route.Method, effectiveRoute.Path, pattern, method.ResponseKind, method.Accept, method.Direct, method.Source, service.Name)
+					pattern := serveMuxPath(effective.Path)
+					fmt.Fprintf(&operations, "\t\toperations = append(operations, operation{Service: %q, MethodName: %q, HTTPMethod: %q, Path: %q, Pattern: %q, ResponseKind: %q, Accept: %#v, Direct: %t, Source: %q, Impl: services.%s, Bindings: []binding{", service.Name, method.Name, route.Method, effective.Path, pattern, method.ResponseKind, method.Accept, method.Direct, method.Source, service.Name)
 					for _, binding := range bindings {
 						fmt.Fprintf(&operations, "{Kind: %s, Index: %d, Name: %q, Field: %q},", binding.kind, binding.index, binding.name, binding.field)
 					}

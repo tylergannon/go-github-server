@@ -1,11 +1,67 @@
 package main
 
 import (
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
+
+func TestGeneratedMethodDocumentationPreservesUpstreamDocsAndAddsRoute(t *testing.T) {
+	pkg, err := loadPackage()
+	require.NoError(t, err)
+	services, err := scan(pkg)
+	require.NoError(t, err)
+
+	var createHook *method
+	for _, service := range services {
+		if service.Name != "Repositories" {
+			continue
+		}
+		for _, candidate := range service.Methods {
+			if candidate.Name == "CreateHook" {
+				createHook = candidate
+				break
+			}
+		}
+	}
+	require.NotNil(t, createHook)
+
+	documentation := methodDocumentation(createHook)
+	assert.Contains(t, documentation, "CreateHook creates a Hook for the specified repository.")
+	assert.Contains(t, documentation, "Config is a required field.")
+	assert.Contains(t, documentation, "GitHub API docs: https://docs.github.com/rest/repos/webhooks")
+	assert.Contains(t, documentation, "HTTP: POST /repos/{owner}/{repo}/hooks")
+	assert.NotContains(t, documentation, "meta:operation")
+}
+
+func TestEveryGeneratedInterfaceMethodHasUpstreamAndRouteDocumentation(t *testing.T) {
+	pkg, err := loadPackage()
+	require.NoError(t, err)
+	services, err := scan(pkg)
+	require.NoError(t, err)
+	generated, _, err := render(services)
+	require.NoError(t, err)
+
+	output := string(generated)
+	assert.NotContains(t, output, "meta:operation")
+	for _, service := range services {
+		for _, method := range service.Methods {
+			documentation := methodDocumentation(method)
+			assert.NotEmptyf(t, documentation, "%s.%s", service.Name, method.Name)
+			assert.Truef(t,
+				strings.Contains(documentation, "GitHub API docs:") || strings.Contains(documentation, "undocumented GitHub API endpoint"),
+				"%s.%s has neither a GitHub documentation link nor an undocumented endpoint warning",
+				service.Name, method.Name,
+			)
+			assert.Containsf(t, documentation, "HTTP:", "%s.%s", service.Name, method.Name)
+			assert.Containsf(t, output, commentBlock(documentation)+"\n\t"+method.Name, "%s.%s", service.Name, method.Name)
+		}
+	}
+	assert.False(t, strings.Contains(output, "// HTTP: GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}"))
+	assert.Contains(t, output, "// HTTP: GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/zip")
+}
 
 func TestGeneratorClassifiesEveryAnnotatedOperation(t *testing.T) {
 	pkg, err := loadPackage()
