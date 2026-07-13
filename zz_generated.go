@@ -2434,16 +2434,20 @@ type AppsService interface {
 	//
 	// GitHub API docs: https://docs.github.com/rest/apps/apps?apiVersion=2022-11-28#create-an-installation-access-token-for-an-app
 	//
+	// The appJWT parameter contains the credential from the required Authorization: Bearer <JWT> header.
+	//
 	// HTTP: POST /app/installations/{installation_id}/access_tokens
-	CreateInstallationToken(ctx context.Context, id int64, body *github.InstallationTokenOptions) (*github.InstallationToken, *github.Response, error)
+	CreateInstallationToken(ctx context.Context, appJWT string, id int64, body *github.InstallationTokenOptions) (*github.InstallationToken, *github.Response, error)
 	// CreateInstallationTokenListRepos creates a new installation token with a list of all repositories in an installation which is not possible with CreateInstallationToken.
 	//
 	// It differs from CreateInstallationToken by taking InstallationTokenListRepoOptions as a parameter which does not omit RepositoryIDs if that field is nil or an empty array.
 	//
 	// GitHub API docs: https://docs.github.com/rest/apps/apps?apiVersion=2022-11-28#create-an-installation-access-token-for-an-app
 	//
+	// The appJWT parameter contains the credential from the required Authorization: Bearer <JWT> header.
+	//
 	// HTTP: POST /app/installations/{installation_id}/access_tokens
-	CreateInstallationTokenListRepos(ctx context.Context, id int64, body *github.InstallationTokenListRepoOptions) (*github.InstallationToken, *github.Response, error)
+	CreateInstallationTokenListRepos(ctx context.Context, appJWT string, id int64, body *github.InstallationTokenListRepoOptions) (*github.InstallationToken, *github.Response, error)
 	// DeleteInstallation deletes the specified installation.
 	//
 	// GitHub API docs: https://docs.github.com/rest/apps/apps?apiVersion=2022-11-28#delete-an-installation-for-the-authenticated-app
@@ -2607,12 +2611,12 @@ func (UnimplementedAppsService) CreateAttachment(ctx context.Context, contentRef
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) CreateInstallationToken(ctx context.Context, id int64, body *github.InstallationTokenOptions) (*github.InstallationToken, *github.Response, error) {
+func (UnimplementedAppsService) CreateInstallationToken(ctx context.Context, appJWT string, id int64, body *github.InstallationTokenOptions) (*github.InstallationToken, *github.Response, error) {
 	var zero0 *github.InstallationToken
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) CreateInstallationTokenListRepos(ctx context.Context, id int64, body *github.InstallationTokenListRepoOptions) (*github.InstallationToken, *github.Response, error) {
+func (UnimplementedAppsService) CreateInstallationTokenListRepos(ctx context.Context, appJWT string, id int64, body *github.InstallationTokenListRepoOptions) (*github.InstallationToken, *github.Response, error) {
 	var zero0 *github.InstallationToken
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -15159,8 +15163,8 @@ func generatedOperations(services Services) []operation {
 		operations = append(operations, operation{Service: "Apps", MethodName: "AddRepository", HTTPMethod: "PUT", Path: "/user/installations/{installation_id}/repositories/{repository_id}", Pattern: "/user/installations/{p0}/repositories/{p1}", ResponseKind: "json", Accept: []string(nil), Direct: true, Source: "apps_installation.go:76", Impl: services.Apps, Bindings: []binding{{Kind: bindingContext, Index: 0, Name: "", Field: ""}, {Kind: bindingPath, Index: 1, Name: "p0", Field: ""}, {Kind: bindingPath, Index: 2, Name: "p1", Field: ""}}})
 		operations = append(operations, operation{Service: "Apps", MethodName: "CompleteAppManifest", HTTPMethod: "POST", Path: "/app-manifests/{code}/conversions", Pattern: "/app-manifests/{p0}/conversions", ResponseKind: "json", Accept: []string(nil), Direct: true, Source: "apps_manifest.go:37", Impl: services.Apps, Bindings: []binding{{Kind: bindingContext, Index: 0, Name: "", Field: ""}, {Kind: bindingPath, Index: 1, Name: "p0", Field: ""}}})
 		operations = append(operations, operation{Service: "Apps", MethodName: "CreateAttachment", HTTPMethod: "POST", Path: "/repos/{owner}/{repo}/content_references/{content_reference_id}/attachments", Pattern: "/repos/{p0}/{p1}/content_references/{p2}/attachments", ResponseKind: "json", Accept: []string{"application/vnd.github.corsair-preview+json"}, Direct: true, Source: "apps.go:434", Impl: services.Apps, Bindings: []binding{{Kind: bindingContext, Index: 0, Name: "", Field: ""}, {Kind: bindingPath, Index: 1, Name: "p0", Field: ""}, {Kind: bindingPath, Index: 2, Name: "p1", Field: ""}, {Kind: bindingPath, Index: 3, Name: "p2", Field: ""}}})
-		operations = append(operations, operation{Service: "Apps", MethodName: "CreateInstallationToken", HTTPMethod: "POST", Path: "/app/installations/{installation_id}/access_tokens", Pattern: "/app/installations/{p0}/access_tokens", ResponseKind: "json", Accept: []string(nil), Direct: true, Source: "apps.go:386", Impl: services.Apps, Bindings: []binding{{Kind: bindingContext, Index: 0, Name: "", Field: ""}, {Kind: bindingPath, Index: 1, Name: "p0", Field: ""}, {Kind: bindingJSON, Index: 2, Name: "", Field: ""}}})
-		operations = append(operations, operation{Service: "Apps", MethodName: "CreateInstallationTokenListRepos", HTTPMethod: "POST", Path: "/app/installations/{installation_id}/access_tokens", Pattern: "/app/installations/{p0}/access_tokens", ResponseKind: "json", Accept: []string(nil), Direct: true, Source: "apps.go:410", Impl: services.Apps, Bindings: []binding{{Kind: bindingContext, Index: 0, Name: "", Field: ""}, {Kind: bindingPath, Index: 1, Name: "p0", Field: ""}, {Kind: bindingJSON, Index: 2, Name: "", Field: ""}}})
+		operations = append(operations, operation{Service: "Apps", MethodName: "CreateInstallationToken", HTTPMethod: "POST", Path: "/app/installations/{installation_id}/access_tokens", Pattern: "/app/installations/{p0}/access_tokens", ResponseKind: "json", Accept: []string(nil), Direct: true, Source: "apps.go:386", Impl: services.Apps, Bindings: []binding{{Kind: bindingContext, Index: 0, Name: "", Field: ""}, {Kind: bindingPath, Index: 2, Name: "p0", Field: ""}, {Kind: bindingAuthorization, Index: 1, Name: "", Field: ""}, {Kind: bindingJSON, Index: 3, Name: "", Field: ""}}})
+		operations = append(operations, operation{Service: "Apps", MethodName: "CreateInstallationTokenListRepos", HTTPMethod: "POST", Path: "/app/installations/{installation_id}/access_tokens", Pattern: "/app/installations/{p0}/access_tokens", ResponseKind: "json", Accept: []string(nil), Direct: true, Source: "apps.go:410", Impl: services.Apps, Bindings: []binding{{Kind: bindingContext, Index: 0, Name: "", Field: ""}, {Kind: bindingPath, Index: 2, Name: "p0", Field: ""}, {Kind: bindingAuthorization, Index: 1, Name: "", Field: ""}, {Kind: bindingJSON, Index: 3, Name: "", Field: ""}}})
 		operations = append(operations, operation{Service: "Apps", MethodName: "DeleteInstallation", HTTPMethod: "DELETE", Path: "/app/installations/{installation_id}", Pattern: "/app/installations/{p0}", ResponseKind: "json", Accept: []string(nil), Direct: true, Source: "apps.go:370", Impl: services.Apps, Bindings: []binding{{Kind: bindingContext, Index: 0, Name: "", Field: ""}, {Kind: bindingPath, Index: 1, Name: "p0", Field: ""}}})
 		operations = append(operations, operation{Service: "Apps", MethodName: "Get", HTTPMethod: "GET", Path: "/app", Pattern: "/app", ResponseKind: "json", Accept: []string(nil), Direct: true, Source: "apps.go:225", Impl: services.Apps, Bindings: []binding{{Kind: bindingContext, Index: 0, Name: "", Field: ""}, {Kind: bindingAuto, Index: 1, Name: "appSlug", Field: ""}}})
 		operations = append(operations, operation{Service: "Apps", MethodName: "Get", HTTPMethod: "GET", Path: "/apps/{app_slug}", Pattern: "/apps/{p0}", ResponseKind: "json", Accept: []string(nil), Direct: true, Source: "apps.go:225", Impl: services.Apps, Bindings: []binding{{Kind: bindingContext, Index: 0, Name: "", Field: ""}, {Kind: bindingPath, Index: 1, Name: "p0", Field: ""}}})

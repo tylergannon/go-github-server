@@ -202,7 +202,6 @@ type authContextKey struct{}
 type recordingAuthenticator struct {
 	mu    sync.Mutex
 	calls []string
-	app   func(context.Context, string) (context.Context, error)
 }
 
 func (a *recordingAuthenticator) AuthenticateWithPAT(ctx context.Context, token string) (context.Context, error) {
@@ -217,16 +216,6 @@ func (a *recordingAuthenticator) AuthenticateWithInstallationToken(ctx context.C
 	a.calls = append(a.calls, "installation:"+token)
 	a.mu.Unlock()
 	return context.WithValue(ctx, authContextKey{}, "installation"), nil
-}
-
-func (a *recordingAuthenticator) AuthenticateWithAppJWT(ctx context.Context, token string) (context.Context, error) {
-	a.mu.Lock()
-	a.calls = append(a.calls, "app-jwt:"+token)
-	a.mu.Unlock()
-	if a.app != nil {
-		return a.app(ctx, token)
-	}
-	return context.WithValue(ctx, authContextKey{}, "app"), nil
 }
 
 func TestAuthenticationDelegatesPATAndInstallationTokens(t *testing.T) {
@@ -258,38 +247,69 @@ func TestAuthenticationDelegatesPATAndInstallationTokens(t *testing.T) {
 
 type appsStub struct {
 	UnimplementedAppsService
-	createInstallationToken func(context.Context, int64, *github.InstallationTokenOptions) (*github.InstallationToken, *github.Response, error)
+	createInstallationToken          func(context.Context, string, int64, *github.InstallationTokenOptions) (*github.InstallationToken, *github.Response, error)
+	createInstallationTokenListRepos func(context.Context, string, int64, *github.InstallationTokenListRepoOptions) (*github.InstallationToken, *github.Response, error)
 }
 
-func (s appsStub) CreateInstallationToken(ctx context.Context, id int64, opts *github.InstallationTokenOptions) (*github.InstallationToken, *github.Response, error) {
-	return s.createInstallationToken(ctx, id, opts)
+func (s appsStub) CreateInstallationToken(ctx context.Context, appJWT string, id int64, opts *github.InstallationTokenOptions) (*github.InstallationToken, *github.Response, error) {
+	if s.createInstallationToken == nil {
+		return nil, nil, ErrNotImplemented
+	}
+	return s.createInstallationToken(ctx, appJWT, id, opts)
 }
 
-func TestAppJWTReachesCreateInstallationTokenThroughGoGitHubClient(t *testing.T) {
+func (s appsStub) CreateInstallationTokenListRepos(ctx context.Context, appJWT string, id int64, opts *github.InstallationTokenListRepoOptions) (*github.InstallationToken, *github.Response, error) {
+	if s.createInstallationTokenListRepos == nil {
+		return nil, nil, ErrNotImplemented
+	}
+	return s.createInstallationTokenListRepos(ctx, appJWT, id, opts)
+}
+
+func TestInstallationTokenEndpointsReceiveAppJWTThroughGoGitHubClient(t *testing.T) {
 	t.Parallel()
 	const appJWT = "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiIxMjM0NSJ9.opaque-signature"
-	auth := &recordingAuthenticator{}
-	stub := appsStub{createInstallationToken: func(ctx context.Context, id int64, opts *github.InstallationTokenOptions) (*github.InstallationToken, *github.Response, error) {
-		assert.Equal(t, "app", ctx.Value(authContextKey{}))
-		assert.Equal(t, int64(42), id)
-		assert.Equal(t, []string{"octo/demo"}, opts.Repositories)
-		return &github.InstallationToken{Token: new("ghs_issued")}, response(http.StatusCreated), nil
-	}}
-	server := httptest.NewServer(New(Services{Apps: stub}, auth))
-	t.Cleanup(server.Close)
-	client := newGitHubClient(t, server.URL, appJWT)
 
-	token, result, err := client.Apps.CreateInstallationToken(t.Context(), 42, &github.InstallationTokenOptions{Repositories: []string{"octo/demo"}})
-	require.NoError(t, err)
-	assert.Equal(t, "ghs_issued", token.GetToken())
-	assert.Equal(t, http.StatusCreated, result.StatusCode)
+	t.Run("standard options", func(t *testing.T) {
+		auth := &recordingAuthenticator{}
+		stub := appsStub{createInstallationToken: func(ctx context.Context, gotJWT string, id int64, opts *github.InstallationTokenOptions) (*github.InstallationToken, *github.Response, error) {
+			assert.Nil(t, ctx.Value(authContextKey{}))
+			assert.Equal(t, appJWT, gotJWT)
+			assert.Equal(t, int64(42), id)
+			assert.Equal(t, []string{"octo/demo"}, opts.Repositories)
+			return &github.InstallationToken{Token: new("ghs_issued")}, response(http.StatusCreated), nil
+		}}
+		server := httptest.NewServer(New(Services{Apps: stub}, auth))
+		t.Cleanup(server.Close)
+		client := newGitHubClient(t, server.URL, appJWT)
 
-	auth.mu.Lock()
-	defer auth.mu.Unlock()
-	assert.Equal(t, []string{"app-jwt:" + appJWT}, auth.calls)
+		token, result, err := client.Apps.CreateInstallationToken(t.Context(), 42, &github.InstallationTokenOptions{Repositories: []string{"octo/demo"}})
+		require.NoError(t, err)
+		assert.Equal(t, "ghs_issued", token.GetToken())
+		assert.Equal(t, http.StatusCreated, result.StatusCode)
+		assert.Empty(t, auth.calls)
+	})
+
+	t.Run("list repository options", func(t *testing.T) {
+		auth := &recordingAuthenticator{}
+		stub := appsStub{createInstallationTokenListRepos: func(_ context.Context, gotJWT string, id int64, opts *github.InstallationTokenListRepoOptions) (*github.InstallationToken, *github.Response, error) {
+			assert.Equal(t, appJWT, gotJWT)
+			assert.Equal(t, int64(42), id)
+			assert.Equal(t, []int64{}, opts.RepositoryIDs)
+			return &github.InstallationToken{Token: new("ghs_list_issued")}, response(http.StatusCreated), nil
+		}}
+		server := httptest.NewServer(New(Services{Apps: stub}, auth))
+		t.Cleanup(server.Close)
+		client := newGitHubClient(t, server.URL, appJWT)
+
+		token, result, err := client.Apps.CreateInstallationTokenListRepos(t.Context(), 42, &github.InstallationTokenListRepoOptions{RepositoryIDs: []int64{}})
+		require.NoError(t, err)
+		assert.Equal(t, "ghs_list_issued", token.GetToken())
+		assert.Equal(t, http.StatusCreated, result.StatusCode)
+		assert.Empty(t, auth.calls)
+	})
 }
 
-func TestAppJWTDelegateCanRejectCredentials(t *testing.T) {
+func TestInstallationTokenEndpointCanRejectAppJWTs(t *testing.T) {
 	t.Parallel()
 	rejected := []string{
 		"invalid.header.signature",
@@ -299,10 +319,15 @@ func TestAppJWTDelegateCanRejectCredentials(t *testing.T) {
 		"wrong-algorithm.claims.signature",
 		"unknown-app.claims.signature",
 	}
-	auth := &recordingAuthenticator{app: func(context.Context, string) (context.Context, error) {
-		return nil, assert.AnError
+	var received []string
+	stub := appsStub{createInstallationToken: func(_ context.Context, appJWT string, _ int64, _ *github.InstallationTokenOptions) (*github.InstallationToken, *github.Response, error) {
+		received = append(received, appJWT)
+		return nil, nil, &github.ErrorResponse{
+			Response: &http.Response{StatusCode: http.StatusUnauthorized, Header: make(http.Header)},
+			Message:  "invalid App JWT",
+		}
 	}}
-	server := httptest.NewServer(New(Services{Apps: appsStub{}}, auth))
+	server := httptest.NewServer(New(Services{Apps: stub}, &recordingAuthenticator{}))
 	t.Cleanup(server.Close)
 	client := newGitHubClient(t, server.URL, "")
 
@@ -316,22 +341,18 @@ func TestAppJWTDelegateCanRejectCredentials(t *testing.T) {
 		assert.Equal(t, http.StatusUnauthorized, result.StatusCode)
 	}
 
-	auth.mu.Lock()
-	defer auth.mu.Unlock()
-	require.Len(t, auth.calls, len(rejected))
-	for i, appJWT := range rejected {
-		assert.Equal(t, "app-jwt:"+appJWT, auth.calls[i])
-	}
+	assert.Equal(t, rejected, received)
 }
 
-func TestInstallationTokenCannotIssueInstallationTokenWithoutAppIdentity(t *testing.T) {
+func TestInstallationTokenCannotAuthenticateTokenIssuanceEndpoint(t *testing.T) {
 	t.Parallel()
 	auth := &recordingAuthenticator{}
-	stub := appsStub{createInstallationToken: func(ctx context.Context, _ int64, _ *github.InstallationTokenOptions) (*github.InstallationToken, *github.Response, error) {
-		if ctx.Value(authContextKey{}) != "app" {
-			return nil, nil, assert.AnError
+	stub := appsStub{createInstallationToken: func(_ context.Context, appJWT string, _ int64, _ *github.InstallationTokenOptions) (*github.InstallationToken, *github.Response, error) {
+		assert.Equal(t, "ghs_existing", appJWT)
+		return nil, nil, &github.ErrorResponse{
+			Response: &http.Response{StatusCode: http.StatusUnauthorized, Header: make(http.Header)},
+			Message:  "App JWT required",
 		}
-		return &github.InstallationToken{Token: new("ghs_issued")}, response(http.StatusCreated), nil
 	}}
 	server := httptest.NewServer(New(Services{Apps: stub}, auth))
 	t.Cleanup(server.Close)
@@ -340,35 +361,11 @@ func TestInstallationTokenCannotIssueInstallationTokenWithoutAppIdentity(t *test
 	token, result, err := client.Apps.CreateInstallationToken(t.Context(), 42, nil)
 	require.Error(t, err)
 	assert.Nil(t, token)
-	assert.Equal(t, http.StatusInternalServerError, result.StatusCode)
+	assert.Equal(t, http.StatusUnauthorized, result.StatusCode)
 
 	auth.mu.Lock()
 	defer auth.mu.Unlock()
-	assert.Equal(t, []string{"installation:ghs_existing"}, auth.calls)
-}
-
-type legacyAuthenticator struct{}
-
-func (legacyAuthenticator) AuthenticateWithPAT(ctx context.Context, _ string) (context.Context, error) {
-	return ctx, nil
-}
-
-func (legacyAuthenticator) AuthenticateWithInstallationToken(ctx context.Context, _ string) (context.Context, error) {
-	return ctx, nil
-}
-
-func TestAppJWTDelegationIsOptIn(t *testing.T) {
-	t.Parallel()
-	server := httptest.NewServer(New(Services{Apps: appsStub{}}, legacyAuthenticator{}))
-	t.Cleanup(server.Close)
-	request, err := http.NewRequestWithContext(t.Context(), http.MethodPost, server.URL+"/app/installations/42/access_tokens", nil)
-	require.NoError(t, err)
-	request.Header.Set("Authorization", "Bearer header.claims.signature")
-
-	result, err := http.DefaultClient.Do(request)
-	require.NoError(t, err)
-	require.NoError(t, result.Body.Close())
-	assert.Equal(t, http.StatusUnauthorized, result.StatusCode)
+	assert.Empty(t, auth.calls)
 }
 
 func TestHubCollisionDispatchesByFormMode(t *testing.T) {

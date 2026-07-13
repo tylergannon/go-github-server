@@ -10,6 +10,7 @@ import (
 	"go/ast"
 	"go/constant"
 	"go/format"
+	"go/token"
 	"go/types"
 	"os"
 	"path/filepath"
@@ -49,6 +50,7 @@ type method struct {
 	Source       string
 	Override     []string
 	PathBuilds   []pathBuild
+	BindsAppJWT  bool
 }
 
 type pathBuild struct {
@@ -173,6 +175,7 @@ func scan(pkg *packages.Package) ([]*service, error) {
 				Source:       fmt.Sprintf("%s:%d", filepath.Base(filename), pkg.Fset.Position(function.Pos()).Line),
 			}
 			analyzeBody(m, pkg.TypesInfo)
+			addServerParameters(m)
 			if slices.ContainsFunc(routes, func(route route) bool { return route.Path == "/hub" }) && signature.Params().Len() != 6 {
 				return nil, fmt.Errorf("%s: /hub adapter requires the six-parameter WebSub signature", m.Source)
 			}
@@ -217,6 +220,9 @@ func methodDocumentation(method *method) string {
 			sections = append(sections, upstream)
 		}
 	}
+	if method.BindsAppJWT {
+		sections = append(sections, "The appJWT parameter contains the credential from the required Authorization: Bearer <JWT> header.")
+	}
 	var routes []string
 	for _, annotated := range method.Routes {
 		effective := effectiveRoute(method, annotated)
@@ -226,6 +232,37 @@ func methodDocumentation(method *method) string {
 		sections = append(sections, strings.Join(routes, "\n"))
 	}
 	return strings.Join(sections, "\n\n")
+}
+
+func addServerParameters(method *method) {
+	if method.Service != "Apps" || (method.Name != "CreateInstallationToken" && method.Name != "CreateInstallationTokenListRepos") {
+		return
+	}
+	parameters := method.Signature.Params()
+	serverParameters := make([]*types.Var, 0, parameters.Len()+1)
+	serverParameters = append(serverParameters, parameters.At(0))
+	serverParameters = append(serverParameters, types.NewVar(token.NoPos, nil, "appJWT", types.Typ[types.String]))
+	for index := 1; index < parameters.Len(); index++ {
+		serverParameters = append(serverParameters, parameters.At(index))
+	}
+	method.Signature = types.NewSignatureType(
+		nil,
+		nil,
+		nil,
+		types.NewTuple(serverParameters...),
+		method.Signature.Results(),
+		method.Signature.Variadic(),
+	)
+	method.ParamNames = slices.Insert(method.ParamNames, 1, "appJWT")
+	for buildIndex := range method.PathBuilds {
+		for sourceIndex := range method.PathBuilds[buildIndex].sources {
+			if method.PathBuilds[buildIndex].sources[sourceIndex].index > 0 {
+				method.PathBuilds[buildIndex].sources[sourceIndex].index++
+			}
+		}
+	}
+	method.BindsAppJWT = true
+	method.Override = appendUnique(method.Override, "authorization header argument")
 }
 
 func commentBlock(documentation string) string {
@@ -904,6 +941,9 @@ func appendNonPathBindings(method *method, bindings []renderedBinding, bound map
 			continue
 		}
 		switch {
+		case method.BindsAppJWT && name == "appJWT":
+			bindings = append(bindings, renderedBinding{kind: "bindingAuthorization", index: index})
+			bound[index] = true
 		case strings.HasSuffix(types.TypeString(method.Signature.Params().At(index).Type(), nil), ".RawOptions"):
 			bindings = append(bindings, renderedBinding{kind: "bindingRawOptions", index: index})
 			bound[index] = true
