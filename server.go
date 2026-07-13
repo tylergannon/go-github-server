@@ -229,8 +229,31 @@ func serveOperationGroup(w http.ResponseWriter, r *http.Request, authenticator A
 			http.Error(w, requestErr.Error(), http.StatusBadRequest)
 			return
 		}
+		var errorResponse *github.ErrorResponse
+		if errors.As(invokeErr, &errorResponse) && writeErrorResponse(w, errorResponse) {
+			return
+		}
 		http.Error(w, invokeErr.Error(), http.StatusInternalServerError)
 	}
+}
+
+func writeErrorResponse(w http.ResponseWriter, errorResponse *github.ErrorResponse) bool {
+	if errorResponse.Response == nil || errorResponse.Response.StatusCode < 100 || errorResponse.Response.StatusCode > 999 {
+		return false
+	}
+	payload, err := json.Marshal(errorResponse)
+	if err != nil {
+		return false
+	}
+	for key, values := range errorResponse.Response.Header {
+		w.Header()[key] = slices.Clone(values)
+	}
+	if w.Header().Get("Content-Type") == "" {
+		w.Header().Set("Content-Type", "application/json")
+	}
+	w.WriteHeader(errorResponse.Response.StatusCode)
+	_, _ = w.Write(append(payload, '\n'))
+	return true
 }
 
 func orderedOperations(r *http.Request, operations []operation) []operation {
