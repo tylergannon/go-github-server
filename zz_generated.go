@@ -1108,809 +1108,985 @@ type ActionsService interface {
 }
 
 // UnimplementedActionsService may be embedded to implement only selected methods.
-type UnimplementedActionsService struct{}
+type UnimplementedActionsService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedActionsService) AddEnabledOrgInEnterprise(ctx context.Context, owner string, organizationID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) AddEnabledOrgInEnterprise(ctx context.Context, owner string, organizationID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "AddEnabledOrgInEnterprise")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) AddEnabledReposInOrg(ctx context.Context, owner string, repositoryID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) AddEnabledReposInOrg(ctx context.Context, owner string, repositoryID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "AddEnabledReposInOrg")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) AddRepositoryAccessRunnerGroup(ctx context.Context, org string, groupID int64, repoID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) AddRepositoryAccessRunnerGroup(ctx context.Context, org string, groupID int64, repoID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "AddRepositoryAccessRunnerGroup")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) AddRepositorySelfHostedRunnersAllowedInOrganization(ctx context.Context, org string, repositoryID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) AddRepositorySelfHostedRunnersAllowedInOrganization(ctx context.Context, org string, repositoryID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "AddRepositorySelfHostedRunnersAllowedInOrganization")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) AddRunnerGroupRunners(ctx context.Context, org string, groupID int64, runnerID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) AddRunnerGroupRunners(ctx context.Context, org string, groupID int64, runnerID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "AddRunnerGroupRunners")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) AddSelectedRepoToOrgSecret(ctx context.Context, org string, name string, repoID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) AddSelectedRepoToOrgSecret(ctx context.Context, org string, name string, repoID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "AddSelectedRepoToOrgSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) AddSelectedRepoToOrgVariable(ctx context.Context, org string, name string, repo *github.Repository) (*github.Response, error) {
+func (s UnimplementedActionsService) AddSelectedRepoToOrgVariable(ctx context.Context, org string, name string, repo *github.Repository) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "AddSelectedRepoToOrgVariable")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) CancelWorkflowRunByID(ctx context.Context, owner string, repo string, runID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) CancelWorkflowRunByID(ctx context.Context, owner string, repo string, runID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "CancelWorkflowRunByID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) CreateEnvVariable(ctx context.Context, owner string, repo string, env string, body github.ActionsVariableCreateRequest) (*github.Response, error) {
+func (s UnimplementedActionsService) CreateEnvVariable(ctx context.Context, owner string, repo string, env string, body github.ActionsVariableCreateRequest) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "CreateEnvVariable")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) CreateHostedRunner(ctx context.Context, org string, body github.CreateHostedRunnerRequest) (*github.HostedRunner, *github.Response, error) {
+func (s UnimplementedActionsService) CreateHostedRunner(ctx context.Context, org string, body github.CreateHostedRunnerRequest) (*github.HostedRunner, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "CreateHostedRunner")
 	var zero0 *github.HostedRunner
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) CreateOrUpdateEnvSecret(ctx context.Context, owner string, repo string, env string, name string, body github.SecretRequest) (*github.Response, error) {
+func (s UnimplementedActionsService) CreateOrUpdateEnvSecret(ctx context.Context, owner string, repo string, env string, name string, body github.SecretRequest) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "CreateOrUpdateEnvSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) CreateOrUpdateOrgSecret(ctx context.Context, org string, name string, body github.OrgSecretRequest) (*github.Response, error) {
+func (s UnimplementedActionsService) CreateOrUpdateOrgSecret(ctx context.Context, org string, name string, body github.OrgSecretRequest) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "CreateOrUpdateOrgSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) CreateOrUpdateRepoSecret(ctx context.Context, owner string, repo string, name string, body github.SecretRequest) (*github.Response, error) {
+func (s UnimplementedActionsService) CreateOrUpdateRepoSecret(ctx context.Context, owner string, repo string, name string, body github.SecretRequest) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "CreateOrUpdateRepoSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) CreateOrgJITConfig(ctx context.Context, org string, body github.CreateJITConfigRequest) (*github.JITRunnerConfig, *github.Response, error) {
+func (s UnimplementedActionsService) CreateOrgJITConfig(ctx context.Context, org string, body github.CreateJITConfigRequest) (*github.JITRunnerConfig, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "CreateOrgJITConfig")
 	var zero0 *github.JITRunnerConfig
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) CreateOrgVariable(ctx context.Context, org string, body github.OrgActionsVariableCreateRequest) (*github.Response, error) {
+func (s UnimplementedActionsService) CreateOrgVariable(ctx context.Context, org string, body github.OrgActionsVariableCreateRequest) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "CreateOrgVariable")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) CreateOrganizationRegistrationToken(ctx context.Context, org string) (*github.RegistrationToken, *github.Response, error) {
+func (s UnimplementedActionsService) CreateOrganizationRegistrationToken(ctx context.Context, org string) (*github.RegistrationToken, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "CreateOrganizationRegistrationToken")
 	var zero0 *github.RegistrationToken
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) CreateOrganizationRemoveToken(ctx context.Context, org string) (*github.RemoveToken, *github.Response, error) {
+func (s UnimplementedActionsService) CreateOrganizationRemoveToken(ctx context.Context, org string) (*github.RemoveToken, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "CreateOrganizationRemoveToken")
 	var zero0 *github.RemoveToken
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) CreateOrganizationRunnerGroup(ctx context.Context, org string, body github.CreateRunnerGroupRequest) (*github.RunnerGroup, *github.Response, error) {
+func (s UnimplementedActionsService) CreateOrganizationRunnerGroup(ctx context.Context, org string, body github.CreateRunnerGroupRequest) (*github.RunnerGroup, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "CreateOrganizationRunnerGroup")
 	var zero0 *github.RunnerGroup
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) CreateRegistrationToken(ctx context.Context, owner string, repo string) (*github.RegistrationToken, *github.Response, error) {
+func (s UnimplementedActionsService) CreateRegistrationToken(ctx context.Context, owner string, repo string) (*github.RegistrationToken, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "CreateRegistrationToken")
 	var zero0 *github.RegistrationToken
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) CreateRemoveToken(ctx context.Context, owner string, repo string) (*github.RemoveToken, *github.Response, error) {
+func (s UnimplementedActionsService) CreateRemoveToken(ctx context.Context, owner string, repo string) (*github.RemoveToken, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "CreateRemoveToken")
 	var zero0 *github.RemoveToken
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) CreateRepoJITConfig(ctx context.Context, owner string, repo string, body github.CreateJITConfigRequest) (*github.JITRunnerConfig, *github.Response, error) {
+func (s UnimplementedActionsService) CreateRepoJITConfig(ctx context.Context, owner string, repo string, body github.CreateJITConfigRequest) (*github.JITRunnerConfig, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "CreateRepoJITConfig")
 	var zero0 *github.JITRunnerConfig
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) CreateRepoVariable(ctx context.Context, owner string, repo string, body github.ActionsVariableCreateRequest) (*github.Response, error) {
+func (s UnimplementedActionsService) CreateRepoVariable(ctx context.Context, owner string, repo string, body github.ActionsVariableCreateRequest) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "CreateRepoVariable")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) CreateWorkflowDispatchEventByFileName(ctx context.Context, owner string, repo string, workflowFileName string, body github.CreateWorkflowDispatchEventRequest) (*github.WorkflowDispatchRunDetails, *github.Response, error) {
+func (s UnimplementedActionsService) CreateWorkflowDispatchEventByFileName(ctx context.Context, owner string, repo string, workflowFileName string, body github.CreateWorkflowDispatchEventRequest) (*github.WorkflowDispatchRunDetails, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "CreateWorkflowDispatchEventByFileName")
 	var zero0 *github.WorkflowDispatchRunDetails
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) CreateWorkflowDispatchEventByID(ctx context.Context, owner string, repo string, workflowID int64, body github.CreateWorkflowDispatchEventRequest) (*github.WorkflowDispatchRunDetails, *github.Response, error) {
+func (s UnimplementedActionsService) CreateWorkflowDispatchEventByID(ctx context.Context, owner string, repo string, workflowID int64, body github.CreateWorkflowDispatchEventRequest) (*github.WorkflowDispatchRunDetails, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "CreateWorkflowDispatchEventByID")
 	var zero0 *github.WorkflowDispatchRunDetails
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) DeleteArtifact(ctx context.Context, owner string, repo string, artifactID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) DeleteArtifact(ctx context.Context, owner string, repo string, artifactID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "DeleteArtifact")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) DeleteCachesByID(ctx context.Context, owner string, repo string, cacheID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) DeleteCachesByID(ctx context.Context, owner string, repo string, cacheID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "DeleteCachesByID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) DeleteCachesByKey(ctx context.Context, owner string, repo string, key string, ref *string) (*github.Response, error) {
+func (s UnimplementedActionsService) DeleteCachesByKey(ctx context.Context, owner string, repo string, key string, ref *string) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "DeleteCachesByKey")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) DeleteEnvSecret(ctx context.Context, owner string, repo string, env string, secretName string) (*github.Response, error) {
+func (s UnimplementedActionsService) DeleteEnvSecret(ctx context.Context, owner string, repo string, env string, secretName string) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "DeleteEnvSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) DeleteEnvVariable(ctx context.Context, owner string, repo string, env string, variableName string) (*github.Response, error) {
+func (s UnimplementedActionsService) DeleteEnvVariable(ctx context.Context, owner string, repo string, env string, variableName string) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "DeleteEnvVariable")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) DeleteHostedRunner(ctx context.Context, org string, runnerID int64) (*github.HostedRunner, *github.Response, error) {
+func (s UnimplementedActionsService) DeleteHostedRunner(ctx context.Context, org string, runnerID int64) (*github.HostedRunner, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "DeleteHostedRunner")
 	var zero0 *github.HostedRunner
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) DeleteHostedRunnerCustomImage(ctx context.Context, org string, imageDefinitionID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) DeleteHostedRunnerCustomImage(ctx context.Context, org string, imageDefinitionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "DeleteHostedRunnerCustomImage")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) DeleteHostedRunnerCustomImageVersion(ctx context.Context, org string, imageDefinitionID int64, version string) (*github.Response, error) {
+func (s UnimplementedActionsService) DeleteHostedRunnerCustomImageVersion(ctx context.Context, org string, imageDefinitionID int64, version string) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "DeleteHostedRunnerCustomImageVersion")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) DeleteOrgSecret(ctx context.Context, org string, name string) (*github.Response, error) {
+func (s UnimplementedActionsService) DeleteOrgSecret(ctx context.Context, org string, name string) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "DeleteOrgSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) DeleteOrgVariable(ctx context.Context, org string, name string) (*github.Response, error) {
+func (s UnimplementedActionsService) DeleteOrgVariable(ctx context.Context, org string, name string) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "DeleteOrgVariable")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) DeleteOrganizationRunnerGroup(ctx context.Context, org string, groupID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) DeleteOrganizationRunnerGroup(ctx context.Context, org string, groupID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "DeleteOrganizationRunnerGroup")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) DeleteRepoSecret(ctx context.Context, owner string, repo string, name string) (*github.Response, error) {
+func (s UnimplementedActionsService) DeleteRepoSecret(ctx context.Context, owner string, repo string, name string) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "DeleteRepoSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) DeleteRepoVariable(ctx context.Context, owner string, repo string, name string) (*github.Response, error) {
+func (s UnimplementedActionsService) DeleteRepoVariable(ctx context.Context, owner string, repo string, name string) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "DeleteRepoVariable")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) DeleteWorkflowRun(ctx context.Context, owner string, repo string, runID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) DeleteWorkflowRun(ctx context.Context, owner string, repo string, runID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "DeleteWorkflowRun")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) DeleteWorkflowRunLogs(ctx context.Context, owner string, repo string, runID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) DeleteWorkflowRunLogs(ctx context.Context, owner string, repo string, runID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "DeleteWorkflowRunLogs")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) DisableWorkflowByFileName(ctx context.Context, owner string, repo string, workflowFileName string) (*github.Response, error) {
+func (s UnimplementedActionsService) DisableWorkflowByFileName(ctx context.Context, owner string, repo string, workflowFileName string) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "DisableWorkflowByFileName")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) DisableWorkflowByID(ctx context.Context, owner string, repo string, workflowID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) DisableWorkflowByID(ctx context.Context, owner string, repo string, workflowID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "DisableWorkflowByID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) DownloadArtifact(ctx context.Context, owner string, repo string, artifactID int64, maxRedirects int) (*url.URL, *github.Response, error) {
+func (s UnimplementedActionsService) DownloadArtifact(ctx context.Context, owner string, repo string, artifactID int64, maxRedirects int) (*url.URL, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "DownloadArtifact")
 	var zero0 *url.URL
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) EnableWorkflowByFileName(ctx context.Context, owner string, repo string, workflowFileName string) (*github.Response, error) {
+func (s UnimplementedActionsService) EnableWorkflowByFileName(ctx context.Context, owner string, repo string, workflowFileName string) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "EnableWorkflowByFileName")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) EnableWorkflowByID(ctx context.Context, owner string, repo string, workflowID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) EnableWorkflowByID(ctx context.Context, owner string, repo string, workflowID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "EnableWorkflowByID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetActionsAllowed(ctx context.Context, org string) (*github.ActionsAllowed, *github.Response, error) {
+func (s UnimplementedActionsService) GetActionsAllowed(ctx context.Context, org string) (*github.ActionsAllowed, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetActionsAllowed")
 	var zero0 *github.ActionsAllowed
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetActionsAllowedInEnterprise(ctx context.Context, enterprise string) (*github.ActionsAllowed, *github.Response, error) {
+func (s UnimplementedActionsService) GetActionsAllowedInEnterprise(ctx context.Context, enterprise string) (*github.ActionsAllowed, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetActionsAllowedInEnterprise")
 	var zero0 *github.ActionsAllowed
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetActionsPermissions(ctx context.Context, org string) (*github.ActionsPermissions, *github.Response, error) {
+func (s UnimplementedActionsService) GetActionsPermissions(ctx context.Context, org string) (*github.ActionsPermissions, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetActionsPermissions")
 	var zero0 *github.ActionsPermissions
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetActionsPermissionsInEnterprise(ctx context.Context, enterprise string) (*github.ActionsPermissionsEnterprise, *github.Response, error) {
+func (s UnimplementedActionsService) GetActionsPermissionsInEnterprise(ctx context.Context, enterprise string) (*github.ActionsPermissionsEnterprise, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetActionsPermissionsInEnterprise")
 	var zero0 *github.ActionsPermissionsEnterprise
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetArtifact(ctx context.Context, owner string, repo string, artifactID int64) (*github.Artifact, *github.Response, error) {
+func (s UnimplementedActionsService) GetArtifact(ctx context.Context, owner string, repo string, artifactID int64) (*github.Artifact, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetArtifact")
 	var zero0 *github.Artifact
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetArtifactAndLogRetentionPeriodInEnterprise(ctx context.Context, enterprise string) (*github.ArtifactPeriod, *github.Response, error) {
+func (s UnimplementedActionsService) GetArtifactAndLogRetentionPeriodInEnterprise(ctx context.Context, enterprise string) (*github.ArtifactPeriod, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetArtifactAndLogRetentionPeriodInEnterprise")
 	var zero0 *github.ArtifactPeriod
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetArtifactAndLogRetentionPeriodInOrganization(ctx context.Context, org string) (*github.ArtifactPeriod, *github.Response, error) {
+func (s UnimplementedActionsService) GetArtifactAndLogRetentionPeriodInOrganization(ctx context.Context, org string) (*github.ArtifactPeriod, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetArtifactAndLogRetentionPeriodInOrganization")
 	var zero0 *github.ArtifactPeriod
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetCacheUsageForRepo(ctx context.Context, owner string, repo string) (*github.ActionsCacheUsage, *github.Response, error) {
+func (s UnimplementedActionsService) GetCacheUsageForRepo(ctx context.Context, owner string, repo string) (*github.ActionsCacheUsage, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetCacheUsageForRepo")
 	var zero0 *github.ActionsCacheUsage
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetDefaultWorkflowPermissionsInEnterprise(ctx context.Context, enterprise string) (*github.DefaultWorkflowPermissionEnterprise, *github.Response, error) {
+func (s UnimplementedActionsService) GetDefaultWorkflowPermissionsInEnterprise(ctx context.Context, enterprise string) (*github.DefaultWorkflowPermissionEnterprise, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetDefaultWorkflowPermissionsInEnterprise")
 	var zero0 *github.DefaultWorkflowPermissionEnterprise
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetDefaultWorkflowPermissionsInOrganization(ctx context.Context, org string) (*github.DefaultWorkflowPermissionOrganization, *github.Response, error) {
+func (s UnimplementedActionsService) GetDefaultWorkflowPermissionsInOrganization(ctx context.Context, org string) (*github.DefaultWorkflowPermissionOrganization, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetDefaultWorkflowPermissionsInOrganization")
 	var zero0 *github.DefaultWorkflowPermissionOrganization
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetEnterpriseForkPRContributorApprovalPermissions(ctx context.Context, enterprise string) (*github.ContributorApprovalPermissions, *github.Response, error) {
+func (s UnimplementedActionsService) GetEnterpriseForkPRContributorApprovalPermissions(ctx context.Context, enterprise string) (*github.ContributorApprovalPermissions, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetEnterpriseForkPRContributorApprovalPermissions")
 	var zero0 *github.ContributorApprovalPermissions
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetEnvPublicKey(ctx context.Context, owner string, repo string, env string) (*github.PublicKey, *github.Response, error) {
+func (s UnimplementedActionsService) GetEnvPublicKey(ctx context.Context, owner string, repo string, env string) (*github.PublicKey, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetEnvPublicKey")
 	var zero0 *github.PublicKey
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetEnvSecret(ctx context.Context, owner string, repo string, env string, secretName string) (*github.Secret, *github.Response, error) {
+func (s UnimplementedActionsService) GetEnvSecret(ctx context.Context, owner string, repo string, env string, secretName string) (*github.Secret, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetEnvSecret")
 	var zero0 *github.Secret
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetEnvVariable(ctx context.Context, owner string, repo string, env string, variableName string) (*github.ActionsVariable, *github.Response, error) {
+func (s UnimplementedActionsService) GetEnvVariable(ctx context.Context, owner string, repo string, env string, variableName string) (*github.ActionsVariable, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetEnvVariable")
 	var zero0 *github.ActionsVariable
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetForkPRContributorApprovalPermissions(ctx context.Context, owner string, repo string) (*github.ContributorApprovalPermissions, *github.Response, error) {
+func (s UnimplementedActionsService) GetForkPRContributorApprovalPermissions(ctx context.Context, owner string, repo string) (*github.ContributorApprovalPermissions, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetForkPRContributorApprovalPermissions")
 	var zero0 *github.ContributorApprovalPermissions
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetHostedRunner(ctx context.Context, org string, runnerID int64) (*github.HostedRunner, *github.Response, error) {
+func (s UnimplementedActionsService) GetHostedRunner(ctx context.Context, org string, runnerID int64) (*github.HostedRunner, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetHostedRunner")
 	var zero0 *github.HostedRunner
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetHostedRunnerCustomImage(ctx context.Context, org string, imageDefinitionID int64) (*github.HostedRunnerCustomImage, *github.Response, error) {
+func (s UnimplementedActionsService) GetHostedRunnerCustomImage(ctx context.Context, org string, imageDefinitionID int64) (*github.HostedRunnerCustomImage, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetHostedRunnerCustomImage")
 	var zero0 *github.HostedRunnerCustomImage
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetHostedRunnerCustomImageVersion(ctx context.Context, org string, imageDefinitionID int64, version string) (*github.HostedRunnerCustomImageVersion, *github.Response, error) {
+func (s UnimplementedActionsService) GetHostedRunnerCustomImageVersion(ctx context.Context, org string, imageDefinitionID int64, version string) (*github.HostedRunnerCustomImageVersion, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetHostedRunnerCustomImageVersion")
 	var zero0 *github.HostedRunnerCustomImageVersion
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetHostedRunnerGitHubOwnedImages(ctx context.Context, org string) (*github.HostedRunnerImages, *github.Response, error) {
+func (s UnimplementedActionsService) GetHostedRunnerGitHubOwnedImages(ctx context.Context, org string) (*github.HostedRunnerImages, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetHostedRunnerGitHubOwnedImages")
 	var zero0 *github.HostedRunnerImages
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetHostedRunnerLimits(ctx context.Context, org string) (*github.HostedRunnerPublicIPLimits, *github.Response, error) {
+func (s UnimplementedActionsService) GetHostedRunnerLimits(ctx context.Context, org string) (*github.HostedRunnerPublicIPLimits, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetHostedRunnerLimits")
 	var zero0 *github.HostedRunnerPublicIPLimits
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetHostedRunnerMachineSpecs(ctx context.Context, org string) (*github.HostedRunnerMachineSpecs, *github.Response, error) {
+func (s UnimplementedActionsService) GetHostedRunnerMachineSpecs(ctx context.Context, org string) (*github.HostedRunnerMachineSpecs, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetHostedRunnerMachineSpecs")
 	var zero0 *github.HostedRunnerMachineSpecs
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetHostedRunnerPartnerImages(ctx context.Context, org string) (*github.HostedRunnerImages, *github.Response, error) {
+func (s UnimplementedActionsService) GetHostedRunnerPartnerImages(ctx context.Context, org string) (*github.HostedRunnerImages, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetHostedRunnerPartnerImages")
 	var zero0 *github.HostedRunnerImages
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetHostedRunnerPlatforms(ctx context.Context, org string) (*github.HostedRunnerPlatforms, *github.Response, error) {
+func (s UnimplementedActionsService) GetHostedRunnerPlatforms(ctx context.Context, org string) (*github.HostedRunnerPlatforms, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetHostedRunnerPlatforms")
 	var zero0 *github.HostedRunnerPlatforms
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetOrgOIDCSubjectClaimCustomTemplate(ctx context.Context, org string) (*github.OIDCSubjectClaimCustomTemplate, *github.Response, error) {
+func (s UnimplementedActionsService) GetOrgOIDCSubjectClaimCustomTemplate(ctx context.Context, org string) (*github.OIDCSubjectClaimCustomTemplate, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetOrgOIDCSubjectClaimCustomTemplate")
 	var zero0 *github.OIDCSubjectClaimCustomTemplate
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetOrgPublicKey(ctx context.Context, org string) (*github.PublicKey, *github.Response, error) {
+func (s UnimplementedActionsService) GetOrgPublicKey(ctx context.Context, org string) (*github.PublicKey, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetOrgPublicKey")
 	var zero0 *github.PublicKey
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetOrgSecret(ctx context.Context, org string, name string) (*github.Secret, *github.Response, error) {
+func (s UnimplementedActionsService) GetOrgSecret(ctx context.Context, org string, name string) (*github.Secret, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetOrgSecret")
 	var zero0 *github.Secret
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetOrgVariable(ctx context.Context, org string, name string) (*github.ActionsVariable, *github.Response, error) {
+func (s UnimplementedActionsService) GetOrgVariable(ctx context.Context, org string, name string) (*github.ActionsVariable, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetOrgVariable")
 	var zero0 *github.ActionsVariable
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetOrganizationForkPRContributorApprovalPermissions(ctx context.Context, org string) (*github.ContributorApprovalPermissions, *github.Response, error) {
+func (s UnimplementedActionsService) GetOrganizationForkPRContributorApprovalPermissions(ctx context.Context, org string) (*github.ContributorApprovalPermissions, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetOrganizationForkPRContributorApprovalPermissions")
 	var zero0 *github.ContributorApprovalPermissions
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetOrganizationRunner(ctx context.Context, org string, runnerID int64) (*github.Runner, *github.Response, error) {
+func (s UnimplementedActionsService) GetOrganizationRunner(ctx context.Context, org string, runnerID int64) (*github.Runner, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetOrganizationRunner")
 	var zero0 *github.Runner
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetOrganizationRunnerGroup(ctx context.Context, org string, groupID int64) (*github.RunnerGroup, *github.Response, error) {
+func (s UnimplementedActionsService) GetOrganizationRunnerGroup(ctx context.Context, org string, groupID int64) (*github.RunnerGroup, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetOrganizationRunnerGroup")
 	var zero0 *github.RunnerGroup
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetPendingDeployments(ctx context.Context, owner string, repo string, runID int64) ([]*github.PendingDeployment, *github.Response, error) {
+func (s UnimplementedActionsService) GetPendingDeployments(ctx context.Context, owner string, repo string, runID int64) ([]*github.PendingDeployment, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetPendingDeployments")
 	var zero0 []*github.PendingDeployment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetPrivateRepoForkPRWorkflowSettingsInEnterprise(ctx context.Context, enterprise string) (*github.WorkflowsPermissions, *github.Response, error) {
+func (s UnimplementedActionsService) GetPrivateRepoForkPRWorkflowSettingsInEnterprise(ctx context.Context, enterprise string) (*github.WorkflowsPermissions, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetPrivateRepoForkPRWorkflowSettingsInEnterprise")
 	var zero0 *github.WorkflowsPermissions
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetPrivateRepoForkPRWorkflowSettingsInOrganization(ctx context.Context, org string) (*github.WorkflowsPermissions, *github.Response, error) {
+func (s UnimplementedActionsService) GetPrivateRepoForkPRWorkflowSettingsInOrganization(ctx context.Context, org string) (*github.WorkflowsPermissions, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetPrivateRepoForkPRWorkflowSettingsInOrganization")
 	var zero0 *github.WorkflowsPermissions
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetRepoOIDCSubjectClaimCustomTemplate(ctx context.Context, owner string, repo string) (*github.OIDCSubjectClaimCustomTemplate, *github.Response, error) {
+func (s UnimplementedActionsService) GetRepoOIDCSubjectClaimCustomTemplate(ctx context.Context, owner string, repo string) (*github.OIDCSubjectClaimCustomTemplate, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetRepoOIDCSubjectClaimCustomTemplate")
 	var zero0 *github.OIDCSubjectClaimCustomTemplate
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetRepoPublicKey(ctx context.Context, owner string, repo string) (*github.PublicKey, *github.Response, error) {
+func (s UnimplementedActionsService) GetRepoPublicKey(ctx context.Context, owner string, repo string) (*github.PublicKey, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetRepoPublicKey")
 	var zero0 *github.PublicKey
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetRepoSecret(ctx context.Context, owner string, repo string, name string) (*github.Secret, *github.Response, error) {
+func (s UnimplementedActionsService) GetRepoSecret(ctx context.Context, owner string, repo string, name string) (*github.Secret, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetRepoSecret")
 	var zero0 *github.Secret
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetRepoVariable(ctx context.Context, owner string, repo string, name string) (*github.ActionsVariable, *github.Response, error) {
+func (s UnimplementedActionsService) GetRepoVariable(ctx context.Context, owner string, repo string, name string) (*github.ActionsVariable, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetRepoVariable")
 	var zero0 *github.ActionsVariable
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetRunner(ctx context.Context, owner string, repo string, runnerID int64) (*github.Runner, *github.Response, error) {
+func (s UnimplementedActionsService) GetRunner(ctx context.Context, owner string, repo string, runnerID int64) (*github.Runner, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetRunner")
 	var zero0 *github.Runner
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetSelfHostedRunnerPermissionsInEnterprise(ctx context.Context, enterprise string) (*github.SelfHostRunnerPermissionsEnterprise, *github.Response, error) {
+func (s UnimplementedActionsService) GetSelfHostedRunnerPermissionsInEnterprise(ctx context.Context, enterprise string) (*github.SelfHostRunnerPermissionsEnterprise, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetSelfHostedRunnerPermissionsInEnterprise")
 	var zero0 *github.SelfHostRunnerPermissionsEnterprise
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetSelfHostedRunnersSettingsInOrganization(ctx context.Context, org string) (*github.SelfHostedRunnersSettingsOrganization, *github.Response, error) {
+func (s UnimplementedActionsService) GetSelfHostedRunnersSettingsInOrganization(ctx context.Context, org string) (*github.SelfHostedRunnersSettingsOrganization, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetSelfHostedRunnersSettingsInOrganization")
 	var zero0 *github.SelfHostedRunnersSettingsOrganization
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetTotalCacheUsageForEnterprise(ctx context.Context, enterprise string) (*github.TotalCacheUsage, *github.Response, error) {
+func (s UnimplementedActionsService) GetTotalCacheUsageForEnterprise(ctx context.Context, enterprise string) (*github.TotalCacheUsage, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetTotalCacheUsageForEnterprise")
 	var zero0 *github.TotalCacheUsage
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetTotalCacheUsageForOrg(ctx context.Context, org string) (*github.TotalCacheUsage, *github.Response, error) {
+func (s UnimplementedActionsService) GetTotalCacheUsageForOrg(ctx context.Context, org string) (*github.TotalCacheUsage, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetTotalCacheUsageForOrg")
 	var zero0 *github.TotalCacheUsage
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetWorkflowByFileName(ctx context.Context, owner string, repo string, workflowFileName string) (*github.Workflow, *github.Response, error) {
+func (s UnimplementedActionsService) GetWorkflowByFileName(ctx context.Context, owner string, repo string, workflowFileName string) (*github.Workflow, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetWorkflowByFileName")
 	var zero0 *github.Workflow
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetWorkflowByID(ctx context.Context, owner string, repo string, workflowID int64) (*github.Workflow, *github.Response, error) {
+func (s UnimplementedActionsService) GetWorkflowByID(ctx context.Context, owner string, repo string, workflowID int64) (*github.Workflow, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetWorkflowByID")
 	var zero0 *github.Workflow
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetWorkflowJobByID(ctx context.Context, owner string, repo string, jobID int64) (*github.WorkflowJob, *github.Response, error) {
+func (s UnimplementedActionsService) GetWorkflowJobByID(ctx context.Context, owner string, repo string, jobID int64) (*github.WorkflowJob, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetWorkflowJobByID")
 	var zero0 *github.WorkflowJob
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetWorkflowJobLogs(ctx context.Context, owner string, repo string, jobID int64, maxRedirects int) (*url.URL, *github.Response, error) {
+func (s UnimplementedActionsService) GetWorkflowJobLogs(ctx context.Context, owner string, repo string, jobID int64, maxRedirects int) (*url.URL, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetWorkflowJobLogs")
 	var zero0 *url.URL
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetWorkflowRunAttempt(ctx context.Context, owner string, repo string, runID int64, attemptNumber int, opts *github.WorkflowRunAttemptOptions) (*github.WorkflowRun, *github.Response, error) {
+func (s UnimplementedActionsService) GetWorkflowRunAttempt(ctx context.Context, owner string, repo string, runID int64, attemptNumber int, opts *github.WorkflowRunAttemptOptions) (*github.WorkflowRun, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetWorkflowRunAttempt")
 	var zero0 *github.WorkflowRun
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetWorkflowRunAttemptLogs(ctx context.Context, owner string, repo string, runID int64, attemptNumber int, maxRedirects int) (*url.URL, *github.Response, error) {
+func (s UnimplementedActionsService) GetWorkflowRunAttemptLogs(ctx context.Context, owner string, repo string, runID int64, attemptNumber int, maxRedirects int) (*url.URL, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetWorkflowRunAttemptLogs")
 	var zero0 *url.URL
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetWorkflowRunByID(ctx context.Context, owner string, repo string, runID int64) (*github.WorkflowRun, *github.Response, error) {
+func (s UnimplementedActionsService) GetWorkflowRunByID(ctx context.Context, owner string, repo string, runID int64) (*github.WorkflowRun, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetWorkflowRunByID")
 	var zero0 *github.WorkflowRun
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetWorkflowRunLogs(ctx context.Context, owner string, repo string, runID int64, maxRedirects int) (*url.URL, *github.Response, error) {
+func (s UnimplementedActionsService) GetWorkflowRunLogs(ctx context.Context, owner string, repo string, runID int64, maxRedirects int) (*url.URL, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetWorkflowRunLogs")
 	var zero0 *url.URL
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetWorkflowRunUsageByID(ctx context.Context, owner string, repo string, runID int64) (*github.WorkflowRunUsage, *github.Response, error) {
+func (s UnimplementedActionsService) GetWorkflowRunUsageByID(ctx context.Context, owner string, repo string, runID int64) (*github.WorkflowRunUsage, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetWorkflowRunUsageByID")
 	var zero0 *github.WorkflowRunUsage
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetWorkflowUsageByFileName(ctx context.Context, owner string, repo string, workflowFileName string) (*github.WorkflowUsage, *github.Response, error) {
+func (s UnimplementedActionsService) GetWorkflowUsageByFileName(ctx context.Context, owner string, repo string, workflowFileName string) (*github.WorkflowUsage, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetWorkflowUsageByFileName")
 	var zero0 *github.WorkflowUsage
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) GetWorkflowUsageByID(ctx context.Context, owner string, repo string, workflowID int64) (*github.WorkflowUsage, *github.Response, error) {
+func (s UnimplementedActionsService) GetWorkflowUsageByID(ctx context.Context, owner string, repo string, workflowID int64) (*github.WorkflowUsage, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "GetWorkflowUsageByID")
 	var zero0 *github.WorkflowUsage
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListArtifacts(ctx context.Context, owner string, repo string, opts *github.ListArtifactsOptions) (*github.ArtifactList, *github.Response, error) {
+func (s UnimplementedActionsService) ListArtifacts(ctx context.Context, owner string, repo string, opts *github.ListArtifactsOptions) (*github.ArtifactList, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListArtifacts")
 	var zero0 *github.ArtifactList
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListCacheUsageByRepoForOrg(ctx context.Context, org string, opts *github.ListOptions) (*github.ActionsCacheUsageList, *github.Response, error) {
+func (s UnimplementedActionsService) ListCacheUsageByRepoForOrg(ctx context.Context, org string, opts *github.ListOptions) (*github.ActionsCacheUsageList, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListCacheUsageByRepoForOrg")
 	var zero0 *github.ActionsCacheUsageList
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListCaches(ctx context.Context, owner string, repo string, opts *github.ActionsCacheListOptions) (*github.ActionsCacheList, *github.Response, error) {
+func (s UnimplementedActionsService) ListCaches(ctx context.Context, owner string, repo string, opts *github.ActionsCacheListOptions) (*github.ActionsCacheList, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListCaches")
 	var zero0 *github.ActionsCacheList
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListEnabledOrgsInEnterprise(ctx context.Context, owner string, opts *github.ListOptions) (*github.ActionsEnabledOnEnterpriseRepos, *github.Response, error) {
+func (s UnimplementedActionsService) ListEnabledOrgsInEnterprise(ctx context.Context, owner string, opts *github.ListOptions) (*github.ActionsEnabledOnEnterpriseRepos, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListEnabledOrgsInEnterprise")
 	var zero0 *github.ActionsEnabledOnEnterpriseRepos
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListEnabledReposInOrg(ctx context.Context, owner string, opts *github.ListOptions) (*github.ActionsEnabledOnOrgRepos, *github.Response, error) {
+func (s UnimplementedActionsService) ListEnabledReposInOrg(ctx context.Context, owner string, opts *github.ListOptions) (*github.ActionsEnabledOnOrgRepos, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListEnabledReposInOrg")
 	var zero0 *github.ActionsEnabledOnOrgRepos
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListEnvSecrets(ctx context.Context, owner string, repo string, env string, opts *github.ListOptions) (*github.Secrets, *github.Response, error) {
+func (s UnimplementedActionsService) ListEnvSecrets(ctx context.Context, owner string, repo string, env string, opts *github.ListOptions) (*github.Secrets, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListEnvSecrets")
 	var zero0 *github.Secrets
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListEnvVariables(ctx context.Context, owner string, repo string, env string, opts *github.ListOptions) (*github.ActionsVariables, *github.Response, error) {
+func (s UnimplementedActionsService) ListEnvVariables(ctx context.Context, owner string, repo string, env string, opts *github.ListOptions) (*github.ActionsVariables, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListEnvVariables")
 	var zero0 *github.ActionsVariables
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListHostedRunnerCustomImageVersions(ctx context.Context, org string, imageDefinitionID int64) (*github.HostedRunnerCustomImageVersions, *github.Response, error) {
+func (s UnimplementedActionsService) ListHostedRunnerCustomImageVersions(ctx context.Context, org string, imageDefinitionID int64) (*github.HostedRunnerCustomImageVersions, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListHostedRunnerCustomImageVersions")
 	var zero0 *github.HostedRunnerCustomImageVersions
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListHostedRunnerCustomImages(ctx context.Context, org string) (*github.HostedRunnerCustomImages, *github.Response, error) {
+func (s UnimplementedActionsService) ListHostedRunnerCustomImages(ctx context.Context, org string) (*github.HostedRunnerCustomImages, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListHostedRunnerCustomImages")
 	var zero0 *github.HostedRunnerCustomImages
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListHostedRunners(ctx context.Context, org string, opts *github.ListOptions) (*github.HostedRunners, *github.Response, error) {
+func (s UnimplementedActionsService) ListHostedRunners(ctx context.Context, org string, opts *github.ListOptions) (*github.HostedRunners, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListHostedRunners")
 	var zero0 *github.HostedRunners
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListOrgSecrets(ctx context.Context, org string, opts *github.ListOptions) (*github.Secrets, *github.Response, error) {
+func (s UnimplementedActionsService) ListOrgSecrets(ctx context.Context, org string, opts *github.ListOptions) (*github.Secrets, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListOrgSecrets")
 	var zero0 *github.Secrets
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListOrgVariables(ctx context.Context, org string, opts *github.ListOptions) (*github.ActionsVariables, *github.Response, error) {
+func (s UnimplementedActionsService) ListOrgVariables(ctx context.Context, org string, opts *github.ListOptions) (*github.ActionsVariables, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListOrgVariables")
 	var zero0 *github.ActionsVariables
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListOrganizationRunnerApplicationDownloads(ctx context.Context, org string) ([]*github.RunnerApplicationDownload, *github.Response, error) {
+func (s UnimplementedActionsService) ListOrganizationRunnerApplicationDownloads(ctx context.Context, org string) ([]*github.RunnerApplicationDownload, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListOrganizationRunnerApplicationDownloads")
 	var zero0 []*github.RunnerApplicationDownload
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListOrganizationRunnerGroups(ctx context.Context, org string, opts *github.ListOrgRunnerGroupOptions) (*github.RunnerGroups, *github.Response, error) {
+func (s UnimplementedActionsService) ListOrganizationRunnerGroups(ctx context.Context, org string, opts *github.ListOrgRunnerGroupOptions) (*github.RunnerGroups, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListOrganizationRunnerGroups")
 	var zero0 *github.RunnerGroups
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListOrganizationRunners(ctx context.Context, org string, opts *github.ListRunnersOptions) (*github.Runners, *github.Response, error) {
+func (s UnimplementedActionsService) ListOrganizationRunners(ctx context.Context, org string, opts *github.ListRunnersOptions) (*github.Runners, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListOrganizationRunners")
 	var zero0 *github.Runners
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListRepoOrgSecrets(ctx context.Context, owner string, repo string, opts *github.ListOptions) (*github.Secrets, *github.Response, error) {
+func (s UnimplementedActionsService) ListRepoOrgSecrets(ctx context.Context, owner string, repo string, opts *github.ListOptions) (*github.Secrets, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListRepoOrgSecrets")
 	var zero0 *github.Secrets
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListRepoOrgVariables(ctx context.Context, owner string, repo string, opts *github.ListOptions) (*github.ActionsVariables, *github.Response, error) {
+func (s UnimplementedActionsService) ListRepoOrgVariables(ctx context.Context, owner string, repo string, opts *github.ListOptions) (*github.ActionsVariables, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListRepoOrgVariables")
 	var zero0 *github.ActionsVariables
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListRepoSecrets(ctx context.Context, owner string, repo string, opts *github.ListOptions) (*github.Secrets, *github.Response, error) {
+func (s UnimplementedActionsService) ListRepoSecrets(ctx context.Context, owner string, repo string, opts *github.ListOptions) (*github.Secrets, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListRepoSecrets")
 	var zero0 *github.Secrets
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListRepoVariables(ctx context.Context, owner string, repo string, opts *github.ListOptions) (*github.ActionsVariables, *github.Response, error) {
+func (s UnimplementedActionsService) ListRepoVariables(ctx context.Context, owner string, repo string, opts *github.ListOptions) (*github.ActionsVariables, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListRepoVariables")
 	var zero0 *github.ActionsVariables
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListRepositoriesSelfHostedRunnersAllowedInOrganization(ctx context.Context, org string, opts *github.ListOptions) (*github.SelfHostedRunnersAllowedRepos, *github.Response, error) {
+func (s UnimplementedActionsService) ListRepositoriesSelfHostedRunnersAllowedInOrganization(ctx context.Context, org string, opts *github.ListOptions) (*github.SelfHostedRunnersAllowedRepos, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListRepositoriesSelfHostedRunnersAllowedInOrganization")
 	var zero0 *github.SelfHostedRunnersAllowedRepos
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListRepositoryAccessRunnerGroup(ctx context.Context, org string, groupID int64, opts *github.ListOptions) (*github.ListRepositories, *github.Response, error) {
+func (s UnimplementedActionsService) ListRepositoryAccessRunnerGroup(ctx context.Context, org string, groupID int64, opts *github.ListOptions) (*github.ListRepositories, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListRepositoryAccessRunnerGroup")
 	var zero0 *github.ListRepositories
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListRepositoryWorkflowRuns(ctx context.Context, owner string, repo string, opts *github.ListWorkflowRunsOptions) (*github.WorkflowRuns, *github.Response, error) {
+func (s UnimplementedActionsService) ListRepositoryWorkflowRuns(ctx context.Context, owner string, repo string, opts *github.ListWorkflowRunsOptions) (*github.WorkflowRuns, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListRepositoryWorkflowRuns")
 	var zero0 *github.WorkflowRuns
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListRunnerApplicationDownloads(ctx context.Context, owner string, repo string) ([]*github.RunnerApplicationDownload, *github.Response, error) {
+func (s UnimplementedActionsService) ListRunnerApplicationDownloads(ctx context.Context, owner string, repo string) ([]*github.RunnerApplicationDownload, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListRunnerApplicationDownloads")
 	var zero0 []*github.RunnerApplicationDownload
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListRunnerGroupHostedRunners(ctx context.Context, org string, groupID int64, opts *github.ListOptions) (*github.HostedRunners, *github.Response, error) {
+func (s UnimplementedActionsService) ListRunnerGroupHostedRunners(ctx context.Context, org string, groupID int64, opts *github.ListOptions) (*github.HostedRunners, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListRunnerGroupHostedRunners")
 	var zero0 *github.HostedRunners
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListRunnerGroupRunners(ctx context.Context, org string, groupID int64, opts *github.ListOptions) (*github.Runners, *github.Response, error) {
+func (s UnimplementedActionsService) ListRunnerGroupRunners(ctx context.Context, org string, groupID int64, opts *github.ListOptions) (*github.Runners, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListRunnerGroupRunners")
 	var zero0 *github.Runners
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListRunners(ctx context.Context, owner string, repo string, opts *github.ListRunnersOptions) (*github.Runners, *github.Response, error) {
+func (s UnimplementedActionsService) ListRunners(ctx context.Context, owner string, repo string, opts *github.ListRunnersOptions) (*github.Runners, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListRunners")
 	var zero0 *github.Runners
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListSelectedReposForOrgSecret(ctx context.Context, org string, name string, opts *github.ListOptions) (*github.SelectedReposList, *github.Response, error) {
+func (s UnimplementedActionsService) ListSelectedReposForOrgSecret(ctx context.Context, org string, name string, opts *github.ListOptions) (*github.SelectedReposList, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListSelectedReposForOrgSecret")
 	var zero0 *github.SelectedReposList
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListSelectedReposForOrgVariable(ctx context.Context, org string, name string, opts *github.ListOptions) (*github.SelectedReposList, *github.Response, error) {
+func (s UnimplementedActionsService) ListSelectedReposForOrgVariable(ctx context.Context, org string, name string, opts *github.ListOptions) (*github.SelectedReposList, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListSelectedReposForOrgVariable")
 	var zero0 *github.SelectedReposList
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListWorkflowJobs(ctx context.Context, owner string, repo string, runID int64, opts *github.ListWorkflowJobsOptions) (*github.Jobs, *github.Response, error) {
+func (s UnimplementedActionsService) ListWorkflowJobs(ctx context.Context, owner string, repo string, runID int64, opts *github.ListWorkflowJobsOptions) (*github.Jobs, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListWorkflowJobs")
 	var zero0 *github.Jobs
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListWorkflowJobsAttempt(ctx context.Context, owner string, repo string, runID int64, attemptNumber int64, opts *github.ListOptions) (*github.Jobs, *github.Response, error) {
+func (s UnimplementedActionsService) ListWorkflowJobsAttempt(ctx context.Context, owner string, repo string, runID int64, attemptNumber int64, opts *github.ListOptions) (*github.Jobs, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListWorkflowJobsAttempt")
 	var zero0 *github.Jobs
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListWorkflowRunArtifacts(ctx context.Context, owner string, repo string, runID int64, opts *github.ListOptions) (*github.ArtifactList, *github.Response, error) {
+func (s UnimplementedActionsService) ListWorkflowRunArtifacts(ctx context.Context, owner string, repo string, runID int64, opts *github.ListOptions) (*github.ArtifactList, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListWorkflowRunArtifacts")
 	var zero0 *github.ArtifactList
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListWorkflowRunsByFileName(ctx context.Context, owner string, repo string, workflowFileName string, opts *github.ListWorkflowRunsOptions) (*github.WorkflowRuns, *github.Response, error) {
+func (s UnimplementedActionsService) ListWorkflowRunsByFileName(ctx context.Context, owner string, repo string, workflowFileName string, opts *github.ListWorkflowRunsOptions) (*github.WorkflowRuns, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListWorkflowRunsByFileName")
 	var zero0 *github.WorkflowRuns
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListWorkflowRunsByID(ctx context.Context, owner string, repo string, workflowID int64, opts *github.ListWorkflowRunsOptions) (*github.WorkflowRuns, *github.Response, error) {
+func (s UnimplementedActionsService) ListWorkflowRunsByID(ctx context.Context, owner string, repo string, workflowID int64, opts *github.ListWorkflowRunsOptions) (*github.WorkflowRuns, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListWorkflowRunsByID")
 	var zero0 *github.WorkflowRuns
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) ListWorkflows(ctx context.Context, owner string, repo string, opts *github.ListOptions) (*github.Workflows, *github.Response, error) {
+func (s UnimplementedActionsService) ListWorkflows(ctx context.Context, owner string, repo string, opts *github.ListOptions) (*github.Workflows, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ListWorkflows")
 	var zero0 *github.Workflows
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) PendingDeployments(ctx context.Context, owner string, repo string, runID int64, body *github.PendingDeploymentsRequest) ([]*github.Deployment, *github.Response, error) {
+func (s UnimplementedActionsService) PendingDeployments(ctx context.Context, owner string, repo string, runID int64, body *github.PendingDeploymentsRequest) ([]*github.Deployment, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "PendingDeployments")
 	var zero0 []*github.Deployment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) RemoveEnabledOrgInEnterprise(ctx context.Context, owner string, organizationID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) RemoveEnabledOrgInEnterprise(ctx context.Context, owner string, organizationID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "RemoveEnabledOrgInEnterprise")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) RemoveEnabledReposInOrg(ctx context.Context, owner string, repositoryID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) RemoveEnabledReposInOrg(ctx context.Context, owner string, repositoryID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "RemoveEnabledReposInOrg")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) RemoveOrganizationRunner(ctx context.Context, org string, runnerID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) RemoveOrganizationRunner(ctx context.Context, org string, runnerID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "RemoveOrganizationRunner")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) RemoveRepositoryAccessRunnerGroup(ctx context.Context, org string, groupID int64, repoID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) RemoveRepositoryAccessRunnerGroup(ctx context.Context, org string, groupID int64, repoID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "RemoveRepositoryAccessRunnerGroup")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) RemoveRepositorySelfHostedRunnersAllowedInOrganization(ctx context.Context, org string, repositoryID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) RemoveRepositorySelfHostedRunnersAllowedInOrganization(ctx context.Context, org string, repositoryID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "RemoveRepositorySelfHostedRunnersAllowedInOrganization")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) RemoveRunner(ctx context.Context, owner string, repo string, runnerID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) RemoveRunner(ctx context.Context, owner string, repo string, runnerID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "RemoveRunner")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) RemoveRunnerGroupRunners(ctx context.Context, org string, groupID int64, runnerID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) RemoveRunnerGroupRunners(ctx context.Context, org string, groupID int64, runnerID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "RemoveRunnerGroupRunners")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) RemoveSelectedRepoFromOrgSecret(ctx context.Context, org string, name string, repoID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) RemoveSelectedRepoFromOrgSecret(ctx context.Context, org string, name string, repoID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "RemoveSelectedRepoFromOrgSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) RemoveSelectedRepoFromOrgVariable(ctx context.Context, org string, name string, repo *github.Repository) (*github.Response, error) {
+func (s UnimplementedActionsService) RemoveSelectedRepoFromOrgVariable(ctx context.Context, org string, name string, repo *github.Repository) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "RemoveSelectedRepoFromOrgVariable")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) RerunFailedJobsByID(ctx context.Context, owner string, repo string, runID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) RerunFailedJobsByID(ctx context.Context, owner string, repo string, runID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "RerunFailedJobsByID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) RerunJobByID(ctx context.Context, owner string, repo string, jobID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) RerunJobByID(ctx context.Context, owner string, repo string, jobID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "RerunJobByID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) RerunWorkflowByID(ctx context.Context, owner string, repo string, runID int64) (*github.Response, error) {
+func (s UnimplementedActionsService) RerunWorkflowByID(ctx context.Context, owner string, repo string, runID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "RerunWorkflowByID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) ReviewCustomDeploymentProtectionRule(ctx context.Context, owner string, repo string, runID int64, body *github.ReviewCustomDeploymentProtectionRuleRequest) (*github.Response, error) {
+func (s UnimplementedActionsService) ReviewCustomDeploymentProtectionRule(ctx context.Context, owner string, repo string, runID int64, body *github.ReviewCustomDeploymentProtectionRuleRequest) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "ReviewCustomDeploymentProtectionRule")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) SetEnabledOrgsInEnterprise(ctx context.Context, owner string, organizationIDs []int64) (*github.Response, error) {
+func (s UnimplementedActionsService) SetEnabledOrgsInEnterprise(ctx context.Context, owner string, organizationIDs []int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "SetEnabledOrgsInEnterprise")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) SetEnabledReposInOrg(ctx context.Context, owner string, repositoryIDs []int64) (*github.Response, error) {
+func (s UnimplementedActionsService) SetEnabledReposInOrg(ctx context.Context, owner string, repositoryIDs []int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "SetEnabledReposInOrg")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) SetOrgOIDCSubjectClaimCustomTemplate(ctx context.Context, org string, body github.OIDCSubjectClaimCustomTemplate) (*github.Response, error) {
+func (s UnimplementedActionsService) SetOrgOIDCSubjectClaimCustomTemplate(ctx context.Context, org string, body github.OIDCSubjectClaimCustomTemplate) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "SetOrgOIDCSubjectClaimCustomTemplate")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) SetRepoOIDCSubjectClaimCustomTemplate(ctx context.Context, owner string, repo string, body github.OIDCSubjectClaimCustomTemplate) (*github.Response, error) {
+func (s UnimplementedActionsService) SetRepoOIDCSubjectClaimCustomTemplate(ctx context.Context, owner string, repo string, body github.OIDCSubjectClaimCustomTemplate) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "SetRepoOIDCSubjectClaimCustomTemplate")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) SetRepositoriesSelfHostedRunnersAllowedInOrganization(ctx context.Context, org string, repositoryIDs []int64) (*github.Response, error) {
+func (s UnimplementedActionsService) SetRepositoriesSelfHostedRunnersAllowedInOrganization(ctx context.Context, org string, repositoryIDs []int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "SetRepositoriesSelfHostedRunnersAllowedInOrganization")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) SetRepositoryAccessRunnerGroup(ctx context.Context, org string, groupID int64, body github.SetRepoAccessRunnerGroupRequest) (*github.Response, error) {
+func (s UnimplementedActionsService) SetRepositoryAccessRunnerGroup(ctx context.Context, org string, groupID int64, body github.SetRepoAccessRunnerGroupRequest) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "SetRepositoryAccessRunnerGroup")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) SetRunnerGroupRunners(ctx context.Context, org string, groupID int64, body github.SetRunnerGroupRunnersRequest) (*github.Response, error) {
+func (s UnimplementedActionsService) SetRunnerGroupRunners(ctx context.Context, org string, groupID int64, body github.SetRunnerGroupRunnersRequest) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "SetRunnerGroupRunners")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) SetSelectedReposForOrgSecret(ctx context.Context, org string, name string, ids []int64) (*github.Response, error) {
+func (s UnimplementedActionsService) SetSelectedReposForOrgSecret(ctx context.Context, org string, name string, ids []int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "SetSelectedReposForOrgSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) SetSelectedReposForOrgVariable(ctx context.Context, org string, name string, ids []int64) (*github.Response, error) {
+func (s UnimplementedActionsService) SetSelectedReposForOrgVariable(ctx context.Context, org string, name string, ids []int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "SetSelectedReposForOrgVariable")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) UpdateActionsAllowed(ctx context.Context, org string, body github.ActionsAllowed) (*github.ActionsAllowed, *github.Response, error) {
+func (s UnimplementedActionsService) UpdateActionsAllowed(ctx context.Context, org string, body github.ActionsAllowed) (*github.ActionsAllowed, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "UpdateActionsAllowed")
 	var zero0 *github.ActionsAllowed
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) UpdateActionsAllowedInEnterprise(ctx context.Context, enterprise string, body github.ActionsAllowed) (*github.ActionsAllowed, *github.Response, error) {
+func (s UnimplementedActionsService) UpdateActionsAllowedInEnterprise(ctx context.Context, enterprise string, body github.ActionsAllowed) (*github.ActionsAllowed, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "UpdateActionsAllowedInEnterprise")
 	var zero0 *github.ActionsAllowed
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) UpdateActionsPermissions(ctx context.Context, org string, body github.ActionsPermissions) (*github.ActionsPermissions, *github.Response, error) {
+func (s UnimplementedActionsService) UpdateActionsPermissions(ctx context.Context, org string, body github.ActionsPermissions) (*github.ActionsPermissions, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "UpdateActionsPermissions")
 	var zero0 *github.ActionsPermissions
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) UpdateActionsPermissionsInEnterprise(ctx context.Context, enterprise string, body github.ActionsPermissionsEnterprise) (*github.ActionsPermissionsEnterprise, *github.Response, error) {
+func (s UnimplementedActionsService) UpdateActionsPermissionsInEnterprise(ctx context.Context, enterprise string, body github.ActionsPermissionsEnterprise) (*github.ActionsPermissionsEnterprise, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "UpdateActionsPermissionsInEnterprise")
 	var zero0 *github.ActionsPermissionsEnterprise
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) UpdateArtifactAndLogRetentionPeriodInEnterprise(ctx context.Context, enterprise string, body github.ArtifactPeriodOpt) (*github.Response, error) {
+func (s UnimplementedActionsService) UpdateArtifactAndLogRetentionPeriodInEnterprise(ctx context.Context, enterprise string, body github.ArtifactPeriodOpt) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "UpdateArtifactAndLogRetentionPeriodInEnterprise")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) UpdateArtifactAndLogRetentionPeriodInOrganization(ctx context.Context, org string, body github.ArtifactPeriodOpt) (*github.Response, error) {
+func (s UnimplementedActionsService) UpdateArtifactAndLogRetentionPeriodInOrganization(ctx context.Context, org string, body github.ArtifactPeriodOpt) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "UpdateArtifactAndLogRetentionPeriodInOrganization")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) UpdateDefaultWorkflowPermissionsInEnterprise(ctx context.Context, enterprise string, body github.DefaultWorkflowPermissionEnterprise) (*github.DefaultWorkflowPermissionEnterprise, *github.Response, error) {
+func (s UnimplementedActionsService) UpdateDefaultWorkflowPermissionsInEnterprise(ctx context.Context, enterprise string, body github.DefaultWorkflowPermissionEnterprise) (*github.DefaultWorkflowPermissionEnterprise, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "UpdateDefaultWorkflowPermissionsInEnterprise")
 	var zero0 *github.DefaultWorkflowPermissionEnterprise
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) UpdateDefaultWorkflowPermissionsInOrganization(ctx context.Context, org string, body github.DefaultWorkflowPermissionOrganization) (*github.DefaultWorkflowPermissionOrganization, *github.Response, error) {
+func (s UnimplementedActionsService) UpdateDefaultWorkflowPermissionsInOrganization(ctx context.Context, org string, body github.DefaultWorkflowPermissionOrganization) (*github.DefaultWorkflowPermissionOrganization, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "UpdateDefaultWorkflowPermissionsInOrganization")
 	var zero0 *github.DefaultWorkflowPermissionOrganization
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) UpdateEnterpriseForkPRContributorApprovalPermissions(ctx context.Context, enterprise string, body github.ContributorApprovalPermissions) (*github.Response, error) {
+func (s UnimplementedActionsService) UpdateEnterpriseForkPRContributorApprovalPermissions(ctx context.Context, enterprise string, body github.ContributorApprovalPermissions) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "UpdateEnterpriseForkPRContributorApprovalPermissions")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) UpdateEnvVariable(ctx context.Context, owner string, repo string, env string, name string, body github.ActionsVariableUpdateRequest) (*github.Response, error) {
+func (s UnimplementedActionsService) UpdateEnvVariable(ctx context.Context, owner string, repo string, env string, name string, body github.ActionsVariableUpdateRequest) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "UpdateEnvVariable")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) UpdateForkPRContributorApprovalPermissions(ctx context.Context, owner string, repo string, body github.ContributorApprovalPermissions) (*github.Response, error) {
+func (s UnimplementedActionsService) UpdateForkPRContributorApprovalPermissions(ctx context.Context, owner string, repo string, body github.ContributorApprovalPermissions) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "UpdateForkPRContributorApprovalPermissions")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) UpdateHostedRunner(ctx context.Context, org string, runnerID int64, body github.UpdateHostedRunnerRequest) (*github.HostedRunner, *github.Response, error) {
+func (s UnimplementedActionsService) UpdateHostedRunner(ctx context.Context, org string, runnerID int64, body github.UpdateHostedRunnerRequest) (*github.HostedRunner, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "UpdateHostedRunner")
 	var zero0 *github.HostedRunner
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) UpdateOrgVariable(ctx context.Context, org string, name string, body github.OrgActionsVariableUpdateRequest) (*github.Response, error) {
+func (s UnimplementedActionsService) UpdateOrgVariable(ctx context.Context, org string, name string, body github.OrgActionsVariableUpdateRequest) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "UpdateOrgVariable")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) UpdateOrganizationForkPRContributorApprovalPermissions(ctx context.Context, org string, body github.ContributorApprovalPermissions) (*github.Response, error) {
+func (s UnimplementedActionsService) UpdateOrganizationForkPRContributorApprovalPermissions(ctx context.Context, org string, body github.ContributorApprovalPermissions) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "UpdateOrganizationForkPRContributorApprovalPermissions")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) UpdateOrganizationRunnerGroup(ctx context.Context, org string, groupID int64, body github.UpdateRunnerGroupRequest) (*github.RunnerGroup, *github.Response, error) {
+func (s UnimplementedActionsService) UpdateOrganizationRunnerGroup(ctx context.Context, org string, groupID int64, body github.UpdateRunnerGroupRequest) (*github.RunnerGroup, *github.Response, error) {
+	s.Callback.call(ctx, "Actions", "UpdateOrganizationRunnerGroup")
 	var zero0 *github.RunnerGroup
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActionsService) UpdatePrivateRepoForkPRWorkflowSettingsInEnterprise(ctx context.Context, enterprise string, body *github.WorkflowsPermissionsOpt) (*github.Response, error) {
+func (s UnimplementedActionsService) UpdatePrivateRepoForkPRWorkflowSettingsInEnterprise(ctx context.Context, enterprise string, body *github.WorkflowsPermissionsOpt) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "UpdatePrivateRepoForkPRWorkflowSettingsInEnterprise")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) UpdatePrivateRepoForkPRWorkflowSettingsInOrganization(ctx context.Context, org string, body *github.WorkflowsPermissionsOpt) (*github.Response, error) {
+func (s UnimplementedActionsService) UpdatePrivateRepoForkPRWorkflowSettingsInOrganization(ctx context.Context, org string, body *github.WorkflowsPermissionsOpt) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "UpdatePrivateRepoForkPRWorkflowSettingsInOrganization")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) UpdateRepoVariable(ctx context.Context, owner string, repo string, name string, body github.ActionsVariableUpdateRequest) (*github.Response, error) {
+func (s UnimplementedActionsService) UpdateRepoVariable(ctx context.Context, owner string, repo string, name string, body github.ActionsVariableUpdateRequest) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "UpdateRepoVariable")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) UpdateSelfHostedRunnerPermissionsInEnterprise(ctx context.Context, enterprise string, body github.SelfHostRunnerPermissionsEnterprise) (*github.Response, error) {
+func (s UnimplementedActionsService) UpdateSelfHostedRunnerPermissionsInEnterprise(ctx context.Context, enterprise string, body github.SelfHostRunnerPermissionsEnterprise) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "UpdateSelfHostedRunnerPermissionsInEnterprise")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActionsService) UpdateSelfHostedRunnersSettingsInOrganization(ctx context.Context, org string, body github.SelfHostedRunnersSettingsOrganizationOpt) (*github.Response, error) {
+func (s UnimplementedActionsService) UpdateSelfHostedRunnersSettingsInOrganization(ctx context.Context, org string, body github.SelfHostedRunnersSettingsOrganizationOpt) (*github.Response, error) {
+	s.Callback.call(ctx, "Actions", "UpdateSelfHostedRunnersSettingsInOrganization")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
@@ -2144,142 +2320,173 @@ type ActivityService interface {
 }
 
 // UnimplementedActivityService may be embedded to implement only selected methods.
-type UnimplementedActivityService struct{}
+type UnimplementedActivityService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedActivityService) DeleteRepositorySubscription(ctx context.Context, owner string, repo string) (*github.Response, error) {
+func (s UnimplementedActivityService) DeleteRepositorySubscription(ctx context.Context, owner string, repo string) (*github.Response, error) {
+	s.Callback.call(ctx, "Activity", "DeleteRepositorySubscription")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActivityService) DeleteThreadSubscription(ctx context.Context, id string) (*github.Response, error) {
+func (s UnimplementedActivityService) DeleteThreadSubscription(ctx context.Context, id string) (*github.Response, error) {
+	s.Callback.call(ctx, "Activity", "DeleteThreadSubscription")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActivityService) GetRepositorySubscription(ctx context.Context, owner string, repo string) (*github.Subscription, *github.Response, error) {
+func (s UnimplementedActivityService) GetRepositorySubscription(ctx context.Context, owner string, repo string) (*github.Subscription, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "GetRepositorySubscription")
 	var zero0 *github.Subscription
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) GetThread(ctx context.Context, id string) (*github.Notification, *github.Response, error) {
+func (s UnimplementedActivityService) GetThread(ctx context.Context, id string) (*github.Notification, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "GetThread")
 	var zero0 *github.Notification
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) GetThreadSubscription(ctx context.Context, id string) (*github.Subscription, *github.Response, error) {
+func (s UnimplementedActivityService) GetThreadSubscription(ctx context.Context, id string) (*github.Subscription, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "GetThreadSubscription")
 	var zero0 *github.Subscription
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) IsStarred(ctx context.Context, owner string, repo string) (bool, *github.Response, error) {
+func (s UnimplementedActivityService) IsStarred(ctx context.Context, owner string, repo string) (bool, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "IsStarred")
 	var zero0 bool
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) ListEvents(ctx context.Context, opts *github.ListOptions) ([]*github.Event, *github.Response, error) {
+func (s UnimplementedActivityService) ListEvents(ctx context.Context, opts *github.ListOptions) ([]*github.Event, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "ListEvents")
 	var zero0 []*github.Event
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) ListEventsForOrganization(ctx context.Context, org string, opts *github.ListOptions) ([]*github.Event, *github.Response, error) {
+func (s UnimplementedActivityService) ListEventsForOrganization(ctx context.Context, org string, opts *github.ListOptions) ([]*github.Event, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "ListEventsForOrganization")
 	var zero0 []*github.Event
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) ListEventsForRepoNetwork(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.Event, *github.Response, error) {
+func (s UnimplementedActivityService) ListEventsForRepoNetwork(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.Event, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "ListEventsForRepoNetwork")
 	var zero0 []*github.Event
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) ListEventsPerformedByUser(ctx context.Context, user string, publicOnly bool, opts *github.ListOptions) ([]*github.Event, *github.Response, error) {
+func (s UnimplementedActivityService) ListEventsPerformedByUser(ctx context.Context, user string, publicOnly bool, opts *github.ListOptions) ([]*github.Event, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "ListEventsPerformedByUser")
 	var zero0 []*github.Event
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) ListEventsReceivedByUser(ctx context.Context, user string, publicOnly bool, opts *github.ListOptions) ([]*github.Event, *github.Response, error) {
+func (s UnimplementedActivityService) ListEventsReceivedByUser(ctx context.Context, user string, publicOnly bool, opts *github.ListOptions) ([]*github.Event, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "ListEventsReceivedByUser")
 	var zero0 []*github.Event
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) ListFeeds(ctx context.Context) (*github.Feeds, *github.Response, error) {
+func (s UnimplementedActivityService) ListFeeds(ctx context.Context) (*github.Feeds, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "ListFeeds")
 	var zero0 *github.Feeds
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) ListIssueEventsForRepository(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.IssueEvent, *github.Response, error) {
+func (s UnimplementedActivityService) ListIssueEventsForRepository(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.IssueEvent, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "ListIssueEventsForRepository")
 	var zero0 []*github.IssueEvent
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) ListNotifications(ctx context.Context, opts *github.NotificationListOptions) ([]*github.Notification, *github.Response, error) {
+func (s UnimplementedActivityService) ListNotifications(ctx context.Context, opts *github.NotificationListOptions) ([]*github.Notification, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "ListNotifications")
 	var zero0 []*github.Notification
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) ListRepositoryEvents(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.Event, *github.Response, error) {
+func (s UnimplementedActivityService) ListRepositoryEvents(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.Event, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "ListRepositoryEvents")
 	var zero0 []*github.Event
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) ListRepositoryNotifications(ctx context.Context, owner string, repo string, opts *github.NotificationListOptions) ([]*github.Notification, *github.Response, error) {
+func (s UnimplementedActivityService) ListRepositoryNotifications(ctx context.Context, owner string, repo string, opts *github.NotificationListOptions) ([]*github.Notification, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "ListRepositoryNotifications")
 	var zero0 []*github.Notification
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) ListStargazers(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.Stargazer, *github.Response, error) {
+func (s UnimplementedActivityService) ListStargazers(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.Stargazer, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "ListStargazers")
 	var zero0 []*github.Stargazer
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) ListStarred(ctx context.Context, user string, opts *github.ActivityListStarredOptions) ([]*github.StarredRepository, *github.Response, error) {
+func (s UnimplementedActivityService) ListStarred(ctx context.Context, user string, opts *github.ActivityListStarredOptions) ([]*github.StarredRepository, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "ListStarred")
 	var zero0 []*github.StarredRepository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) ListUserEventsForOrganization(ctx context.Context, org string, user string, opts *github.ListOptions) ([]*github.Event, *github.Response, error) {
+func (s UnimplementedActivityService) ListUserEventsForOrganization(ctx context.Context, org string, user string, opts *github.ListOptions) ([]*github.Event, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "ListUserEventsForOrganization")
 	var zero0 []*github.Event
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) ListWatched(ctx context.Context, user string, opts *github.ListOptions) ([]*github.Repository, *github.Response, error) {
+func (s UnimplementedActivityService) ListWatched(ctx context.Context, user string, opts *github.ListOptions) ([]*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "ListWatched")
 	var zero0 []*github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) ListWatchers(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.User, *github.Response, error) {
+func (s UnimplementedActivityService) ListWatchers(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "ListWatchers")
 	var zero0 []*github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) MarkNotificationsRead(ctx context.Context, lastRead github.Timestamp) (*github.Response, error) {
+func (s UnimplementedActivityService) MarkNotificationsRead(ctx context.Context, lastRead github.Timestamp) (*github.Response, error) {
+	s.Callback.call(ctx, "Activity", "MarkNotificationsRead")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActivityService) MarkRepositoryNotificationsRead(ctx context.Context, owner string, repo string, lastRead github.Timestamp) (*github.Response, error) {
+func (s UnimplementedActivityService) MarkRepositoryNotificationsRead(ctx context.Context, owner string, repo string, lastRead github.Timestamp) (*github.Response, error) {
+	s.Callback.call(ctx, "Activity", "MarkRepositoryNotificationsRead")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActivityService) MarkThreadDone(ctx context.Context, id string) (*github.Response, error) {
+func (s UnimplementedActivityService) MarkThreadDone(ctx context.Context, id string) (*github.Response, error) {
+	s.Callback.call(ctx, "Activity", "MarkThreadDone")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActivityService) MarkThreadRead(ctx context.Context, id string) (*github.Response, error) {
+func (s UnimplementedActivityService) MarkThreadRead(ctx context.Context, id string) (*github.Response, error) {
+	s.Callback.call(ctx, "Activity", "MarkThreadRead")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActivityService) SetRepositorySubscription(ctx context.Context, owner string, repo string, body *github.Subscription) (*github.Subscription, *github.Response, error) {
+func (s UnimplementedActivityService) SetRepositorySubscription(ctx context.Context, owner string, repo string, body *github.Subscription) (*github.Subscription, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "SetRepositorySubscription")
 	var zero0 *github.Subscription
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) SetThreadSubscription(ctx context.Context, id string, body *github.Subscription) (*github.Subscription, *github.Response, error) {
+func (s UnimplementedActivityService) SetThreadSubscription(ctx context.Context, id string, body *github.Subscription) (*github.Subscription, *github.Response, error) {
+	s.Callback.call(ctx, "Activity", "SetThreadSubscription")
 	var zero0 *github.Subscription
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedActivityService) Star(ctx context.Context, owner string, repo string) (*github.Response, error) {
+func (s UnimplementedActivityService) Star(ctx context.Context, owner string, repo string) (*github.Response, error) {
+	s.Callback.call(ctx, "Activity", "Star")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedActivityService) Unstar(ctx context.Context, owner string, repo string) (*github.Response, error) {
+func (s UnimplementedActivityService) Unstar(ctx context.Context, owner string, repo string) (*github.Response, error) {
+	s.Callback.call(ctx, "Activity", "Unstar")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
@@ -2356,52 +2563,64 @@ type AdminService interface {
 }
 
 // UnimplementedAdminService may be embedded to implement only selected methods.
-type UnimplementedAdminService struct{}
+type UnimplementedAdminService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedAdminService) CreateOrg(ctx context.Context, org *github.Organization, admin string) (*github.Organization, *github.Response, error) {
+func (s UnimplementedAdminService) CreateOrg(ctx context.Context, org *github.Organization, admin string) (*github.Organization, *github.Response, error) {
+	s.Callback.call(ctx, "Admin", "CreateOrg")
 	var zero0 *github.Organization
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAdminService) CreateUser(ctx context.Context, body github.CreateUserRequest) (*github.User, *github.Response, error) {
+func (s UnimplementedAdminService) CreateUser(ctx context.Context, body github.CreateUserRequest) (*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Admin", "CreateUser")
 	var zero0 *github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAdminService) CreateUserImpersonation(ctx context.Context, username string, body *github.ImpersonateUserOptions) (*github.UserAuthorization, *github.Response, error) {
+func (s UnimplementedAdminService) CreateUserImpersonation(ctx context.Context, username string, body *github.ImpersonateUserOptions) (*github.UserAuthorization, *github.Response, error) {
+	s.Callback.call(ctx, "Admin", "CreateUserImpersonation")
 	var zero0 *github.UserAuthorization
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAdminService) DeleteUser(ctx context.Context, username string) (*github.Response, error) {
+func (s UnimplementedAdminService) DeleteUser(ctx context.Context, username string) (*github.Response, error) {
+	s.Callback.call(ctx, "Admin", "DeleteUser")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedAdminService) DeleteUserImpersonation(ctx context.Context, username string) (*github.Response, error) {
+func (s UnimplementedAdminService) DeleteUserImpersonation(ctx context.Context, username string) (*github.Response, error) {
+	s.Callback.call(ctx, "Admin", "DeleteUserImpersonation")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedAdminService) GetAdminStats(ctx context.Context) (*github.AdminStats, *github.Response, error) {
+func (s UnimplementedAdminService) GetAdminStats(ctx context.Context) (*github.AdminStats, *github.Response, error) {
+	s.Callback.call(ctx, "Admin", "GetAdminStats")
 	var zero0 *github.AdminStats
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAdminService) RenameOrg(ctx context.Context, org *github.Organization, newName string) (*github.RenameOrgResponse, *github.Response, error) {
+func (s UnimplementedAdminService) RenameOrg(ctx context.Context, org *github.Organization, newName string) (*github.RenameOrgResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Admin", "RenameOrg")
 	var zero0 *github.RenameOrgResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAdminService) RenameOrgByName(ctx context.Context, org string, newName string) (*github.RenameOrgResponse, *github.Response, error) {
+func (s UnimplementedAdminService) RenameOrgByName(ctx context.Context, org string, newName string) (*github.RenameOrgResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Admin", "RenameOrgByName")
 	var zero0 *github.RenameOrgResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAdminService) UpdateTeamLDAPMapping(ctx context.Context, team int64, body *github.TeamLDAPMapping) (*github.TeamLDAPMapping, *github.Response, error) {
+func (s UnimplementedAdminService) UpdateTeamLDAPMapping(ctx context.Context, team int64, body *github.TeamLDAPMapping) (*github.TeamLDAPMapping, *github.Response, error) {
+	s.Callback.call(ctx, "Admin", "UpdateTeamLDAPMapping")
 	var zero0 *github.TeamLDAPMapping
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAdminService) UpdateUserLDAPMapping(ctx context.Context, user string, body *github.UserLDAPMapping) (*github.UserLDAPMapping, *github.Response, error) {
+func (s UnimplementedAdminService) UpdateUserLDAPMapping(ctx context.Context, user string, body *github.UserLDAPMapping) (*github.UserLDAPMapping, *github.Response, error) {
+	s.Callback.call(ctx, "Admin", "UpdateUserLDAPMapping")
 	var zero0 *github.UserLDAPMapping
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -2594,134 +2813,163 @@ type AppsService interface {
 }
 
 // UnimplementedAppsService may be embedded to implement only selected methods.
-type UnimplementedAppsService struct{}
+type UnimplementedAppsService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedAppsService) AddRepository(ctx context.Context, instID int64, repoID int64) (*github.Repository, *github.Response, error) {
+func (s UnimplementedAppsService) AddRepository(ctx context.Context, instID int64, repoID int64) (*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "AddRepository")
 	var zero0 *github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) CompleteAppManifest(ctx context.Context, code string) (*github.AppConfig, *github.Response, error) {
+func (s UnimplementedAppsService) CompleteAppManifest(ctx context.Context, code string) (*github.AppConfig, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "CompleteAppManifest")
 	var zero0 *github.AppConfig
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) CreateAttachment(ctx context.Context, contentReferenceID int64, title string, body string) (*github.Attachment, *github.Response, error) {
+func (s UnimplementedAppsService) CreateAttachment(ctx context.Context, contentReferenceID int64, title string, body string) (*github.Attachment, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "CreateAttachment")
 	var zero0 *github.Attachment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) CreateInstallationToken(ctx context.Context, appJWT string, id int64, body *github.InstallationTokenOptions) (*github.InstallationToken, *github.Response, error) {
+func (s UnimplementedAppsService) CreateInstallationToken(ctx context.Context, appJWT string, id int64, body *github.InstallationTokenOptions) (*github.InstallationToken, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "CreateInstallationToken")
 	var zero0 *github.InstallationToken
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) CreateInstallationTokenListRepos(ctx context.Context, appJWT string, id int64, body *github.InstallationTokenListRepoOptions) (*github.InstallationToken, *github.Response, error) {
+func (s UnimplementedAppsService) CreateInstallationTokenListRepos(ctx context.Context, appJWT string, id int64, body *github.InstallationTokenListRepoOptions) (*github.InstallationToken, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "CreateInstallationTokenListRepos")
 	var zero0 *github.InstallationToken
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) DeleteInstallation(ctx context.Context, id int64) (*github.Response, error) {
+func (s UnimplementedAppsService) DeleteInstallation(ctx context.Context, id int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Apps", "DeleteInstallation")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedAppsService) Get(ctx context.Context, appSlug string) (*github.App, *github.Response, error) {
+func (s UnimplementedAppsService) Get(ctx context.Context, appSlug string) (*github.App, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "Get")
 	var zero0 *github.App
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) GetEnterpriseInstallation(ctx context.Context, enterprise string) (*github.Installation, *github.Response, error) {
+func (s UnimplementedAppsService) GetEnterpriseInstallation(ctx context.Context, enterprise string) (*github.Installation, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "GetEnterpriseInstallation")
 	var zero0 *github.Installation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) GetHookConfig(ctx context.Context) (*github.HookConfig, *github.Response, error) {
+func (s UnimplementedAppsService) GetHookConfig(ctx context.Context) (*github.HookConfig, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "GetHookConfig")
 	var zero0 *github.HookConfig
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) GetHookDelivery(ctx context.Context, deliveryID int64) (*github.HookDelivery, *github.Response, error) {
+func (s UnimplementedAppsService) GetHookDelivery(ctx context.Context, deliveryID int64) (*github.HookDelivery, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "GetHookDelivery")
 	var zero0 *github.HookDelivery
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) GetInstallation(ctx context.Context, id int64) (*github.Installation, *github.Response, error) {
+func (s UnimplementedAppsService) GetInstallation(ctx context.Context, id int64) (*github.Installation, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "GetInstallation")
 	var zero0 *github.Installation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) GetOrganizationInstallation(ctx context.Context, org string) (*github.Installation, *github.Response, error) {
+func (s UnimplementedAppsService) GetOrganizationInstallation(ctx context.Context, org string) (*github.Installation, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "GetOrganizationInstallation")
 	var zero0 *github.Installation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) GetRepositoryInstallation(ctx context.Context, owner string, repo string) (*github.Installation, *github.Response, error) {
+func (s UnimplementedAppsService) GetRepositoryInstallation(ctx context.Context, owner string, repo string) (*github.Installation, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "GetRepositoryInstallation")
 	var zero0 *github.Installation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) GetRepositoryInstallationByID(ctx context.Context, id int64) (*github.Installation, *github.Response, error) {
+func (s UnimplementedAppsService) GetRepositoryInstallationByID(ctx context.Context, id int64) (*github.Installation, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "GetRepositoryInstallationByID")
 	var zero0 *github.Installation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) GetUserInstallation(ctx context.Context, user string) (*github.Installation, *github.Response, error) {
+func (s UnimplementedAppsService) GetUserInstallation(ctx context.Context, user string) (*github.Installation, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "GetUserInstallation")
 	var zero0 *github.Installation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) ListHookDeliveries(ctx context.Context, opts *github.ListCursorOptions) ([]*github.HookDelivery, *github.Response, error) {
+func (s UnimplementedAppsService) ListHookDeliveries(ctx context.Context, opts *github.ListCursorOptions) ([]*github.HookDelivery, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "ListHookDeliveries")
 	var zero0 []*github.HookDelivery
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) ListInstallationRequests(ctx context.Context, opts *github.ListOptions) ([]*github.InstallationRequest, *github.Response, error) {
+func (s UnimplementedAppsService) ListInstallationRequests(ctx context.Context, opts *github.ListOptions) ([]*github.InstallationRequest, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "ListInstallationRequests")
 	var zero0 []*github.InstallationRequest
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) ListInstallations(ctx context.Context, opts *github.ListOptions) ([]*github.Installation, *github.Response, error) {
+func (s UnimplementedAppsService) ListInstallations(ctx context.Context, opts *github.ListOptions) ([]*github.Installation, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "ListInstallations")
 	var zero0 []*github.Installation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) ListRepos(ctx context.Context, opts *github.ListOptions) (*github.ListRepositories, *github.Response, error) {
+func (s UnimplementedAppsService) ListRepos(ctx context.Context, opts *github.ListOptions) (*github.ListRepositories, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "ListRepos")
 	var zero0 *github.ListRepositories
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) ListUserInstallations(ctx context.Context, opts *github.ListOptions) ([]*github.Installation, *github.Response, error) {
+func (s UnimplementedAppsService) ListUserInstallations(ctx context.Context, opts *github.ListOptions) ([]*github.Installation, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "ListUserInstallations")
 	var zero0 []*github.Installation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) ListUserRepos(ctx context.Context, id int64, opts *github.ListOptions) (*github.ListRepositories, *github.Response, error) {
+func (s UnimplementedAppsService) ListUserRepos(ctx context.Context, id int64, opts *github.ListOptions) (*github.ListRepositories, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "ListUserRepos")
 	var zero0 *github.ListRepositories
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) RedeliverHookDelivery(ctx context.Context, deliveryID int64) (*github.HookDelivery, *github.Response, error) {
+func (s UnimplementedAppsService) RedeliverHookDelivery(ctx context.Context, deliveryID int64) (*github.HookDelivery, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "RedeliverHookDelivery")
 	var zero0 *github.HookDelivery
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAppsService) RemoveRepository(ctx context.Context, instID int64, repoID int64) (*github.Response, error) {
+func (s UnimplementedAppsService) RemoveRepository(ctx context.Context, instID int64, repoID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Apps", "RemoveRepository")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedAppsService) RevokeInstallationToken(ctx context.Context) (*github.Response, error) {
+func (s UnimplementedAppsService) RevokeInstallationToken(ctx context.Context) (*github.Response, error) {
+	s.Callback.call(ctx, "Apps", "RevokeInstallationToken")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedAppsService) SuspendInstallation(ctx context.Context, id int64) (*github.Response, error) {
+func (s UnimplementedAppsService) SuspendInstallation(ctx context.Context, id int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Apps", "SuspendInstallation")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedAppsService) UnsuspendInstallation(ctx context.Context, id int64) (*github.Response, error) {
+func (s UnimplementedAppsService) UnsuspendInstallation(ctx context.Context, id int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Apps", "UnsuspendInstallation")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedAppsService) UpdateHookConfig(ctx context.Context, body github.HookConfig) (*github.HookConfig, *github.Response, error) {
+func (s UnimplementedAppsService) UpdateHookConfig(ctx context.Context, body github.HookConfig) (*github.HookConfig, *github.Response, error) {
+	s.Callback.call(ctx, "Apps", "UpdateHookConfig")
 	var zero0 *github.HookConfig
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -2794,32 +3042,40 @@ type AuthorizationsService interface {
 }
 
 // UnimplementedAuthorizationsService may be embedded to implement only selected methods.
-type UnimplementedAuthorizationsService struct{}
+type UnimplementedAuthorizationsService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedAuthorizationsService) Check(ctx context.Context, clientID string, accessToken string) (*github.Authorization, *github.Response, error) {
+func (s UnimplementedAuthorizationsService) Check(ctx context.Context, clientID string, accessToken string) (*github.Authorization, *github.Response, error) {
+	s.Callback.call(ctx, "Authorizations", "Check")
 	var zero0 *github.Authorization
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAuthorizationsService) CreateImpersonation(ctx context.Context, username string, body *github.AuthorizationRequest) (*github.Authorization, *github.Response, error) {
+func (s UnimplementedAuthorizationsService) CreateImpersonation(ctx context.Context, username string, body *github.AuthorizationRequest) (*github.Authorization, *github.Response, error) {
+	s.Callback.call(ctx, "Authorizations", "CreateImpersonation")
 	var zero0 *github.Authorization
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAuthorizationsService) DeleteGrant(ctx context.Context, clientID string, accessToken string) (*github.Response, error) {
+func (s UnimplementedAuthorizationsService) DeleteGrant(ctx context.Context, clientID string, accessToken string) (*github.Response, error) {
+	s.Callback.call(ctx, "Authorizations", "DeleteGrant")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedAuthorizationsService) DeleteImpersonation(ctx context.Context, username string) (*github.Response, error) {
+func (s UnimplementedAuthorizationsService) DeleteImpersonation(ctx context.Context, username string) (*github.Response, error) {
+	s.Callback.call(ctx, "Authorizations", "DeleteImpersonation")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedAuthorizationsService) Reset(ctx context.Context, clientID string, accessToken string) (*github.Authorization, *github.Response, error) {
+func (s UnimplementedAuthorizationsService) Reset(ctx context.Context, clientID string, accessToken string) (*github.Authorization, *github.Response, error) {
+	s.Callback.call(ctx, "Authorizations", "Reset")
 	var zero0 *github.Authorization
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedAuthorizationsService) Revoke(ctx context.Context, clientID string, accessToken string) (*github.Response, error) {
+func (s UnimplementedAuthorizationsService) Revoke(ctx context.Context, clientID string, accessToken string) (*github.Response, error) {
+	s.Callback.call(ctx, "Authorizations", "Revoke")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
@@ -2915,59 +3171,72 @@ type BillingService interface {
 }
 
 // UnimplementedBillingService may be embedded to implement only selected methods.
-type UnimplementedBillingService struct{}
+type UnimplementedBillingService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedBillingService) GetOrgAICreditUsage(ctx context.Context, org string, opts *github.PremiumRequestUsageReportOptions) (*github.PremiumRequestUsageReport, *github.Response, error) {
+func (s UnimplementedBillingService) GetOrgAICreditUsage(ctx context.Context, org string, opts *github.PremiumRequestUsageReportOptions) (*github.PremiumRequestUsageReport, *github.Response, error) {
+	s.Callback.call(ctx, "Billing", "GetOrgAICreditUsage")
 	var zero0 *github.PremiumRequestUsageReport
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedBillingService) GetOrganizationAdvancedSecurityActiveCommitters(ctx context.Context, org string, opts *github.ActiveCommittersListOptions) (*github.ActiveCommitters, *github.Response, error) {
+func (s UnimplementedBillingService) GetOrganizationAdvancedSecurityActiveCommitters(ctx context.Context, org string, opts *github.ActiveCommittersListOptions) (*github.ActiveCommitters, *github.Response, error) {
+	s.Callback.call(ctx, "Billing", "GetOrganizationAdvancedSecurityActiveCommitters")
 	var zero0 *github.ActiveCommitters
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedBillingService) GetOrganizationPackagesBilling(ctx context.Context, org string) (*github.PackagesBilling, *github.Response, error) {
+func (s UnimplementedBillingService) GetOrganizationPackagesBilling(ctx context.Context, org string) (*github.PackagesBilling, *github.Response, error) {
+	s.Callback.call(ctx, "Billing", "GetOrganizationPackagesBilling")
 	var zero0 *github.PackagesBilling
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedBillingService) GetOrganizationPremiumRequestUsageReport(ctx context.Context, org string, opts *github.PremiumRequestUsageReportOptions) (*github.PremiumRequestUsageReport, *github.Response, error) {
+func (s UnimplementedBillingService) GetOrganizationPremiumRequestUsageReport(ctx context.Context, org string, opts *github.PremiumRequestUsageReportOptions) (*github.PremiumRequestUsageReport, *github.Response, error) {
+	s.Callback.call(ctx, "Billing", "GetOrganizationPremiumRequestUsageReport")
 	var zero0 *github.PremiumRequestUsageReport
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedBillingService) GetOrganizationStorageBilling(ctx context.Context, org string) (*github.StorageBilling, *github.Response, error) {
+func (s UnimplementedBillingService) GetOrganizationStorageBilling(ctx context.Context, org string) (*github.StorageBilling, *github.Response, error) {
+	s.Callback.call(ctx, "Billing", "GetOrganizationStorageBilling")
 	var zero0 *github.StorageBilling
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedBillingService) GetOrganizationUsageReport(ctx context.Context, org string, opts *github.UsageReportOptions) (*github.UsageReport, *github.Response, error) {
+func (s UnimplementedBillingService) GetOrganizationUsageReport(ctx context.Context, org string, opts *github.UsageReportOptions) (*github.UsageReport, *github.Response, error) {
+	s.Callback.call(ctx, "Billing", "GetOrganizationUsageReport")
 	var zero0 *github.UsageReport
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedBillingService) GetPackagesBilling(ctx context.Context, user string) (*github.PackagesBilling, *github.Response, error) {
+func (s UnimplementedBillingService) GetPackagesBilling(ctx context.Context, user string) (*github.PackagesBilling, *github.Response, error) {
+	s.Callback.call(ctx, "Billing", "GetPackagesBilling")
 	var zero0 *github.PackagesBilling
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedBillingService) GetPremiumRequestUsageReport(ctx context.Context, user string, opts *github.PremiumRequestUsageReportOptions) (*github.PremiumRequestUsageReport, *github.Response, error) {
+func (s UnimplementedBillingService) GetPremiumRequestUsageReport(ctx context.Context, user string, opts *github.PremiumRequestUsageReportOptions) (*github.PremiumRequestUsageReport, *github.Response, error) {
+	s.Callback.call(ctx, "Billing", "GetPremiumRequestUsageReport")
 	var zero0 *github.PremiumRequestUsageReport
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedBillingService) GetStorageBilling(ctx context.Context, user string) (*github.StorageBilling, *github.Response, error) {
+func (s UnimplementedBillingService) GetStorageBilling(ctx context.Context, user string) (*github.StorageBilling, *github.Response, error) {
+	s.Callback.call(ctx, "Billing", "GetStorageBilling")
 	var zero0 *github.StorageBilling
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedBillingService) GetUsageReport(ctx context.Context, user string, opts *github.UsageReportOptions) (*github.UsageReport, *github.Response, error) {
+func (s UnimplementedBillingService) GetUsageReport(ctx context.Context, user string, opts *github.UsageReportOptions) (*github.UsageReport, *github.Response, error) {
+	s.Callback.call(ctx, "Billing", "GetUsageReport")
 	var zero0 *github.UsageReport
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedBillingService) GetUserAICreditUsage(ctx context.Context, username string, opts *github.PremiumRequestUsageReportOptions) (*github.PremiumRequestUsageReport, *github.Response, error) {
+func (s UnimplementedBillingService) GetUserAICreditUsage(ctx context.Context, username string, opts *github.PremiumRequestUsageReportOptions) (*github.PremiumRequestUsageReport, *github.Response, error) {
+	s.Callback.call(ctx, "Billing", "GetUserAICreditUsage")
 	var zero0 *github.PremiumRequestUsageReport
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -3054,62 +3323,76 @@ type ChecksService interface {
 }
 
 // UnimplementedChecksService may be embedded to implement only selected methods.
-type UnimplementedChecksService struct{}
+type UnimplementedChecksService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedChecksService) CreateCheckRun(ctx context.Context, owner string, repo string, body github.CreateCheckRunOptions) (*github.CheckRun, *github.Response, error) {
+func (s UnimplementedChecksService) CreateCheckRun(ctx context.Context, owner string, repo string, body github.CreateCheckRunOptions) (*github.CheckRun, *github.Response, error) {
+	s.Callback.call(ctx, "Checks", "CreateCheckRun")
 	var zero0 *github.CheckRun
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedChecksService) CreateCheckSuite(ctx context.Context, owner string, repo string, body github.CreateCheckSuiteOptions) (*github.CheckSuite, *github.Response, error) {
+func (s UnimplementedChecksService) CreateCheckSuite(ctx context.Context, owner string, repo string, body github.CreateCheckSuiteOptions) (*github.CheckSuite, *github.Response, error) {
+	s.Callback.call(ctx, "Checks", "CreateCheckSuite")
 	var zero0 *github.CheckSuite
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedChecksService) GetCheckRun(ctx context.Context, owner string, repo string, checkRunID int64) (*github.CheckRun, *github.Response, error) {
+func (s UnimplementedChecksService) GetCheckRun(ctx context.Context, owner string, repo string, checkRunID int64) (*github.CheckRun, *github.Response, error) {
+	s.Callback.call(ctx, "Checks", "GetCheckRun")
 	var zero0 *github.CheckRun
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedChecksService) GetCheckSuite(ctx context.Context, owner string, repo string, checkSuiteID int64) (*github.CheckSuite, *github.Response, error) {
+func (s UnimplementedChecksService) GetCheckSuite(ctx context.Context, owner string, repo string, checkSuiteID int64) (*github.CheckSuite, *github.Response, error) {
+	s.Callback.call(ctx, "Checks", "GetCheckSuite")
 	var zero0 *github.CheckSuite
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedChecksService) ListCheckRunAnnotations(ctx context.Context, owner string, repo string, checkRunID int64, opts *github.ListOptions) ([]*github.CheckRunAnnotation, *github.Response, error) {
+func (s UnimplementedChecksService) ListCheckRunAnnotations(ctx context.Context, owner string, repo string, checkRunID int64, opts *github.ListOptions) ([]*github.CheckRunAnnotation, *github.Response, error) {
+	s.Callback.call(ctx, "Checks", "ListCheckRunAnnotations")
 	var zero0 []*github.CheckRunAnnotation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedChecksService) ListCheckRunsCheckSuite(ctx context.Context, owner string, repo string, checkSuiteID int64, opts *github.ListCheckRunsOptions) (*github.ListCheckRunsResults, *github.Response, error) {
+func (s UnimplementedChecksService) ListCheckRunsCheckSuite(ctx context.Context, owner string, repo string, checkSuiteID int64, opts *github.ListCheckRunsOptions) (*github.ListCheckRunsResults, *github.Response, error) {
+	s.Callback.call(ctx, "Checks", "ListCheckRunsCheckSuite")
 	var zero0 *github.ListCheckRunsResults
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedChecksService) ListCheckRunsForRef(ctx context.Context, owner string, repo string, ref string, opts *github.ListCheckRunsOptions) (*github.ListCheckRunsResults, *github.Response, error) {
+func (s UnimplementedChecksService) ListCheckRunsForRef(ctx context.Context, owner string, repo string, ref string, opts *github.ListCheckRunsOptions) (*github.ListCheckRunsResults, *github.Response, error) {
+	s.Callback.call(ctx, "Checks", "ListCheckRunsForRef")
 	var zero0 *github.ListCheckRunsResults
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedChecksService) ListCheckSuitesForRef(ctx context.Context, owner string, repo string, ref string, opts *github.ListCheckSuiteOptions) (*github.ListCheckSuiteResults, *github.Response, error) {
+func (s UnimplementedChecksService) ListCheckSuitesForRef(ctx context.Context, owner string, repo string, ref string, opts *github.ListCheckSuiteOptions) (*github.ListCheckSuiteResults, *github.Response, error) {
+	s.Callback.call(ctx, "Checks", "ListCheckSuitesForRef")
 	var zero0 *github.ListCheckSuiteResults
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedChecksService) ReRequestCheckRun(ctx context.Context, owner string, repo string, checkRunID int64) (*github.Response, error) {
+func (s UnimplementedChecksService) ReRequestCheckRun(ctx context.Context, owner string, repo string, checkRunID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Checks", "ReRequestCheckRun")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedChecksService) ReRequestCheckSuite(ctx context.Context, owner string, repo string, checkSuiteID int64) (*github.Response, error) {
+func (s UnimplementedChecksService) ReRequestCheckSuite(ctx context.Context, owner string, repo string, checkSuiteID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Checks", "ReRequestCheckSuite")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedChecksService) SetCheckSuitePreferences(ctx context.Context, owner string, repo string, body github.CheckSuitePreferenceOptions) (*github.CheckSuitePreferenceResults, *github.Response, error) {
+func (s UnimplementedChecksService) SetCheckSuitePreferences(ctx context.Context, owner string, repo string, body github.CheckSuitePreferenceOptions) (*github.CheckSuitePreferenceResults, *github.Response, error) {
+	s.Callback.call(ctx, "Checks", "SetCheckSuitePreferences")
 	var zero0 *github.CheckSuitePreferenceResults
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedChecksService) UpdateCheckRun(ctx context.Context, owner string, repo string, checkRunID int64, body github.UpdateCheckRunOptions) (*github.CheckRun, *github.Response, error) {
+func (s UnimplementedChecksService) UpdateCheckRun(ctx context.Context, owner string, repo string, checkRunID int64, body github.UpdateCheckRunOptions) (*github.CheckRun, *github.Response, error) {
+	s.Callback.call(ctx, "Checks", "UpdateCheckRun")
 	var zero0 *github.CheckRun
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -3165,34 +3448,42 @@ type ClassroomService interface {
 }
 
 // UnimplementedClassroomService may be embedded to implement only selected methods.
-type UnimplementedClassroomService struct{}
+type UnimplementedClassroomService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedClassroomService) GetAssignment(ctx context.Context, assignmentID int64) (*github.ClassroomAssignment, *github.Response, error) {
+func (s UnimplementedClassroomService) GetAssignment(ctx context.Context, assignmentID int64) (*github.ClassroomAssignment, *github.Response, error) {
+	s.Callback.call(ctx, "Classroom", "GetAssignment")
 	var zero0 *github.ClassroomAssignment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedClassroomService) GetAssignmentGrades(ctx context.Context, assignmentID int64) ([]*github.AssignmentGrade, *github.Response, error) {
+func (s UnimplementedClassroomService) GetAssignmentGrades(ctx context.Context, assignmentID int64) ([]*github.AssignmentGrade, *github.Response, error) {
+	s.Callback.call(ctx, "Classroom", "GetAssignmentGrades")
 	var zero0 []*github.AssignmentGrade
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedClassroomService) GetClassroom(ctx context.Context, classroomID int64) (*github.Classroom, *github.Response, error) {
+func (s UnimplementedClassroomService) GetClassroom(ctx context.Context, classroomID int64) (*github.Classroom, *github.Response, error) {
+	s.Callback.call(ctx, "Classroom", "GetClassroom")
 	var zero0 *github.Classroom
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedClassroomService) ListAcceptedAssignments(ctx context.Context, assignmentID int64, opts *github.ListOptions) ([]*github.AcceptedAssignment, *github.Response, error) {
+func (s UnimplementedClassroomService) ListAcceptedAssignments(ctx context.Context, assignmentID int64, opts *github.ListOptions) ([]*github.AcceptedAssignment, *github.Response, error) {
+	s.Callback.call(ctx, "Classroom", "ListAcceptedAssignments")
 	var zero0 []*github.AcceptedAssignment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedClassroomService) ListClassroomAssignments(ctx context.Context, classroomID int64, opts *github.ListOptions) ([]*github.ClassroomAssignment, *github.Response, error) {
+func (s UnimplementedClassroomService) ListClassroomAssignments(ctx context.Context, classroomID int64, opts *github.ListOptions) ([]*github.ClassroomAssignment, *github.Response, error) {
+	s.Callback.call(ctx, "Classroom", "ListClassroomAssignments")
 	var zero0 []*github.ClassroomAssignment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedClassroomService) ListClassrooms(ctx context.Context, opts *github.ListOptions) ([]*github.Classroom, *github.Response, error) {
+func (s UnimplementedClassroomService) ListClassrooms(ctx context.Context, opts *github.ListOptions) ([]*github.Classroom, *github.Response, error) {
+	s.Callback.call(ctx, "Classroom", "ListClassrooms")
 	var zero0 []*github.Classroom
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -3230,24 +3521,30 @@ type CodeQualityService interface {
 }
 
 // UnimplementedCodeQualityService may be embedded to implement only selected methods.
-type UnimplementedCodeQualityService struct{}
+type UnimplementedCodeQualityService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedCodeQualityService) GetFinding(ctx context.Context, owner string, repo string, findingNumber int) (*github.CodeQualityFinding, *github.Response, error) {
+func (s UnimplementedCodeQualityService) GetFinding(ctx context.Context, owner string, repo string, findingNumber int) (*github.CodeQualityFinding, *github.Response, error) {
+	s.Callback.call(ctx, "CodeQuality", "GetFinding")
 	var zero0 *github.CodeQualityFinding
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodeQualityService) GetSetup(ctx context.Context, owner string, repo string) (*github.CodeQualitySetupConfiguration, *github.Response, error) {
+func (s UnimplementedCodeQualityService) GetSetup(ctx context.Context, owner string, repo string) (*github.CodeQualitySetupConfiguration, *github.Response, error) {
+	s.Callback.call(ctx, "CodeQuality", "GetSetup")
 	var zero0 *github.CodeQualitySetupConfiguration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodeQualityService) ListFindings(ctx context.Context, owner string, repo string, opts *github.ListCodeQualityFindingsOptions) ([]*github.CodeQualityFinding, *github.Response, error) {
+func (s UnimplementedCodeQualityService) ListFindings(ctx context.Context, owner string, repo string, opts *github.ListCodeQualityFindingsOptions) ([]*github.CodeQualityFinding, *github.Response, error) {
+	s.Callback.call(ctx, "CodeQuality", "ListFindings")
 	var zero0 []*github.CodeQualityFinding
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodeQualityService) UpdateSetup(ctx context.Context, owner string, repo string, body github.CodeQualityUpdateSetupRequest) (*github.CodeQualityUpdateSetupResponse, *github.Response, error) {
+func (s UnimplementedCodeQualityService) UpdateSetup(ctx context.Context, owner string, repo string, body github.CodeQualityUpdateSetupRequest) (*github.CodeQualityUpdateSetupResponse, *github.Response, error) {
+	s.Callback.call(ctx, "CodeQuality", "UpdateSetup")
 	var zero0 *github.CodeQualityUpdateSetupResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -3400,74 +3697,90 @@ type CodeScanningService interface {
 }
 
 // UnimplementedCodeScanningService may be embedded to implement only selected methods.
-type UnimplementedCodeScanningService struct{}
+type UnimplementedCodeScanningService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedCodeScanningService) DeleteAnalysis(ctx context.Context, owner string, repo string, id int64) (*github.DeleteAnalysis, *github.Response, error) {
+func (s UnimplementedCodeScanningService) DeleteAnalysis(ctx context.Context, owner string, repo string, id int64) (*github.DeleteAnalysis, *github.Response, error) {
+	s.Callback.call(ctx, "CodeScanning", "DeleteAnalysis")
 	var zero0 *github.DeleteAnalysis
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodeScanningService) GetAlert(ctx context.Context, owner string, repo string, id int64) (*github.Alert, *github.Response, error) {
+func (s UnimplementedCodeScanningService) GetAlert(ctx context.Context, owner string, repo string, id int64) (*github.Alert, *github.Response, error) {
+	s.Callback.call(ctx, "CodeScanning", "GetAlert")
 	var zero0 *github.Alert
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodeScanningService) GetAnalysis(ctx context.Context, owner string, repo string, id int64) (*github.ScanningAnalysis, *github.Response, error) {
+func (s UnimplementedCodeScanningService) GetAnalysis(ctx context.Context, owner string, repo string, id int64) (*github.ScanningAnalysis, *github.Response, error) {
+	s.Callback.call(ctx, "CodeScanning", "GetAnalysis")
 	var zero0 *github.ScanningAnalysis
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodeScanningService) GetCodeQLDatabase(ctx context.Context, owner string, repo string, language string) (*github.CodeQLDatabase, *github.Response, error) {
+func (s UnimplementedCodeScanningService) GetCodeQLDatabase(ctx context.Context, owner string, repo string, language string) (*github.CodeQLDatabase, *github.Response, error) {
+	s.Callback.call(ctx, "CodeScanning", "GetCodeQLDatabase")
 	var zero0 *github.CodeQLDatabase
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodeScanningService) GetDefaultSetupConfiguration(ctx context.Context, owner string, repo string) (*github.DefaultSetupConfiguration, *github.Response, error) {
+func (s UnimplementedCodeScanningService) GetDefaultSetupConfiguration(ctx context.Context, owner string, repo string) (*github.DefaultSetupConfiguration, *github.Response, error) {
+	s.Callback.call(ctx, "CodeScanning", "GetDefaultSetupConfiguration")
 	var zero0 *github.DefaultSetupConfiguration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodeScanningService) GetSARIF(ctx context.Context, owner string, repo string, sarifID string) (*github.SARIFUpload, *github.Response, error) {
+func (s UnimplementedCodeScanningService) GetSARIF(ctx context.Context, owner string, repo string, sarifID string) (*github.SARIFUpload, *github.Response, error) {
+	s.Callback.call(ctx, "CodeScanning", "GetSARIF")
 	var zero0 *github.SARIFUpload
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodeScanningService) ListAlertInstances(ctx context.Context, owner string, repo string, id int64, opts *github.AlertInstancesListOptions) ([]*github.MostRecentInstance, *github.Response, error) {
+func (s UnimplementedCodeScanningService) ListAlertInstances(ctx context.Context, owner string, repo string, id int64, opts *github.AlertInstancesListOptions) ([]*github.MostRecentInstance, *github.Response, error) {
+	s.Callback.call(ctx, "CodeScanning", "ListAlertInstances")
 	var zero0 []*github.MostRecentInstance
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodeScanningService) ListAlertsForOrg(ctx context.Context, org string, opts *github.AlertListOptions) ([]*github.Alert, *github.Response, error) {
+func (s UnimplementedCodeScanningService) ListAlertsForOrg(ctx context.Context, org string, opts *github.AlertListOptions) ([]*github.Alert, *github.Response, error) {
+	s.Callback.call(ctx, "CodeScanning", "ListAlertsForOrg")
 	var zero0 []*github.Alert
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodeScanningService) ListAlertsForRepo(ctx context.Context, owner string, repo string, opts *github.AlertListOptions) ([]*github.Alert, *github.Response, error) {
+func (s UnimplementedCodeScanningService) ListAlertsForRepo(ctx context.Context, owner string, repo string, opts *github.AlertListOptions) ([]*github.Alert, *github.Response, error) {
+	s.Callback.call(ctx, "CodeScanning", "ListAlertsForRepo")
 	var zero0 []*github.Alert
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodeScanningService) ListAnalysesForRepo(ctx context.Context, owner string, repo string, opts *github.AnalysesListOptions) ([]*github.ScanningAnalysis, *github.Response, error) {
+func (s UnimplementedCodeScanningService) ListAnalysesForRepo(ctx context.Context, owner string, repo string, opts *github.AnalysesListOptions) ([]*github.ScanningAnalysis, *github.Response, error) {
+	s.Callback.call(ctx, "CodeScanning", "ListAnalysesForRepo")
 	var zero0 []*github.ScanningAnalysis
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodeScanningService) ListCodeQLDatabases(ctx context.Context, owner string, repo string) ([]*github.CodeQLDatabase, *github.Response, error) {
+func (s UnimplementedCodeScanningService) ListCodeQLDatabases(ctx context.Context, owner string, repo string) ([]*github.CodeQLDatabase, *github.Response, error) {
+	s.Callback.call(ctx, "CodeScanning", "ListCodeQLDatabases")
 	var zero0 []*github.CodeQLDatabase
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodeScanningService) UpdateAlert(ctx context.Context, owner string, repo string, id int64, body *github.CodeScanningAlertState) (*github.Alert, *github.Response, error) {
+func (s UnimplementedCodeScanningService) UpdateAlert(ctx context.Context, owner string, repo string, id int64, body *github.CodeScanningAlertState) (*github.Alert, *github.Response, error) {
+	s.Callback.call(ctx, "CodeScanning", "UpdateAlert")
 	var zero0 *github.Alert
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodeScanningService) UpdateDefaultSetupConfiguration(ctx context.Context, owner string, repo string, body *github.UpdateDefaultSetupConfigurationOptions) (*github.UpdateDefaultSetupConfigurationResponse, *github.Response, error) {
+func (s UnimplementedCodeScanningService) UpdateDefaultSetupConfiguration(ctx context.Context, owner string, repo string, body *github.UpdateDefaultSetupConfigurationOptions) (*github.UpdateDefaultSetupConfigurationResponse, *github.Response, error) {
+	s.Callback.call(ctx, "CodeScanning", "UpdateDefaultSetupConfiguration")
 	var zero0 *github.UpdateDefaultSetupConfigurationResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodeScanningService) UploadSarif(ctx context.Context, owner string, repo string, body *github.SarifAnalysis) (*github.SarifID, *github.Response, error) {
+func (s UnimplementedCodeScanningService) UploadSarif(ctx context.Context, owner string, repo string, body *github.SarifAnalysis) (*github.SarifID, *github.Response, error) {
+	s.Callback.call(ctx, "CodeScanning", "UploadSarif")
 	var zero0 *github.SarifID
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -3490,14 +3803,18 @@ type CodesOfConductService interface {
 }
 
 // UnimplementedCodesOfConductService may be embedded to implement only selected methods.
-type UnimplementedCodesOfConductService struct{}
+type UnimplementedCodesOfConductService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedCodesOfConductService) Get(ctx context.Context, key string) (*github.CodeOfConduct, *github.Response, error) {
+func (s UnimplementedCodesOfConductService) Get(ctx context.Context, key string) (*github.CodeOfConduct, *github.Response, error) {
+	s.Callback.call(ctx, "CodesOfConduct", "Get")
 	var zero0 *github.CodeOfConduct
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodesOfConductService) List(ctx context.Context) ([]*github.CodeOfConduct, *github.Response, error) {
+func (s UnimplementedCodesOfConductService) List(ctx context.Context) ([]*github.CodeOfConduct, *github.Response, error) {
+	s.Callback.call(ctx, "CodesOfConduct", "List")
 	var zero0 []*github.CodeOfConduct
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -3885,226 +4202,276 @@ type CodespacesService interface {
 }
 
 // UnimplementedCodespacesService may be embedded to implement only selected methods.
-type UnimplementedCodespacesService struct{}
+type UnimplementedCodespacesService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedCodespacesService) AddSelectedRepoToOrgSecret(ctx context.Context, org string, name string, repo *github.Repository) (*github.Response, error) {
+func (s UnimplementedCodespacesService) AddSelectedRepoToOrgSecret(ctx context.Context, org string, name string, repo *github.Repository) (*github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "AddSelectedRepoToOrgSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) AddSelectedRepoToUserSecret(ctx context.Context, name string, repo *github.Repository) (*github.Response, error) {
+func (s UnimplementedCodespacesService) AddSelectedRepoToUserSecret(ctx context.Context, name string, repo *github.Repository) (*github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "AddSelectedRepoToUserSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) AddUsersToOrgAccess(ctx context.Context, org string, usernames []string) (*github.Response, error) {
+func (s UnimplementedCodespacesService) AddUsersToOrgAccess(ctx context.Context, org string, usernames []string) (*github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "AddUsersToOrgAccess")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) CheckPermissions(ctx context.Context, owner string, repo string, ref string, devcontainerPath string) (*github.CodespacePermissions, *github.Response, error) {
+func (s UnimplementedCodespacesService) CheckPermissions(ctx context.Context, owner string, repo string, ref string, devcontainerPath string) (*github.CodespacePermissions, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "CheckPermissions")
 	var zero0 *github.CodespacePermissions
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) Create(ctx context.Context, body *github.CodespaceCreateForUserOptions) (*github.Codespace, *github.Response, error) {
+func (s UnimplementedCodespacesService) Create(ctx context.Context, body *github.CodespaceCreateForUserOptions) (*github.Codespace, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "Create")
 	var zero0 *github.Codespace
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) CreateFromPullRequest(ctx context.Context, owner string, repo string, pullNumber int, body *github.CreateCodespaceOptions) (*github.Codespace, *github.Response, error) {
+func (s UnimplementedCodespacesService) CreateFromPullRequest(ctx context.Context, owner string, repo string, pullNumber int, body *github.CreateCodespaceOptions) (*github.Codespace, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "CreateFromPullRequest")
 	var zero0 *github.Codespace
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) CreateInRepo(ctx context.Context, owner string, repo string, body *github.CreateCodespaceOptions) (*github.Codespace, *github.Response, error) {
+func (s UnimplementedCodespacesService) CreateInRepo(ctx context.Context, owner string, repo string, body *github.CreateCodespaceOptions) (*github.Codespace, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "CreateInRepo")
 	var zero0 *github.Codespace
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) CreateOrUpdateOrgSecret(ctx context.Context, org string, body *github.EncryptedSecret) (*github.Response, error) {
+func (s UnimplementedCodespacesService) CreateOrUpdateOrgSecret(ctx context.Context, org string, body *github.EncryptedSecret) (*github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "CreateOrUpdateOrgSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) CreateOrUpdateRepoSecret(ctx context.Context, owner string, repo string, body *github.EncryptedSecret) (*github.Response, error) {
+func (s UnimplementedCodespacesService) CreateOrUpdateRepoSecret(ctx context.Context, owner string, repo string, body *github.EncryptedSecret) (*github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "CreateOrUpdateRepoSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) CreateOrUpdateUserSecret(ctx context.Context, body *github.EncryptedSecret) (*github.Response, error) {
+func (s UnimplementedCodespacesService) CreateOrUpdateUserSecret(ctx context.Context, body *github.EncryptedSecret) (*github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "CreateOrUpdateUserSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) Delete(ctx context.Context, codespaceName string) (*github.Response, error) {
+func (s UnimplementedCodespacesService) Delete(ctx context.Context, codespaceName string) (*github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "Delete")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) DeleteOrgSecret(ctx context.Context, org string, name string) (*github.Response, error) {
+func (s UnimplementedCodespacesService) DeleteOrgSecret(ctx context.Context, org string, name string) (*github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "DeleteOrgSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) DeleteRepoSecret(ctx context.Context, owner string, repo string, name string) (*github.Response, error) {
+func (s UnimplementedCodespacesService) DeleteRepoSecret(ctx context.Context, owner string, repo string, name string) (*github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "DeleteRepoSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) DeleteUserCodespaceInOrg(ctx context.Context, org string, username string, codespaceName string) (*github.Response, error) {
+func (s UnimplementedCodespacesService) DeleteUserCodespaceInOrg(ctx context.Context, org string, username string, codespaceName string) (*github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "DeleteUserCodespaceInOrg")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) DeleteUserSecret(ctx context.Context, name string) (*github.Response, error) {
+func (s UnimplementedCodespacesService) DeleteUserSecret(ctx context.Context, name string) (*github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "DeleteUserSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) ExportCodespace(ctx context.Context, codespaceName string) (*github.CodespaceExport, *github.Response, error) {
+func (s UnimplementedCodespacesService) ExportCodespace(ctx context.Context, codespaceName string) (*github.CodespaceExport, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "ExportCodespace")
 	var zero0 *github.CodespaceExport
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) Get(ctx context.Context, codespaceName string) (*github.Codespace, *github.Response, error) {
+func (s UnimplementedCodespacesService) Get(ctx context.Context, codespaceName string) (*github.Codespace, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "Get")
 	var zero0 *github.Codespace
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) GetDefaultAttributes(ctx context.Context, owner string, repo string, opts *github.CodespaceGetDefaultAttributesOptions) (*github.CodespaceDefaultAttributes, *github.Response, error) {
+func (s UnimplementedCodespacesService) GetDefaultAttributes(ctx context.Context, owner string, repo string, opts *github.CodespaceGetDefaultAttributesOptions) (*github.CodespaceDefaultAttributes, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "GetDefaultAttributes")
 	var zero0 *github.CodespaceDefaultAttributes
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) GetLatestCodespaceExport(ctx context.Context, codespaceName string) (*github.CodespaceExport, *github.Response, error) {
+func (s UnimplementedCodespacesService) GetLatestCodespaceExport(ctx context.Context, codespaceName string) (*github.CodespaceExport, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "GetLatestCodespaceExport")
 	var zero0 *github.CodespaceExport
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) GetOrgPublicKey(ctx context.Context, org string) (*github.PublicKey, *github.Response, error) {
+func (s UnimplementedCodespacesService) GetOrgPublicKey(ctx context.Context, org string) (*github.PublicKey, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "GetOrgPublicKey")
 	var zero0 *github.PublicKey
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) GetOrgSecret(ctx context.Context, org string, name string) (*github.Secret, *github.Response, error) {
+func (s UnimplementedCodespacesService) GetOrgSecret(ctx context.Context, org string, name string) (*github.Secret, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "GetOrgSecret")
 	var zero0 *github.Secret
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) GetRepoPublicKey(ctx context.Context, owner string, repo string) (*github.PublicKey, *github.Response, error) {
+func (s UnimplementedCodespacesService) GetRepoPublicKey(ctx context.Context, owner string, repo string) (*github.PublicKey, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "GetRepoPublicKey")
 	var zero0 *github.PublicKey
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) GetRepoSecret(ctx context.Context, owner string, repo string, name string) (*github.Secret, *github.Response, error) {
+func (s UnimplementedCodespacesService) GetRepoSecret(ctx context.Context, owner string, repo string, name string) (*github.Secret, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "GetRepoSecret")
 	var zero0 *github.Secret
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) GetUserPublicKey(ctx context.Context) (*github.PublicKey, *github.Response, error) {
+func (s UnimplementedCodespacesService) GetUserPublicKey(ctx context.Context) (*github.PublicKey, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "GetUserPublicKey")
 	var zero0 *github.PublicKey
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) GetUserSecret(ctx context.Context, name string) (*github.Secret, *github.Response, error) {
+func (s UnimplementedCodespacesService) GetUserSecret(ctx context.Context, name string) (*github.Secret, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "GetUserSecret")
 	var zero0 *github.Secret
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) List(ctx context.Context, opts *github.ListCodespacesOptions) (*github.ListCodespaces, *github.Response, error) {
+func (s UnimplementedCodespacesService) List(ctx context.Context, opts *github.ListCodespacesOptions) (*github.ListCodespaces, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "List")
 	var zero0 *github.ListCodespaces
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) ListCodespaceMachineTypes(ctx context.Context, codespaceName string) (*github.CodespacesMachines, *github.Response, error) {
+func (s UnimplementedCodespacesService) ListCodespaceMachineTypes(ctx context.Context, codespaceName string) (*github.CodespacesMachines, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "ListCodespaceMachineTypes")
 	var zero0 *github.CodespacesMachines
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) ListDevContainerConfigurations(ctx context.Context, owner string, repo string, opts *github.ListOptions) (*github.DevContainerConfigurations, *github.Response, error) {
+func (s UnimplementedCodespacesService) ListDevContainerConfigurations(ctx context.Context, owner string, repo string, opts *github.ListOptions) (*github.DevContainerConfigurations, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "ListDevContainerConfigurations")
 	var zero0 *github.DevContainerConfigurations
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) ListInOrg(ctx context.Context, org string, opts *github.ListOptions) (*github.ListCodespaces, *github.Response, error) {
+func (s UnimplementedCodespacesService) ListInOrg(ctx context.Context, org string, opts *github.ListOptions) (*github.ListCodespaces, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "ListInOrg")
 	var zero0 *github.ListCodespaces
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) ListInRepo(ctx context.Context, owner string, repo string, opts *github.ListOptions) (*github.ListCodespaces, *github.Response, error) {
+func (s UnimplementedCodespacesService) ListInRepo(ctx context.Context, owner string, repo string, opts *github.ListOptions) (*github.ListCodespaces, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "ListInRepo")
 	var zero0 *github.ListCodespaces
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) ListOrgSecrets(ctx context.Context, org string, opts *github.ListOptions) (*github.Secrets, *github.Response, error) {
+func (s UnimplementedCodespacesService) ListOrgSecrets(ctx context.Context, org string, opts *github.ListOptions) (*github.Secrets, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "ListOrgSecrets")
 	var zero0 *github.Secrets
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) ListRepoSecrets(ctx context.Context, owner string, repo string, opts *github.ListOptions) (*github.Secrets, *github.Response, error) {
+func (s UnimplementedCodespacesService) ListRepoSecrets(ctx context.Context, owner string, repo string, opts *github.ListOptions) (*github.Secrets, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "ListRepoSecrets")
 	var zero0 *github.Secrets
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) ListRepositoryMachineTypes(ctx context.Context, owner string, repo string, opts *github.ListRepoMachineTypesOptions) (*github.CodespacesMachines, *github.Response, error) {
+func (s UnimplementedCodespacesService) ListRepositoryMachineTypes(ctx context.Context, owner string, repo string, opts *github.ListRepoMachineTypesOptions) (*github.CodespacesMachines, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "ListRepositoryMachineTypes")
 	var zero0 *github.CodespacesMachines
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) ListSelectedReposForOrgSecret(ctx context.Context, org string, name string, opts *github.ListOptions) (*github.SelectedReposList, *github.Response, error) {
+func (s UnimplementedCodespacesService) ListSelectedReposForOrgSecret(ctx context.Context, org string, name string, opts *github.ListOptions) (*github.SelectedReposList, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "ListSelectedReposForOrgSecret")
 	var zero0 *github.SelectedReposList
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) ListSelectedReposForUserSecret(ctx context.Context, name string, opts *github.ListOptions) (*github.SelectedReposList, *github.Response, error) {
+func (s UnimplementedCodespacesService) ListSelectedReposForUserSecret(ctx context.Context, name string, opts *github.ListOptions) (*github.SelectedReposList, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "ListSelectedReposForUserSecret")
 	var zero0 *github.SelectedReposList
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) ListUserCodespacesInOrg(ctx context.Context, org string, username string, opts *github.ListOptions) (*github.ListCodespaces, *github.Response, error) {
+func (s UnimplementedCodespacesService) ListUserCodespacesInOrg(ctx context.Context, org string, username string, opts *github.ListOptions) (*github.ListCodespaces, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "ListUserCodespacesInOrg")
 	var zero0 *github.ListCodespaces
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) ListUserSecrets(ctx context.Context, opts *github.ListOptions) (*github.Secrets, *github.Response, error) {
+func (s UnimplementedCodespacesService) ListUserSecrets(ctx context.Context, opts *github.ListOptions) (*github.Secrets, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "ListUserSecrets")
 	var zero0 *github.Secrets
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) Publish(ctx context.Context, codespaceName string, body *github.PublishCodespaceOptions) (*github.Codespace, *github.Response, error) {
+func (s UnimplementedCodespacesService) Publish(ctx context.Context, codespaceName string, body *github.PublishCodespaceOptions) (*github.Codespace, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "Publish")
 	var zero0 *github.Codespace
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) RemoveSelectedRepoFromOrgSecret(ctx context.Context, org string, name string, repo *github.Repository) (*github.Response, error) {
+func (s UnimplementedCodespacesService) RemoveSelectedRepoFromOrgSecret(ctx context.Context, org string, name string, repo *github.Repository) (*github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "RemoveSelectedRepoFromOrgSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) RemoveSelectedRepoFromUserSecret(ctx context.Context, name string, repo *github.Repository) (*github.Response, error) {
+func (s UnimplementedCodespacesService) RemoveSelectedRepoFromUserSecret(ctx context.Context, name string, repo *github.Repository) (*github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "RemoveSelectedRepoFromUserSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) RemoveUsersFromOrgAccess(ctx context.Context, org string, usernames []string) (*github.Response, error) {
+func (s UnimplementedCodespacesService) RemoveUsersFromOrgAccess(ctx context.Context, org string, usernames []string) (*github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "RemoveUsersFromOrgAccess")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) SetOrgAccessControl(ctx context.Context, org string, body github.CodespacesOrgAccessControlRequest) (*github.Response, error) {
+func (s UnimplementedCodespacesService) SetOrgAccessControl(ctx context.Context, org string, body github.CodespacesOrgAccessControlRequest) (*github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "SetOrgAccessControl")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) SetSelectedReposForOrgSecret(ctx context.Context, org string, name string, ids github.SelectedRepoIDs) (*github.Response, error) {
+func (s UnimplementedCodespacesService) SetSelectedReposForOrgSecret(ctx context.Context, org string, name string, ids github.SelectedRepoIDs) (*github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "SetSelectedReposForOrgSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) SetSelectedReposForUserSecret(ctx context.Context, name string, ids github.SelectedRepoIDs) (*github.Response, error) {
+func (s UnimplementedCodespacesService) SetSelectedReposForUserSecret(ctx context.Context, name string, ids github.SelectedRepoIDs) (*github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "SetSelectedReposForUserSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) Start(ctx context.Context, codespaceName string) (*github.Codespace, *github.Response, error) {
+func (s UnimplementedCodespacesService) Start(ctx context.Context, codespaceName string) (*github.Codespace, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "Start")
 	var zero0 *github.Codespace
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) Stop(ctx context.Context, codespaceName string) (*github.Codespace, *github.Response, error) {
+func (s UnimplementedCodespacesService) Stop(ctx context.Context, codespaceName string) (*github.Codespace, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "Stop")
 	var zero0 *github.Codespace
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) StopUserCodespaceInOrg(ctx context.Context, org string, username string, codespaceName string) (*github.Response, error) {
+func (s UnimplementedCodespacesService) StopUserCodespaceInOrg(ctx context.Context, org string, username string, codespaceName string) (*github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "StopUserCodespaceInOrg")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedCodespacesService) Update(ctx context.Context, codespaceName string, body *github.UpdateCodespaceOptions) (*github.Codespace, *github.Response, error) {
+func (s UnimplementedCodespacesService) Update(ctx context.Context, codespaceName string, body *github.UpdateCodespaceOptions) (*github.Codespace, *github.Response, error) {
+	s.Callback.call(ctx, "Codespaces", "Update")
 	var zero0 *github.Codespace
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -4289,119 +4656,144 @@ type CopilotService interface {
 }
 
 // UnimplementedCopilotService may be embedded to implement only selected methods.
-type UnimplementedCopilotService struct{}
+type UnimplementedCopilotService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedCopilotService) AddCopilotTeams(ctx context.Context, org string, teamNames []string) (*github.SeatAssignments, *github.Response, error) {
+func (s UnimplementedCopilotService) AddCopilotTeams(ctx context.Context, org string, teamNames []string) (*github.SeatAssignments, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "AddCopilotTeams")
 	var zero0 *github.SeatAssignments
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) AddCopilotUsers(ctx context.Context, org string, users []string) (*github.SeatAssignments, *github.Response, error) {
+func (s UnimplementedCopilotService) AddCopilotUsers(ctx context.Context, org string, users []string) (*github.SeatAssignments, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "AddCopilotUsers")
 	var zero0 *github.SeatAssignments
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) GetCloudAgentConfiguration(ctx context.Context, owner string, repo string) (*github.CopilotCloudAgentConfiguration, *github.Response, error) {
+func (s UnimplementedCopilotService) GetCloudAgentConfiguration(ctx context.Context, owner string, repo string) (*github.CopilotCloudAgentConfiguration, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "GetCloudAgentConfiguration")
 	var zero0 *github.CopilotCloudAgentConfiguration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) GetCopilotBilling(ctx context.Context, org string) (*github.CopilotOrganizationDetails, *github.Response, error) {
+func (s UnimplementedCopilotService) GetCopilotBilling(ctx context.Context, org string) (*github.CopilotOrganizationDetails, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "GetCopilotBilling")
 	var zero0 *github.CopilotOrganizationDetails
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) GetEnterpriseDailyMetricsReport(ctx context.Context, enterprise string, opts *github.CopilotMetricsReportOptions) (*github.CopilotDailyMetricsReport, *github.Response, error) {
+func (s UnimplementedCopilotService) GetEnterpriseDailyMetricsReport(ctx context.Context, enterprise string, opts *github.CopilotMetricsReportOptions) (*github.CopilotDailyMetricsReport, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "GetEnterpriseDailyMetricsReport")
 	var zero0 *github.CopilotDailyMetricsReport
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) GetEnterpriseMetrics(ctx context.Context, enterprise string, opts *github.CopilotMetricsListOptions) ([]*github.CopilotMetrics, *github.Response, error) {
+func (s UnimplementedCopilotService) GetEnterpriseMetrics(ctx context.Context, enterprise string, opts *github.CopilotMetricsListOptions) ([]*github.CopilotMetrics, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "GetEnterpriseMetrics")
 	var zero0 []*github.CopilotMetrics
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) GetEnterpriseMetricsReport(ctx context.Context, enterprise string) (*github.CopilotMetricsReport, *github.Response, error) {
+func (s UnimplementedCopilotService) GetEnterpriseMetricsReport(ctx context.Context, enterprise string) (*github.CopilotMetricsReport, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "GetEnterpriseMetricsReport")
 	var zero0 *github.CopilotMetricsReport
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) GetEnterpriseTeamMetrics(ctx context.Context, enterprise string, team string, opts *github.CopilotMetricsListOptions) ([]*github.CopilotMetrics, *github.Response, error) {
+func (s UnimplementedCopilotService) GetEnterpriseTeamMetrics(ctx context.Context, enterprise string, team string, opts *github.CopilotMetricsListOptions) ([]*github.CopilotMetrics, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "GetEnterpriseTeamMetrics")
 	var zero0 []*github.CopilotMetrics
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) GetEnterpriseUsersDailyMetricsReport(ctx context.Context, enterprise string, opts *github.CopilotMetricsReportOptions) (*github.CopilotDailyMetricsReport, *github.Response, error) {
+func (s UnimplementedCopilotService) GetEnterpriseUsersDailyMetricsReport(ctx context.Context, enterprise string, opts *github.CopilotMetricsReportOptions) (*github.CopilotDailyMetricsReport, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "GetEnterpriseUsersDailyMetricsReport")
 	var zero0 *github.CopilotDailyMetricsReport
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) GetEnterpriseUsersMetricsReport(ctx context.Context, enterprise string) (*github.CopilotMetricsReport, *github.Response, error) {
+func (s UnimplementedCopilotService) GetEnterpriseUsersMetricsReport(ctx context.Context, enterprise string) (*github.CopilotMetricsReport, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "GetEnterpriseUsersMetricsReport")
 	var zero0 *github.CopilotMetricsReport
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) GetOrganizationContentExclusionDetails(ctx context.Context, org string) (github.CopilotOrganizationContentExclusionDetails, *github.Response, error) {
+func (s UnimplementedCopilotService) GetOrganizationContentExclusionDetails(ctx context.Context, org string) (github.CopilotOrganizationContentExclusionDetails, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "GetOrganizationContentExclusionDetails")
 	var zero0 github.CopilotOrganizationContentExclusionDetails
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) GetOrganizationDailyMetricsReport(ctx context.Context, org string, opts *github.CopilotMetricsReportOptions) (*github.CopilotDailyMetricsReport, *github.Response, error) {
+func (s UnimplementedCopilotService) GetOrganizationDailyMetricsReport(ctx context.Context, org string, opts *github.CopilotMetricsReportOptions) (*github.CopilotDailyMetricsReport, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "GetOrganizationDailyMetricsReport")
 	var zero0 *github.CopilotDailyMetricsReport
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) GetOrganizationMetrics(ctx context.Context, org string, opts *github.CopilotMetricsListOptions) ([]*github.CopilotMetrics, *github.Response, error) {
+func (s UnimplementedCopilotService) GetOrganizationMetrics(ctx context.Context, org string, opts *github.CopilotMetricsListOptions) ([]*github.CopilotMetrics, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "GetOrganizationMetrics")
 	var zero0 []*github.CopilotMetrics
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) GetOrganizationMetricsReport(ctx context.Context, org string) (*github.CopilotMetricsReport, *github.Response, error) {
+func (s UnimplementedCopilotService) GetOrganizationMetricsReport(ctx context.Context, org string) (*github.CopilotMetricsReport, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "GetOrganizationMetricsReport")
 	var zero0 *github.CopilotMetricsReport
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) GetOrganizationTeamMetrics(ctx context.Context, org string, team string, opts *github.CopilotMetricsListOptions) ([]*github.CopilotMetrics, *github.Response, error) {
+func (s UnimplementedCopilotService) GetOrganizationTeamMetrics(ctx context.Context, org string, team string, opts *github.CopilotMetricsListOptions) ([]*github.CopilotMetrics, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "GetOrganizationTeamMetrics")
 	var zero0 []*github.CopilotMetrics
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) GetOrganizationUsersDailyMetricsReport(ctx context.Context, org string, opts *github.CopilotMetricsReportOptions) (*github.CopilotDailyMetricsReport, *github.Response, error) {
+func (s UnimplementedCopilotService) GetOrganizationUsersDailyMetricsReport(ctx context.Context, org string, opts *github.CopilotMetricsReportOptions) (*github.CopilotDailyMetricsReport, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "GetOrganizationUsersDailyMetricsReport")
 	var zero0 *github.CopilotDailyMetricsReport
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) GetOrganizationUsersMetricsReport(ctx context.Context, org string) (*github.CopilotMetricsReport, *github.Response, error) {
+func (s UnimplementedCopilotService) GetOrganizationUsersMetricsReport(ctx context.Context, org string) (*github.CopilotMetricsReport, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "GetOrganizationUsersMetricsReport")
 	var zero0 *github.CopilotMetricsReport
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) GetSeatDetails(ctx context.Context, org string, user string) (*github.CopilotSeatDetails, *github.Response, error) {
+func (s UnimplementedCopilotService) GetSeatDetails(ctx context.Context, org string, user string) (*github.CopilotSeatDetails, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "GetSeatDetails")
 	var zero0 *github.CopilotSeatDetails
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) ListCopilotEnterpriseSeats(ctx context.Context, enterprise string, opts *github.ListOptions) (*github.ListCopilotSeatsResponse, *github.Response, error) {
+func (s UnimplementedCopilotService) ListCopilotEnterpriseSeats(ctx context.Context, enterprise string, opts *github.ListOptions) (*github.ListCopilotSeatsResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "ListCopilotEnterpriseSeats")
 	var zero0 *github.ListCopilotSeatsResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) ListCopilotSeats(ctx context.Context, org string, opts *github.ListOptions) (*github.ListCopilotSeatsResponse, *github.Response, error) {
+func (s UnimplementedCopilotService) ListCopilotSeats(ctx context.Context, org string, opts *github.ListOptions) (*github.ListCopilotSeatsResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "ListCopilotSeats")
 	var zero0 *github.ListCopilotSeatsResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) ListOrganizationCodingAgentRepositories(ctx context.Context, org string, opts *github.ListOptions) (*github.ListOrganizationCopilotCodingAgentRepositoriesResponse, *github.Response, error) {
+func (s UnimplementedCopilotService) ListOrganizationCodingAgentRepositories(ctx context.Context, org string, opts *github.ListOptions) (*github.ListOrganizationCopilotCodingAgentRepositoriesResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "ListOrganizationCodingAgentRepositories")
 	var zero0 *github.ListOrganizationCopilotCodingAgentRepositoriesResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) RemoveCopilotTeams(ctx context.Context, org string, teamNames []string) (*github.SeatCancellations, *github.Response, error) {
+func (s UnimplementedCopilotService) RemoveCopilotTeams(ctx context.Context, org string, teamNames []string) (*github.SeatCancellations, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "RemoveCopilotTeams")
 	var zero0 *github.SeatCancellations
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedCopilotService) RemoveCopilotUsers(ctx context.Context, org string, users []string) (*github.SeatCancellations, *github.Response, error) {
+func (s UnimplementedCopilotService) RemoveCopilotUsers(ctx context.Context, org string, users []string) (*github.SeatCancellations, *github.Response, error) {
+	s.Callback.call(ctx, "Copilot", "RemoveCopilotUsers")
 	var zero0 *github.SeatCancellations
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -4418,9 +4810,12 @@ type CredentialsService interface {
 }
 
 // UnimplementedCredentialsService may be embedded to implement only selected methods.
-type UnimplementedCredentialsService struct{}
+type UnimplementedCredentialsService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedCredentialsService) Revoke(ctx context.Context, credentials []string) (*github.Response, error) {
+func (s UnimplementedCredentialsService) Revoke(ctx context.Context, credentials []string) (*github.Response, error) {
+	s.Callback.call(ctx, "Credentials", "Revoke")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
@@ -4540,87 +4935,107 @@ type DependabotService interface {
 }
 
 // UnimplementedDependabotService may be embedded to implement only selected methods.
-type UnimplementedDependabotService struct{}
+type UnimplementedDependabotService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedDependabotService) AddSelectedRepoToOrgSecret(ctx context.Context, org string, name string, repo *github.Repository) (*github.Response, error) {
+func (s UnimplementedDependabotService) AddSelectedRepoToOrgSecret(ctx context.Context, org string, name string, repo *github.Repository) (*github.Response, error) {
+	s.Callback.call(ctx, "Dependabot", "AddSelectedRepoToOrgSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedDependabotService) CreateOrUpdateOrgSecret(ctx context.Context, org string, eSecret *github.DependabotEncryptedSecret) (*github.Response, error) {
+func (s UnimplementedDependabotService) CreateOrUpdateOrgSecret(ctx context.Context, org string, eSecret *github.DependabotEncryptedSecret) (*github.Response, error) {
+	s.Callback.call(ctx, "Dependabot", "CreateOrUpdateOrgSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedDependabotService) CreateOrUpdateRepoSecret(ctx context.Context, owner string, repo string, eSecret *github.DependabotEncryptedSecret) (*github.Response, error) {
+func (s UnimplementedDependabotService) CreateOrUpdateRepoSecret(ctx context.Context, owner string, repo string, eSecret *github.DependabotEncryptedSecret) (*github.Response, error) {
+	s.Callback.call(ctx, "Dependabot", "CreateOrUpdateRepoSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedDependabotService) DeleteOrgSecret(ctx context.Context, org string, name string) (*github.Response, error) {
+func (s UnimplementedDependabotService) DeleteOrgSecret(ctx context.Context, org string, name string) (*github.Response, error) {
+	s.Callback.call(ctx, "Dependabot", "DeleteOrgSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedDependabotService) DeleteRepoSecret(ctx context.Context, owner string, repo string, name string) (*github.Response, error) {
+func (s UnimplementedDependabotService) DeleteRepoSecret(ctx context.Context, owner string, repo string, name string) (*github.Response, error) {
+	s.Callback.call(ctx, "Dependabot", "DeleteRepoSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedDependabotService) GetOrgPublicKey(ctx context.Context, org string) (*github.PublicKey, *github.Response, error) {
+func (s UnimplementedDependabotService) GetOrgPublicKey(ctx context.Context, org string) (*github.PublicKey, *github.Response, error) {
+	s.Callback.call(ctx, "Dependabot", "GetOrgPublicKey")
 	var zero0 *github.PublicKey
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedDependabotService) GetOrgSecret(ctx context.Context, org string, name string) (*github.Secret, *github.Response, error) {
+func (s UnimplementedDependabotService) GetOrgSecret(ctx context.Context, org string, name string) (*github.Secret, *github.Response, error) {
+	s.Callback.call(ctx, "Dependabot", "GetOrgSecret")
 	var zero0 *github.Secret
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedDependabotService) GetRepoAlert(ctx context.Context, owner string, repo string, number int) (*github.DependabotAlert, *github.Response, error) {
+func (s UnimplementedDependabotService) GetRepoAlert(ctx context.Context, owner string, repo string, number int) (*github.DependabotAlert, *github.Response, error) {
+	s.Callback.call(ctx, "Dependabot", "GetRepoAlert")
 	var zero0 *github.DependabotAlert
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedDependabotService) GetRepoPublicKey(ctx context.Context, owner string, repo string) (*github.PublicKey, *github.Response, error) {
+func (s UnimplementedDependabotService) GetRepoPublicKey(ctx context.Context, owner string, repo string) (*github.PublicKey, *github.Response, error) {
+	s.Callback.call(ctx, "Dependabot", "GetRepoPublicKey")
 	var zero0 *github.PublicKey
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedDependabotService) GetRepoSecret(ctx context.Context, owner string, repo string, name string) (*github.Secret, *github.Response, error) {
+func (s UnimplementedDependabotService) GetRepoSecret(ctx context.Context, owner string, repo string, name string) (*github.Secret, *github.Response, error) {
+	s.Callback.call(ctx, "Dependabot", "GetRepoSecret")
 	var zero0 *github.Secret
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedDependabotService) ListOrgAlerts(ctx context.Context, org string, opts *github.ListAlertsOptions) ([]*github.DependabotAlert, *github.Response, error) {
+func (s UnimplementedDependabotService) ListOrgAlerts(ctx context.Context, org string, opts *github.ListAlertsOptions) ([]*github.DependabotAlert, *github.Response, error) {
+	s.Callback.call(ctx, "Dependabot", "ListOrgAlerts")
 	var zero0 []*github.DependabotAlert
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedDependabotService) ListOrgSecrets(ctx context.Context, org string, opts *github.ListOptions) (*github.Secrets, *github.Response, error) {
+func (s UnimplementedDependabotService) ListOrgSecrets(ctx context.Context, org string, opts *github.ListOptions) (*github.Secrets, *github.Response, error) {
+	s.Callback.call(ctx, "Dependabot", "ListOrgSecrets")
 	var zero0 *github.Secrets
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedDependabotService) ListRepoAlerts(ctx context.Context, owner string, repo string, opts *github.ListAlertsOptions) ([]*github.DependabotAlert, *github.Response, error) {
+func (s UnimplementedDependabotService) ListRepoAlerts(ctx context.Context, owner string, repo string, opts *github.ListAlertsOptions) ([]*github.DependabotAlert, *github.Response, error) {
+	s.Callback.call(ctx, "Dependabot", "ListRepoAlerts")
 	var zero0 []*github.DependabotAlert
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedDependabotService) ListRepoSecrets(ctx context.Context, owner string, repo string, opts *github.ListOptions) (*github.Secrets, *github.Response, error) {
+func (s UnimplementedDependabotService) ListRepoSecrets(ctx context.Context, owner string, repo string, opts *github.ListOptions) (*github.Secrets, *github.Response, error) {
+	s.Callback.call(ctx, "Dependabot", "ListRepoSecrets")
 	var zero0 *github.Secrets
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedDependabotService) ListSelectedReposForOrgSecret(ctx context.Context, org string, name string, opts *github.ListOptions) (*github.SelectedReposList, *github.Response, error) {
+func (s UnimplementedDependabotService) ListSelectedReposForOrgSecret(ctx context.Context, org string, name string, opts *github.ListOptions) (*github.SelectedReposList, *github.Response, error) {
+	s.Callback.call(ctx, "Dependabot", "ListSelectedReposForOrgSecret")
 	var zero0 *github.SelectedReposList
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedDependabotService) RemoveSelectedRepoFromOrgSecret(ctx context.Context, org string, name string, repo *github.Repository) (*github.Response, error) {
+func (s UnimplementedDependabotService) RemoveSelectedRepoFromOrgSecret(ctx context.Context, org string, name string, repo *github.Repository) (*github.Response, error) {
+	s.Callback.call(ctx, "Dependabot", "RemoveSelectedRepoFromOrgSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedDependabotService) SetSelectedReposForOrgSecret(ctx context.Context, org string, name string, ids github.DependabotSecretsSelectedRepoIDs) (*github.Response, error) {
+func (s UnimplementedDependabotService) SetSelectedReposForOrgSecret(ctx context.Context, org string, name string, ids github.DependabotSecretsSelectedRepoIDs) (*github.Response, error) {
+	s.Callback.call(ctx, "Dependabot", "SetSelectedReposForOrgSecret")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedDependabotService) UpdateAlert(ctx context.Context, owner string, repo string, number int, body *github.DependabotAlertState) (*github.DependabotAlert, *github.Response, error) {
+func (s UnimplementedDependabotService) UpdateAlert(ctx context.Context, owner string, repo string, number int, body *github.DependabotAlertState) (*github.DependabotAlert, *github.Response, error) {
+	s.Callback.call(ctx, "Dependabot", "UpdateAlert")
 	var zero0 *github.DependabotAlert
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -4643,14 +5058,18 @@ type DependencyGraphService interface {
 }
 
 // UnimplementedDependencyGraphService may be embedded to implement only selected methods.
-type UnimplementedDependencyGraphService struct{}
+type UnimplementedDependencyGraphService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedDependencyGraphService) CreateSnapshot(ctx context.Context, owner string, repo string, body *github.DependencyGraphSnapshot) (*github.DependencyGraphSnapshotCreationData, *github.Response, error) {
+func (s UnimplementedDependencyGraphService) CreateSnapshot(ctx context.Context, owner string, repo string, body *github.DependencyGraphSnapshot) (*github.DependencyGraphSnapshotCreationData, *github.Response, error) {
+	s.Callback.call(ctx, "DependencyGraph", "CreateSnapshot")
 	var zero0 *github.DependencyGraphSnapshotCreationData
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedDependencyGraphService) GetSBOM(ctx context.Context, owner string, repo string) (*github.SBOM, *github.Response, error) {
+func (s UnimplementedDependencyGraphService) GetSBOM(ctx context.Context, owner string, repo string) (*github.SBOM, *github.Response, error) {
+	s.Callback.call(ctx, "DependencyGraph", "GetSBOM")
 	var zero0 *github.SBOM
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -4667,9 +5086,12 @@ type EmojisService interface {
 }
 
 // UnimplementedEmojisService may be embedded to implement only selected methods.
-type UnimplementedEmojisService struct{}
+type UnimplementedEmojisService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedEmojisService) List(ctx context.Context) (map[string]string, *github.Response, error) {
+func (s UnimplementedEmojisService) List(ctx context.Context) (map[string]string, *github.Response, error) {
+	s.Callback.call(ctx, "Emojis", "List")
 	var zero0 map[string]string
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -5667,729 +6089,882 @@ type EnterpriseService interface {
 }
 
 // UnimplementedEnterpriseService may be embedded to implement only selected methods.
-type UnimplementedEnterpriseService struct{}
+type UnimplementedEnterpriseService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedEnterpriseService) AddAssignment(ctx context.Context, enterprise string, enterpriseTeam string, org string) (*github.Organization, *github.Response, error) {
+func (s UnimplementedEnterpriseService) AddAssignment(ctx context.Context, enterprise string, enterpriseTeam string, org string) (*github.Organization, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "AddAssignment")
 	var zero0 *github.Organization
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) AddMultipleAssignments(ctx context.Context, enterprise string, enterpriseTeam string, organizationSlugs []string) ([]*github.Organization, *github.Response, error) {
+func (s UnimplementedEnterpriseService) AddMultipleAssignments(ctx context.Context, enterprise string, enterpriseTeam string, organizationSlugs []string) ([]*github.Organization, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "AddMultipleAssignments")
 	var zero0 []*github.Organization
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) AddOrganizationAccessRunnerGroup(ctx context.Context, enterprise string, groupID int64, orgID int64) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) AddOrganizationAccessRunnerGroup(ctx context.Context, enterprise string, groupID int64, orgID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "AddOrganizationAccessRunnerGroup")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) AddRepositoriesToAppInstallation(ctx context.Context, enterprise string, org string, installationID int64, body github.AppInstallationRepositoriesRequest) ([]*github.AccessibleRepository, *github.Response, error) {
+func (s UnimplementedEnterpriseService) AddRepositoriesToAppInstallation(ctx context.Context, enterprise string, org string, installationID int64, body github.AppInstallationRepositoriesRequest) ([]*github.AccessibleRepository, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "AddRepositoriesToAppInstallation")
 	var zero0 []*github.AccessibleRepository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) AddResourcesToCostCenter(ctx context.Context, enterprise string, costCenterID string, body github.CostCenterResourceRequest) (*github.AddResourcesToCostCenterResponse, *github.Response, error) {
+func (s UnimplementedEnterpriseService) AddResourcesToCostCenter(ctx context.Context, enterprise string, costCenterID string, body github.CostCenterResourceRequest) (*github.AddResourcesToCostCenterResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "AddResourcesToCostCenter")
 	var zero0 *github.AddResourcesToCostCenterResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) AddRunnerGroupRunners(ctx context.Context, enterprise string, groupID int64, runnerID int64) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) AddRunnerGroupRunners(ctx context.Context, enterprise string, groupID int64, runnerID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "AddRunnerGroupRunners")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) AddTeamMember(ctx context.Context, enterprise string, enterpriseTeam string, username string) (*github.User, *github.Response, error) {
+func (s UnimplementedEnterpriseService) AddTeamMember(ctx context.Context, enterprise string, enterpriseTeam string, username string) (*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "AddTeamMember")
 	var zero0 *github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) AttachCodeSecurityConfigurationToRepositories(ctx context.Context, enterprise string, configurationID int64, scope string) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) AttachCodeSecurityConfigurationToRepositories(ctx context.Context, enterprise string, configurationID int64, scope string) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "AttachCodeSecurityConfigurationToRepositories")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) BulkAddTeamMembers(ctx context.Context, enterprise string, enterpriseTeam string, username []string) ([]*github.User, *github.Response, error) {
+func (s UnimplementedEnterpriseService) BulkAddTeamMembers(ctx context.Context, enterprise string, enterpriseTeam string, username []string) ([]*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "BulkAddTeamMembers")
 	var zero0 []*github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) BulkRemoveTeamMembers(ctx context.Context, enterprise string, enterpriseTeam string, username []string) ([]*github.User, *github.Response, error) {
+func (s UnimplementedEnterpriseService) BulkRemoveTeamMembers(ctx context.Context, enterprise string, enterpriseTeam string, username []string) ([]*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "BulkRemoveTeamMembers")
 	var zero0 []*github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) CheckSystemRequirements(ctx context.Context) (*github.SystemRequirements, *github.Response, error) {
+func (s UnimplementedEnterpriseService) CheckSystemRequirements(ctx context.Context) (*github.SystemRequirements, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "CheckSystemRequirements")
 	var zero0 *github.SystemRequirements
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ClusterStatus(ctx context.Context) (*github.ClusterStatus, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ClusterStatus(ctx context.Context) (*github.ClusterStatus, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ClusterStatus")
 	var zero0 *github.ClusterStatus
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ConfigApply(ctx context.Context, body *github.ConfigApplyOptions) (*github.ConfigApplyOptions, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ConfigApply(ctx context.Context, body *github.ConfigApplyOptions) (*github.ConfigApplyOptions, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ConfigApply")
 	var zero0 *github.ConfigApplyOptions
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ConfigApplyEvents(ctx context.Context, opts *github.ConfigApplyEventsOptions) (*github.ConfigApplyEvents, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ConfigApplyEvents(ctx context.Context, opts *github.ConfigApplyEventsOptions) (*github.ConfigApplyEvents, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ConfigApplyEvents")
 	var zero0 *github.ConfigApplyEvents
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ConfigApplyStatus(ctx context.Context, opts *github.ConfigApplyOptions) (*github.ConfigApplyStatus, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ConfigApplyStatus(ctx context.Context, opts *github.ConfigApplyOptions) (*github.ConfigApplyStatus, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ConfigApplyStatus")
 	var zero0 *github.ConfigApplyStatus
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) CreateAuditLogStream(ctx context.Context, enterprise string, body github.AuditLogStreamConfig) (*github.AuditLogStream, *github.Response, error) {
+func (s UnimplementedEnterpriseService) CreateAuditLogStream(ctx context.Context, enterprise string, body github.AuditLogStreamConfig) (*github.AuditLogStream, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "CreateAuditLogStream")
 	var zero0 *github.AuditLogStream
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) CreateBudget(ctx context.Context, enterprise string, body github.EnterpriseCreateBudget) (*github.EnterpriseCreateOrUpdateBudgetResponse, *github.Response, error) {
+func (s UnimplementedEnterpriseService) CreateBudget(ctx context.Context, enterprise string, body github.EnterpriseCreateBudget) (*github.EnterpriseCreateOrUpdateBudgetResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "CreateBudget")
 	var zero0 *github.EnterpriseCreateOrUpdateBudgetResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) CreateCodeSecurityConfiguration(ctx context.Context, enterprise string, body github.CodeSecurityConfiguration) (*github.CodeSecurityConfiguration, *github.Response, error) {
+func (s UnimplementedEnterpriseService) CreateCodeSecurityConfiguration(ctx context.Context, enterprise string, body github.CodeSecurityConfiguration) (*github.CodeSecurityConfiguration, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "CreateCodeSecurityConfiguration")
 	var zero0 *github.CodeSecurityConfiguration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) CreateCostCenter(ctx context.Context, enterprise string, body github.CostCenterRequest) (*github.CostCenter, *github.Response, error) {
+func (s UnimplementedEnterpriseService) CreateCostCenter(ctx context.Context, enterprise string, body github.CostCenterRequest) (*github.CostCenter, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "CreateCostCenter")
 	var zero0 *github.CostCenter
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) CreateEnterpriseNetworkConfiguration(ctx context.Context, enterprise string, body github.NetworkConfigurationRequest) (*github.NetworkConfiguration, *github.Response, error) {
+func (s UnimplementedEnterpriseService) CreateEnterpriseNetworkConfiguration(ctx context.Context, enterprise string, body github.NetworkConfigurationRequest) (*github.NetworkConfiguration, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "CreateEnterpriseNetworkConfiguration")
 	var zero0 *github.NetworkConfiguration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) CreateEnterpriseRunnerGroup(ctx context.Context, enterprise string, body github.CreateEnterpriseRunnerGroupRequest) (*github.EnterpriseRunnerGroup, *github.Response, error) {
+func (s UnimplementedEnterpriseService) CreateEnterpriseRunnerGroup(ctx context.Context, enterprise string, body github.CreateEnterpriseRunnerGroupRequest) (*github.EnterpriseRunnerGroup, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "CreateEnterpriseRunnerGroup")
 	var zero0 *github.EnterpriseRunnerGroup
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) CreateHostedRunner(ctx context.Context, enterprise string, body github.CreateHostedRunnerRequest) (*github.HostedRunner, *github.Response, error) {
+func (s UnimplementedEnterpriseService) CreateHostedRunner(ctx context.Context, enterprise string, body github.CreateHostedRunnerRequest) (*github.HostedRunner, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "CreateHostedRunner")
 	var zero0 *github.HostedRunner
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) CreateJITConfig(ctx context.Context, enterprise string, body github.CreateJITConfigRequest) (*github.JITRunnerConfig, *github.Response, error) {
+func (s UnimplementedEnterpriseService) CreateJITConfig(ctx context.Context, enterprise string, body github.CreateJITConfigRequest) (*github.JITRunnerConfig, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "CreateJITConfig")
 	var zero0 *github.JITRunnerConfig
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) CreateMaintenance(ctx context.Context, enable bool, body *github.MaintenanceOptions) ([]*github.MaintenanceOperationStatus, *github.Response, error) {
+func (s UnimplementedEnterpriseService) CreateMaintenance(ctx context.Context, enable bool, body *github.MaintenanceOptions) ([]*github.MaintenanceOperationStatus, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "CreateMaintenance")
 	var zero0 []*github.MaintenanceOperationStatus
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) CreateOrUpdateCustomProperties(ctx context.Context, enterprise string, properties []*github.CustomProperty) ([]*github.CustomProperty, *github.Response, error) {
+func (s UnimplementedEnterpriseService) CreateOrUpdateCustomProperties(ctx context.Context, enterprise string, properties []*github.CustomProperty) ([]*github.CustomProperty, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "CreateOrUpdateCustomProperties")
 	var zero0 []*github.CustomProperty
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) CreateOrUpdateCustomProperty(ctx context.Context, enterprise string, customPropertyName string, body *github.CustomProperty) (*github.CustomProperty, *github.Response, error) {
+func (s UnimplementedEnterpriseService) CreateOrUpdateCustomProperty(ctx context.Context, enterprise string, customPropertyName string, body *github.CustomProperty) (*github.CustomProperty, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "CreateOrUpdateCustomProperty")
 	var zero0 *github.CustomProperty
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) CreateOrUpdateOrganizationCustomProperty(ctx context.Context, enterprise string, customPropertyName string, body github.CustomProperty) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) CreateOrUpdateOrganizationCustomProperty(ctx context.Context, enterprise string, customPropertyName string, body github.CustomProperty) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "CreateOrUpdateOrganizationCustomProperty")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) CreateOrUpdateOrganizationCustomPropertySchema(ctx context.Context, enterprise string, body github.EnterpriseCustomPropertySchema) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) CreateOrUpdateOrganizationCustomPropertySchema(ctx context.Context, enterprise string, body github.EnterpriseCustomPropertySchema) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "CreateOrUpdateOrganizationCustomPropertySchema")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) CreateOrUpdateOrganizationCustomPropertyValues(ctx context.Context, enterprise string, body github.EnterpriseCustomPropertyValuesRequest) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) CreateOrUpdateOrganizationCustomPropertyValues(ctx context.Context, enterprise string, body github.EnterpriseCustomPropertyValuesRequest) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "CreateOrUpdateOrganizationCustomPropertyValues")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) CreateRegistrationToken(ctx context.Context, enterprise string) (*github.RegistrationToken, *github.Response, error) {
+func (s UnimplementedEnterpriseService) CreateRegistrationToken(ctx context.Context, enterprise string) (*github.RegistrationToken, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "CreateRegistrationToken")
 	var zero0 *github.RegistrationToken
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) CreateRepositoryRuleset(ctx context.Context, enterprise string, body github.RepositoryRuleset) (*github.RepositoryRuleset, *github.Response, error) {
+func (s UnimplementedEnterpriseService) CreateRepositoryRuleset(ctx context.Context, enterprise string, body github.RepositoryRuleset) (*github.RepositoryRuleset, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "CreateRepositoryRuleset")
 	var zero0 *github.RepositoryRuleset
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) CreateSSHKey(ctx context.Context, key string) ([]*github.SSHKeyStatus, *github.Response, error) {
+func (s UnimplementedEnterpriseService) CreateSSHKey(ctx context.Context, key string) ([]*github.SSHKeyStatus, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "CreateSSHKey")
 	var zero0 []*github.SSHKeyStatus
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) CreateTeam(ctx context.Context, enterprise string, body github.EnterpriseTeamCreateOrUpdateRequest) (*github.EnterpriseTeam, *github.Response, error) {
+func (s UnimplementedEnterpriseService) CreateTeam(ctx context.Context, enterprise string, body github.EnterpriseTeamCreateOrUpdateRequest) (*github.EnterpriseTeam, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "CreateTeam")
 	var zero0 *github.EnterpriseTeam
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) DeleteAuditLogStream(ctx context.Context, enterprise string, streamID int64) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) DeleteAuditLogStream(ctx context.Context, enterprise string, streamID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "DeleteAuditLogStream")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) DeleteBudget(ctx context.Context, enterprise string, budgetID string) (*github.EnterpriseDeleteBudgetResponse, *github.Response, error) {
+func (s UnimplementedEnterpriseService) DeleteBudget(ctx context.Context, enterprise string, budgetID string) (*github.EnterpriseDeleteBudgetResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "DeleteBudget")
 	var zero0 *github.EnterpriseDeleteBudgetResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) DeleteCodeSecurityConfiguration(ctx context.Context, enterprise string, configurationID int64) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) DeleteCodeSecurityConfiguration(ctx context.Context, enterprise string, configurationID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "DeleteCodeSecurityConfiguration")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) DeleteCostCenter(ctx context.Context, enterprise string, costCenterID string) (*github.DeleteCostCenterResponse, *github.Response, error) {
+func (s UnimplementedEnterpriseService) DeleteCostCenter(ctx context.Context, enterprise string, costCenterID string) (*github.DeleteCostCenterResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "DeleteCostCenter")
 	var zero0 *github.DeleteCostCenterResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) DeleteEnterpriseNetworkConfiguration(ctx context.Context, enterprise string, networkID string) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) DeleteEnterpriseNetworkConfiguration(ctx context.Context, enterprise string, networkID string) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "DeleteEnterpriseNetworkConfiguration")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) DeleteEnterpriseRunnerGroup(ctx context.Context, enterprise string, groupID int64) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) DeleteEnterpriseRunnerGroup(ctx context.Context, enterprise string, groupID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "DeleteEnterpriseRunnerGroup")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) DeleteHostedRunner(ctx context.Context, enterprise string, runnerID int64) (*github.HostedRunner, *github.Response, error) {
+func (s UnimplementedEnterpriseService) DeleteHostedRunner(ctx context.Context, enterprise string, runnerID int64) (*github.HostedRunner, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "DeleteHostedRunner")
 	var zero0 *github.HostedRunner
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) DeleteHostedRunnerCustomImage(ctx context.Context, enterprise string, imageDefinitionID int64) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) DeleteHostedRunnerCustomImage(ctx context.Context, enterprise string, imageDefinitionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "DeleteHostedRunnerCustomImage")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) DeleteHostedRunnerCustomImageVersion(ctx context.Context, enterprise string, imageDefinitionID int64, version string) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) DeleteHostedRunnerCustomImageVersion(ctx context.Context, enterprise string, imageDefinitionID int64, version string) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "DeleteHostedRunnerCustomImageVersion")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) DeleteOrganizationCustomProperty(ctx context.Context, enterprise string, customPropertyName string) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) DeleteOrganizationCustomProperty(ctx context.Context, enterprise string, customPropertyName string) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "DeleteOrganizationCustomProperty")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) DeleteRepositoryRuleset(ctx context.Context, enterprise string, rulesetID int64) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) DeleteRepositoryRuleset(ctx context.Context, enterprise string, rulesetID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "DeleteRepositoryRuleset")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) DeleteSCIMGroup(ctx context.Context, enterprise string, scimGroupID string) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) DeleteSCIMGroup(ctx context.Context, enterprise string, scimGroupID string) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "DeleteSCIMGroup")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) DeleteSCIMUser(ctx context.Context, enterprise string, scimUserID string) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) DeleteSCIMUser(ctx context.Context, enterprise string, scimUserID string) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "DeleteSCIMUser")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) DeleteSSHKey(ctx context.Context, key string) ([]*github.SSHKeyStatus, *github.Response, error) {
+func (s UnimplementedEnterpriseService) DeleteSSHKey(ctx context.Context, key string) ([]*github.SSHKeyStatus, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "DeleteSSHKey")
 	var zero0 []*github.SSHKeyStatus
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) DeleteTeam(ctx context.Context, enterprise string, teamSlug string) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) DeleteTeam(ctx context.Context, enterprise string, teamSlug string) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "DeleteTeam")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) EnableDisableSecurityFeature(ctx context.Context, enterprise string, securityProduct string, enablement string) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) EnableDisableSecurityFeature(ctx context.Context, enterprise string, securityProduct string, enablement string) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "EnableDisableSecurityFeature")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetAICreditUsage(ctx context.Context, enterprise string, opts *github.EnterprisePremiumRequestUsageReportOptions) (*github.EnterpriseAggregatedUsageReport, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetAICreditUsage(ctx context.Context, enterprise string, opts *github.EnterprisePremiumRequestUsageReportOptions) (*github.EnterpriseAggregatedUsageReport, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetAICreditUsage")
 	var zero0 *github.EnterpriseAggregatedUsageReport
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetAllCustomProperties(ctx context.Context, enterprise string) ([]*github.CustomProperty, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetAllCustomProperties(ctx context.Context, enterprise string) ([]*github.CustomProperty, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetAllCustomProperties")
 	var zero0 []*github.CustomProperty
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetAssignment(ctx context.Context, enterprise string, enterpriseTeam string, org string) (*github.Organization, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetAssignment(ctx context.Context, enterprise string, enterpriseTeam string, org string) (*github.Organization, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetAssignment")
 	var zero0 *github.Organization
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetAuditLog(ctx context.Context, enterprise string, opts *github.GetAuditLogOptions) ([]*github.AuditEntry, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetAuditLog(ctx context.Context, enterprise string, opts *github.GetAuditLogOptions) ([]*github.AuditEntry, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetAuditLog")
 	var zero0 []*github.AuditEntry
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetAuditLogStream(ctx context.Context, enterprise string, streamID int64) (*github.AuditLogStream, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetAuditLogStream(ctx context.Context, enterprise string, streamID int64) (*github.AuditLogStream, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetAuditLogStream")
 	var zero0 *github.AuditLogStream
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetAuditLogStreamKey(ctx context.Context, enterprise string) (*github.AuditLogStreamKey, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetAuditLogStreamKey(ctx context.Context, enterprise string) (*github.AuditLogStreamKey, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetAuditLogStreamKey")
 	var zero0 *github.AuditLogStreamKey
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetBudget(ctx context.Context, enterprise string, budgetID string) (*github.EnterpriseBudget, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetBudget(ctx context.Context, enterprise string, budgetID string) (*github.EnterpriseBudget, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetBudget")
 	var zero0 *github.EnterpriseBudget
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetCodeSecurityAndAnalysis(ctx context.Context, enterprise string) (*github.EnterpriseSecurityAnalysisSettings, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetCodeSecurityAndAnalysis(ctx context.Context, enterprise string) (*github.EnterpriseSecurityAnalysisSettings, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetCodeSecurityAndAnalysis")
 	var zero0 *github.EnterpriseSecurityAnalysisSettings
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetCodeSecurityConfiguration(ctx context.Context, enterprise string, configurationID int64) (*github.CodeSecurityConfiguration, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetCodeSecurityConfiguration(ctx context.Context, enterprise string, configurationID int64) (*github.CodeSecurityConfiguration, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetCodeSecurityConfiguration")
 	var zero0 *github.CodeSecurityConfiguration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetCostCenter(ctx context.Context, enterprise string, costCenterID string) (*github.CostCenter, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetCostCenter(ctx context.Context, enterprise string, costCenterID string) (*github.CostCenter, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetCostCenter")
 	var zero0 *github.CostCenter
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetCustomProperty(ctx context.Context, enterprise string, customPropertyName string) (*github.CustomProperty, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetCustomProperty(ctx context.Context, enterprise string, customPropertyName string) (*github.CustomProperty, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetCustomProperty")
 	var zero0 *github.CustomProperty
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetEnterpriseNetworkConfiguration(ctx context.Context, enterprise string, networkID string) (*github.NetworkConfiguration, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetEnterpriseNetworkConfiguration(ctx context.Context, enterprise string, networkID string) (*github.NetworkConfiguration, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetEnterpriseNetworkConfiguration")
 	var zero0 *github.NetworkConfiguration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetEnterpriseNetworkSettingsResource(ctx context.Context, enterprise string, networkID string) (*github.NetworkSettingsResource, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetEnterpriseNetworkSettingsResource(ctx context.Context, enterprise string, networkID string) (*github.NetworkSettingsResource, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetEnterpriseNetworkSettingsResource")
 	var zero0 *github.NetworkSettingsResource
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetEnterpriseRunnerGroup(ctx context.Context, enterprise string, groupID int64) (*github.EnterpriseRunnerGroup, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetEnterpriseRunnerGroup(ctx context.Context, enterprise string, groupID int64) (*github.EnterpriseRunnerGroup, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetEnterpriseRunnerGroup")
 	var zero0 *github.EnterpriseRunnerGroup
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetHostedRunner(ctx context.Context, enterprise string, runnerID int64) (*github.HostedRunner, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetHostedRunner(ctx context.Context, enterprise string, runnerID int64) (*github.HostedRunner, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetHostedRunner")
 	var zero0 *github.HostedRunner
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetHostedRunnerCustomImage(ctx context.Context, enterprise string, imageDefinitionID int64) (*github.HostedRunnerCustomImage, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetHostedRunnerCustomImage(ctx context.Context, enterprise string, imageDefinitionID int64) (*github.HostedRunnerCustomImage, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetHostedRunnerCustomImage")
 	var zero0 *github.HostedRunnerCustomImage
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetHostedRunnerCustomImageVersion(ctx context.Context, enterprise string, imageDefinitionID int64, version string) (*github.HostedRunnerCustomImageVersion, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetHostedRunnerCustomImageVersion(ctx context.Context, enterprise string, imageDefinitionID int64, version string) (*github.HostedRunnerCustomImageVersion, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetHostedRunnerCustomImageVersion")
 	var zero0 *github.HostedRunnerCustomImageVersion
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetHostedRunnerGitHubOwnedImages(ctx context.Context, enterprise string) (*github.HostedRunnerImages, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetHostedRunnerGitHubOwnedImages(ctx context.Context, enterprise string) (*github.HostedRunnerImages, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetHostedRunnerGitHubOwnedImages")
 	var zero0 *github.HostedRunnerImages
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetHostedRunnerLimits(ctx context.Context, enterprise string) (*github.HostedRunnerPublicIPLimits, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetHostedRunnerLimits(ctx context.Context, enterprise string) (*github.HostedRunnerPublicIPLimits, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetHostedRunnerLimits")
 	var zero0 *github.HostedRunnerPublicIPLimits
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetHostedRunnerMachineSpecs(ctx context.Context, enterprise string) (*github.HostedRunnerMachineSpecs, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetHostedRunnerMachineSpecs(ctx context.Context, enterprise string) (*github.HostedRunnerMachineSpecs, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetHostedRunnerMachineSpecs")
 	var zero0 *github.HostedRunnerMachineSpecs
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetHostedRunnerPartnerImages(ctx context.Context, enterprise string) (*github.HostedRunnerImages, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetHostedRunnerPartnerImages(ctx context.Context, enterprise string) (*github.HostedRunnerImages, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetHostedRunnerPartnerImages")
 	var zero0 *github.HostedRunnerImages
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetHostedRunnerPlatforms(ctx context.Context, enterprise string) (*github.HostedRunnerPlatforms, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetHostedRunnerPlatforms(ctx context.Context, enterprise string) (*github.HostedRunnerPlatforms, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetHostedRunnerPlatforms")
 	var zero0 *github.HostedRunnerPlatforms
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetLicenseSyncStatus(ctx context.Context, enterprise string) (*github.EnterpriseLicenseSyncStatus, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetLicenseSyncStatus(ctx context.Context, enterprise string) (*github.EnterpriseLicenseSyncStatus, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetLicenseSyncStatus")
 	var zero0 *github.EnterpriseLicenseSyncStatus
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetMaintenanceStatus(ctx context.Context, opts *github.NodeQueryOptions) ([]*github.MaintenanceStatus, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetMaintenanceStatus(ctx context.Context, opts *github.NodeQueryOptions) ([]*github.MaintenanceStatus, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetMaintenanceStatus")
 	var zero0 []*github.MaintenanceStatus
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetNodeReleaseVersions(ctx context.Context, opts *github.NodeQueryOptions) ([]*github.NodeReleaseVersion, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetNodeReleaseVersions(ctx context.Context, opts *github.NodeQueryOptions) ([]*github.NodeReleaseVersion, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetNodeReleaseVersions")
 	var zero0 []*github.NodeReleaseVersion
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetOrganizationCustomProperty(ctx context.Context, enterprise string, customPropertyName string) (*github.CustomProperty, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetOrganizationCustomProperty(ctx context.Context, enterprise string, customPropertyName string) (*github.CustomProperty, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetOrganizationCustomProperty")
 	var zero0 *github.CustomProperty
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetOrganizationCustomPropertySchema(ctx context.Context, enterprise string) (*github.EnterpriseCustomPropertySchema, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetOrganizationCustomPropertySchema(ctx context.Context, enterprise string) (*github.EnterpriseCustomPropertySchema, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetOrganizationCustomPropertySchema")
 	var zero0 *github.EnterpriseCustomPropertySchema
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetPremiumRequestUsageReport(ctx context.Context, enterprise string, opts *github.EnterprisePremiumRequestUsageReportOptions) (*github.EnterpriseAggregatedUsageReport, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetPremiumRequestUsageReport(ctx context.Context, enterprise string, opts *github.EnterprisePremiumRequestUsageReportOptions) (*github.EnterpriseAggregatedUsageReport, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetPremiumRequestUsageReport")
 	var zero0 *github.EnterpriseAggregatedUsageReport
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetProvisionedSCIMGroup(ctx context.Context, enterprise string, scimGroupID string, opts *github.GetProvisionedSCIMGroupEnterpriseOptions) (*github.SCIMEnterpriseGroupAttributes, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetProvisionedSCIMGroup(ctx context.Context, enterprise string, scimGroupID string, opts *github.GetProvisionedSCIMGroupEnterpriseOptions) (*github.SCIMEnterpriseGroupAttributes, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetProvisionedSCIMGroup")
 	var zero0 *github.SCIMEnterpriseGroupAttributes
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetProvisionedSCIMUser(ctx context.Context, enterprise string, scimUserID string) (*github.SCIMEnterpriseUserAttributes, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetProvisionedSCIMUser(ctx context.Context, enterprise string, scimUserID string) (*github.SCIMEnterpriseUserAttributes, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetProvisionedSCIMUser")
 	var zero0 *github.SCIMEnterpriseUserAttributes
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetRepositoryRuleset(ctx context.Context, enterprise string, rulesetID int64) (*github.RepositoryRuleset, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetRepositoryRuleset(ctx context.Context, enterprise string, rulesetID int64) (*github.RepositoryRuleset, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetRepositoryRuleset")
 	var zero0 *github.RepositoryRuleset
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetRunner(ctx context.Context, enterprise string, runnerID int64) (*github.Runner, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetRunner(ctx context.Context, enterprise string, runnerID int64) (*github.Runner, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetRunner")
 	var zero0 *github.Runner
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetSSHKey(ctx context.Context) ([]*github.ClusterSSHKey, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetSSHKey(ctx context.Context) ([]*github.ClusterSSHKey, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetSSHKey")
 	var zero0 []*github.ClusterSSHKey
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetTeam(ctx context.Context, enterprise string, teamSlug string) (*github.EnterpriseTeam, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetTeam(ctx context.Context, enterprise string, teamSlug string) (*github.EnterpriseTeam, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetTeam")
 	var zero0 *github.EnterpriseTeam
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetTeamMembership(ctx context.Context, enterprise string, enterpriseTeam string, username string) (*github.User, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetTeamMembership(ctx context.Context, enterprise string, enterpriseTeam string, username string) (*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetTeamMembership")
 	var zero0 *github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetUsageReport(ctx context.Context, enterprise string, opts *github.EnterpriseUsageReportOptions) (*github.EnterpriseUsageReport, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetUsageReport(ctx context.Context, enterprise string, opts *github.EnterpriseUsageReportOptions) (*github.EnterpriseUsageReport, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetUsageReport")
 	var zero0 *github.EnterpriseUsageReport
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) GetUsageSummary(ctx context.Context, enterprise string, opts *github.EnterpriseUsageSummaryOptions) (*github.EnterpriseUsageSummaryReport, *github.Response, error) {
+func (s UnimplementedEnterpriseService) GetUsageSummary(ctx context.Context, enterprise string, opts *github.EnterpriseUsageSummaryOptions) (*github.EnterpriseUsageSummaryReport, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "GetUsageSummary")
 	var zero0 *github.EnterpriseUsageSummaryReport
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) InitialConfig(ctx context.Context, license string, password string) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) InitialConfig(ctx context.Context, license string, password string) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "InitialConfig")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) InstallApp(ctx context.Context, enterprise string, org string, body github.InstallAppRequest) (*github.Installation, *github.Response, error) {
+func (s UnimplementedEnterpriseService) InstallApp(ctx context.Context, enterprise string, org string, body github.InstallAppRequest) (*github.Installation, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "InstallApp")
 	var zero0 *github.Installation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) License(ctx context.Context) (*github.LicenseStatus, *github.Response, error) {
+func (s UnimplementedEnterpriseService) License(ctx context.Context) (*github.LicenseStatus, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "License")
 	var zero0 *github.LicenseStatus
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) LicenseStatus(ctx context.Context) ([]*github.LicenseCheck, *github.Response, error) {
+func (s UnimplementedEnterpriseService) LicenseStatus(ctx context.Context) ([]*github.LicenseCheck, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "LicenseStatus")
 	var zero0 []*github.LicenseCheck
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListAppAccessibleOrganizationRepositories(ctx context.Context, enterprise string, org string, opts *github.ListOptions) ([]*github.AccessibleRepository, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListAppAccessibleOrganizationRepositories(ctx context.Context, enterprise string, org string, opts *github.ListOptions) ([]*github.AccessibleRepository, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListAppAccessibleOrganizationRepositories")
 	var zero0 []*github.AccessibleRepository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListAppInstallableOrganizations(ctx context.Context, enterprise string, opts *github.ListOptions) ([]*github.InstallableOrganization, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListAppInstallableOrganizations(ctx context.Context, enterprise string, opts *github.ListOptions) ([]*github.InstallableOrganization, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListAppInstallableOrganizations")
 	var zero0 []*github.InstallableOrganization
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListAppInstallations(ctx context.Context, enterprise string, org string, opts *github.ListOptions) ([]*github.Installation, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListAppInstallations(ctx context.Context, enterprise string, org string, opts *github.ListOptions) ([]*github.Installation, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListAppInstallations")
 	var zero0 []*github.Installation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListAssignments(ctx context.Context, enterprise string, enterpriseTeam string, opts *github.ListOptions) ([]*github.Organization, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListAssignments(ctx context.Context, enterprise string, enterpriseTeam string, opts *github.ListOptions) ([]*github.Organization, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListAssignments")
 	var zero0 []*github.Organization
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListAuditLogStreams(ctx context.Context, enterprise string) ([]*github.AuditLogStream, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListAuditLogStreams(ctx context.Context, enterprise string) ([]*github.AuditLogStream, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListAuditLogStreams")
 	var zero0 []*github.AuditLogStream
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListBudgets(ctx context.Context, enterprise string) (*github.EnterpriseListBudgets, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListBudgets(ctx context.Context, enterprise string) (*github.EnterpriseListBudgets, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListBudgets")
 	var zero0 *github.EnterpriseListBudgets
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListCodeSecurityConfigurationRepositories(ctx context.Context, enterprise string, configurationID int64, opts *github.ListCodeSecurityConfigurationRepositoriesOptions) ([]*github.RepositoryAttachment, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListCodeSecurityConfigurationRepositories(ctx context.Context, enterprise string, configurationID int64, opts *github.ListCodeSecurityConfigurationRepositoriesOptions) ([]*github.RepositoryAttachment, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListCodeSecurityConfigurationRepositories")
 	var zero0 []*github.RepositoryAttachment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListCodeSecurityConfigurations(ctx context.Context, enterprise string, opts *github.ListEnterpriseCodeSecurityConfigurationOptions) ([]*github.CodeSecurityConfiguration, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListCodeSecurityConfigurations(ctx context.Context, enterprise string, opts *github.ListEnterpriseCodeSecurityConfigurationOptions) ([]*github.CodeSecurityConfiguration, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListCodeSecurityConfigurations")
 	var zero0 []*github.CodeSecurityConfiguration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListConsumedLicenses(ctx context.Context, enterprise string, opts *github.ListOptions) (*github.EnterpriseConsumedLicenses, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListConsumedLicenses(ctx context.Context, enterprise string, opts *github.ListOptions) (*github.EnterpriseConsumedLicenses, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListConsumedLicenses")
 	var zero0 *github.EnterpriseConsumedLicenses
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListCostCenters(ctx context.Context, enterprise string, opts *github.ListCostCenterOptions) (*github.CostCenters, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListCostCenters(ctx context.Context, enterprise string, opts *github.ListCostCenterOptions) (*github.CostCenters, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListCostCenters")
 	var zero0 *github.CostCenters
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListDefaultCodeSecurityConfigurations(ctx context.Context, enterprise string) ([]*github.CodeSecurityConfigurationWithDefaultForNewRepos, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListDefaultCodeSecurityConfigurations(ctx context.Context, enterprise string) ([]*github.CodeSecurityConfigurationWithDefaultForNewRepos, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListDefaultCodeSecurityConfigurations")
 	var zero0 []*github.CodeSecurityConfigurationWithDefaultForNewRepos
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListEnterpriseNetworkConfigurations(ctx context.Context, enterprise string, opts *github.ListOptions) (*github.NetworkConfigurations, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListEnterpriseNetworkConfigurations(ctx context.Context, enterprise string, opts *github.ListOptions) (*github.NetworkConfigurations, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListEnterpriseNetworkConfigurations")
 	var zero0 *github.NetworkConfigurations
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListHostedRunnerCustomImageVersions(ctx context.Context, enterprise string, imageDefinitionID int64) (*github.HostedRunnerCustomImageVersions, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListHostedRunnerCustomImageVersions(ctx context.Context, enterprise string, imageDefinitionID int64) (*github.HostedRunnerCustomImageVersions, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListHostedRunnerCustomImageVersions")
 	var zero0 *github.HostedRunnerCustomImageVersions
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListHostedRunnerCustomImages(ctx context.Context, enterprise string) (*github.HostedRunnerCustomImages, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListHostedRunnerCustomImages(ctx context.Context, enterprise string) (*github.HostedRunnerCustomImages, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListHostedRunnerCustomImages")
 	var zero0 *github.HostedRunnerCustomImages
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListHostedRunners(ctx context.Context, enterprise string, opts *github.ListOptions) (*github.HostedRunners, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListHostedRunners(ctx context.Context, enterprise string, opts *github.ListOptions) (*github.HostedRunners, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListHostedRunners")
 	var zero0 *github.HostedRunners
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListOrganizationAccessRunnerGroup(ctx context.Context, enterprise string, groupID int64, opts *github.ListOptions) (*github.ListOrganizations, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListOrganizationAccessRunnerGroup(ctx context.Context, enterprise string, groupID int64, opts *github.ListOptions) (*github.ListOrganizations, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListOrganizationAccessRunnerGroup")
 	var zero0 *github.ListOrganizations
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListOrganizationCustomPropertyValues(ctx context.Context, enterprise string, opts *github.ListOptions) ([]*github.EnterpriseCustomPropertiesValues, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListOrganizationCustomPropertyValues(ctx context.Context, enterprise string, opts *github.ListOptions) ([]*github.EnterpriseCustomPropertiesValues, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListOrganizationCustomPropertyValues")
 	var zero0 []*github.EnterpriseCustomPropertiesValues
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListProvisionedSCIMGroups(ctx context.Context, enterprise string, opts *github.ListProvisionedSCIMGroupsEnterpriseOptions) (*github.SCIMEnterpriseGroups, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListProvisionedSCIMGroups(ctx context.Context, enterprise string, opts *github.ListProvisionedSCIMGroupsEnterpriseOptions) (*github.SCIMEnterpriseGroups, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListProvisionedSCIMGroups")
 	var zero0 *github.SCIMEnterpriseGroups
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListProvisionedSCIMUsers(ctx context.Context, enterprise string, opts *github.ListProvisionedSCIMUsersEnterpriseOptions) (*github.SCIMEnterpriseUsers, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListProvisionedSCIMUsers(ctx context.Context, enterprise string, opts *github.ListProvisionedSCIMUsersEnterpriseOptions) (*github.SCIMEnterpriseUsers, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListProvisionedSCIMUsers")
 	var zero0 *github.SCIMEnterpriseUsers
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListRepositoriesForOrgAppInstallation(ctx context.Context, enterprise string, org string, installationID int64, opts *github.ListOptions) ([]*github.AccessibleRepository, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListRepositoriesForOrgAppInstallation(ctx context.Context, enterprise string, org string, installationID int64, opts *github.ListOptions) ([]*github.AccessibleRepository, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListRepositoriesForOrgAppInstallation")
 	var zero0 []*github.AccessibleRepository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListRunnerApplicationDownloads(ctx context.Context, enterprise string) ([]*github.RunnerApplicationDownload, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListRunnerApplicationDownloads(ctx context.Context, enterprise string) ([]*github.RunnerApplicationDownload, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListRunnerApplicationDownloads")
 	var zero0 []*github.RunnerApplicationDownload
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListRunnerGroupRunners(ctx context.Context, enterprise string, groupID int64, opts *github.ListOptions) (*github.Runners, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListRunnerGroupRunners(ctx context.Context, enterprise string, groupID int64, opts *github.ListOptions) (*github.Runners, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListRunnerGroupRunners")
 	var zero0 *github.Runners
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListRunnerGroups(ctx context.Context, enterprise string, opts *github.ListEnterpriseRunnerGroupOptions) (*github.EnterpriseRunnerGroups, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListRunnerGroups(ctx context.Context, enterprise string, opts *github.ListEnterpriseRunnerGroupOptions) (*github.EnterpriseRunnerGroups, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListRunnerGroups")
 	var zero0 *github.EnterpriseRunnerGroups
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListRunners(ctx context.Context, enterprise string, opts *github.ListRunnersOptions) (*github.Runners, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListRunners(ctx context.Context, enterprise string, opts *github.ListRunnersOptions) (*github.Runners, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListRunners")
 	var zero0 *github.Runners
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListTeamMembers(ctx context.Context, enterprise string, enterpriseTeam string, opts *github.ListOptions) ([]*github.User, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListTeamMembers(ctx context.Context, enterprise string, enterpriseTeam string, opts *github.ListOptions) ([]*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListTeamMembers")
 	var zero0 []*github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ListTeams(ctx context.Context, enterprise string, opts *github.ListOptions) ([]*github.EnterpriseTeam, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ListTeams(ctx context.Context, enterprise string, opts *github.ListOptions) ([]*github.EnterpriseTeam, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ListTeams")
 	var zero0 []*github.EnterpriseTeam
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) NodeMetadata(ctx context.Context, opts *github.NodeQueryOptions) (*github.NodeMetadataStatus, *github.Response, error) {
+func (s UnimplementedEnterpriseService) NodeMetadata(ctx context.Context, opts *github.NodeQueryOptions) (*github.NodeMetadataStatus, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "NodeMetadata")
 	var zero0 *github.NodeMetadataStatus
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ProvisionSCIMGroup(ctx context.Context, enterprise string, body github.SCIMEnterpriseGroupAttributes) (*github.SCIMEnterpriseGroupAttributes, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ProvisionSCIMGroup(ctx context.Context, enterprise string, body github.SCIMEnterpriseGroupAttributes) (*github.SCIMEnterpriseGroupAttributes, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ProvisionSCIMGroup")
 	var zero0 *github.SCIMEnterpriseGroupAttributes
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ProvisionSCIMUser(ctx context.Context, enterprise string, body github.SCIMEnterpriseUserAttributes) (*github.SCIMEnterpriseUserAttributes, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ProvisionSCIMUser(ctx context.Context, enterprise string, body github.SCIMEnterpriseUserAttributes) (*github.SCIMEnterpriseUserAttributes, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ProvisionSCIMUser")
 	var zero0 *github.SCIMEnterpriseUserAttributes
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) RemoveAssignment(ctx context.Context, enterprise string, enterpriseTeam string, org string) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) RemoveAssignment(ctx context.Context, enterprise string, enterpriseTeam string, org string) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "RemoveAssignment")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) RemoveCustomProperty(ctx context.Context, enterprise string, customPropertyName string) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) RemoveCustomProperty(ctx context.Context, enterprise string, customPropertyName string) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "RemoveCustomProperty")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) RemoveMultipleAssignments(ctx context.Context, enterprise string, enterpriseTeam string, organizationSlugs []string) ([]*github.Organization, *github.Response, error) {
+func (s UnimplementedEnterpriseService) RemoveMultipleAssignments(ctx context.Context, enterprise string, enterpriseTeam string, organizationSlugs []string) ([]*github.Organization, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "RemoveMultipleAssignments")
 	var zero0 []*github.Organization
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) RemoveOrganizationAccessRunnerGroup(ctx context.Context, enterprise string, groupID int64, orgID int64) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) RemoveOrganizationAccessRunnerGroup(ctx context.Context, enterprise string, groupID int64, orgID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "RemoveOrganizationAccessRunnerGroup")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) RemoveRepositoriesFromAppInstallation(ctx context.Context, enterprise string, org string, installationID int64, body github.AppInstallationRepositoriesRequest) ([]*github.AccessibleRepository, *github.Response, error) {
+func (s UnimplementedEnterpriseService) RemoveRepositoriesFromAppInstallation(ctx context.Context, enterprise string, org string, installationID int64, body github.AppInstallationRepositoriesRequest) ([]*github.AccessibleRepository, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "RemoveRepositoriesFromAppInstallation")
 	var zero0 []*github.AccessibleRepository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) RemoveResourcesFromCostCenter(ctx context.Context, enterprise string, costCenterID string, resources github.CostCenterResourceRequest) (*github.RemoveResourcesFromCostCenterResponse, *github.Response, error) {
+func (s UnimplementedEnterpriseService) RemoveResourcesFromCostCenter(ctx context.Context, enterprise string, costCenterID string, resources github.CostCenterResourceRequest) (*github.RemoveResourcesFromCostCenterResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "RemoveResourcesFromCostCenter")
 	var zero0 *github.RemoveResourcesFromCostCenterResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) RemoveRunner(ctx context.Context, enterprise string, runnerID int64) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) RemoveRunner(ctx context.Context, enterprise string, runnerID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "RemoveRunner")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) RemoveRunnerGroupRunners(ctx context.Context, enterprise string, groupID int64, runnerID int64) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) RemoveRunnerGroupRunners(ctx context.Context, enterprise string, groupID int64, runnerID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "RemoveRunnerGroupRunners")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) RemoveTeamMember(ctx context.Context, enterprise string, enterpriseTeam string, username string) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) RemoveTeamMember(ctx context.Context, enterprise string, enterpriseTeam string, username string) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "RemoveTeamMember")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) ReplicationStatus(ctx context.Context, opts *github.NodeQueryOptions) (*github.ClusterStatus, *github.Response, error) {
+func (s UnimplementedEnterpriseService) ReplicationStatus(ctx context.Context, opts *github.NodeQueryOptions) (*github.ClusterStatus, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "ReplicationStatus")
 	var zero0 *github.ClusterStatus
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) SetDefaultCodeSecurityConfiguration(ctx context.Context, enterprise string, configurationID int64, defaultForNewRepos string) (*github.CodeSecurityConfigurationWithDefaultForNewRepos, *github.Response, error) {
+func (s UnimplementedEnterpriseService) SetDefaultCodeSecurityConfiguration(ctx context.Context, enterprise string, configurationID int64, defaultForNewRepos string) (*github.CodeSecurityConfigurationWithDefaultForNewRepos, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "SetDefaultCodeSecurityConfiguration")
 	var zero0 *github.CodeSecurityConfigurationWithDefaultForNewRepos
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) SetOrganizationAccessRunnerGroup(ctx context.Context, enterprise string, groupID int64, body github.SetOrgAccessRunnerGroupRequest) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) SetOrganizationAccessRunnerGroup(ctx context.Context, enterprise string, groupID int64, body github.SetOrgAccessRunnerGroupRequest) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "SetOrganizationAccessRunnerGroup")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) SetProvisionedSCIMGroup(ctx context.Context, enterprise string, scimGroupID string, body github.SCIMEnterpriseGroupAttributes) (*github.SCIMEnterpriseGroupAttributes, *github.Response, error) {
+func (s UnimplementedEnterpriseService) SetProvisionedSCIMGroup(ctx context.Context, enterprise string, scimGroupID string, body github.SCIMEnterpriseGroupAttributes) (*github.SCIMEnterpriseGroupAttributes, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "SetProvisionedSCIMGroup")
 	var zero0 *github.SCIMEnterpriseGroupAttributes
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) SetProvisionedSCIMUser(ctx context.Context, enterprise string, scimUserID string, body github.SCIMEnterpriseUserAttributes) (*github.SCIMEnterpriseUserAttributes, *github.Response, error) {
+func (s UnimplementedEnterpriseService) SetProvisionedSCIMUser(ctx context.Context, enterprise string, scimUserID string, body github.SCIMEnterpriseUserAttributes) (*github.SCIMEnterpriseUserAttributes, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "SetProvisionedSCIMUser")
 	var zero0 *github.SCIMEnterpriseUserAttributes
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) SetRunnerGroupRunners(ctx context.Context, enterprise string, groupID int64, body github.SetRunnerGroupRunnersRequest) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) SetRunnerGroupRunners(ctx context.Context, enterprise string, groupID int64, body github.SetRunnerGroupRunnersRequest) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "SetRunnerGroupRunners")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) Settings(ctx context.Context) (*github.ConfigSettings, *github.Response, error) {
+func (s UnimplementedEnterpriseService) Settings(ctx context.Context) (*github.ConfigSettings, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "Settings")
 	var zero0 *github.ConfigSettings
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) UninstallApp(ctx context.Context, enterprise string, org string, installationID int64) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) UninstallApp(ctx context.Context, enterprise string, org string, installationID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "UninstallApp")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) UpdateAppInstallationRepositories(ctx context.Context, enterprise string, org string, installationID int64, body github.UpdateAppInstallationRepositoriesRequest) (*github.Installation, *github.Response, error) {
+func (s UnimplementedEnterpriseService) UpdateAppInstallationRepositories(ctx context.Context, enterprise string, org string, installationID int64, body github.UpdateAppInstallationRepositoriesRequest) (*github.Installation, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "UpdateAppInstallationRepositories")
 	var zero0 *github.Installation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) UpdateAuditLogStream(ctx context.Context, enterprise string, streamID int64, body github.AuditLogStreamConfig) (*github.AuditLogStream, *github.Response, error) {
+func (s UnimplementedEnterpriseService) UpdateAuditLogStream(ctx context.Context, enterprise string, streamID int64, body github.AuditLogStreamConfig) (*github.AuditLogStream, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "UpdateAuditLogStream")
 	var zero0 *github.AuditLogStream
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) UpdateBudget(ctx context.Context, enterprise string, budgetID string, body github.EnterpriseUpdateBudget) (*github.EnterpriseCreateOrUpdateBudgetResponse, *github.Response, error) {
+func (s UnimplementedEnterpriseService) UpdateBudget(ctx context.Context, enterprise string, budgetID string, body github.EnterpriseUpdateBudget) (*github.EnterpriseCreateOrUpdateBudgetResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "UpdateBudget")
 	var zero0 *github.EnterpriseCreateOrUpdateBudgetResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) UpdateCodeSecurityAndAnalysis(ctx context.Context, enterprise string, body *github.EnterpriseSecurityAnalysisSettings) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) UpdateCodeSecurityAndAnalysis(ctx context.Context, enterprise string, body *github.EnterpriseSecurityAnalysisSettings) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "UpdateCodeSecurityAndAnalysis")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) UpdateCodeSecurityConfiguration(ctx context.Context, enterprise string, configurationID int64, body github.CodeSecurityConfiguration) (*github.CodeSecurityConfiguration, *github.Response, error) {
+func (s UnimplementedEnterpriseService) UpdateCodeSecurityConfiguration(ctx context.Context, enterprise string, configurationID int64, body github.CodeSecurityConfiguration) (*github.CodeSecurityConfiguration, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "UpdateCodeSecurityConfiguration")
 	var zero0 *github.CodeSecurityConfiguration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) UpdateCostCenter(ctx context.Context, enterprise string, costCenterID string, body github.CostCenterRequest) (*github.CostCenter, *github.Response, error) {
+func (s UnimplementedEnterpriseService) UpdateCostCenter(ctx context.Context, enterprise string, costCenterID string, body github.CostCenterRequest) (*github.CostCenter, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "UpdateCostCenter")
 	var zero0 *github.CostCenter
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) UpdateEnterpriseNetworkConfiguration(ctx context.Context, enterprise string, networkID string, body github.NetworkConfigurationRequest) (*github.NetworkConfiguration, *github.Response, error) {
+func (s UnimplementedEnterpriseService) UpdateEnterpriseNetworkConfiguration(ctx context.Context, enterprise string, networkID string, body github.NetworkConfigurationRequest) (*github.NetworkConfiguration, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "UpdateEnterpriseNetworkConfiguration")
 	var zero0 *github.NetworkConfiguration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) UpdateEnterpriseRunnerGroup(ctx context.Context, enterprise string, groupID int64, body github.UpdateEnterpriseRunnerGroupRequest) (*github.EnterpriseRunnerGroup, *github.Response, error) {
+func (s UnimplementedEnterpriseService) UpdateEnterpriseRunnerGroup(ctx context.Context, enterprise string, groupID int64, body github.UpdateEnterpriseRunnerGroupRequest) (*github.EnterpriseRunnerGroup, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "UpdateEnterpriseRunnerGroup")
 	var zero0 *github.EnterpriseRunnerGroup
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) UpdateHostedRunner(ctx context.Context, enterprise string, runnerID int64, body github.UpdateHostedRunnerRequest) (*github.HostedRunner, *github.Response, error) {
+func (s UnimplementedEnterpriseService) UpdateHostedRunner(ctx context.Context, enterprise string, runnerID int64, body github.UpdateHostedRunnerRequest) (*github.HostedRunner, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "UpdateHostedRunner")
 	var zero0 *github.HostedRunner
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) UpdateRepositoryRuleset(ctx context.Context, enterprise string, rulesetID int64, body github.RepositoryRuleset) (*github.RepositoryRuleset, *github.Response, error) {
+func (s UnimplementedEnterpriseService) UpdateRepositoryRuleset(ctx context.Context, enterprise string, rulesetID int64, body github.RepositoryRuleset) (*github.RepositoryRuleset, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "UpdateRepositoryRuleset")
 	var zero0 *github.RepositoryRuleset
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) UpdateSCIMGroupAttribute(ctx context.Context, enterprise string, scimGroupID string, body github.SCIMEnterpriseAttribute) (*github.SCIMEnterpriseGroupAttributes, *github.Response, error) {
+func (s UnimplementedEnterpriseService) UpdateSCIMGroupAttribute(ctx context.Context, enterprise string, scimGroupID string, body github.SCIMEnterpriseAttribute) (*github.SCIMEnterpriseGroupAttributes, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "UpdateSCIMGroupAttribute")
 	var zero0 *github.SCIMEnterpriseGroupAttributes
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) UpdateSCIMUserAttribute(ctx context.Context, enterprise string, scimUserID string, body github.SCIMEnterpriseAttribute) (*github.SCIMEnterpriseUserAttributes, *github.Response, error) {
+func (s UnimplementedEnterpriseService) UpdateSCIMUserAttribute(ctx context.Context, enterprise string, scimUserID string, body github.SCIMEnterpriseAttribute) (*github.SCIMEnterpriseUserAttributes, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "UpdateSCIMUserAttribute")
 	var zero0 *github.SCIMEnterpriseUserAttributes
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) UpdateSettings(ctx context.Context, body *github.ConfigSettings) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) UpdateSettings(ctx context.Context, body *github.ConfigSettings) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "UpdateSettings")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) UpdateTeam(ctx context.Context, enterprise string, teamSlug string, body github.EnterpriseTeamCreateOrUpdateRequest) (*github.EnterpriseTeam, *github.Response, error) {
+func (s UnimplementedEnterpriseService) UpdateTeam(ctx context.Context, enterprise string, teamSlug string, body github.EnterpriseTeamCreateOrUpdateRequest) (*github.EnterpriseTeam, *github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "UpdateTeam")
 	var zero0 *github.EnterpriseTeam
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedEnterpriseService) UploadLicense(ctx context.Context, license string) (*github.Response, error) {
+func (s UnimplementedEnterpriseService) UploadLicense(ctx context.Context, license string) (*github.Response, error) {
+	s.Callback.call(ctx, "Enterprise", "UploadLicense")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
@@ -6519,95 +7094,116 @@ type GistsService interface {
 }
 
 // UnimplementedGistsService may be embedded to implement only selected methods.
-type UnimplementedGistsService struct{}
+type UnimplementedGistsService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedGistsService) Create(ctx context.Context, body github.CreateGistRequest) (*github.Gist, *github.Response, error) {
+func (s UnimplementedGistsService) Create(ctx context.Context, body github.CreateGistRequest) (*github.Gist, *github.Response, error) {
+	s.Callback.call(ctx, "Gists", "Create")
 	var zero0 *github.Gist
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGistsService) CreateComment(ctx context.Context, gistID string, body github.CreateGistCommentRequest) (*github.GistComment, *github.Response, error) {
+func (s UnimplementedGistsService) CreateComment(ctx context.Context, gistID string, body github.CreateGistCommentRequest) (*github.GistComment, *github.Response, error) {
+	s.Callback.call(ctx, "Gists", "CreateComment")
 	var zero0 *github.GistComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGistsService) Delete(ctx context.Context, id string) (*github.Response, error) {
+func (s UnimplementedGistsService) Delete(ctx context.Context, id string) (*github.Response, error) {
+	s.Callback.call(ctx, "Gists", "Delete")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedGistsService) DeleteComment(ctx context.Context, gistID string, commentID int64) (*github.Response, error) {
+func (s UnimplementedGistsService) DeleteComment(ctx context.Context, gistID string, commentID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Gists", "DeleteComment")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedGistsService) Fork(ctx context.Context, id string) (*github.Gist, *github.Response, error) {
+func (s UnimplementedGistsService) Fork(ctx context.Context, id string) (*github.Gist, *github.Response, error) {
+	s.Callback.call(ctx, "Gists", "Fork")
 	var zero0 *github.Gist
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGistsService) Get(ctx context.Context, id string) (*github.Gist, *github.Response, error) {
+func (s UnimplementedGistsService) Get(ctx context.Context, id string) (*github.Gist, *github.Response, error) {
+	s.Callback.call(ctx, "Gists", "Get")
 	var zero0 *github.Gist
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGistsService) GetComment(ctx context.Context, gistID string, commentID int64) (*github.GistComment, *github.Response, error) {
+func (s UnimplementedGistsService) GetComment(ctx context.Context, gistID string, commentID int64) (*github.GistComment, *github.Response, error) {
+	s.Callback.call(ctx, "Gists", "GetComment")
 	var zero0 *github.GistComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGistsService) GetRevision(ctx context.Context, id string, sha string) (*github.Gist, *github.Response, error) {
+func (s UnimplementedGistsService) GetRevision(ctx context.Context, id string, sha string) (*github.Gist, *github.Response, error) {
+	s.Callback.call(ctx, "Gists", "GetRevision")
 	var zero0 *github.Gist
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGistsService) IsStarred(ctx context.Context, id string) (bool, *github.Response, error) {
+func (s UnimplementedGistsService) IsStarred(ctx context.Context, id string) (bool, *github.Response, error) {
+	s.Callback.call(ctx, "Gists", "IsStarred")
 	var zero0 bool
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGistsService) List(ctx context.Context, user string, opts *github.GistListOptions) ([]*github.Gist, *github.Response, error) {
+func (s UnimplementedGistsService) List(ctx context.Context, user string, opts *github.GistListOptions) ([]*github.Gist, *github.Response, error) {
+	s.Callback.call(ctx, "Gists", "List")
 	var zero0 []*github.Gist
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGistsService) ListAll(ctx context.Context, opts *github.GistListOptions) ([]*github.Gist, *github.Response, error) {
+func (s UnimplementedGistsService) ListAll(ctx context.Context, opts *github.GistListOptions) ([]*github.Gist, *github.Response, error) {
+	s.Callback.call(ctx, "Gists", "ListAll")
 	var zero0 []*github.Gist
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGistsService) ListComments(ctx context.Context, gistID string, opts *github.ListOptions) ([]*github.GistComment, *github.Response, error) {
+func (s UnimplementedGistsService) ListComments(ctx context.Context, gistID string, opts *github.ListOptions) ([]*github.GistComment, *github.Response, error) {
+	s.Callback.call(ctx, "Gists", "ListComments")
 	var zero0 []*github.GistComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGistsService) ListCommits(ctx context.Context, id string, opts *github.ListOptions) ([]*github.GistCommit, *github.Response, error) {
+func (s UnimplementedGistsService) ListCommits(ctx context.Context, id string, opts *github.ListOptions) ([]*github.GistCommit, *github.Response, error) {
+	s.Callback.call(ctx, "Gists", "ListCommits")
 	var zero0 []*github.GistCommit
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGistsService) ListForks(ctx context.Context, id string, opts *github.ListOptions) ([]*github.GistFork, *github.Response, error) {
+func (s UnimplementedGistsService) ListForks(ctx context.Context, id string, opts *github.ListOptions) ([]*github.GistFork, *github.Response, error) {
+	s.Callback.call(ctx, "Gists", "ListForks")
 	var zero0 []*github.GistFork
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGistsService) ListStarred(ctx context.Context, opts *github.GistListOptions) ([]*github.Gist, *github.Response, error) {
+func (s UnimplementedGistsService) ListStarred(ctx context.Context, opts *github.GistListOptions) ([]*github.Gist, *github.Response, error) {
+	s.Callback.call(ctx, "Gists", "ListStarred")
 	var zero0 []*github.Gist
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGistsService) Star(ctx context.Context, id string) (*github.Response, error) {
+func (s UnimplementedGistsService) Star(ctx context.Context, id string) (*github.Response, error) {
+	s.Callback.call(ctx, "Gists", "Star")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedGistsService) Unstar(ctx context.Context, id string) (*github.Response, error) {
+func (s UnimplementedGistsService) Unstar(ctx context.Context, id string) (*github.Response, error) {
+	s.Callback.call(ctx, "Gists", "Unstar")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedGistsService) Update(ctx context.Context, id string, body github.UpdateGistRequest) (*github.Gist, *github.Response, error) {
+func (s UnimplementedGistsService) Update(ctx context.Context, id string, body github.UpdateGistRequest) (*github.Gist, *github.Response, error) {
+	s.Callback.call(ctx, "Gists", "Update")
 	var zero0 *github.Gist
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGistsService) UpdateComment(ctx context.Context, gistID string, commentID int64, body github.UpdateGistCommentRequest) (*github.GistComment, *github.Response, error) {
+func (s UnimplementedGistsService) UpdateComment(ctx context.Context, gistID string, commentID int64, body github.UpdateGistCommentRequest) (*github.GistComment, *github.Response, error) {
+	s.Callback.call(ctx, "Gists", "UpdateComment")
 	var zero0 *github.GistComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -6720,73 +7316,89 @@ type GitService interface {
 }
 
 // UnimplementedGitService may be embedded to implement only selected methods.
-type UnimplementedGitService struct{}
+type UnimplementedGitService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedGitService) CreateBlob(ctx context.Context, owner string, repo string, body github.Blob) (*github.Blob, *github.Response, error) {
+func (s UnimplementedGitService) CreateBlob(ctx context.Context, owner string, repo string, body github.Blob) (*github.Blob, *github.Response, error) {
+	s.Callback.call(ctx, "Git", "CreateBlob")
 	var zero0 *github.Blob
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGitService) CreateCommit(ctx context.Context, owner string, repo string, commit github.Commit, opts *github.CreateCommitOptions) (*github.Commit, *github.Response, error) {
+func (s UnimplementedGitService) CreateCommit(ctx context.Context, owner string, repo string, commit github.Commit, opts *github.CreateCommitOptions) (*github.Commit, *github.Response, error) {
+	s.Callback.call(ctx, "Git", "CreateCommit")
 	var zero0 *github.Commit
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGitService) CreateRef(ctx context.Context, owner string, repo string, body github.CreateRef) (*github.Reference, *github.Response, error) {
+func (s UnimplementedGitService) CreateRef(ctx context.Context, owner string, repo string, body github.CreateRef) (*github.Reference, *github.Response, error) {
+	s.Callback.call(ctx, "Git", "CreateRef")
 	var zero0 *github.Reference
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGitService) CreateTag(ctx context.Context, owner string, repo string, body github.CreateTag) (*github.Tag, *github.Response, error) {
+func (s UnimplementedGitService) CreateTag(ctx context.Context, owner string, repo string, body github.CreateTag) (*github.Tag, *github.Response, error) {
+	s.Callback.call(ctx, "Git", "CreateTag")
 	var zero0 *github.Tag
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGitService) CreateTree(ctx context.Context, owner string, repo string, baseTree string, entries []*github.TreeEntry) (*github.Tree, *github.Response, error) {
+func (s UnimplementedGitService) CreateTree(ctx context.Context, owner string, repo string, baseTree string, entries []*github.TreeEntry) (*github.Tree, *github.Response, error) {
+	s.Callback.call(ctx, "Git", "CreateTree")
 	var zero0 *github.Tree
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGitService) DeleteRef(ctx context.Context, owner string, repo string, ref string) (*github.Response, error) {
+func (s UnimplementedGitService) DeleteRef(ctx context.Context, owner string, repo string, ref string) (*github.Response, error) {
+	s.Callback.call(ctx, "Git", "DeleteRef")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedGitService) GetBlob(ctx context.Context, owner string, repo string, sha string) (*github.Blob, *github.Response, error) {
+func (s UnimplementedGitService) GetBlob(ctx context.Context, owner string, repo string, sha string) (*github.Blob, *github.Response, error) {
+	s.Callback.call(ctx, "Git", "GetBlob")
 	var zero0 *github.Blob
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGitService) GetBlobRaw(ctx context.Context, owner string, repo string, sha string) ([]byte, *github.Response, error) {
+func (s UnimplementedGitService) GetBlobRaw(ctx context.Context, owner string, repo string, sha string) ([]byte, *github.Response, error) {
+	s.Callback.call(ctx, "Git", "GetBlobRaw")
 	var zero0 []byte
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGitService) GetCommit(ctx context.Context, owner string, repo string, sha string) (*github.Commit, *github.Response, error) {
+func (s UnimplementedGitService) GetCommit(ctx context.Context, owner string, repo string, sha string) (*github.Commit, *github.Response, error) {
+	s.Callback.call(ctx, "Git", "GetCommit")
 	var zero0 *github.Commit
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGitService) GetRef(ctx context.Context, owner string, repo string, ref string) (*github.Reference, *github.Response, error) {
+func (s UnimplementedGitService) GetRef(ctx context.Context, owner string, repo string, ref string) (*github.Reference, *github.Response, error) {
+	s.Callback.call(ctx, "Git", "GetRef")
 	var zero0 *github.Reference
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGitService) GetTag(ctx context.Context, owner string, repo string, sha string) (*github.Tag, *github.Response, error) {
+func (s UnimplementedGitService) GetTag(ctx context.Context, owner string, repo string, sha string) (*github.Tag, *github.Response, error) {
+	s.Callback.call(ctx, "Git", "GetTag")
 	var zero0 *github.Tag
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGitService) GetTree(ctx context.Context, owner string, repo string, sha string, recursive bool) (*github.Tree, *github.Response, error) {
+func (s UnimplementedGitService) GetTree(ctx context.Context, owner string, repo string, sha string, recursive bool) (*github.Tree, *github.Response, error) {
+	s.Callback.call(ctx, "Git", "GetTree")
 	var zero0 *github.Tree
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGitService) ListMatchingRefs(ctx context.Context, owner string, repo string, ref string) ([]*github.Reference, *github.Response, error) {
+func (s UnimplementedGitService) ListMatchingRefs(ctx context.Context, owner string, repo string, ref string) ([]*github.Reference, *github.Response, error) {
+	s.Callback.call(ctx, "Git", "ListMatchingRefs")
 	var zero0 []*github.Reference
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGitService) UpdateRef(ctx context.Context, owner string, repo string, ref string, body github.UpdateRef) (*github.Reference, *github.Response, error) {
+func (s UnimplementedGitService) UpdateRef(ctx context.Context, owner string, repo string, ref string, body github.UpdateRef) (*github.Reference, *github.Response, error) {
+	s.Callback.call(ctx, "Git", "UpdateRef")
 	var zero0 *github.Reference
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -6809,14 +7421,18 @@ type GitignoresService interface {
 }
 
 // UnimplementedGitignoresService may be embedded to implement only selected methods.
-type UnimplementedGitignoresService struct{}
+type UnimplementedGitignoresService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedGitignoresService) Get(ctx context.Context, name string) (*github.Gitignore, *github.Response, error) {
+func (s UnimplementedGitignoresService) Get(ctx context.Context, name string) (*github.Gitignore, *github.Response, error) {
+	s.Callback.call(ctx, "Gitignores", "Get")
 	var zero0 *github.Gitignore
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedGitignoresService) List(ctx context.Context) ([]string, *github.Response, error) {
+func (s UnimplementedGitignoresService) List(ctx context.Context) ([]string, *github.Response, error) {
+	s.Callback.call(ctx, "Gitignores", "List")
 	var zero0 []string
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -6871,32 +7487,40 @@ type InteractionsService interface {
 }
 
 // UnimplementedInteractionsService may be embedded to implement only selected methods.
-type UnimplementedInteractionsService struct{}
+type UnimplementedInteractionsService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedInteractionsService) GetRestrictionsForOrg(ctx context.Context, organization string) (*github.InteractionRestriction, *github.Response, error) {
+func (s UnimplementedInteractionsService) GetRestrictionsForOrg(ctx context.Context, organization string) (*github.InteractionRestriction, *github.Response, error) {
+	s.Callback.call(ctx, "Interactions", "GetRestrictionsForOrg")
 	var zero0 *github.InteractionRestriction
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedInteractionsService) GetRestrictionsForRepo(ctx context.Context, owner string, repo string) (*github.InteractionRestriction, *github.Response, error) {
+func (s UnimplementedInteractionsService) GetRestrictionsForRepo(ctx context.Context, owner string, repo string) (*github.InteractionRestriction, *github.Response, error) {
+	s.Callback.call(ctx, "Interactions", "GetRestrictionsForRepo")
 	var zero0 *github.InteractionRestriction
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedInteractionsService) RemoveRestrictionsFromOrg(ctx context.Context, organization string) (*github.Response, error) {
+func (s UnimplementedInteractionsService) RemoveRestrictionsFromOrg(ctx context.Context, organization string) (*github.Response, error) {
+	s.Callback.call(ctx, "Interactions", "RemoveRestrictionsFromOrg")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedInteractionsService) RemoveRestrictionsFromRepo(ctx context.Context, owner string, repo string) (*github.Response, error) {
+func (s UnimplementedInteractionsService) RemoveRestrictionsFromRepo(ctx context.Context, owner string, repo string) (*github.Response, error) {
+	s.Callback.call(ctx, "Interactions", "RemoveRestrictionsFromRepo")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedInteractionsService) UpdateRestrictionsForOrg(ctx context.Context, organization string, limit string) (*github.InteractionRestriction, *github.Response, error) {
+func (s UnimplementedInteractionsService) UpdateRestrictionsForOrg(ctx context.Context, organization string, limit string) (*github.InteractionRestriction, *github.Response, error) {
+	s.Callback.call(ctx, "Interactions", "UpdateRestrictionsForOrg")
 	var zero0 *github.InteractionRestriction
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedInteractionsService) UpdateRestrictionsForRepo(ctx context.Context, owner string, repo string, limit string) (*github.InteractionRestriction, *github.Response, error) {
+func (s UnimplementedInteractionsService) UpdateRestrictionsForRepo(ctx context.Context, owner string, repo string, limit string) (*github.InteractionRestriction, *github.Response, error) {
+	s.Callback.call(ctx, "Interactions", "UpdateRestrictionsForRepo")
 	var zero0 *github.InteractionRestriction
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -6925,19 +7549,24 @@ type IssueImportService interface {
 }
 
 // UnimplementedIssueImportService may be embedded to implement only selected methods.
-type UnimplementedIssueImportService struct{}
+type UnimplementedIssueImportService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedIssueImportService) CheckStatus(ctx context.Context, owner string, repo string, issueID int64) (*github.IssueImportResponse, *github.Response, error) {
+func (s UnimplementedIssueImportService) CheckStatus(ctx context.Context, owner string, repo string, issueID int64) (*github.IssueImportResponse, *github.Response, error) {
+	s.Callback.call(ctx, "IssueImport", "CheckStatus")
 	var zero0 *github.IssueImportResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssueImportService) CheckStatusSince(ctx context.Context, owner string, repo string, since github.Timestamp) ([]*github.IssueImportResponse, *github.Response, error) {
+func (s UnimplementedIssueImportService) CheckStatusSince(ctx context.Context, owner string, repo string, since github.Timestamp) ([]*github.IssueImportResponse, *github.Response, error) {
+	s.Callback.call(ctx, "IssueImport", "CheckStatusSince")
 	var zero0 []*github.IssueImportResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssueImportService) Create(ctx context.Context, owner string, repo string, body *github.IssueImportRequest) (*github.IssueImportResponse, *github.Response, error) {
+func (s UnimplementedIssueImportService) Create(ctx context.Context, owner string, repo string, body *github.IssueImportRequest) (*github.IssueImportResponse, *github.Response, error) {
+	s.Callback.call(ctx, "IssueImport", "Create")
 	var zero0 *github.IssueImportResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -7217,213 +7846,258 @@ type IssuesService interface {
 }
 
 // UnimplementedIssuesService may be embedded to implement only selected methods.
-type UnimplementedIssuesService struct{}
+type UnimplementedIssuesService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedIssuesService) AddAssignees(ctx context.Context, owner string, repo string, number int, assignees []string) (*github.Issue, *github.Response, error) {
+func (s UnimplementedIssuesService) AddAssignees(ctx context.Context, owner string, repo string, number int, assignees []string) (*github.Issue, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "AddAssignees")
 	var zero0 *github.Issue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) AddBlockedBy(ctx context.Context, owner string, repo string, issueNumber int64, body github.IssueDependencyRequest) (*github.Issue, *github.Response, error) {
+func (s UnimplementedIssuesService) AddBlockedBy(ctx context.Context, owner string, repo string, issueNumber int64, body github.IssueDependencyRequest) (*github.Issue, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "AddBlockedBy")
 	var zero0 *github.Issue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) AddLabelsToIssue(ctx context.Context, owner string, repo string, number int, body []string) ([]*github.Label, *github.Response, error) {
+func (s UnimplementedIssuesService) AddLabelsToIssue(ctx context.Context, owner string, repo string, number int, body []string) ([]*github.Label, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "AddLabelsToIssue")
 	var zero0 []*github.Label
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) Create(ctx context.Context, owner string, repo string, body *github.IssueRequest) (*github.Issue, *github.Response, error) {
+func (s UnimplementedIssuesService) Create(ctx context.Context, owner string, repo string, body *github.IssueRequest) (*github.Issue, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "Create")
 	var zero0 *github.Issue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) CreateComment(ctx context.Context, owner string, repo string, number int, body *github.IssueComment) (*github.IssueComment, *github.Response, error) {
+func (s UnimplementedIssuesService) CreateComment(ctx context.Context, owner string, repo string, number int, body *github.IssueComment) (*github.IssueComment, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "CreateComment")
 	var zero0 *github.IssueComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) CreateLabel(ctx context.Context, owner string, repo string, body *github.Label) (*github.Label, *github.Response, error) {
+func (s UnimplementedIssuesService) CreateLabel(ctx context.Context, owner string, repo string, body *github.Label) (*github.Label, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "CreateLabel")
 	var zero0 *github.Label
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) CreateMilestone(ctx context.Context, owner string, repo string, body *github.Milestone) (*github.Milestone, *github.Response, error) {
+func (s UnimplementedIssuesService) CreateMilestone(ctx context.Context, owner string, repo string, body *github.Milestone) (*github.Milestone, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "CreateMilestone")
 	var zero0 *github.Milestone
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) DeleteComment(ctx context.Context, owner string, repo string, commentID int64) (*github.Response, error) {
+func (s UnimplementedIssuesService) DeleteComment(ctx context.Context, owner string, repo string, commentID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Issues", "DeleteComment")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedIssuesService) DeleteLabel(ctx context.Context, owner string, repo string, name string) (*github.Response, error) {
+func (s UnimplementedIssuesService) DeleteLabel(ctx context.Context, owner string, repo string, name string) (*github.Response, error) {
+	s.Callback.call(ctx, "Issues", "DeleteLabel")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedIssuesService) DeleteMilestone(ctx context.Context, owner string, repo string, number int) (*github.Response, error) {
+func (s UnimplementedIssuesService) DeleteMilestone(ctx context.Context, owner string, repo string, number int) (*github.Response, error) {
+	s.Callback.call(ctx, "Issues", "DeleteMilestone")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedIssuesService) Edit(ctx context.Context, owner string, repo string, number int, body *github.IssueRequest) (*github.Issue, *github.Response, error) {
+func (s UnimplementedIssuesService) Edit(ctx context.Context, owner string, repo string, number int, body *github.IssueRequest) (*github.Issue, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "Edit")
 	var zero0 *github.Issue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) EditComment(ctx context.Context, owner string, repo string, commentID int64, body *github.IssueComment) (*github.IssueComment, *github.Response, error) {
+func (s UnimplementedIssuesService) EditComment(ctx context.Context, owner string, repo string, commentID int64, body *github.IssueComment) (*github.IssueComment, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "EditComment")
 	var zero0 *github.IssueComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) EditLabel(ctx context.Context, owner string, repo string, name string, body *github.Label) (*github.Label, *github.Response, error) {
+func (s UnimplementedIssuesService) EditLabel(ctx context.Context, owner string, repo string, name string, body *github.Label) (*github.Label, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "EditLabel")
 	var zero0 *github.Label
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) EditMilestone(ctx context.Context, owner string, repo string, number int, body *github.Milestone) (*github.Milestone, *github.Response, error) {
+func (s UnimplementedIssuesService) EditMilestone(ctx context.Context, owner string, repo string, number int, body *github.Milestone) (*github.Milestone, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "EditMilestone")
 	var zero0 *github.Milestone
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) Get(ctx context.Context, owner string, repo string, number int) (*github.Issue, *github.Response, error) {
+func (s UnimplementedIssuesService) Get(ctx context.Context, owner string, repo string, number int) (*github.Issue, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "Get")
 	var zero0 *github.Issue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) GetComment(ctx context.Context, owner string, repo string, commentID int64) (*github.IssueComment, *github.Response, error) {
+func (s UnimplementedIssuesService) GetComment(ctx context.Context, owner string, repo string, commentID int64) (*github.IssueComment, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "GetComment")
 	var zero0 *github.IssueComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) GetEvent(ctx context.Context, owner string, repo string, id int64) (*github.IssueEvent, *github.Response, error) {
+func (s UnimplementedIssuesService) GetEvent(ctx context.Context, owner string, repo string, id int64) (*github.IssueEvent, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "GetEvent")
 	var zero0 *github.IssueEvent
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) GetLabel(ctx context.Context, owner string, repo string, name string) (*github.Label, *github.Response, error) {
+func (s UnimplementedIssuesService) GetLabel(ctx context.Context, owner string, repo string, name string) (*github.Label, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "GetLabel")
 	var zero0 *github.Label
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) GetMilestone(ctx context.Context, owner string, repo string, number int) (*github.Milestone, *github.Response, error) {
+func (s UnimplementedIssuesService) GetMilestone(ctx context.Context, owner string, repo string, number int) (*github.Milestone, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "GetMilestone")
 	var zero0 *github.Milestone
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) IsAssignee(ctx context.Context, owner string, repo string, user string) (bool, *github.Response, error) {
+func (s UnimplementedIssuesService) IsAssignee(ctx context.Context, owner string, repo string, user string) (bool, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "IsAssignee")
 	var zero0 bool
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) ListAllIssues(ctx context.Context, opts *github.ListAllIssuesOptions) ([]*github.Issue, *github.Response, error) {
+func (s UnimplementedIssuesService) ListAllIssues(ctx context.Context, opts *github.ListAllIssuesOptions) ([]*github.Issue, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "ListAllIssues")
 	var zero0 []*github.Issue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) ListAssignees(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.User, *github.Response, error) {
+func (s UnimplementedIssuesService) ListAssignees(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "ListAssignees")
 	var zero0 []*github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) ListBlockedBy(ctx context.Context, owner string, repo string, issueNumber int64, opts *github.ListOptions) ([]*github.Issue, *github.Response, error) {
+func (s UnimplementedIssuesService) ListBlockedBy(ctx context.Context, owner string, repo string, issueNumber int64, opts *github.ListOptions) ([]*github.Issue, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "ListBlockedBy")
 	var zero0 []*github.Issue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) ListBlocking(ctx context.Context, owner string, repo string, issueNumber int64, opts *github.ListOptions) ([]*github.Issue, *github.Response, error) {
+func (s UnimplementedIssuesService) ListBlocking(ctx context.Context, owner string, repo string, issueNumber int64, opts *github.ListOptions) ([]*github.Issue, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "ListBlocking")
 	var zero0 []*github.Issue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) ListByOrg(ctx context.Context, org string, opts *github.IssueListByOrgOptions) ([]*github.Issue, *github.Response, error) {
+func (s UnimplementedIssuesService) ListByOrg(ctx context.Context, org string, opts *github.IssueListByOrgOptions) ([]*github.Issue, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "ListByOrg")
 	var zero0 []*github.Issue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) ListByRepo(ctx context.Context, owner string, repo string, opts *github.IssueListByRepoOptions) ([]*github.Issue, *github.Response, error) {
+func (s UnimplementedIssuesService) ListByRepo(ctx context.Context, owner string, repo string, opts *github.IssueListByRepoOptions) ([]*github.Issue, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "ListByRepo")
 	var zero0 []*github.Issue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) ListComments(ctx context.Context, owner string, repo string, number int, opts *github.IssueListCommentsOptions) ([]*github.IssueComment, *github.Response, error) {
+func (s UnimplementedIssuesService) ListComments(ctx context.Context, owner string, repo string, number int, opts *github.IssueListCommentsOptions) ([]*github.IssueComment, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "ListComments")
 	var zero0 []*github.IssueComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) ListIssueEvents(ctx context.Context, owner string, repo string, number int, opts *github.ListOptions) ([]*github.IssueEvent, *github.Response, error) {
+func (s UnimplementedIssuesService) ListIssueEvents(ctx context.Context, owner string, repo string, number int, opts *github.ListOptions) ([]*github.IssueEvent, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "ListIssueEvents")
 	var zero0 []*github.IssueEvent
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) ListIssueTimeline(ctx context.Context, owner string, repo string, number int, opts *github.ListOptions) ([]*github.Timeline, *github.Response, error) {
+func (s UnimplementedIssuesService) ListIssueTimeline(ctx context.Context, owner string, repo string, number int, opts *github.ListOptions) ([]*github.Timeline, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "ListIssueTimeline")
 	var zero0 []*github.Timeline
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) ListLabels(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.Label, *github.Response, error) {
+func (s UnimplementedIssuesService) ListLabels(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.Label, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "ListLabels")
 	var zero0 []*github.Label
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) ListLabelsByIssue(ctx context.Context, owner string, repo string, number int, opts *github.ListOptions) ([]*github.Label, *github.Response, error) {
+func (s UnimplementedIssuesService) ListLabelsByIssue(ctx context.Context, owner string, repo string, number int, opts *github.ListOptions) ([]*github.Label, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "ListLabelsByIssue")
 	var zero0 []*github.Label
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) ListLabelsForMilestone(ctx context.Context, owner string, repo string, number int, opts *github.ListOptions) ([]*github.Label, *github.Response, error) {
+func (s UnimplementedIssuesService) ListLabelsForMilestone(ctx context.Context, owner string, repo string, number int, opts *github.ListOptions) ([]*github.Label, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "ListLabelsForMilestone")
 	var zero0 []*github.Label
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) ListMilestones(ctx context.Context, owner string, repo string, opts *github.MilestoneListOptions) ([]*github.Milestone, *github.Response, error) {
+func (s UnimplementedIssuesService) ListMilestones(ctx context.Context, owner string, repo string, opts *github.MilestoneListOptions) ([]*github.Milestone, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "ListMilestones")
 	var zero0 []*github.Milestone
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) ListRepositoryEvents(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.IssueEvent, *github.Response, error) {
+func (s UnimplementedIssuesService) ListRepositoryEvents(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.IssueEvent, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "ListRepositoryEvents")
 	var zero0 []*github.IssueEvent
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) ListUserIssues(ctx context.Context, opts *github.ListUserIssuesOptions) ([]*github.Issue, *github.Response, error) {
+func (s UnimplementedIssuesService) ListUserIssues(ctx context.Context, opts *github.ListUserIssuesOptions) ([]*github.Issue, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "ListUserIssues")
 	var zero0 []*github.Issue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) Lock(ctx context.Context, owner string, repo string, number int, body *github.LockIssueOptions) (*github.Response, error) {
+func (s UnimplementedIssuesService) Lock(ctx context.Context, owner string, repo string, number int, body *github.LockIssueOptions) (*github.Response, error) {
+	s.Callback.call(ctx, "Issues", "Lock")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedIssuesService) RemoveAssignees(ctx context.Context, owner string, repo string, number int, assignees []string) (*github.Issue, *github.Response, error) {
+func (s UnimplementedIssuesService) RemoveAssignees(ctx context.Context, owner string, repo string, number int, assignees []string) (*github.Issue, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "RemoveAssignees")
 	var zero0 *github.Issue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) RemoveBlockedBy(ctx context.Context, owner string, repo string, issueNumber int64, blockingIssueID int64) (*github.Issue, *github.Response, error) {
+func (s UnimplementedIssuesService) RemoveBlockedBy(ctx context.Context, owner string, repo string, issueNumber int64, blockingIssueID int64) (*github.Issue, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "RemoveBlockedBy")
 	var zero0 *github.Issue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) RemoveLabelForIssue(ctx context.Context, owner string, repo string, number int, label string) (*github.Response, error) {
+func (s UnimplementedIssuesService) RemoveLabelForIssue(ctx context.Context, owner string, repo string, number int, label string) (*github.Response, error) {
+	s.Callback.call(ctx, "Issues", "RemoveLabelForIssue")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedIssuesService) RemoveLabelsForIssue(ctx context.Context, owner string, repo string, number int) (*github.Response, error) {
+func (s UnimplementedIssuesService) RemoveLabelsForIssue(ctx context.Context, owner string, repo string, number int) (*github.Response, error) {
+	s.Callback.call(ctx, "Issues", "RemoveLabelsForIssue")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedIssuesService) RemoveMilestone(ctx context.Context, owner string, repo string, issueNumber int) (*github.Issue, *github.Response, error) {
+func (s UnimplementedIssuesService) RemoveMilestone(ctx context.Context, owner string, repo string, issueNumber int) (*github.Issue, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "RemoveMilestone")
 	var zero0 *github.Issue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) ReplaceLabelsForIssue(ctx context.Context, owner string, repo string, number int, body []string) ([]*github.Label, *github.Response, error) {
+func (s UnimplementedIssuesService) ReplaceLabelsForIssue(ctx context.Context, owner string, repo string, number int, body []string) ([]*github.Label, *github.Response, error) {
+	s.Callback.call(ctx, "Issues", "ReplaceLabelsForIssue")
 	var zero0 []*github.Label
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedIssuesService) Unlock(ctx context.Context, owner string, repo string, number int) (*github.Response, error) {
+func (s UnimplementedIssuesService) Unlock(ctx context.Context, owner string, repo string, number int) (*github.Response, error) {
+	s.Callback.call(ctx, "Issues", "Unlock")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
@@ -7445,14 +8119,18 @@ type LicensesService interface {
 }
 
 // UnimplementedLicensesService may be embedded to implement only selected methods.
-type UnimplementedLicensesService struct{}
+type UnimplementedLicensesService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedLicensesService) Get(ctx context.Context, licenseName string) (*github.License, *github.Response, error) {
+func (s UnimplementedLicensesService) Get(ctx context.Context, licenseName string) (*github.License, *github.Response, error) {
+	s.Callback.call(ctx, "Licenses", "Get")
 	var zero0 *github.License
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedLicensesService) List(ctx context.Context, opts *github.ListLicensesOptions) ([]*github.License, *github.Response, error) {
+func (s UnimplementedLicensesService) List(ctx context.Context, opts *github.ListLicensesOptions) ([]*github.License, *github.Response, error) {
+	s.Callback.call(ctx, "Licenses", "List")
 	var zero0 []*github.License
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -7469,9 +8147,12 @@ type MarkdownService interface {
 }
 
 // UnimplementedMarkdownService may be embedded to implement only selected methods.
-type UnimplementedMarkdownService struct{}
+type UnimplementedMarkdownService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedMarkdownService) Render(ctx context.Context, text string, opts *github.MarkdownOptions) (string, *github.Response, error) {
+func (s UnimplementedMarkdownService) Render(ctx context.Context, text string, opts *github.MarkdownOptions) (string, *github.Response, error) {
+	s.Callback.call(ctx, "Markdown", "Render")
 	var zero0 string
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -7518,24 +8199,30 @@ type MarketplaceService interface {
 }
 
 // UnimplementedMarketplaceService may be embedded to implement only selected methods.
-type UnimplementedMarketplaceService struct{}
+type UnimplementedMarketplaceService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedMarketplaceService) GetPlanAccountForAccount(ctx context.Context, accountID int64) (*github.MarketplacePlanAccount, *github.Response, error) {
+func (s UnimplementedMarketplaceService) GetPlanAccountForAccount(ctx context.Context, accountID int64) (*github.MarketplacePlanAccount, *github.Response, error) {
+	s.Callback.call(ctx, "Marketplace", "GetPlanAccountForAccount")
 	var zero0 *github.MarketplacePlanAccount
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedMarketplaceService) ListMarketplacePurchasesForUser(ctx context.Context, opts *github.ListOptions) ([]*github.MarketplacePurchase, *github.Response, error) {
+func (s UnimplementedMarketplaceService) ListMarketplacePurchasesForUser(ctx context.Context, opts *github.ListOptions) ([]*github.MarketplacePurchase, *github.Response, error) {
+	s.Callback.call(ctx, "Marketplace", "ListMarketplacePurchasesForUser")
 	var zero0 []*github.MarketplacePurchase
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedMarketplaceService) ListPlanAccountsForPlan(ctx context.Context, planID int64, opts *github.ListOptions) ([]*github.MarketplacePlanAccount, *github.Response, error) {
+func (s UnimplementedMarketplaceService) ListPlanAccountsForPlan(ctx context.Context, planID int64, opts *github.ListOptions) ([]*github.MarketplacePlanAccount, *github.Response, error) {
+	s.Callback.call(ctx, "Marketplace", "ListPlanAccountsForPlan")
 	var zero0 []*github.MarketplacePlanAccount
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedMarketplaceService) ListPlans(ctx context.Context, opts *github.ListOptions) ([]*github.MarketplacePlan, *github.Response, error) {
+func (s UnimplementedMarketplaceService) ListPlans(ctx context.Context, opts *github.ListOptions) ([]*github.MarketplacePlan, *github.Response, error) {
+	s.Callback.call(ctx, "Marketplace", "ListPlans")
 	var zero0 []*github.MarketplacePlan
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -7569,19 +8256,24 @@ type MetaService interface {
 }
 
 // UnimplementedMetaService may be embedded to implement only selected methods.
-type UnimplementedMetaService struct{}
+type UnimplementedMetaService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedMetaService) Get(ctx context.Context) (*github.APIMeta, *github.Response, error) {
+func (s UnimplementedMetaService) Get(ctx context.Context) (*github.APIMeta, *github.Response, error) {
+	s.Callback.call(ctx, "Meta", "Get")
 	var zero0 *github.APIMeta
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedMetaService) Octocat(ctx context.Context, message string) (string, *github.Response, error) {
+func (s UnimplementedMetaService) Octocat(ctx context.Context, message string) (string, *github.Response, error) {
+	s.Callback.call(ctx, "Meta", "Octocat")
 	var zero0 string
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedMetaService) Zen(ctx context.Context) (string, *github.Response, error) {
+func (s UnimplementedMetaService) Zen(ctx context.Context) (string, *github.Response, error) {
+	s.Callback.call(ctx, "Meta", "Zen")
 	var zero0 string
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -7756,97 +8448,119 @@ type MigrationService interface {
 }
 
 // UnimplementedMigrationService may be embedded to implement only selected methods.
-type UnimplementedMigrationService struct{}
+type UnimplementedMigrationService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedMigrationService) CancelImport(ctx context.Context, owner string, repo string) (*github.Response, error) {
+func (s UnimplementedMigrationService) CancelImport(ctx context.Context, owner string, repo string) (*github.Response, error) {
+	s.Callback.call(ctx, "Migration", "CancelImport")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedMigrationService) CommitAuthors(ctx context.Context, owner string, repo string) ([]*github.SourceImportAuthor, *github.Response, error) {
+func (s UnimplementedMigrationService) CommitAuthors(ctx context.Context, owner string, repo string) ([]*github.SourceImportAuthor, *github.Response, error) {
+	s.Callback.call(ctx, "Migration", "CommitAuthors")
 	var zero0 []*github.SourceImportAuthor
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedMigrationService) DeleteMigration(ctx context.Context, org string, id int64) (*github.Response, error) {
+func (s UnimplementedMigrationService) DeleteMigration(ctx context.Context, org string, id int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Migration", "DeleteMigration")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedMigrationService) DeleteUserMigration(ctx context.Context, id int64) (*github.Response, error) {
+func (s UnimplementedMigrationService) DeleteUserMigration(ctx context.Context, id int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Migration", "DeleteUserMigration")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedMigrationService) ImportProgress(ctx context.Context, owner string, repo string) (*github.Import, *github.Response, error) {
+func (s UnimplementedMigrationService) ImportProgress(ctx context.Context, owner string, repo string) (*github.Import, *github.Response, error) {
+	s.Callback.call(ctx, "Migration", "ImportProgress")
 	var zero0 *github.Import
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedMigrationService) LargeFiles(ctx context.Context, owner string, repo string) ([]*github.LargeFile, *github.Response, error) {
+func (s UnimplementedMigrationService) LargeFiles(ctx context.Context, owner string, repo string) ([]*github.LargeFile, *github.Response, error) {
+	s.Callback.call(ctx, "Migration", "LargeFiles")
 	var zero0 []*github.LargeFile
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedMigrationService) ListMigrations(ctx context.Context, org string, opts *github.ListOptions) ([]*github.Migration, *github.Response, error) {
+func (s UnimplementedMigrationService) ListMigrations(ctx context.Context, org string, opts *github.ListOptions) ([]*github.Migration, *github.Response, error) {
+	s.Callback.call(ctx, "Migration", "ListMigrations")
 	var zero0 []*github.Migration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedMigrationService) ListUserMigrations(ctx context.Context, opts *github.ListOptions) ([]*github.UserMigration, *github.Response, error) {
+func (s UnimplementedMigrationService) ListUserMigrations(ctx context.Context, opts *github.ListOptions) ([]*github.UserMigration, *github.Response, error) {
+	s.Callback.call(ctx, "Migration", "ListUserMigrations")
 	var zero0 []*github.UserMigration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedMigrationService) MapCommitAuthor(ctx context.Context, owner string, repo string, id int64, body *github.SourceImportAuthor) (*github.SourceImportAuthor, *github.Response, error) {
+func (s UnimplementedMigrationService) MapCommitAuthor(ctx context.Context, owner string, repo string, id int64, body *github.SourceImportAuthor) (*github.SourceImportAuthor, *github.Response, error) {
+	s.Callback.call(ctx, "Migration", "MapCommitAuthor")
 	var zero0 *github.SourceImportAuthor
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedMigrationService) MigrationArchiveURL(ctx context.Context, org string, id int64) (url string, err error) {
+func (s UnimplementedMigrationService) MigrationArchiveURL(ctx context.Context, org string, id int64) (url string, err error) {
+	s.Callback.call(ctx, "Migration", "MigrationArchiveURL")
 	var zero0 string
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedMigrationService) MigrationStatus(ctx context.Context, org string, id int64) (*github.Migration, *github.Response, error) {
+func (s UnimplementedMigrationService) MigrationStatus(ctx context.Context, org string, id int64) (*github.Migration, *github.Response, error) {
+	s.Callback.call(ctx, "Migration", "MigrationStatus")
 	var zero0 *github.Migration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedMigrationService) SetLFSPreference(ctx context.Context, owner string, repo string, body *github.Import) (*github.Import, *github.Response, error) {
+func (s UnimplementedMigrationService) SetLFSPreference(ctx context.Context, owner string, repo string, body *github.Import) (*github.Import, *github.Response, error) {
+	s.Callback.call(ctx, "Migration", "SetLFSPreference")
 	var zero0 *github.Import
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedMigrationService) StartImport(ctx context.Context, owner string, repo string, body *github.Import) (*github.Import, *github.Response, error) {
+func (s UnimplementedMigrationService) StartImport(ctx context.Context, owner string, repo string, body *github.Import) (*github.Import, *github.Response, error) {
+	s.Callback.call(ctx, "Migration", "StartImport")
 	var zero0 *github.Import
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedMigrationService) StartMigration(ctx context.Context, org string, repos []string, opts *github.MigrationOptions) (*github.Migration, *github.Response, error) {
+func (s UnimplementedMigrationService) StartMigration(ctx context.Context, org string, repos []string, opts *github.MigrationOptions) (*github.Migration, *github.Response, error) {
+	s.Callback.call(ctx, "Migration", "StartMigration")
 	var zero0 *github.Migration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedMigrationService) StartUserMigration(ctx context.Context, repos []string, opts *github.UserMigrationOptions) (*github.UserMigration, *github.Response, error) {
+func (s UnimplementedMigrationService) StartUserMigration(ctx context.Context, repos []string, opts *github.UserMigrationOptions) (*github.UserMigration, *github.Response, error) {
+	s.Callback.call(ctx, "Migration", "StartUserMigration")
 	var zero0 *github.UserMigration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedMigrationService) UnlockRepo(ctx context.Context, org string, id int64, repo string) (*github.Response, error) {
+func (s UnimplementedMigrationService) UnlockRepo(ctx context.Context, org string, id int64, repo string) (*github.Response, error) {
+	s.Callback.call(ctx, "Migration", "UnlockRepo")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedMigrationService) UnlockUserRepo(ctx context.Context, id int64, repo string) (*github.Response, error) {
+func (s UnimplementedMigrationService) UnlockUserRepo(ctx context.Context, id int64, repo string) (*github.Response, error) {
+	s.Callback.call(ctx, "Migration", "UnlockUserRepo")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedMigrationService) UpdateImport(ctx context.Context, owner string, repo string, body *github.Import) (*github.Import, *github.Response, error) {
+func (s UnimplementedMigrationService) UpdateImport(ctx context.Context, owner string, repo string, body *github.Import) (*github.Import, *github.Response, error) {
+	s.Callback.call(ctx, "Migration", "UpdateImport")
 	var zero0 *github.Import
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedMigrationService) UserMigrationArchiveURL(ctx context.Context, id int64) (string, error) {
+func (s UnimplementedMigrationService) UserMigrationArchiveURL(ctx context.Context, id int64) (string, error) {
+	s.Callback.call(ctx, "Migration", "UserMigrationArchiveURL")
 	var zero0 string
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedMigrationService) UserMigrationStatus(ctx context.Context, id int64) (*github.UserMigration, *github.Response, error) {
+func (s UnimplementedMigrationService) UserMigrationStatus(ctx context.Context, id int64) (*github.UserMigration, *github.Response, error) {
+	s.Callback.call(ctx, "Migration", "UserMigrationStatus")
 	var zero0 *github.UserMigration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -8722,595 +9436,723 @@ type OrganizationsService interface {
 }
 
 // UnimplementedOrganizationsService may be embedded to implement only selected methods.
-type UnimplementedOrganizationsService struct{}
+type UnimplementedOrganizationsService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedOrganizationsService) AddSecurityManagerTeam(ctx context.Context, org string, team string) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) AddSecurityManagerTeam(ctx context.Context, org string, team string) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "AddSecurityManagerTeam")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) AssignOrgRoleToTeam(ctx context.Context, org string, teamSlug string, roleID int64) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) AssignOrgRoleToTeam(ctx context.Context, org string, teamSlug string, roleID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "AssignOrgRoleToTeam")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) AssignOrgRoleToUser(ctx context.Context, org string, username string, roleID int64) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) AssignOrgRoleToUser(ctx context.Context, org string, username string, roleID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "AssignOrgRoleToUser")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) AttachCodeSecurityConfigurationToRepositories(ctx context.Context, org string, configurationID int64, scope string, repoIDs []int64) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) AttachCodeSecurityConfigurationToRepositories(ctx context.Context, org string, configurationID int64, scope string, repoIDs []int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "AttachCodeSecurityConfigurationToRepositories")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) BlockUser(ctx context.Context, org string, user string) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) BlockUser(ctx context.Context, org string, user string) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "BlockUser")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) CancelInvite(ctx context.Context, org string, invitationID int64) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) CancelInvite(ctx context.Context, org string, invitationID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "CancelInvite")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ConcealMembership(ctx context.Context, org string, user string) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) ConcealMembership(ctx context.Context, org string, user string) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ConcealMembership")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ConvertMemberToOutsideCollaborator(ctx context.Context, org string, user string) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) ConvertMemberToOutsideCollaborator(ctx context.Context, org string, user string) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ConvertMemberToOutsideCollaborator")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) CreateArtifactDeploymentRecord(ctx context.Context, org string, body github.CreateArtifactDeploymentRequest) (*github.ArtifactDeploymentResponse, *github.Response, error) {
+func (s UnimplementedOrganizationsService) CreateArtifactDeploymentRecord(ctx context.Context, org string, body github.CreateArtifactDeploymentRequest) (*github.ArtifactDeploymentResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "CreateArtifactDeploymentRecord")
 	var zero0 *github.ArtifactDeploymentResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) CreateArtifactStorageRecord(ctx context.Context, org string, body github.CreateArtifactStorageRequest) (*github.ArtifactStorageResponse, *github.Response, error) {
+func (s UnimplementedOrganizationsService) CreateArtifactStorageRecord(ctx context.Context, org string, body github.CreateArtifactStorageRequest) (*github.ArtifactStorageResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "CreateArtifactStorageRecord")
 	var zero0 *github.ArtifactStorageResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) CreateCodeSecurityConfiguration(ctx context.Context, org string, body github.CodeSecurityConfiguration) (*github.CodeSecurityConfiguration, *github.Response, error) {
+func (s UnimplementedOrganizationsService) CreateCodeSecurityConfiguration(ctx context.Context, org string, body github.CodeSecurityConfiguration) (*github.CodeSecurityConfiguration, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "CreateCodeSecurityConfiguration")
 	var zero0 *github.CodeSecurityConfiguration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) CreateCustomOrgRole(ctx context.Context, org string, body github.CreateCustomOrgRoleRequest) (*github.CustomOrgRole, *github.Response, error) {
+func (s UnimplementedOrganizationsService) CreateCustomOrgRole(ctx context.Context, org string, body github.CreateCustomOrgRoleRequest) (*github.CustomOrgRole, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "CreateCustomOrgRole")
 	var zero0 *github.CustomOrgRole
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) CreateCustomRepoRole(ctx context.Context, org string, body *github.CreateOrUpdateCustomRepoRoleOptions) (*github.CustomRepoRoles, *github.Response, error) {
+func (s UnimplementedOrganizationsService) CreateCustomRepoRole(ctx context.Context, org string, body *github.CreateOrUpdateCustomRepoRoleOptions) (*github.CustomRepoRoles, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "CreateCustomRepoRole")
 	var zero0 *github.CustomRepoRoles
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) CreateHook(ctx context.Context, org string, hook *github.Hook) (*github.Hook, *github.Response, error) {
+func (s UnimplementedOrganizationsService) CreateHook(ctx context.Context, org string, hook *github.Hook) (*github.Hook, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "CreateHook")
 	var zero0 *github.Hook
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) CreateIssueType(ctx context.Context, org string, body *github.CreateOrUpdateIssueTypesOptions) (*github.IssueType, *github.Response, error) {
+func (s UnimplementedOrganizationsService) CreateIssueType(ctx context.Context, org string, body *github.CreateOrUpdateIssueTypesOptions) (*github.IssueType, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "CreateIssueType")
 	var zero0 *github.IssueType
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) CreateNetworkConfiguration(ctx context.Context, org string, body github.NetworkConfigurationRequest) (*github.NetworkConfiguration, *github.Response, error) {
+func (s UnimplementedOrganizationsService) CreateNetworkConfiguration(ctx context.Context, org string, body github.NetworkConfigurationRequest) (*github.NetworkConfiguration, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "CreateNetworkConfiguration")
 	var zero0 *github.NetworkConfiguration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) CreateOrUpdateCustomProperties(ctx context.Context, org string, properties []*github.CustomProperty) ([]*github.CustomProperty, *github.Response, error) {
+func (s UnimplementedOrganizationsService) CreateOrUpdateCustomProperties(ctx context.Context, org string, properties []*github.CustomProperty) ([]*github.CustomProperty, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "CreateOrUpdateCustomProperties")
 	var zero0 []*github.CustomProperty
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) CreateOrUpdateCustomProperty(ctx context.Context, org string, customPropertyName string, body *github.CustomProperty) (*github.CustomProperty, *github.Response, error) {
+func (s UnimplementedOrganizationsService) CreateOrUpdateCustomProperty(ctx context.Context, org string, customPropertyName string, body *github.CustomProperty) (*github.CustomProperty, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "CreateOrUpdateCustomProperty")
 	var zero0 *github.CustomProperty
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) CreateOrUpdateOrganizationCustomPropertyValues(ctx context.Context, org string, body github.OrganizationCustomPropertyValues) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) CreateOrUpdateOrganizationCustomPropertyValues(ctx context.Context, org string, body github.OrganizationCustomPropertyValues) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "CreateOrUpdateOrganizationCustomPropertyValues")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) CreateOrUpdateRepoCustomPropertyValues(ctx context.Context, org string, repoNames []string, properties []*github.CustomPropertyValue) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) CreateOrUpdateRepoCustomPropertyValues(ctx context.Context, org string, repoNames []string, properties []*github.CustomPropertyValue) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "CreateOrUpdateRepoCustomPropertyValues")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) CreateOrgInvitation(ctx context.Context, org string, body *github.CreateOrgInvitationOptions) (*github.Invitation, *github.Response, error) {
+func (s UnimplementedOrganizationsService) CreateOrgInvitation(ctx context.Context, org string, body *github.CreateOrgInvitationOptions) (*github.Invitation, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "CreateOrgInvitation")
 	var zero0 *github.Invitation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) CreateRepositoryRuleset(ctx context.Context, org string, body github.RepositoryRuleset) (*github.RepositoryRuleset, *github.Response, error) {
+func (s UnimplementedOrganizationsService) CreateRepositoryRuleset(ctx context.Context, org string, body github.RepositoryRuleset) (*github.RepositoryRuleset, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "CreateRepositoryRuleset")
 	var zero0 *github.RepositoryRuleset
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) Delete(ctx context.Context, org string) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) Delete(ctx context.Context, org string) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "Delete")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) DeleteCodeSecurityConfiguration(ctx context.Context, org string, configurationID int64) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) DeleteCodeSecurityConfiguration(ctx context.Context, org string, configurationID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "DeleteCodeSecurityConfiguration")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) DeleteCustomOrgRole(ctx context.Context, org string, roleID int64) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) DeleteCustomOrgRole(ctx context.Context, org string, roleID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "DeleteCustomOrgRole")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) DeleteCustomRepoRole(ctx context.Context, org string, roleID int64) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) DeleteCustomRepoRole(ctx context.Context, org string, roleID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "DeleteCustomRepoRole")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) DeleteHook(ctx context.Context, org string, id int64) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) DeleteHook(ctx context.Context, org string, id int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "DeleteHook")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) DeleteIssueType(ctx context.Context, org string, issueTypeID int64) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) DeleteIssueType(ctx context.Context, org string, issueTypeID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "DeleteIssueType")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) DeleteNetworkConfigurations(ctx context.Context, org string, networkID string) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) DeleteNetworkConfigurations(ctx context.Context, org string, networkID string) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "DeleteNetworkConfigurations")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) DeletePackage(ctx context.Context, org string, packageType string, packageName string) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) DeletePackage(ctx context.Context, org string, packageType string, packageName string) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "DeletePackage")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) DeleteRepositoryRuleset(ctx context.Context, org string, rulesetID int64) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) DeleteRepositoryRuleset(ctx context.Context, org string, rulesetID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "DeleteRepositoryRuleset")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) DetachCodeSecurityConfigurationsFromRepositories(ctx context.Context, org string, repoIDs []int64) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) DetachCodeSecurityConfigurationsFromRepositories(ctx context.Context, org string, repoIDs []int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "DetachCodeSecurityConfigurationsFromRepositories")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) DisableRepositoryForImmutableRelease(ctx context.Context, org string, repoID int64) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) DisableRepositoryForImmutableRelease(ctx context.Context, org string, repoID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "DisableRepositoryForImmutableRelease")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) Edit(ctx context.Context, name string, body *github.Organization) (*github.Organization, *github.Response, error) {
+func (s UnimplementedOrganizationsService) Edit(ctx context.Context, name string, body *github.Organization) (*github.Organization, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "Edit")
 	var zero0 *github.Organization
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) EditHook(ctx context.Context, org string, id int64, body *github.Hook) (*github.Hook, *github.Response, error) {
+func (s UnimplementedOrganizationsService) EditHook(ctx context.Context, org string, id int64, body *github.Hook) (*github.Hook, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "EditHook")
 	var zero0 *github.Hook
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) EditOrgMembership(ctx context.Context, user string, org string, membership *github.Membership) (*github.Membership, *github.Response, error) {
+func (s UnimplementedOrganizationsService) EditOrgMembership(ctx context.Context, user string, org string, membership *github.Membership) (*github.Membership, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "EditOrgMembership")
 	var zero0 *github.Membership
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) EnableRepositoryForImmutableRelease(ctx context.Context, org string, repoID int64) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) EnableRepositoryForImmutableRelease(ctx context.Context, org string, repoID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "EnableRepositoryForImmutableRelease")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) Get(ctx context.Context, org string) (*github.Organization, *github.Response, error) {
+func (s UnimplementedOrganizationsService) Get(ctx context.Context, org string) (*github.Organization, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "Get")
 	var zero0 *github.Organization
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) GetActionsAllowed(ctx context.Context, org string) (*github.ActionsAllowed, *github.Response, error) {
+func (s UnimplementedOrganizationsService) GetActionsAllowed(ctx context.Context, org string) (*github.ActionsAllowed, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "GetActionsAllowed")
 	var zero0 *github.ActionsAllowed
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) GetActionsPermissions(ctx context.Context, org string) (*github.ActionsPermissions, *github.Response, error) {
+func (s UnimplementedOrganizationsService) GetActionsPermissions(ctx context.Context, org string) (*github.ActionsPermissions, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "GetActionsPermissions")
 	var zero0 *github.ActionsPermissions
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) GetAllCustomProperties(ctx context.Context, org string) ([]*github.CustomProperty, *github.Response, error) {
+func (s UnimplementedOrganizationsService) GetAllCustomProperties(ctx context.Context, org string) ([]*github.CustomProperty, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "GetAllCustomProperties")
 	var zero0 []*github.CustomProperty
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) GetAuditLog(ctx context.Context, org string, opts *github.GetAuditLogOptions) ([]*github.AuditEntry, *github.Response, error) {
+func (s UnimplementedOrganizationsService) GetAuditLog(ctx context.Context, org string, opts *github.GetAuditLogOptions) ([]*github.AuditEntry, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "GetAuditLog")
 	var zero0 []*github.AuditEntry
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) GetByID(ctx context.Context, id int64) (*github.Organization, *github.Response, error) {
+func (s UnimplementedOrganizationsService) GetByID(ctx context.Context, id int64) (*github.Organization, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "GetByID")
 	var zero0 *github.Organization
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) GetCodeSecurityConfiguration(ctx context.Context, org string, configurationID int64) (*github.CodeSecurityConfiguration, *github.Response, error) {
+func (s UnimplementedOrganizationsService) GetCodeSecurityConfiguration(ctx context.Context, org string, configurationID int64) (*github.CodeSecurityConfiguration, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "GetCodeSecurityConfiguration")
 	var zero0 *github.CodeSecurityConfiguration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) GetCodeSecurityConfigurationForRepository(ctx context.Context, org string, repo string) (*github.RepositoryCodeSecurityConfiguration, *github.Response, error) {
+func (s UnimplementedOrganizationsService) GetCodeSecurityConfigurationForRepository(ctx context.Context, org string, repo string) (*github.RepositoryCodeSecurityConfiguration, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "GetCodeSecurityConfigurationForRepository")
 	var zero0 *github.RepositoryCodeSecurityConfiguration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) GetCustomProperty(ctx context.Context, org string, name string) (*github.CustomProperty, *github.Response, error) {
+func (s UnimplementedOrganizationsService) GetCustomProperty(ctx context.Context, org string, name string) (*github.CustomProperty, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "GetCustomProperty")
 	var zero0 *github.CustomProperty
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) GetCustomRepoRole(ctx context.Context, org string, roleID int64) (*github.CustomRepoRoles, *github.Response, error) {
+func (s UnimplementedOrganizationsService) GetCustomRepoRole(ctx context.Context, org string, roleID int64) (*github.CustomRepoRoles, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "GetCustomRepoRole")
 	var zero0 *github.CustomRepoRoles
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) GetHook(ctx context.Context, org string, id int64) (*github.Hook, *github.Response, error) {
+func (s UnimplementedOrganizationsService) GetHook(ctx context.Context, org string, id int64) (*github.Hook, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "GetHook")
 	var zero0 *github.Hook
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) GetHookConfiguration(ctx context.Context, org string, id int64) (*github.HookConfig, *github.Response, error) {
+func (s UnimplementedOrganizationsService) GetHookConfiguration(ctx context.Context, org string, id int64) (*github.HookConfig, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "GetHookConfiguration")
 	var zero0 *github.HookConfig
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) GetHookDelivery(ctx context.Context, owner string, hookID int64, deliveryID int64) (*github.HookDelivery, *github.Response, error) {
+func (s UnimplementedOrganizationsService) GetHookDelivery(ctx context.Context, owner string, hookID int64, deliveryID int64) (*github.HookDelivery, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "GetHookDelivery")
 	var zero0 *github.HookDelivery
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) GetImmutableReleasesSettings(ctx context.Context, org string) (*github.ImmutableReleaseSettings, *github.Response, error) {
+func (s UnimplementedOrganizationsService) GetImmutableReleasesSettings(ctx context.Context, org string) (*github.ImmutableReleaseSettings, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "GetImmutableReleasesSettings")
 	var zero0 *github.ImmutableReleaseSettings
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) GetNetworkConfiguration(ctx context.Context, org string, networkID string) (*github.NetworkConfiguration, *github.Response, error) {
+func (s UnimplementedOrganizationsService) GetNetworkConfiguration(ctx context.Context, org string, networkID string) (*github.NetworkConfiguration, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "GetNetworkConfiguration")
 	var zero0 *github.NetworkConfiguration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) GetNetworkConfigurationResource(ctx context.Context, org string, networkID string) (*github.NetworkSettingsResource, *github.Response, error) {
+func (s UnimplementedOrganizationsService) GetNetworkConfigurationResource(ctx context.Context, org string, networkID string) (*github.NetworkSettingsResource, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "GetNetworkConfigurationResource")
 	var zero0 *github.NetworkSettingsResource
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) GetOrgMembership(ctx context.Context, user string, org string) (*github.Membership, *github.Response, error) {
+func (s UnimplementedOrganizationsService) GetOrgMembership(ctx context.Context, user string, org string) (*github.Membership, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "GetOrgMembership")
 	var zero0 *github.Membership
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) GetOrgRole(ctx context.Context, org string, roleID int64) (*github.CustomOrgRole, *github.Response, error) {
+func (s UnimplementedOrganizationsService) GetOrgRole(ctx context.Context, org string, roleID int64) (*github.CustomOrgRole, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "GetOrgRole")
 	var zero0 *github.CustomOrgRole
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) GetOrganizationCustomPropertyValues(ctx context.Context, org string) ([]*github.CustomPropertyValue, *github.Response, error) {
+func (s UnimplementedOrganizationsService) GetOrganizationCustomPropertyValues(ctx context.Context, org string) ([]*github.CustomPropertyValue, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "GetOrganizationCustomPropertyValues")
 	var zero0 []*github.CustomPropertyValue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) GetPackage(ctx context.Context, org string, packageType string, packageName string) (*github.Package, *github.Response, error) {
+func (s UnimplementedOrganizationsService) GetPackage(ctx context.Context, org string, packageType string, packageName string) (*github.Package, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "GetPackage")
 	var zero0 *github.Package
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) GetRepositoryRuleset(ctx context.Context, org string, rulesetID int64) (*github.RepositoryRuleset, *github.Response, error) {
+func (s UnimplementedOrganizationsService) GetRepositoryRuleset(ctx context.Context, org string, rulesetID int64) (*github.RepositoryRuleset, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "GetRepositoryRuleset")
 	var zero0 *github.RepositoryRuleset
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) IsBlocked(ctx context.Context, org string, user string) (bool, *github.Response, error) {
+func (s UnimplementedOrganizationsService) IsBlocked(ctx context.Context, org string, user string) (bool, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "IsBlocked")
 	var zero0 bool
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) IsMember(ctx context.Context, org string, user string) (bool, *github.Response, error) {
+func (s UnimplementedOrganizationsService) IsMember(ctx context.Context, org string, user string) (bool, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "IsMember")
 	var zero0 bool
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) IsPublicMember(ctx context.Context, org string, user string) (bool, *github.Response, error) {
+func (s UnimplementedOrganizationsService) IsPublicMember(ctx context.Context, org string, user string) (bool, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "IsPublicMember")
 	var zero0 bool
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) List(ctx context.Context, user string, opts *github.ListOptions) ([]*github.Organization, *github.Response, error) {
+func (s UnimplementedOrganizationsService) List(ctx context.Context, user string, opts *github.ListOptions) ([]*github.Organization, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "List")
 	var zero0 []*github.Organization
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListAll(ctx context.Context, opts *github.OrganizationsListOptions) ([]*github.Organization, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListAll(ctx context.Context, opts *github.OrganizationsListOptions) ([]*github.Organization, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListAll")
 	var zero0 []*github.Organization
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListAllRepositoryRulesets(ctx context.Context, org string, opts *github.ListOptions) ([]*github.RepositoryRuleset, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListAllRepositoryRulesets(ctx context.Context, org string, opts *github.ListOptions) ([]*github.RepositoryRuleset, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListAllRepositoryRulesets")
 	var zero0 []*github.RepositoryRuleset
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListArtifactDeploymentRecords(ctx context.Context, org string, subjectDigest string) (*github.ArtifactDeploymentResponse, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListArtifactDeploymentRecords(ctx context.Context, org string, subjectDigest string) (*github.ArtifactDeploymentResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListArtifactDeploymentRecords")
 	var zero0 *github.ArtifactDeploymentResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListArtifactStorageRecords(ctx context.Context, org string, subjectDigest string) (*github.ArtifactStorageResponse, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListArtifactStorageRecords(ctx context.Context, org string, subjectDigest string) (*github.ArtifactStorageResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListArtifactStorageRecords")
 	var zero0 *github.ArtifactStorageResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListAttestations(ctx context.Context, org string, subjectDigest string, opts *github.ListOptions) (*github.AttestationsResponse, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListAttestations(ctx context.Context, org string, subjectDigest string, opts *github.ListOptions) (*github.AttestationsResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListAttestations")
 	var zero0 *github.AttestationsResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListBlockedUsers(ctx context.Context, org string, opts *github.ListOptions) ([]*github.User, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListBlockedUsers(ctx context.Context, org string, opts *github.ListOptions) ([]*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListBlockedUsers")
 	var zero0 []*github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListCodeSecurityConfigurationRepositories(ctx context.Context, org string, configurationID int64, opts *github.ListCodeSecurityConfigurationRepositoriesOptions) ([]*github.RepositoryAttachment, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListCodeSecurityConfigurationRepositories(ctx context.Context, org string, configurationID int64, opts *github.ListCodeSecurityConfigurationRepositoriesOptions) ([]*github.RepositoryAttachment, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListCodeSecurityConfigurationRepositories")
 	var zero0 []*github.RepositoryAttachment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListCodeSecurityConfigurations(ctx context.Context, org string, opts *github.ListOrgCodeSecurityConfigurationOptions) ([]*github.CodeSecurityConfiguration, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListCodeSecurityConfigurations(ctx context.Context, org string, opts *github.ListOrgCodeSecurityConfigurationOptions) ([]*github.CodeSecurityConfiguration, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListCodeSecurityConfigurations")
 	var zero0 []*github.CodeSecurityConfiguration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListCredentialAuthorizations(ctx context.Context, org string, opts *github.CredentialAuthorizationsListOptions) ([]*github.CredentialAuthorization, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListCredentialAuthorizations(ctx context.Context, org string, opts *github.CredentialAuthorizationsListOptions) ([]*github.CredentialAuthorization, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListCredentialAuthorizations")
 	var zero0 []*github.CredentialAuthorization
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListCustomPropertyValues(ctx context.Context, org string, opts *github.ListCustomPropertyValuesOptions) ([]*github.RepoCustomPropertyValue, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListCustomPropertyValues(ctx context.Context, org string, opts *github.ListCustomPropertyValuesOptions) ([]*github.RepoCustomPropertyValue, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListCustomPropertyValues")
 	var zero0 []*github.RepoCustomPropertyValue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListCustomRepoRoles(ctx context.Context, org string) (*github.OrganizationCustomRepoRoles, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListCustomRepoRoles(ctx context.Context, org string) (*github.OrganizationCustomRepoRoles, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListCustomRepoRoles")
 	var zero0 *github.OrganizationCustomRepoRoles
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListDefaultCodeSecurityConfigurations(ctx context.Context, org string) ([]*github.CodeSecurityConfigurationWithDefaultForNewRepos, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListDefaultCodeSecurityConfigurations(ctx context.Context, org string) ([]*github.CodeSecurityConfigurationWithDefaultForNewRepos, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListDefaultCodeSecurityConfigurations")
 	var zero0 []*github.CodeSecurityConfigurationWithDefaultForNewRepos
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListFailedOrgInvitations(ctx context.Context, org string, opts *github.ListOptions) ([]*github.Invitation, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListFailedOrgInvitations(ctx context.Context, org string, opts *github.ListOptions) ([]*github.Invitation, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListFailedOrgInvitations")
 	var zero0 []*github.Invitation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListFineGrainedPermissions(ctx context.Context, org string) ([]*github.OrganizationFineGrainedPermission, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListFineGrainedPermissions(ctx context.Context, org string) ([]*github.OrganizationFineGrainedPermission, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListFineGrainedPermissions")
 	var zero0 []*github.OrganizationFineGrainedPermission
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListFineGrainedPersonalAccessTokenRequests(ctx context.Context, org string, opts *github.ListFineGrainedPATOptions) ([]*github.FineGrainedPersonalAccessTokenRequest, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListFineGrainedPersonalAccessTokenRequests(ctx context.Context, org string, opts *github.ListFineGrainedPATOptions) ([]*github.FineGrainedPersonalAccessTokenRequest, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListFineGrainedPersonalAccessTokenRequests")
 	var zero0 []*github.FineGrainedPersonalAccessTokenRequest
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListFineGrainedPersonalAccessTokens(ctx context.Context, org string, opts *github.ListFineGrainedPATOptions) ([]*github.PersonalAccessToken, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListFineGrainedPersonalAccessTokens(ctx context.Context, org string, opts *github.ListFineGrainedPATOptions) ([]*github.PersonalAccessToken, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListFineGrainedPersonalAccessTokens")
 	var zero0 []*github.PersonalAccessToken
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListHookDeliveries(ctx context.Context, org string, id int64, opts *github.ListCursorOptions) ([]*github.HookDelivery, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListHookDeliveries(ctx context.Context, org string, id int64, opts *github.ListCursorOptions) ([]*github.HookDelivery, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListHookDeliveries")
 	var zero0 []*github.HookDelivery
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListHooks(ctx context.Context, org string, opts *github.ListOptions) ([]*github.Hook, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListHooks(ctx context.Context, org string, opts *github.ListOptions) ([]*github.Hook, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListHooks")
 	var zero0 []*github.Hook
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListImmutableReleaseRepositories(ctx context.Context, org string, opts *github.ListOptions) (*github.ListRepositories, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListImmutableReleaseRepositories(ctx context.Context, org string, opts *github.ListOptions) (*github.ListRepositories, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListImmutableReleaseRepositories")
 	var zero0 *github.ListRepositories
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListInstallations(ctx context.Context, org string, opts *github.ListOptions) (*github.OrganizationInstallations, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListInstallations(ctx context.Context, org string, opts *github.ListOptions) (*github.OrganizationInstallations, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListInstallations")
 	var zero0 *github.OrganizationInstallations
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListIssueTypes(ctx context.Context, org string) ([]*github.IssueType, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListIssueTypes(ctx context.Context, org string) ([]*github.IssueType, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListIssueTypes")
 	var zero0 []*github.IssueType
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListMembers(ctx context.Context, org string, opts *github.ListMembersOptions) ([]*github.User, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListMembers(ctx context.Context, org string, opts *github.ListMembersOptions) ([]*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListMembers")
 	var zero0 []*github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListNetworkConfigurations(ctx context.Context, org string, opts *github.ListOptions) (*github.NetworkConfigurations, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListNetworkConfigurations(ctx context.Context, org string, opts *github.ListOptions) (*github.NetworkConfigurations, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListNetworkConfigurations")
 	var zero0 *github.NetworkConfigurations
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListOrgInvitationTeams(ctx context.Context, org string, invitationID string, opts *github.ListOptions) ([]*github.Team, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListOrgInvitationTeams(ctx context.Context, org string, invitationID string, opts *github.ListOptions) ([]*github.Team, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListOrgInvitationTeams")
 	var zero0 []*github.Team
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListOrgMemberships(ctx context.Context, opts *github.ListOrgMembershipsOptions) ([]*github.Membership, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListOrgMemberships(ctx context.Context, opts *github.ListOrgMembershipsOptions) ([]*github.Membership, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListOrgMemberships")
 	var zero0 []*github.Membership
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListOutsideCollaborators(ctx context.Context, org string, opts *github.ListOutsideCollaboratorsOptions) ([]*github.User, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListOutsideCollaborators(ctx context.Context, org string, opts *github.ListOutsideCollaboratorsOptions) ([]*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListOutsideCollaborators")
 	var zero0 []*github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListPackages(ctx context.Context, org string, opts *github.PackageListOptions) ([]*github.Package, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListPackages(ctx context.Context, org string, opts *github.PackageListOptions) ([]*github.Package, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListPackages")
 	var zero0 []*github.Package
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListPendingOrgInvitations(ctx context.Context, org string, opts *github.ListOptions) ([]*github.Invitation, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListPendingOrgInvitations(ctx context.Context, org string, opts *github.ListOptions) ([]*github.Invitation, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListPendingOrgInvitations")
 	var zero0 []*github.Invitation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListRepositoryFineGrainedPermissions(ctx context.Context, org string) ([]*github.RepoFineGrainedPermission, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListRepositoryFineGrainedPermissions(ctx context.Context, org string) ([]*github.RepoFineGrainedPermission, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListRepositoryFineGrainedPermissions")
 	var zero0 []*github.RepoFineGrainedPermission
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListRoles(ctx context.Context, org string) (*github.OrganizationCustomRoles, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListRoles(ctx context.Context, org string) (*github.OrganizationCustomRoles, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListRoles")
 	var zero0 *github.OrganizationCustomRoles
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListSecurityManagerTeams(ctx context.Context, org string) ([]*github.Team, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListSecurityManagerTeams(ctx context.Context, org string) ([]*github.Team, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListSecurityManagerTeams")
 	var zero0 []*github.Team
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListTeamsAssignedToOrgRole(ctx context.Context, org string, roleID int64, opts *github.ListOptions) ([]*github.Team, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListTeamsAssignedToOrgRole(ctx context.Context, org string, roleID int64, opts *github.ListOptions) ([]*github.Team, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListTeamsAssignedToOrgRole")
 	var zero0 []*github.Team
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ListUsersAssignedToOrgRole(ctx context.Context, org string, roleID int64, opts *github.ListOptions) ([]*github.User, *github.Response, error) {
+func (s UnimplementedOrganizationsService) ListUsersAssignedToOrgRole(ctx context.Context, org string, roleID int64, opts *github.ListOptions) ([]*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ListUsersAssignedToOrgRole")
 	var zero0 []*github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) PackageDeleteVersion(ctx context.Context, org string, packageType string, packageName string, packageVersionID int64) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) PackageDeleteVersion(ctx context.Context, org string, packageType string, packageName string, packageVersionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "PackageDeleteVersion")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) PackageGetAllVersions(ctx context.Context, org string, packageType string, packageName string, opts *github.PackageListOptions) ([]*github.PackageVersion, *github.Response, error) {
+func (s UnimplementedOrganizationsService) PackageGetAllVersions(ctx context.Context, org string, packageType string, packageName string, opts *github.PackageListOptions) ([]*github.PackageVersion, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "PackageGetAllVersions")
 	var zero0 []*github.PackageVersion
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) PackageGetVersion(ctx context.Context, org string, packageType string, packageName string, packageVersionID int64) (*github.PackageVersion, *github.Response, error) {
+func (s UnimplementedOrganizationsService) PackageGetVersion(ctx context.Context, org string, packageType string, packageName string, packageVersionID int64) (*github.PackageVersion, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "PackageGetVersion")
 	var zero0 *github.PackageVersion
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) PackageRestoreVersion(ctx context.Context, org string, packageType string, packageName string, packageVersionID int64) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) PackageRestoreVersion(ctx context.Context, org string, packageType string, packageName string, packageVersionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "PackageRestoreVersion")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) PingHook(ctx context.Context, org string, id int64) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) PingHook(ctx context.Context, org string, id int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "PingHook")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) PublicizeMembership(ctx context.Context, org string, user string) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) PublicizeMembership(ctx context.Context, org string, user string) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "PublicizeMembership")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) RedeliverHookDelivery(ctx context.Context, owner string, hookID int64, deliveryID int64) (*github.HookDelivery, *github.Response, error) {
+func (s UnimplementedOrganizationsService) RedeliverHookDelivery(ctx context.Context, owner string, hookID int64, deliveryID int64) (*github.HookDelivery, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "RedeliverHookDelivery")
 	var zero0 *github.HookDelivery
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) RemoveCredentialAuthorization(ctx context.Context, org string, credentialID int64) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) RemoveCredentialAuthorization(ctx context.Context, org string, credentialID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "RemoveCredentialAuthorization")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) RemoveCustomProperty(ctx context.Context, org string, customPropertyName string) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) RemoveCustomProperty(ctx context.Context, org string, customPropertyName string) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "RemoveCustomProperty")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) RemoveMember(ctx context.Context, org string, user string) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) RemoveMember(ctx context.Context, org string, user string) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "RemoveMember")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) RemoveOrgMembership(ctx context.Context, user string, org string) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) RemoveOrgMembership(ctx context.Context, user string, org string) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "RemoveOrgMembership")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) RemoveOrgRoleFromTeam(ctx context.Context, org string, teamSlug string, roleID int64) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) RemoveOrgRoleFromTeam(ctx context.Context, org string, teamSlug string, roleID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "RemoveOrgRoleFromTeam")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) RemoveOrgRoleFromUser(ctx context.Context, org string, username string, roleID int64) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) RemoveOrgRoleFromUser(ctx context.Context, org string, username string, roleID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "RemoveOrgRoleFromUser")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) RemoveOutsideCollaborator(ctx context.Context, org string, user string) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) RemoveOutsideCollaborator(ctx context.Context, org string, user string) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "RemoveOutsideCollaborator")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) RemoveSecurityManagerTeam(ctx context.Context, org string, team string) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) RemoveSecurityManagerTeam(ctx context.Context, org string, team string) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "RemoveSecurityManagerTeam")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) RestorePackage(ctx context.Context, org string, packageType string, packageName string) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) RestorePackage(ctx context.Context, org string, packageType string, packageName string) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "RestorePackage")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) ReviewPersonalAccessTokenRequest(ctx context.Context, org string, requestID int64, opts github.ReviewPersonalAccessTokenRequestOptions) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) ReviewPersonalAccessTokenRequest(ctx context.Context, org string, requestID int64, opts github.ReviewPersonalAccessTokenRequestOptions) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "ReviewPersonalAccessTokenRequest")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) SetClusterDeploymentRecords(ctx context.Context, org string, cluster string, body github.ClusterDeploymentRecordsRequest) (*github.ArtifactDeploymentResponse, *github.Response, error) {
+func (s UnimplementedOrganizationsService) SetClusterDeploymentRecords(ctx context.Context, org string, cluster string, body github.ClusterDeploymentRecordsRequest) (*github.ArtifactDeploymentResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "SetClusterDeploymentRecords")
 	var zero0 *github.ArtifactDeploymentResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) SetDefaultCodeSecurityConfiguration(ctx context.Context, org string, configurationID int64, newReposParam string) (*github.CodeSecurityConfigurationWithDefaultForNewRepos, *github.Response, error) {
+func (s UnimplementedOrganizationsService) SetDefaultCodeSecurityConfiguration(ctx context.Context, org string, configurationID int64, newReposParam string) (*github.CodeSecurityConfigurationWithDefaultForNewRepos, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "SetDefaultCodeSecurityConfiguration")
 	var zero0 *github.CodeSecurityConfigurationWithDefaultForNewRepos
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) SetImmutableReleaseRepositories(ctx context.Context, org string, repositoryIDs []int64) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) SetImmutableReleaseRepositories(ctx context.Context, org string, repositoryIDs []int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "SetImmutableReleaseRepositories")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) UnblockUser(ctx context.Context, org string, user string) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) UnblockUser(ctx context.Context, org string, user string) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "UnblockUser")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) UpdateActionsAllowed(ctx context.Context, org string, actionsAllowed github.ActionsAllowed) (*github.ActionsAllowed, *github.Response, error) {
+func (s UnimplementedOrganizationsService) UpdateActionsAllowed(ctx context.Context, org string, actionsAllowed github.ActionsAllowed) (*github.ActionsAllowed, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "UpdateActionsAllowed")
 	var zero0 *github.ActionsAllowed
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) UpdateActionsPermissions(ctx context.Context, org string, actionsPermissions github.ActionsPermissions) (*github.ActionsPermissions, *github.Response, error) {
+func (s UnimplementedOrganizationsService) UpdateActionsPermissions(ctx context.Context, org string, actionsPermissions github.ActionsPermissions) (*github.ActionsPermissions, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "UpdateActionsPermissions")
 	var zero0 *github.ActionsPermissions
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) UpdateCodeSecurityConfiguration(ctx context.Context, org string, configurationID int64, body github.CodeSecurityConfiguration) (*github.CodeSecurityConfiguration, *github.Response, error) {
+func (s UnimplementedOrganizationsService) UpdateCodeSecurityConfiguration(ctx context.Context, org string, configurationID int64, body github.CodeSecurityConfiguration) (*github.CodeSecurityConfiguration, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "UpdateCodeSecurityConfiguration")
 	var zero0 *github.CodeSecurityConfiguration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) UpdateCustomOrgRole(ctx context.Context, org string, roleID int64, body github.UpdateCustomOrgRoleRequest) (*github.CustomOrgRole, *github.Response, error) {
+func (s UnimplementedOrganizationsService) UpdateCustomOrgRole(ctx context.Context, org string, roleID int64, body github.UpdateCustomOrgRoleRequest) (*github.CustomOrgRole, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "UpdateCustomOrgRole")
 	var zero0 *github.CustomOrgRole
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) UpdateCustomRepoRole(ctx context.Context, org string, roleID int64, body *github.CreateOrUpdateCustomRepoRoleOptions) (*github.CustomRepoRoles, *github.Response, error) {
+func (s UnimplementedOrganizationsService) UpdateCustomRepoRole(ctx context.Context, org string, roleID int64, body *github.CreateOrUpdateCustomRepoRoleOptions) (*github.CustomRepoRoles, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "UpdateCustomRepoRole")
 	var zero0 *github.CustomRepoRoles
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) UpdateHookConfiguration(ctx context.Context, org string, id int64, body github.HookConfig) (*github.HookConfig, *github.Response, error) {
+func (s UnimplementedOrganizationsService) UpdateHookConfiguration(ctx context.Context, org string, id int64, body github.HookConfig) (*github.HookConfig, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "UpdateHookConfiguration")
 	var zero0 *github.HookConfig
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) UpdateImmutableReleasesSettings(ctx context.Context, org string, body github.ImmutableReleasePolicy) (*github.Response, error) {
+func (s UnimplementedOrganizationsService) UpdateImmutableReleasesSettings(ctx context.Context, org string, body github.ImmutableReleasePolicy) (*github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "UpdateImmutableReleasesSettings")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) UpdateIssueType(ctx context.Context, org string, issueTypeID int64, body *github.CreateOrUpdateIssueTypesOptions) (*github.IssueType, *github.Response, error) {
+func (s UnimplementedOrganizationsService) UpdateIssueType(ctx context.Context, org string, issueTypeID int64, body *github.CreateOrUpdateIssueTypesOptions) (*github.IssueType, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "UpdateIssueType")
 	var zero0 *github.IssueType
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) UpdateNetworkConfiguration(ctx context.Context, org string, networkID string, body github.NetworkConfigurationRequest) (*github.NetworkConfiguration, *github.Response, error) {
+func (s UnimplementedOrganizationsService) UpdateNetworkConfiguration(ctx context.Context, org string, networkID string, body github.NetworkConfigurationRequest) (*github.NetworkConfiguration, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "UpdateNetworkConfiguration")
 	var zero0 *github.NetworkConfiguration
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedOrganizationsService) UpdateRepositoryRuleset(ctx context.Context, org string, rulesetID int64, body github.RepositoryRuleset) (*github.RepositoryRuleset, *github.Response, error) {
+func (s UnimplementedOrganizationsService) UpdateRepositoryRuleset(ctx context.Context, org string, rulesetID int64, body github.RepositoryRuleset) (*github.RepositoryRuleset, *github.Response, error) {
+	s.Callback.call(ctx, "Organizations", "UpdateRepositoryRuleset")
 	var zero0 *github.RepositoryRuleset
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -9360,33 +10202,41 @@ type PrivateRegistriesService interface {
 }
 
 // UnimplementedPrivateRegistriesService may be embedded to implement only selected methods.
-type UnimplementedPrivateRegistriesService struct{}
+type UnimplementedPrivateRegistriesService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedPrivateRegistriesService) CreateOrganizationPrivateRegistry(ctx context.Context, org string, body github.CreateOrganizationPrivateRegistry) (*github.PrivateRegistry, *github.Response, error) {
+func (s UnimplementedPrivateRegistriesService) CreateOrganizationPrivateRegistry(ctx context.Context, org string, body github.CreateOrganizationPrivateRegistry) (*github.PrivateRegistry, *github.Response, error) {
+	s.Callback.call(ctx, "PrivateRegistries", "CreateOrganizationPrivateRegistry")
 	var zero0 *github.PrivateRegistry
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPrivateRegistriesService) DeleteOrganizationPrivateRegistry(ctx context.Context, org string, secretName string) (*github.Response, error) {
+func (s UnimplementedPrivateRegistriesService) DeleteOrganizationPrivateRegistry(ctx context.Context, org string, secretName string) (*github.Response, error) {
+	s.Callback.call(ctx, "PrivateRegistries", "DeleteOrganizationPrivateRegistry")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedPrivateRegistriesService) GetOrganizationPrivateRegistriesPublicKey(ctx context.Context, org string) (*github.PublicKey, *github.Response, error) {
+func (s UnimplementedPrivateRegistriesService) GetOrganizationPrivateRegistriesPublicKey(ctx context.Context, org string) (*github.PublicKey, *github.Response, error) {
+	s.Callback.call(ctx, "PrivateRegistries", "GetOrganizationPrivateRegistriesPublicKey")
 	var zero0 *github.PublicKey
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPrivateRegistriesService) GetOrganizationPrivateRegistry(ctx context.Context, org string, secretName string) (*github.PrivateRegistry, *github.Response, error) {
+func (s UnimplementedPrivateRegistriesService) GetOrganizationPrivateRegistry(ctx context.Context, org string, secretName string) (*github.PrivateRegistry, *github.Response, error) {
+	s.Callback.call(ctx, "PrivateRegistries", "GetOrganizationPrivateRegistry")
 	var zero0 *github.PrivateRegistry
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPrivateRegistriesService) ListOrganizationPrivateRegistries(ctx context.Context, org string, opts *github.ListOptions) (*github.PrivateRegistries, *github.Response, error) {
+func (s UnimplementedPrivateRegistriesService) ListOrganizationPrivateRegistries(ctx context.Context, org string, opts *github.ListOptions) (*github.PrivateRegistries, *github.Response, error) {
+	s.Callback.call(ctx, "PrivateRegistries", "ListOrganizationPrivateRegistries")
 	var zero0 *github.PrivateRegistries
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPrivateRegistriesService) UpdateOrganizationPrivateRegistry(ctx context.Context, org string, secretName string, body github.UpdateOrganizationPrivateRegistry) (*github.Response, error) {
+func (s UnimplementedPrivateRegistriesService) UpdateOrganizationPrivateRegistry(ctx context.Context, org string, secretName string, body github.UpdateOrganizationPrivateRegistry) (*github.Response, error) {
+	s.Callback.call(ctx, "PrivateRegistries", "UpdateOrganizationPrivateRegistry")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
@@ -9504,92 +10354,112 @@ type ProjectsService interface {
 }
 
 // UnimplementedProjectsService may be embedded to implement only selected methods.
-type UnimplementedProjectsService struct{}
+type UnimplementedProjectsService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedProjectsService) AddOrganizationProjectItem(ctx context.Context, org string, projectNumber int, body *github.AddProjectItemOptions) (*github.ProjectV2Item, *github.Response, error) {
+func (s UnimplementedProjectsService) AddOrganizationProjectItem(ctx context.Context, org string, projectNumber int, body *github.AddProjectItemOptions) (*github.ProjectV2Item, *github.Response, error) {
+	s.Callback.call(ctx, "Projects", "AddOrganizationProjectItem")
 	var zero0 *github.ProjectV2Item
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedProjectsService) AddUserProjectItem(ctx context.Context, username string, projectNumber int, body *github.AddProjectItemOptions) (*github.ProjectV2Item, *github.Response, error) {
+func (s UnimplementedProjectsService) AddUserProjectItem(ctx context.Context, username string, projectNumber int, body *github.AddProjectItemOptions) (*github.ProjectV2Item, *github.Response, error) {
+	s.Callback.call(ctx, "Projects", "AddUserProjectItem")
 	var zero0 *github.ProjectV2Item
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedProjectsService) DeleteOrganizationProjectItem(ctx context.Context, org string, projectNumber int, itemID int64) (*github.Response, error) {
+func (s UnimplementedProjectsService) DeleteOrganizationProjectItem(ctx context.Context, org string, projectNumber int, itemID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Projects", "DeleteOrganizationProjectItem")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedProjectsService) DeleteUserProjectItem(ctx context.Context, username string, projectNumber int, itemID int64) (*github.Response, error) {
+func (s UnimplementedProjectsService) DeleteUserProjectItem(ctx context.Context, username string, projectNumber int, itemID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Projects", "DeleteUserProjectItem")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedProjectsService) GetOrganizationProject(ctx context.Context, org string, projectNumber int) (*github.ProjectV2, *github.Response, error) {
+func (s UnimplementedProjectsService) GetOrganizationProject(ctx context.Context, org string, projectNumber int) (*github.ProjectV2, *github.Response, error) {
+	s.Callback.call(ctx, "Projects", "GetOrganizationProject")
 	var zero0 *github.ProjectV2
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedProjectsService) GetOrganizationProjectField(ctx context.Context, org string, projectNumber int, fieldID int64) (*github.ProjectV2Field, *github.Response, error) {
+func (s UnimplementedProjectsService) GetOrganizationProjectField(ctx context.Context, org string, projectNumber int, fieldID int64) (*github.ProjectV2Field, *github.Response, error) {
+	s.Callback.call(ctx, "Projects", "GetOrganizationProjectField")
 	var zero0 *github.ProjectV2Field
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedProjectsService) GetOrganizationProjectItem(ctx context.Context, org string, projectNumber int, itemID int64, opts *github.GetProjectItemOptions) (*github.ProjectV2Item, *github.Response, error) {
+func (s UnimplementedProjectsService) GetOrganizationProjectItem(ctx context.Context, org string, projectNumber int, itemID int64, opts *github.GetProjectItemOptions) (*github.ProjectV2Item, *github.Response, error) {
+	s.Callback.call(ctx, "Projects", "GetOrganizationProjectItem")
 	var zero0 *github.ProjectV2Item
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedProjectsService) GetUserProject(ctx context.Context, username string, projectNumber int) (*github.ProjectV2, *github.Response, error) {
+func (s UnimplementedProjectsService) GetUserProject(ctx context.Context, username string, projectNumber int) (*github.ProjectV2, *github.Response, error) {
+	s.Callback.call(ctx, "Projects", "GetUserProject")
 	var zero0 *github.ProjectV2
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedProjectsService) GetUserProjectField(ctx context.Context, user string, projectNumber int, fieldID int64) (*github.ProjectV2Field, *github.Response, error) {
+func (s UnimplementedProjectsService) GetUserProjectField(ctx context.Context, user string, projectNumber int, fieldID int64) (*github.ProjectV2Field, *github.Response, error) {
+	s.Callback.call(ctx, "Projects", "GetUserProjectField")
 	var zero0 *github.ProjectV2Field
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedProjectsService) GetUserProjectItem(ctx context.Context, username string, projectNumber int, itemID int64, opts *github.GetProjectItemOptions) (*github.ProjectV2Item, *github.Response, error) {
+func (s UnimplementedProjectsService) GetUserProjectItem(ctx context.Context, username string, projectNumber int, itemID int64, opts *github.GetProjectItemOptions) (*github.ProjectV2Item, *github.Response, error) {
+	s.Callback.call(ctx, "Projects", "GetUserProjectItem")
 	var zero0 *github.ProjectV2Item
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedProjectsService) ListOrganizationProjectFields(ctx context.Context, org string, projectNumber int, opts *github.ListProjectsOptions) ([]*github.ProjectV2Field, *github.Response, error) {
+func (s UnimplementedProjectsService) ListOrganizationProjectFields(ctx context.Context, org string, projectNumber int, opts *github.ListProjectsOptions) ([]*github.ProjectV2Field, *github.Response, error) {
+	s.Callback.call(ctx, "Projects", "ListOrganizationProjectFields")
 	var zero0 []*github.ProjectV2Field
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedProjectsService) ListOrganizationProjectItems(ctx context.Context, org string, projectNumber int, opts *github.ListProjectItemsOptions) ([]*github.ProjectV2Item, *github.Response, error) {
+func (s UnimplementedProjectsService) ListOrganizationProjectItems(ctx context.Context, org string, projectNumber int, opts *github.ListProjectItemsOptions) ([]*github.ProjectV2Item, *github.Response, error) {
+	s.Callback.call(ctx, "Projects", "ListOrganizationProjectItems")
 	var zero0 []*github.ProjectV2Item
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedProjectsService) ListOrganizationProjects(ctx context.Context, org string, opts *github.ListProjectsOptions) ([]*github.ProjectV2, *github.Response, error) {
+func (s UnimplementedProjectsService) ListOrganizationProjects(ctx context.Context, org string, opts *github.ListProjectsOptions) ([]*github.ProjectV2, *github.Response, error) {
+	s.Callback.call(ctx, "Projects", "ListOrganizationProjects")
 	var zero0 []*github.ProjectV2
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedProjectsService) ListUserProjectFields(ctx context.Context, user string, projectNumber int, opts *github.ListProjectsOptions) ([]*github.ProjectV2Field, *github.Response, error) {
+func (s UnimplementedProjectsService) ListUserProjectFields(ctx context.Context, user string, projectNumber int, opts *github.ListProjectsOptions) ([]*github.ProjectV2Field, *github.Response, error) {
+	s.Callback.call(ctx, "Projects", "ListUserProjectFields")
 	var zero0 []*github.ProjectV2Field
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedProjectsService) ListUserProjectItems(ctx context.Context, username string, projectNumber int, opts *github.ListProjectItemsOptions) ([]*github.ProjectV2Item, *github.Response, error) {
+func (s UnimplementedProjectsService) ListUserProjectItems(ctx context.Context, username string, projectNumber int, opts *github.ListProjectItemsOptions) ([]*github.ProjectV2Item, *github.Response, error) {
+	s.Callback.call(ctx, "Projects", "ListUserProjectItems")
 	var zero0 []*github.ProjectV2Item
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedProjectsService) ListUserProjects(ctx context.Context, username string, opts *github.ListProjectsOptions) ([]*github.ProjectV2, *github.Response, error) {
+func (s UnimplementedProjectsService) ListUserProjects(ctx context.Context, username string, opts *github.ListProjectsOptions) ([]*github.ProjectV2, *github.Response, error) {
+	s.Callback.call(ctx, "Projects", "ListUserProjects")
 	var zero0 []*github.ProjectV2
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedProjectsService) UpdateOrganizationProjectItem(ctx context.Context, org string, projectNumber int, itemID int64, body *github.UpdateProjectItemOptions) (*github.ProjectV2Item, *github.Response, error) {
+func (s UnimplementedProjectsService) UpdateOrganizationProjectItem(ctx context.Context, org string, projectNumber int, itemID int64, body *github.UpdateProjectItemOptions) (*github.ProjectV2Item, *github.Response, error) {
+	s.Callback.call(ctx, "Projects", "UpdateOrganizationProjectItem")
 	var zero0 *github.ProjectV2Item
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedProjectsService) UpdateUserProjectItem(ctx context.Context, username string, projectNumber int, itemID int64, body *github.UpdateProjectItemOptions) (*github.ProjectV2Item, *github.Response, error) {
+func (s UnimplementedProjectsService) UpdateUserProjectItem(ctx context.Context, username string, projectNumber int, itemID int64, body *github.UpdateProjectItemOptions) (*github.ProjectV2Item, *github.Response, error) {
+	s.Callback.call(ctx, "Projects", "UpdateUserProjectItem")
 	var zero0 *github.ProjectV2Item
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -9824,142 +10694,172 @@ type PullRequestsService interface {
 }
 
 // UnimplementedPullRequestsService may be embedded to implement only selected methods.
-type UnimplementedPullRequestsService struct{}
+type UnimplementedPullRequestsService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedPullRequestsService) Create(ctx context.Context, owner string, repo string, body *github.NewPullRequest) (*github.PullRequest, *github.Response, error) {
+func (s UnimplementedPullRequestsService) Create(ctx context.Context, owner string, repo string, body *github.NewPullRequest) (*github.PullRequest, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "Create")
 	var zero0 *github.PullRequest
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) CreateComment(ctx context.Context, owner string, repo string, number int, body *github.PullRequestComment) (*github.PullRequestComment, *github.Response, error) {
+func (s UnimplementedPullRequestsService) CreateComment(ctx context.Context, owner string, repo string, number int, body *github.PullRequestComment) (*github.PullRequestComment, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "CreateComment")
 	var zero0 *github.PullRequestComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) CreateCommentInReplyTo(ctx context.Context, owner string, repo string, number int, body string, commentID int64) (*github.PullRequestComment, *github.Response, error) {
+func (s UnimplementedPullRequestsService) CreateCommentInReplyTo(ctx context.Context, owner string, repo string, number int, body string, commentID int64) (*github.PullRequestComment, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "CreateCommentInReplyTo")
 	var zero0 *github.PullRequestComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) CreateReview(ctx context.Context, owner string, repo string, number int, body *github.PullRequestReviewRequest) (*github.PullRequestReview, *github.Response, error) {
+func (s UnimplementedPullRequestsService) CreateReview(ctx context.Context, owner string, repo string, number int, body *github.PullRequestReviewRequest) (*github.PullRequestReview, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "CreateReview")
 	var zero0 *github.PullRequestReview
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) DeleteComment(ctx context.Context, owner string, repo string, commentID int64) (*github.Response, error) {
+func (s UnimplementedPullRequestsService) DeleteComment(ctx context.Context, owner string, repo string, commentID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "DeleteComment")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) DeletePendingReview(ctx context.Context, owner string, repo string, number int, reviewID int64) (*github.PullRequestReview, *github.Response, error) {
+func (s UnimplementedPullRequestsService) DeletePendingReview(ctx context.Context, owner string, repo string, number int, reviewID int64) (*github.PullRequestReview, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "DeletePendingReview")
 	var zero0 *github.PullRequestReview
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) DismissReview(ctx context.Context, owner string, repo string, number int, reviewID int64, body *github.PullRequestReviewDismissalRequest) (*github.PullRequestReview, *github.Response, error) {
+func (s UnimplementedPullRequestsService) DismissReview(ctx context.Context, owner string, repo string, number int, reviewID int64, body *github.PullRequestReviewDismissalRequest) (*github.PullRequestReview, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "DismissReview")
 	var zero0 *github.PullRequestReview
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) Edit(ctx context.Context, owner string, repo string, number int, pull *github.PullRequest) (*github.PullRequest, *github.Response, error) {
+func (s UnimplementedPullRequestsService) Edit(ctx context.Context, owner string, repo string, number int, pull *github.PullRequest) (*github.PullRequest, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "Edit")
 	var zero0 *github.PullRequest
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) EditComment(ctx context.Context, owner string, repo string, commentID int64, body *github.PullRequestComment) (*github.PullRequestComment, *github.Response, error) {
+func (s UnimplementedPullRequestsService) EditComment(ctx context.Context, owner string, repo string, commentID int64, body *github.PullRequestComment) (*github.PullRequestComment, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "EditComment")
 	var zero0 *github.PullRequestComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) Get(ctx context.Context, owner string, repo string, number int) (*github.PullRequest, *github.Response, error) {
+func (s UnimplementedPullRequestsService) Get(ctx context.Context, owner string, repo string, number int) (*github.PullRequest, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "Get")
 	var zero0 *github.PullRequest
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) GetComment(ctx context.Context, owner string, repo string, commentID int64) (*github.PullRequestComment, *github.Response, error) {
+func (s UnimplementedPullRequestsService) GetComment(ctx context.Context, owner string, repo string, commentID int64) (*github.PullRequestComment, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "GetComment")
 	var zero0 *github.PullRequestComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) GetRaw(ctx context.Context, owner string, repo string, number int, opts github.RawOptions) (string, *github.Response, error) {
+func (s UnimplementedPullRequestsService) GetRaw(ctx context.Context, owner string, repo string, number int, opts github.RawOptions) (string, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "GetRaw")
 	var zero0 string
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) GetReview(ctx context.Context, owner string, repo string, number int, reviewID int64) (*github.PullRequestReview, *github.Response, error) {
+func (s UnimplementedPullRequestsService) GetReview(ctx context.Context, owner string, repo string, number int, reviewID int64) (*github.PullRequestReview, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "GetReview")
 	var zero0 *github.PullRequestReview
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) IsMerged(ctx context.Context, owner string, repo string, number int) (bool, *github.Response, error) {
+func (s UnimplementedPullRequestsService) IsMerged(ctx context.Context, owner string, repo string, number int) (bool, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "IsMerged")
 	var zero0 bool
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) List(ctx context.Context, owner string, repo string, opts *github.PullRequestListOptions) ([]*github.PullRequest, *github.Response, error) {
+func (s UnimplementedPullRequestsService) List(ctx context.Context, owner string, repo string, opts *github.PullRequestListOptions) ([]*github.PullRequest, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "List")
 	var zero0 []*github.PullRequest
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) ListComments(ctx context.Context, owner string, repo string, number int, opts *github.PullRequestListCommentsOptions) ([]*github.PullRequestComment, *github.Response, error) {
+func (s UnimplementedPullRequestsService) ListComments(ctx context.Context, owner string, repo string, number int, opts *github.PullRequestListCommentsOptions) ([]*github.PullRequestComment, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "ListComments")
 	var zero0 []*github.PullRequestComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) ListCommits(ctx context.Context, owner string, repo string, number int, opts *github.ListOptions) ([]*github.RepositoryCommit, *github.Response, error) {
+func (s UnimplementedPullRequestsService) ListCommits(ctx context.Context, owner string, repo string, number int, opts *github.ListOptions) ([]*github.RepositoryCommit, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "ListCommits")
 	var zero0 []*github.RepositoryCommit
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) ListFiles(ctx context.Context, owner string, repo string, number int, opts *github.ListOptions) ([]*github.CommitFile, *github.Response, error) {
+func (s UnimplementedPullRequestsService) ListFiles(ctx context.Context, owner string, repo string, number int, opts *github.ListOptions) ([]*github.CommitFile, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "ListFiles")
 	var zero0 []*github.CommitFile
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) ListPullRequestsWithCommit(ctx context.Context, owner string, repo string, sha string, opts *github.ListOptions) ([]*github.PullRequest, *github.Response, error) {
+func (s UnimplementedPullRequestsService) ListPullRequestsWithCommit(ctx context.Context, owner string, repo string, sha string, opts *github.ListOptions) ([]*github.PullRequest, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "ListPullRequestsWithCommit")
 	var zero0 []*github.PullRequest
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) ListReviewComments(ctx context.Context, owner string, repo string, number int, reviewID int64, opts *github.ListOptions) ([]*github.PullRequestComment, *github.Response, error) {
+func (s UnimplementedPullRequestsService) ListReviewComments(ctx context.Context, owner string, repo string, number int, reviewID int64, opts *github.ListOptions) ([]*github.PullRequestComment, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "ListReviewComments")
 	var zero0 []*github.PullRequestComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) ListReviewers(ctx context.Context, owner string, repo string, number int) (*github.Reviewers, *github.Response, error) {
+func (s UnimplementedPullRequestsService) ListReviewers(ctx context.Context, owner string, repo string, number int) (*github.Reviewers, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "ListReviewers")
 	var zero0 *github.Reviewers
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) ListReviews(ctx context.Context, owner string, repo string, number int, opts *github.ListOptions) ([]*github.PullRequestReview, *github.Response, error) {
+func (s UnimplementedPullRequestsService) ListReviews(ctx context.Context, owner string, repo string, number int, opts *github.ListOptions) ([]*github.PullRequestReview, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "ListReviews")
 	var zero0 []*github.PullRequestReview
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) Merge(ctx context.Context, owner string, repo string, number int, commitMessage string, options *github.PullRequestOptions) (*github.PullRequestMergeResult, *github.Response, error) {
+func (s UnimplementedPullRequestsService) Merge(ctx context.Context, owner string, repo string, number int, commitMessage string, options *github.PullRequestOptions) (*github.PullRequestMergeResult, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "Merge")
 	var zero0 *github.PullRequestMergeResult
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) RemoveReviewers(ctx context.Context, owner string, repo string, number int, reviewers github.ReviewersRequest) (*github.Response, error) {
+func (s UnimplementedPullRequestsService) RemoveReviewers(ctx context.Context, owner string, repo string, number int, reviewers github.ReviewersRequest) (*github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "RemoveReviewers")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) RequestReviewers(ctx context.Context, owner string, repo string, number int, reviewers github.ReviewersRequest) (*github.PullRequest, *github.Response, error) {
+func (s UnimplementedPullRequestsService) RequestReviewers(ctx context.Context, owner string, repo string, number int, reviewers github.ReviewersRequest) (*github.PullRequest, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "RequestReviewers")
 	var zero0 *github.PullRequest
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) SubmitReview(ctx context.Context, owner string, repo string, number int, reviewID int64, body *github.PullRequestReviewRequest) (*github.PullRequestReview, *github.Response, error) {
+func (s UnimplementedPullRequestsService) SubmitReview(ctx context.Context, owner string, repo string, number int, reviewID int64, body *github.PullRequestReviewRequest) (*github.PullRequestReview, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "SubmitReview")
 	var zero0 *github.PullRequestReview
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) UpdateBranch(ctx context.Context, owner string, repo string, number int, body *github.PullRequestBranchUpdateOptions) (*github.PullRequestBranchUpdateResponse, *github.Response, error) {
+func (s UnimplementedPullRequestsService) UpdateBranch(ctx context.Context, owner string, repo string, number int, body *github.PullRequestBranchUpdateOptions) (*github.PullRequestBranchUpdateResponse, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "UpdateBranch")
 	var zero0 *github.PullRequestBranchUpdateResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedPullRequestsService) UpdateReview(ctx context.Context, owner string, repo string, number int, reviewID int64, body string) (*github.PullRequestReview, *github.Response, error) {
+func (s UnimplementedPullRequestsService) UpdateReview(ctx context.Context, owner string, repo string, number int, reviewID int64, body string) (*github.PullRequestReview, *github.Response, error) {
+	s.Callback.call(ctx, "PullRequests", "UpdateReview")
 	var zero0 *github.PullRequestReview
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -9976,9 +10876,12 @@ type RateLimitService interface {
 }
 
 // UnimplementedRateLimitService may be embedded to implement only selected methods.
-type UnimplementedRateLimitService struct{}
+type UnimplementedRateLimitService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedRateLimitService) Get(ctx context.Context) (*github.RateLimits, *github.Response, error) {
+func (s UnimplementedRateLimitService) Get(ctx context.Context) (*github.RateLimits, *github.Response, error) {
+	s.Callback.call(ctx, "RateLimit", "Get")
 	var zero0 *github.RateLimits
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -10190,130 +11093,160 @@ type ReactionsService interface {
 }
 
 // UnimplementedReactionsService may be embedded to implement only selected methods.
-type UnimplementedReactionsService struct{}
+type UnimplementedReactionsService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedReactionsService) CreateCommentReaction(ctx context.Context, owner string, repo string, id int64, content string) (*github.Reaction, *github.Response, error) {
+func (s UnimplementedReactionsService) CreateCommentReaction(ctx context.Context, owner string, repo string, id int64, content string) (*github.Reaction, *github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "CreateCommentReaction")
 	var zero0 *github.Reaction
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedReactionsService) CreateIssueCommentReaction(ctx context.Context, owner string, repo string, id int64, content string) (*github.Reaction, *github.Response, error) {
+func (s UnimplementedReactionsService) CreateIssueCommentReaction(ctx context.Context, owner string, repo string, id int64, content string) (*github.Reaction, *github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "CreateIssueCommentReaction")
 	var zero0 *github.Reaction
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedReactionsService) CreateIssueReaction(ctx context.Context, owner string, repo string, number int, content string) (*github.Reaction, *github.Response, error) {
+func (s UnimplementedReactionsService) CreateIssueReaction(ctx context.Context, owner string, repo string, number int, content string) (*github.Reaction, *github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "CreateIssueReaction")
 	var zero0 *github.Reaction
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedReactionsService) CreatePullRequestCommentReaction(ctx context.Context, owner string, repo string, id int64, content string) (*github.Reaction, *github.Response, error) {
+func (s UnimplementedReactionsService) CreatePullRequestCommentReaction(ctx context.Context, owner string, repo string, id int64, content string) (*github.Reaction, *github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "CreatePullRequestCommentReaction")
 	var zero0 *github.Reaction
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedReactionsService) CreateReleaseReaction(ctx context.Context, owner string, repo string, releaseID int64, content string) (*github.Reaction, *github.Response, error) {
+func (s UnimplementedReactionsService) CreateReleaseReaction(ctx context.Context, owner string, repo string, releaseID int64, content string) (*github.Reaction, *github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "CreateReleaseReaction")
 	var zero0 *github.Reaction
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedReactionsService) CreateTeamDiscussionCommentReaction(ctx context.Context, teamID int64, discussionNumber int, commentNumber int, content string) (*github.Reaction, *github.Response, error) {
+func (s UnimplementedReactionsService) CreateTeamDiscussionCommentReaction(ctx context.Context, teamID int64, discussionNumber int, commentNumber int, content string) (*github.Reaction, *github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "CreateTeamDiscussionCommentReaction")
 	var zero0 *github.Reaction
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedReactionsService) CreateTeamDiscussionReaction(ctx context.Context, teamID int64, discussionNumber int, content string) (*github.Reaction, *github.Response, error) {
+func (s UnimplementedReactionsService) CreateTeamDiscussionReaction(ctx context.Context, teamID int64, discussionNumber int, content string) (*github.Reaction, *github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "CreateTeamDiscussionReaction")
 	var zero0 *github.Reaction
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedReactionsService) DeleteCommentReaction(ctx context.Context, owner string, repo string, commentID int64, reactionID int64) (*github.Response, error) {
+func (s UnimplementedReactionsService) DeleteCommentReaction(ctx context.Context, owner string, repo string, commentID int64, reactionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "DeleteCommentReaction")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedReactionsService) DeleteCommentReactionByID(ctx context.Context, repoID int64, commentID int64, reactionID int64) (*github.Response, error) {
+func (s UnimplementedReactionsService) DeleteCommentReactionByID(ctx context.Context, repoID int64, commentID int64, reactionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "DeleteCommentReactionByID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedReactionsService) DeleteIssueCommentReaction(ctx context.Context, owner string, repo string, commentID int64, reactionID int64) (*github.Response, error) {
+func (s UnimplementedReactionsService) DeleteIssueCommentReaction(ctx context.Context, owner string, repo string, commentID int64, reactionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "DeleteIssueCommentReaction")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedReactionsService) DeleteIssueCommentReactionByID(ctx context.Context, repoID int64, commentID int64, reactionID int64) (*github.Response, error) {
+func (s UnimplementedReactionsService) DeleteIssueCommentReactionByID(ctx context.Context, repoID int64, commentID int64, reactionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "DeleteIssueCommentReactionByID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedReactionsService) DeleteIssueReaction(ctx context.Context, owner string, repo string, issueNumber int, reactionID int64) (*github.Response, error) {
+func (s UnimplementedReactionsService) DeleteIssueReaction(ctx context.Context, owner string, repo string, issueNumber int, reactionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "DeleteIssueReaction")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedReactionsService) DeleteIssueReactionByID(ctx context.Context, repoID int, issueNumber int, reactionID int64) (*github.Response, error) {
+func (s UnimplementedReactionsService) DeleteIssueReactionByID(ctx context.Context, repoID int, issueNumber int, reactionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "DeleteIssueReactionByID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedReactionsService) DeletePullRequestCommentReaction(ctx context.Context, owner string, repo string, commentID int64, reactionID int64) (*github.Response, error) {
+func (s UnimplementedReactionsService) DeletePullRequestCommentReaction(ctx context.Context, owner string, repo string, commentID int64, reactionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "DeletePullRequestCommentReaction")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedReactionsService) DeletePullRequestCommentReactionByID(ctx context.Context, repoID int64, commentID int64, reactionID int64) (*github.Response, error) {
+func (s UnimplementedReactionsService) DeletePullRequestCommentReactionByID(ctx context.Context, repoID int64, commentID int64, reactionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "DeletePullRequestCommentReactionByID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedReactionsService) DeleteReleaseReaction(ctx context.Context, owner string, repo string, releaseID int64, reactionID int64) (*github.Response, error) {
+func (s UnimplementedReactionsService) DeleteReleaseReaction(ctx context.Context, owner string, repo string, releaseID int64, reactionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "DeleteReleaseReaction")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedReactionsService) DeleteReleaseReactionByID(ctx context.Context, repoID int64, releaseID int64, reactionID int64) (*github.Response, error) {
+func (s UnimplementedReactionsService) DeleteReleaseReactionByID(ctx context.Context, repoID int64, releaseID int64, reactionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "DeleteReleaseReactionByID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedReactionsService) DeleteTeamDiscussionCommentReaction(ctx context.Context, org string, teamSlug string, discussionNumber int, commentNumber int, reactionID int64) (*github.Response, error) {
+func (s UnimplementedReactionsService) DeleteTeamDiscussionCommentReaction(ctx context.Context, org string, teamSlug string, discussionNumber int, commentNumber int, reactionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "DeleteTeamDiscussionCommentReaction")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedReactionsService) DeleteTeamDiscussionCommentReactionByOrgIDAndTeamID(ctx context.Context, orgID int, teamID int, discussionNumber int, commentNumber int, reactionID int64) (*github.Response, error) {
+func (s UnimplementedReactionsService) DeleteTeamDiscussionCommentReactionByOrgIDAndTeamID(ctx context.Context, orgID int, teamID int, discussionNumber int, commentNumber int, reactionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "DeleteTeamDiscussionCommentReactionByOrgIDAndTeamID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedReactionsService) DeleteTeamDiscussionReaction(ctx context.Context, org string, teamSlug string, discussionNumber int, reactionID int64) (*github.Response, error) {
+func (s UnimplementedReactionsService) DeleteTeamDiscussionReaction(ctx context.Context, org string, teamSlug string, discussionNumber int, reactionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "DeleteTeamDiscussionReaction")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedReactionsService) DeleteTeamDiscussionReactionByOrgIDAndTeamID(ctx context.Context, orgID int, teamID int, discussionNumber int, reactionID int64) (*github.Response, error) {
+func (s UnimplementedReactionsService) DeleteTeamDiscussionReactionByOrgIDAndTeamID(ctx context.Context, orgID int, teamID int, discussionNumber int, reactionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "DeleteTeamDiscussionReactionByOrgIDAndTeamID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedReactionsService) ListCommentReactions(ctx context.Context, owner string, repo string, id int64, opts *github.ListReactionOptions) ([]*github.Reaction, *github.Response, error) {
+func (s UnimplementedReactionsService) ListCommentReactions(ctx context.Context, owner string, repo string, id int64, opts *github.ListReactionOptions) ([]*github.Reaction, *github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "ListCommentReactions")
 	var zero0 []*github.Reaction
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedReactionsService) ListIssueCommentReactions(ctx context.Context, owner string, repo string, id int64, opts *github.ListReactionOptions) ([]*github.Reaction, *github.Response, error) {
+func (s UnimplementedReactionsService) ListIssueCommentReactions(ctx context.Context, owner string, repo string, id int64, opts *github.ListReactionOptions) ([]*github.Reaction, *github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "ListIssueCommentReactions")
 	var zero0 []*github.Reaction
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedReactionsService) ListIssueReactions(ctx context.Context, owner string, repo string, number int, opts *github.ListReactionOptions) ([]*github.Reaction, *github.Response, error) {
+func (s UnimplementedReactionsService) ListIssueReactions(ctx context.Context, owner string, repo string, number int, opts *github.ListReactionOptions) ([]*github.Reaction, *github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "ListIssueReactions")
 	var zero0 []*github.Reaction
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedReactionsService) ListPullRequestCommentReactions(ctx context.Context, owner string, repo string, id int64, opts *github.ListReactionOptions) ([]*github.Reaction, *github.Response, error) {
+func (s UnimplementedReactionsService) ListPullRequestCommentReactions(ctx context.Context, owner string, repo string, id int64, opts *github.ListReactionOptions) ([]*github.Reaction, *github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "ListPullRequestCommentReactions")
 	var zero0 []*github.Reaction
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedReactionsService) ListReleaseReactions(ctx context.Context, owner string, repo string, releaseID int64, opts *github.ListReactionOptions) ([]*github.Reaction, *github.Response, error) {
+func (s UnimplementedReactionsService) ListReleaseReactions(ctx context.Context, owner string, repo string, releaseID int64, opts *github.ListReactionOptions) ([]*github.Reaction, *github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "ListReleaseReactions")
 	var zero0 []*github.Reaction
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedReactionsService) ListTeamDiscussionCommentReactions(ctx context.Context, teamID int64, discussionNumber int, commentNumber int, opts *github.ListReactionOptions) ([]*github.Reaction, *github.Response, error) {
+func (s UnimplementedReactionsService) ListTeamDiscussionCommentReactions(ctx context.Context, teamID int64, discussionNumber int, commentNumber int, opts *github.ListReactionOptions) ([]*github.Reaction, *github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "ListTeamDiscussionCommentReactions")
 	var zero0 []*github.Reaction
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedReactionsService) ListTeamDiscussionReactions(ctx context.Context, teamID int64, discussionNumber int, opts *github.ListReactionOptions) ([]*github.Reaction, *github.Response, error) {
+func (s UnimplementedReactionsService) ListTeamDiscussionReactions(ctx context.Context, teamID int64, discussionNumber int, opts *github.ListReactionOptions) ([]*github.Reaction, *github.Response, error) {
+	s.Callback.call(ctx, "Reactions", "ListTeamDiscussionReactions")
 	var zero0 []*github.Reaction
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -11881,1024 +12814,1238 @@ type RepositoriesService interface {
 }
 
 // UnimplementedRepositoriesService may be embedded to implement only selected methods.
-type UnimplementedRepositoriesService struct{}
+type UnimplementedRepositoriesService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedRepositoriesService) AddAdminEnforcement(ctx context.Context, owner string, repo string, branch string) (*github.AdminEnforcement, *github.Response, error) {
+func (s UnimplementedRepositoriesService) AddAdminEnforcement(ctx context.Context, owner string, repo string, branch string) (*github.AdminEnforcement, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "AddAdminEnforcement")
 	var zero0 *github.AdminEnforcement
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) AddAppRestrictions(ctx context.Context, owner string, repo string, branch string, body []string) ([]*github.App, *github.Response, error) {
+func (s UnimplementedRepositoriesService) AddAppRestrictions(ctx context.Context, owner string, repo string, branch string, body []string) ([]*github.App, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "AddAppRestrictions")
 	var zero0 []*github.App
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) AddAutolink(ctx context.Context, owner string, repo string, body *github.AutolinkOptions) (*github.Autolink, *github.Response, error) {
+func (s UnimplementedRepositoriesService) AddAutolink(ctx context.Context, owner string, repo string, body *github.AutolinkOptions) (*github.Autolink, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "AddAutolink")
 	var zero0 *github.Autolink
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) AddCollaborator(ctx context.Context, owner string, repo string, user string, body *github.RepositoryAddCollaboratorOptions) (*github.CollaboratorInvitation, *github.Response, error) {
+func (s UnimplementedRepositoriesService) AddCollaborator(ctx context.Context, owner string, repo string, user string, body *github.RepositoryAddCollaboratorOptions) (*github.CollaboratorInvitation, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "AddCollaborator")
 	var zero0 *github.CollaboratorInvitation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) AddTeamRestrictions(ctx context.Context, owner string, repo string, branch string, body []string) ([]*github.Team, *github.Response, error) {
+func (s UnimplementedRepositoriesService) AddTeamRestrictions(ctx context.Context, owner string, repo string, branch string, body []string) ([]*github.Team, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "AddTeamRestrictions")
 	var zero0 []*github.Team
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) AddUserRestrictions(ctx context.Context, owner string, repo string, branch string, body []string) ([]*github.User, *github.Response, error) {
+func (s UnimplementedRepositoriesService) AddUserRestrictions(ctx context.Context, owner string, repo string, branch string, body []string) ([]*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "AddUserRestrictions")
 	var zero0 []*github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) AreImmutableReleasesEnabled(ctx context.Context, owner string, repo string) (*github.RepoImmutableReleasesStatus, *github.Response, error) {
+func (s UnimplementedRepositoriesService) AreImmutableReleasesEnabled(ctx context.Context, owner string, repo string) (*github.RepoImmutableReleasesStatus, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "AreImmutableReleasesEnabled")
 	var zero0 *github.RepoImmutableReleasesStatus
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) CompareCommits(ctx context.Context, owner string, repo string, base string, head string, opts *github.ListOptions) (*github.CommitsComparison, *github.Response, error) {
+func (s UnimplementedRepositoriesService) CompareCommits(ctx context.Context, owner string, repo string, base string, head string, opts *github.ListOptions) (*github.CommitsComparison, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "CompareCommits")
 	var zero0 *github.CommitsComparison
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) CompareCommitsRaw(ctx context.Context, owner string, repo string, base string, head string, opts github.RawOptions) (string, *github.Response, error) {
+func (s UnimplementedRepositoriesService) CompareCommitsRaw(ctx context.Context, owner string, repo string, base string, head string, opts github.RawOptions) (string, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "CompareCommitsRaw")
 	var zero0 string
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) Create(ctx context.Context, org string, repo *github.Repository) (*github.Repository, *github.Response, error) {
+func (s UnimplementedRepositoriesService) Create(ctx context.Context, org string, repo *github.Repository) (*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "Create")
 	var zero0 *github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) CreateComment(ctx context.Context, owner string, repo string, sha string, body *github.RepositoryComment) (*github.RepositoryComment, *github.Response, error) {
+func (s UnimplementedRepositoriesService) CreateComment(ctx context.Context, owner string, repo string, sha string, body *github.RepositoryComment) (*github.RepositoryComment, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "CreateComment")
 	var zero0 *github.RepositoryComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) CreateCustomDeploymentProtectionRule(ctx context.Context, owner string, repo string, environment string, body *github.CustomDeploymentProtectionRuleRequest) (*github.CustomDeploymentProtectionRule, *github.Response, error) {
+func (s UnimplementedRepositoriesService) CreateCustomDeploymentProtectionRule(ctx context.Context, owner string, repo string, environment string, body *github.CustomDeploymentProtectionRuleRequest) (*github.CustomDeploymentProtectionRule, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "CreateCustomDeploymentProtectionRule")
 	var zero0 *github.CustomDeploymentProtectionRule
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) CreateDeployment(ctx context.Context, owner string, repo string, body github.DeploymentRequest) (*github.Deployment, *github.Response, error) {
+func (s UnimplementedRepositoriesService) CreateDeployment(ctx context.Context, owner string, repo string, body github.DeploymentRequest) (*github.Deployment, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "CreateDeployment")
 	var zero0 *github.Deployment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) CreateDeploymentBranchPolicy(ctx context.Context, owner string, repo string, environment string, body *github.DeploymentBranchPolicyRequest) (*github.DeploymentBranchPolicy, *github.Response, error) {
+func (s UnimplementedRepositoriesService) CreateDeploymentBranchPolicy(ctx context.Context, owner string, repo string, environment string, body *github.DeploymentBranchPolicyRequest) (*github.DeploymentBranchPolicy, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "CreateDeploymentBranchPolicy")
 	var zero0 *github.DeploymentBranchPolicy
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) CreateDeploymentStatus(ctx context.Context, owner string, repo string, deploymentID int64, body github.DeploymentStatusRequest) (*github.DeploymentStatus, *github.Response, error) {
+func (s UnimplementedRepositoriesService) CreateDeploymentStatus(ctx context.Context, owner string, repo string, deploymentID int64, body github.DeploymentStatusRequest) (*github.DeploymentStatus, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "CreateDeploymentStatus")
 	var zero0 *github.DeploymentStatus
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) CreateFile(ctx context.Context, owner string, repo string, path string, body *github.RepositoryContentFileOptions) (*github.RepositoryContentResponse, *github.Response, error) {
+func (s UnimplementedRepositoriesService) CreateFile(ctx context.Context, owner string, repo string, path string, body *github.RepositoryContentFileOptions) (*github.RepositoryContentResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "CreateFile")
 	var zero0 *github.RepositoryContentResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) CreateFork(ctx context.Context, owner string, repo string, body *github.RepositoryCreateForkOptions) (*github.Repository, *github.Response, error) {
+func (s UnimplementedRepositoriesService) CreateFork(ctx context.Context, owner string, repo string, body *github.RepositoryCreateForkOptions) (*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "CreateFork")
 	var zero0 *github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) CreateFromTemplate(ctx context.Context, templateOwner string, templateRepo string, body *github.TemplateRepoRequest) (*github.Repository, *github.Response, error) {
+func (s UnimplementedRepositoriesService) CreateFromTemplate(ctx context.Context, templateOwner string, templateRepo string, body *github.TemplateRepoRequest) (*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "CreateFromTemplate")
 	var zero0 *github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) CreateHook(ctx context.Context, owner string, repo string, hook *github.Hook) (*github.Hook, *github.Response, error) {
+func (s UnimplementedRepositoriesService) CreateHook(ctx context.Context, owner string, repo string, hook *github.Hook) (*github.Hook, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "CreateHook")
 	var zero0 *github.Hook
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) CreateKey(ctx context.Context, owner string, repo string, body *github.Key) (*github.Key, *github.Response, error) {
+func (s UnimplementedRepositoriesService) CreateKey(ctx context.Context, owner string, repo string, body *github.Key) (*github.Key, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "CreateKey")
 	var zero0 *github.Key
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) CreateOrUpdateCustomProperties(ctx context.Context, org string, repo string, customPropertyValues []*github.CustomPropertyValue) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) CreateOrUpdateCustomProperties(ctx context.Context, org string, repo string, customPropertyValues []*github.CustomPropertyValue) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "CreateOrUpdateCustomProperties")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) CreateRelease(ctx context.Context, owner string, repo string, body github.CreateReleaseRequest) (*github.RepositoryRelease, *github.Response, error) {
+func (s UnimplementedRepositoriesService) CreateRelease(ctx context.Context, owner string, repo string, body github.CreateReleaseRequest) (*github.RepositoryRelease, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "CreateRelease")
 	var zero0 *github.RepositoryRelease
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) CreateRuleset(ctx context.Context, owner string, repo string, body github.RepositoryRuleset) (*github.RepositoryRuleset, *github.Response, error) {
+func (s UnimplementedRepositoriesService) CreateRuleset(ctx context.Context, owner string, repo string, body github.RepositoryRuleset) (*github.RepositoryRuleset, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "CreateRuleset")
 	var zero0 *github.RepositoryRuleset
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) CreateStatus(ctx context.Context, owner string, repo string, ref string, status github.RepoStatus) (*github.RepoStatus, *github.Response, error) {
+func (s UnimplementedRepositoriesService) CreateStatus(ctx context.Context, owner string, repo string, ref string, status github.RepoStatus) (*github.RepoStatus, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "CreateStatus")
 	var zero0 *github.RepoStatus
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) CreateTagProtection(ctx context.Context, owner string, repo string, pattern string) (*github.TagProtection, *github.Response, error) {
+func (s UnimplementedRepositoriesService) CreateTagProtection(ctx context.Context, owner string, repo string, pattern string) (*github.TagProtection, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "CreateTagProtection")
 	var zero0 *github.TagProtection
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) CreateUpdateEnvironment(ctx context.Context, owner string, repo string, name string, body *github.CreateUpdateEnvironment) (*github.Environment, *github.Response, error) {
+func (s UnimplementedRepositoriesService) CreateUpdateEnvironment(ctx context.Context, owner string, repo string, name string, body *github.CreateUpdateEnvironment) (*github.Environment, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "CreateUpdateEnvironment")
 	var zero0 *github.Environment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) Delete(ctx context.Context, owner string, repo string) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) Delete(ctx context.Context, owner string, repo string) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "Delete")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DeleteAutolink(ctx context.Context, owner string, repo string, id int64) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) DeleteAutolink(ctx context.Context, owner string, repo string, id int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DeleteAutolink")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DeleteComment(ctx context.Context, owner string, repo string, id int64) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) DeleteComment(ctx context.Context, owner string, repo string, id int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DeleteComment")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DeleteDeployment(ctx context.Context, owner string, repo string, deploymentID int64) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) DeleteDeployment(ctx context.Context, owner string, repo string, deploymentID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DeleteDeployment")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DeleteDeploymentBranchPolicy(ctx context.Context, owner string, repo string, environment string, branchPolicyID int64) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) DeleteDeploymentBranchPolicy(ctx context.Context, owner string, repo string, environment string, branchPolicyID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DeleteDeploymentBranchPolicy")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DeleteEnvironment(ctx context.Context, owner string, repo string, name string) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) DeleteEnvironment(ctx context.Context, owner string, repo string, name string) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DeleteEnvironment")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DeleteFile(ctx context.Context, owner string, repo string, path string, opts *github.RepositoryContentFileOptions) (*github.RepositoryContentResponse, *github.Response, error) {
+func (s UnimplementedRepositoriesService) DeleteFile(ctx context.Context, owner string, repo string, path string, opts *github.RepositoryContentFileOptions) (*github.RepositoryContentResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DeleteFile")
 	var zero0 *github.RepositoryContentResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DeleteHook(ctx context.Context, owner string, repo string, id int64) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) DeleteHook(ctx context.Context, owner string, repo string, id int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DeleteHook")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DeleteInvitation(ctx context.Context, owner string, repo string, invitationID int64) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) DeleteInvitation(ctx context.Context, owner string, repo string, invitationID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DeleteInvitation")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DeleteKey(ctx context.Context, owner string, repo string, id int64) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) DeleteKey(ctx context.Context, owner string, repo string, id int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DeleteKey")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DeletePreReceiveHook(ctx context.Context, owner string, repo string, id int64) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) DeletePreReceiveHook(ctx context.Context, owner string, repo string, id int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DeletePreReceiveHook")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DeleteRelease(ctx context.Context, owner string, repo string, id int64) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) DeleteRelease(ctx context.Context, owner string, repo string, id int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DeleteRelease")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DeleteReleaseAsset(ctx context.Context, owner string, repo string, id int64) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) DeleteReleaseAsset(ctx context.Context, owner string, repo string, id int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DeleteReleaseAsset")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DeleteRuleset(ctx context.Context, owner string, repo string, rulesetID int64) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) DeleteRuleset(ctx context.Context, owner string, repo string, rulesetID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DeleteRuleset")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DeleteTagProtection(ctx context.Context, owner string, repo string, tagProtectionID int64) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) DeleteTagProtection(ctx context.Context, owner string, repo string, tagProtectionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DeleteTagProtection")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DisableAutomatedSecurityFixes(ctx context.Context, owner string, repository string) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) DisableAutomatedSecurityFixes(ctx context.Context, owner string, repository string) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DisableAutomatedSecurityFixes")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DisableCustomDeploymentProtectionRule(ctx context.Context, owner string, repo string, environment string, protectionRuleID int64) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) DisableCustomDeploymentProtectionRule(ctx context.Context, owner string, repo string, environment string, protectionRuleID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DisableCustomDeploymentProtectionRule")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DisableDismissalRestrictions(ctx context.Context, owner string, repo string, branch string) (*github.PullRequestReviewsEnforcement, *github.Response, error) {
+func (s UnimplementedRepositoriesService) DisableDismissalRestrictions(ctx context.Context, owner string, repo string, branch string) (*github.PullRequestReviewsEnforcement, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DisableDismissalRestrictions")
 	var zero0 *github.PullRequestReviewsEnforcement
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DisableImmutableReleases(ctx context.Context, owner string, repo string) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) DisableImmutableReleases(ctx context.Context, owner string, repo string) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DisableImmutableReleases")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DisableLFS(ctx context.Context, owner string, repo string) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) DisableLFS(ctx context.Context, owner string, repo string) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DisableLFS")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DisablePages(ctx context.Context, owner string, repo string) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) DisablePages(ctx context.Context, owner string, repo string) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DisablePages")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DisablePrivateReporting(ctx context.Context, owner string, repo string) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) DisablePrivateReporting(ctx context.Context, owner string, repo string) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DisablePrivateReporting")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DisableVulnerabilityAlerts(ctx context.Context, owner string, repository string) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) DisableVulnerabilityAlerts(ctx context.Context, owner string, repository string) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DisableVulnerabilityAlerts")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) Dispatch(ctx context.Context, owner string, repo string, opts github.DispatchRequestOptions) (*github.Repository, *github.Response, error) {
+func (s UnimplementedRepositoriesService) Dispatch(ctx context.Context, owner string, repo string, opts github.DispatchRequestOptions) (*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "Dispatch")
 	var zero0 *github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DownloadContents(ctx context.Context, owner string, repo string, filepath string, opts *github.RepositoryContentGetOptions) (io.ReadCloser, *github.Response, error) {
+func (s UnimplementedRepositoriesService) DownloadContents(ctx context.Context, owner string, repo string, filepath string, opts *github.RepositoryContentGetOptions) (io.ReadCloser, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DownloadContents")
 	var zero0 io.ReadCloser
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DownloadContentsWithMeta(ctx context.Context, owner string, repo string, filepath string, opts *github.RepositoryContentGetOptions) (io.ReadCloser, *github.RepositoryContent, *github.Response, error) {
+func (s UnimplementedRepositoriesService) DownloadContentsWithMeta(ctx context.Context, owner string, repo string, filepath string, opts *github.RepositoryContentGetOptions) (io.ReadCloser, *github.RepositoryContent, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "DownloadContentsWithMeta")
 	var zero0 io.ReadCloser
 	var zero1 *github.RepositoryContent
 	var zero2 *github.Response
 	return zero0, zero1, zero2, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) DownloadReleaseAsset(ctx context.Context, owner string, repo string, id int64, followRedirectsClient *http.Client) (rc io.ReadCloser, redirectURL string, err error) {
+func (s UnimplementedRepositoriesService) DownloadReleaseAsset(ctx context.Context, owner string, repo string, id int64, followRedirectsClient *http.Client) (rc io.ReadCloser, redirectURL string, err error) {
+	s.Callback.call(ctx, "Repositories", "DownloadReleaseAsset")
 	var zero0 io.ReadCloser
 	var zero1 string
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) Edit(ctx context.Context, owner string, repo string, body *github.Repository) (*github.Repository, *github.Response, error) {
+func (s UnimplementedRepositoriesService) Edit(ctx context.Context, owner string, repo string, body *github.Repository) (*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "Edit")
 	var zero0 *github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) EditActionsAccessLevel(ctx context.Context, owner string, repo string, body github.RepositoryActionsAccessLevel) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) EditActionsAccessLevel(ctx context.Context, owner string, repo string, body github.RepositoryActionsAccessLevel) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "EditActionsAccessLevel")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) EditActionsAllowed(ctx context.Context, org string, repo string, body github.ActionsAllowed) (*github.ActionsAllowed, *github.Response, error) {
+func (s UnimplementedRepositoriesService) EditActionsAllowed(ctx context.Context, org string, repo string, body github.ActionsAllowed) (*github.ActionsAllowed, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "EditActionsAllowed")
 	var zero0 *github.ActionsAllowed
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) EditHook(ctx context.Context, owner string, repo string, id int64, body *github.Hook) (*github.Hook, *github.Response, error) {
+func (s UnimplementedRepositoriesService) EditHook(ctx context.Context, owner string, repo string, id int64, body *github.Hook) (*github.Hook, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "EditHook")
 	var zero0 *github.Hook
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) EnableAutomatedSecurityFixes(ctx context.Context, owner string, repository string) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) EnableAutomatedSecurityFixes(ctx context.Context, owner string, repository string) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "EnableAutomatedSecurityFixes")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) EnableImmutableReleases(ctx context.Context, owner string, repo string) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) EnableImmutableReleases(ctx context.Context, owner string, repo string) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "EnableImmutableReleases")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) EnableLFS(ctx context.Context, owner string, repo string) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) EnableLFS(ctx context.Context, owner string, repo string) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "EnableLFS")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) EnablePages(ctx context.Context, owner string, repo string, pages *github.Pages) (*github.Pages, *github.Response, error) {
+func (s UnimplementedRepositoriesService) EnablePages(ctx context.Context, owner string, repo string, pages *github.Pages) (*github.Pages, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "EnablePages")
 	var zero0 *github.Pages
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) EnablePrivateReporting(ctx context.Context, owner string, repo string) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) EnablePrivateReporting(ctx context.Context, owner string, repo string) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "EnablePrivateReporting")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) EnableVulnerabilityAlerts(ctx context.Context, owner string, repository string) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) EnableVulnerabilityAlerts(ctx context.Context, owner string, repository string) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "EnableVulnerabilityAlerts")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GenerateReleaseNotes(ctx context.Context, owner string, repo string, body github.GenerateNotesRequest) (*github.RepositoryReleaseNotes, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GenerateReleaseNotes(ctx context.Context, owner string, repo string, body github.GenerateNotesRequest) (*github.RepositoryReleaseNotes, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GenerateReleaseNotes")
 	var zero0 *github.RepositoryReleaseNotes
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) Get(ctx context.Context, owner string, repo string) (*github.Repository, *github.Response, error) {
+func (s UnimplementedRepositoriesService) Get(ctx context.Context, owner string, repo string) (*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "Get")
 	var zero0 *github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetActionsAccessLevel(ctx context.Context, owner string, repo string) (*github.RepositoryActionsAccessLevel, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetActionsAccessLevel(ctx context.Context, owner string, repo string) (*github.RepositoryActionsAccessLevel, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetActionsAccessLevel")
 	var zero0 *github.RepositoryActionsAccessLevel
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetActionsAllowed(ctx context.Context, org string, repo string) (*github.ActionsAllowed, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetActionsAllowed(ctx context.Context, org string, repo string) (*github.ActionsAllowed, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetActionsAllowed")
 	var zero0 *github.ActionsAllowed
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetActionsPermissions(ctx context.Context, owner string, repo string) (*github.ActionsPermissionsRepository, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetActionsPermissions(ctx context.Context, owner string, repo string) (*github.ActionsPermissionsRepository, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetActionsPermissions")
 	var zero0 *github.ActionsPermissionsRepository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetAdminEnforcement(ctx context.Context, owner string, repo string, branch string) (*github.AdminEnforcement, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetAdminEnforcement(ctx context.Context, owner string, repo string, branch string) (*github.AdminEnforcement, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetAdminEnforcement")
 	var zero0 *github.AdminEnforcement
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetAllCustomPropertyValues(ctx context.Context, org string, repo string) ([]*github.CustomPropertyValue, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetAllCustomPropertyValues(ctx context.Context, org string, repo string) ([]*github.CustomPropertyValue, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetAllCustomPropertyValues")
 	var zero0 []*github.CustomPropertyValue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetAllDeploymentProtectionRules(ctx context.Context, owner string, repo string, environment string) (*github.ListDeploymentProtectionRuleResponse, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetAllDeploymentProtectionRules(ctx context.Context, owner string, repo string, environment string) (*github.ListDeploymentProtectionRuleResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetAllDeploymentProtectionRules")
 	var zero0 *github.ListDeploymentProtectionRuleResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetAllRulesets(ctx context.Context, owner string, repo string, opts *github.RepositoryListRulesetsOptions) ([]*github.RepositoryRuleset, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetAllRulesets(ctx context.Context, owner string, repo string, opts *github.RepositoryListRulesetsOptions) ([]*github.RepositoryRuleset, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetAllRulesets")
 	var zero0 []*github.RepositoryRuleset
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetArchiveLink(ctx context.Context, owner string, repo string, archiveformat github.ArchiveFormat, opts *github.RepositoryContentGetOptions, maxRedirects int) (*url.URL, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetArchiveLink(ctx context.Context, owner string, repo string, archiveformat github.ArchiveFormat, opts *github.RepositoryContentGetOptions, maxRedirects int) (*url.URL, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetArchiveLink")
 	var zero0 *url.URL
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetArtifactAndLogRetentionPeriod(ctx context.Context, owner string, repo string) (*github.ArtifactPeriod, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetArtifactAndLogRetentionPeriod(ctx context.Context, owner string, repo string) (*github.ArtifactPeriod, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetArtifactAndLogRetentionPeriod")
 	var zero0 *github.ArtifactPeriod
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetAutolink(ctx context.Context, owner string, repo string, id int64) (*github.Autolink, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetAutolink(ctx context.Context, owner string, repo string, id int64) (*github.Autolink, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetAutolink")
 	var zero0 *github.Autolink
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetAutomatedSecurityFixes(ctx context.Context, owner string, repository string) (*github.AutomatedSecurityFixes, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetAutomatedSecurityFixes(ctx context.Context, owner string, repository string) (*github.AutomatedSecurityFixes, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetAutomatedSecurityFixes")
 	var zero0 *github.AutomatedSecurityFixes
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetBranch(ctx context.Context, owner string, repo string, branch string, maxRedirects int) (*github.Branch, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetBranch(ctx context.Context, owner string, repo string, branch string, maxRedirects int) (*github.Branch, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetBranch")
 	var zero0 *github.Branch
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetBranchProtection(ctx context.Context, owner string, repo string, branch string) (*github.Protection, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetBranchProtection(ctx context.Context, owner string, repo string, branch string) (*github.Protection, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetBranchProtection")
 	var zero0 *github.Protection
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetByID(ctx context.Context, id int64) (*github.Repository, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetByID(ctx context.Context, id int64) (*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetByID")
 	var zero0 *github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetCodeOfConduct(ctx context.Context, owner string, repo string) (*github.CodeOfConduct, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetCodeOfConduct(ctx context.Context, owner string, repo string) (*github.CodeOfConduct, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetCodeOfConduct")
 	var zero0 *github.CodeOfConduct
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetCodeownersErrors(ctx context.Context, owner string, repo string, opts *github.GetCodeownersErrorsOptions) (*github.CodeownersErrors, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetCodeownersErrors(ctx context.Context, owner string, repo string, opts *github.GetCodeownersErrorsOptions) (*github.CodeownersErrors, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetCodeownersErrors")
 	var zero0 *github.CodeownersErrors
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetCombinedStatus(ctx context.Context, owner string, repo string, ref string, opts *github.ListOptions) (*github.CombinedStatus, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetCombinedStatus(ctx context.Context, owner string, repo string, ref string, opts *github.ListOptions) (*github.CombinedStatus, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetCombinedStatus")
 	var zero0 *github.CombinedStatus
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetComment(ctx context.Context, owner string, repo string, id int64) (*github.RepositoryComment, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetComment(ctx context.Context, owner string, repo string, id int64) (*github.RepositoryComment, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetComment")
 	var zero0 *github.RepositoryComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetCommit(ctx context.Context, owner string, repo string, sha string, opts *github.ListOptions) (*github.RepositoryCommit, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetCommit(ctx context.Context, owner string, repo string, sha string, opts *github.ListOptions) (*github.RepositoryCommit, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetCommit")
 	var zero0 *github.RepositoryCommit
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetCommitRaw(ctx context.Context, owner string, repo string, sha string, opts github.RawOptions) (string, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetCommitRaw(ctx context.Context, owner string, repo string, sha string, opts github.RawOptions) (string, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetCommitRaw")
 	var zero0 string
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetCommitSHA1(ctx context.Context, owner string, repo string, ref string, lastSHA string) (string, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetCommitSHA1(ctx context.Context, owner string, repo string, ref string, lastSHA string) (string, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetCommitSHA1")
 	var zero0 string
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetCommunityHealthMetrics(ctx context.Context, owner string, repo string) (*github.CommunityHealthMetrics, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetCommunityHealthMetrics(ctx context.Context, owner string, repo string) (*github.CommunityHealthMetrics, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetCommunityHealthMetrics")
 	var zero0 *github.CommunityHealthMetrics
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetContents(ctx context.Context, owner string, repo string, path string, opts *github.RepositoryContentGetOptions) (fileContent *github.RepositoryContent, directoryContent []*github.RepositoryContent, resp *github.Response, err error) {
+func (s UnimplementedRepositoriesService) GetContents(ctx context.Context, owner string, repo string, path string, opts *github.RepositoryContentGetOptions) (fileContent *github.RepositoryContent, directoryContent []*github.RepositoryContent, resp *github.Response, err error) {
+	s.Callback.call(ctx, "Repositories", "GetContents")
 	var zero0 *github.RepositoryContent
 	var zero1 []*github.RepositoryContent
 	var zero2 *github.Response
 	return zero0, zero1, zero2, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetCustomDeploymentProtectionRule(ctx context.Context, owner string, repo string, environment string, protectionRuleID int64) (*github.CustomDeploymentProtectionRule, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetCustomDeploymentProtectionRule(ctx context.Context, owner string, repo string, environment string, protectionRuleID int64) (*github.CustomDeploymentProtectionRule, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetCustomDeploymentProtectionRule")
 	var zero0 *github.CustomDeploymentProtectionRule
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetDefaultWorkflowPermissions(ctx context.Context, owner string, repo string) (*github.DefaultWorkflowPermissionRepository, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetDefaultWorkflowPermissions(ctx context.Context, owner string, repo string) (*github.DefaultWorkflowPermissionRepository, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetDefaultWorkflowPermissions")
 	var zero0 *github.DefaultWorkflowPermissionRepository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetDeployment(ctx context.Context, owner string, repo string, deploymentID int64) (*github.Deployment, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetDeployment(ctx context.Context, owner string, repo string, deploymentID int64) (*github.Deployment, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetDeployment")
 	var zero0 *github.Deployment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetDeploymentBranchPolicy(ctx context.Context, owner string, repo string, environment string, branchPolicyID int64) (*github.DeploymentBranchPolicy, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetDeploymentBranchPolicy(ctx context.Context, owner string, repo string, environment string, branchPolicyID int64) (*github.DeploymentBranchPolicy, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetDeploymentBranchPolicy")
 	var zero0 *github.DeploymentBranchPolicy
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetDeploymentStatus(ctx context.Context, owner string, repo string, deploymentID int64, deploymentStatusID int64) (*github.DeploymentStatus, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetDeploymentStatus(ctx context.Context, owner string, repo string, deploymentID int64, deploymentStatusID int64) (*github.DeploymentStatus, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetDeploymentStatus")
 	var zero0 *github.DeploymentStatus
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetEnvironment(ctx context.Context, owner string, repo string, name string) (*github.Environment, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetEnvironment(ctx context.Context, owner string, repo string, name string) (*github.Environment, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetEnvironment")
 	var zero0 *github.Environment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetHook(ctx context.Context, owner string, repo string, id int64) (*github.Hook, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetHook(ctx context.Context, owner string, repo string, id int64) (*github.Hook, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetHook")
 	var zero0 *github.Hook
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetHookConfiguration(ctx context.Context, owner string, repo string, id int64) (*github.HookConfig, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetHookConfiguration(ctx context.Context, owner string, repo string, id int64) (*github.HookConfig, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetHookConfiguration")
 	var zero0 *github.HookConfig
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetHookDelivery(ctx context.Context, owner string, repo string, hookID int64, deliveryID int64) (*github.HookDelivery, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetHookDelivery(ctx context.Context, owner string, repo string, hookID int64, deliveryID int64) (*github.HookDelivery, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetHookDelivery")
 	var zero0 *github.HookDelivery
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetKey(ctx context.Context, owner string, repo string, id int64) (*github.Key, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetKey(ctx context.Context, owner string, repo string, id int64) (*github.Key, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetKey")
 	var zero0 *github.Key
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetLatestPagesBuild(ctx context.Context, owner string, repo string) (*github.PagesBuild, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetLatestPagesBuild(ctx context.Context, owner string, repo string) (*github.PagesBuild, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetLatestPagesBuild")
 	var zero0 *github.PagesBuild
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetLatestRelease(ctx context.Context, owner string, repo string) (*github.RepositoryRelease, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetLatestRelease(ctx context.Context, owner string, repo string) (*github.RepositoryRelease, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetLatestRelease")
 	var zero0 *github.RepositoryRelease
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetPageBuild(ctx context.Context, owner string, repo string, id int64) (*github.PagesBuild, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetPageBuild(ctx context.Context, owner string, repo string, id int64) (*github.PagesBuild, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetPageBuild")
 	var zero0 *github.PagesBuild
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetPageHealthCheck(ctx context.Context, owner string, repo string) (*github.PagesHealthCheckResponse, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetPageHealthCheck(ctx context.Context, owner string, repo string) (*github.PagesHealthCheckResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetPageHealthCheck")
 	var zero0 *github.PagesHealthCheckResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetPagesInfo(ctx context.Context, owner string, repo string) (*github.Pages, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetPagesInfo(ctx context.Context, owner string, repo string) (*github.Pages, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetPagesInfo")
 	var zero0 *github.Pages
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetPermissionLevel(ctx context.Context, owner string, repo string, user string) (*github.RepositoryPermissionLevel, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetPermissionLevel(ctx context.Context, owner string, repo string, user string) (*github.RepositoryPermissionLevel, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetPermissionLevel")
 	var zero0 *github.RepositoryPermissionLevel
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetPreReceiveHook(ctx context.Context, owner string, repo string, id int64) (*github.PreReceiveHook, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetPreReceiveHook(ctx context.Context, owner string, repo string, id int64) (*github.PreReceiveHook, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetPreReceiveHook")
 	var zero0 *github.PreReceiveHook
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetPrivateRepoForkPRWorkflowSettings(ctx context.Context, owner string, repo string) (*github.WorkflowsPermissions, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetPrivateRepoForkPRWorkflowSettings(ctx context.Context, owner string, repo string) (*github.WorkflowsPermissions, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetPrivateRepoForkPRWorkflowSettings")
 	var zero0 *github.WorkflowsPermissions
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetPullRequestReviewEnforcement(ctx context.Context, owner string, repo string, branch string) (*github.PullRequestReviewsEnforcement, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetPullRequestReviewEnforcement(ctx context.Context, owner string, repo string, branch string) (*github.PullRequestReviewsEnforcement, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetPullRequestReviewEnforcement")
 	var zero0 *github.PullRequestReviewsEnforcement
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetReadme(ctx context.Context, owner string, repo string, opts *github.RepositoryContentGetOptions) (*github.RepositoryContent, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetReadme(ctx context.Context, owner string, repo string, opts *github.RepositoryContentGetOptions) (*github.RepositoryContent, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetReadme")
 	var zero0 *github.RepositoryContent
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetRelease(ctx context.Context, owner string, repo string, id int64) (*github.RepositoryRelease, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetRelease(ctx context.Context, owner string, repo string, id int64) (*github.RepositoryRelease, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetRelease")
 	var zero0 *github.RepositoryRelease
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetReleaseAsset(ctx context.Context, owner string, repo string, id int64) (*github.ReleaseAsset, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetReleaseAsset(ctx context.Context, owner string, repo string, id int64) (*github.ReleaseAsset, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetReleaseAsset")
 	var zero0 *github.ReleaseAsset
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetReleaseByTag(ctx context.Context, owner string, repo string, tag string) (*github.RepositoryRelease, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetReleaseByTag(ctx context.Context, owner string, repo string, tag string) (*github.RepositoryRelease, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetReleaseByTag")
 	var zero0 *github.RepositoryRelease
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetRequiredStatusChecks(ctx context.Context, owner string, repo string, branch string) (*github.RequiredStatusChecks, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetRequiredStatusChecks(ctx context.Context, owner string, repo string, branch string) (*github.RequiredStatusChecks, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetRequiredStatusChecks")
 	var zero0 *github.RequiredStatusChecks
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetRuleset(ctx context.Context, owner string, repo string, rulesetID int64, includesParents bool) (*github.RepositoryRuleset, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetRuleset(ctx context.Context, owner string, repo string, rulesetID int64, includesParents bool) (*github.RepositoryRuleset, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetRuleset")
 	var zero0 *github.RepositoryRuleset
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetSignaturesProtectedBranch(ctx context.Context, owner string, repo string, branch string) (*github.SignaturesProtectedBranch, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetSignaturesProtectedBranch(ctx context.Context, owner string, repo string, branch string) (*github.SignaturesProtectedBranch, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetSignaturesProtectedBranch")
 	var zero0 *github.SignaturesProtectedBranch
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) GetVulnerabilityAlerts(ctx context.Context, owner string, repository string) (bool, *github.Response, error) {
+func (s UnimplementedRepositoriesService) GetVulnerabilityAlerts(ctx context.Context, owner string, repository string) (bool, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "GetVulnerabilityAlerts")
 	var zero0 bool
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) IsCollaborator(ctx context.Context, owner string, repo string, user string) (bool, *github.Response, error) {
+func (s UnimplementedRepositoriesService) IsCollaborator(ctx context.Context, owner string, repo string, user string) (bool, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "IsCollaborator")
 	var zero0 bool
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) IsPrivateReportingEnabled(ctx context.Context, owner string, repo string) (bool, *github.Response, error) {
+func (s UnimplementedRepositoriesService) IsPrivateReportingEnabled(ctx context.Context, owner string, repo string) (bool, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "IsPrivateReportingEnabled")
 	var zero0 bool
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) License(ctx context.Context, owner string, repo string) (*github.RepositoryLicense, *github.Response, error) {
+func (s UnimplementedRepositoriesService) License(ctx context.Context, owner string, repo string) (*github.RepositoryLicense, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "License")
 	var zero0 *github.RepositoryLicense
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) List(ctx context.Context, user string, opts *github.RepositoryListOptions) ([]*github.Repository, *github.Response, error) {
+func (s UnimplementedRepositoriesService) List(ctx context.Context, user string, opts *github.RepositoryListOptions) ([]*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "List")
 	var zero0 []*github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListAll(ctx context.Context, opts *github.RepositoryListAllOptions) ([]*github.Repository, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListAll(ctx context.Context, opts *github.RepositoryListAllOptions) ([]*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListAll")
 	var zero0 []*github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListAllTopics(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]string, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListAllTopics(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]string, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListAllTopics")
 	var zero0 []string
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListAppRestrictions(ctx context.Context, owner string, repo string, branch string) ([]*github.App, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListAppRestrictions(ctx context.Context, owner string, repo string, branch string) ([]*github.App, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListAppRestrictions")
 	var zero0 []*github.App
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListApps(ctx context.Context, owner string, repo string, branch string) ([]*github.App, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListApps(ctx context.Context, owner string, repo string, branch string) ([]*github.App, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListApps")
 	var zero0 []*github.App
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListAttestations(ctx context.Context, owner string, repo string, subjectDigest string, opts *github.ListOptions) (*github.AttestationsResponse, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListAttestations(ctx context.Context, owner string, repo string, subjectDigest string, opts *github.ListOptions) (*github.AttestationsResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListAttestations")
 	var zero0 *github.AttestationsResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListAutolinks(ctx context.Context, owner string, repo string) ([]*github.Autolink, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListAutolinks(ctx context.Context, owner string, repo string) ([]*github.Autolink, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListAutolinks")
 	var zero0 []*github.Autolink
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListBranches(ctx context.Context, owner string, repo string, opts *github.BranchListOptions) ([]*github.Branch, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListBranches(ctx context.Context, owner string, repo string, opts *github.BranchListOptions) ([]*github.Branch, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListBranches")
 	var zero0 []*github.Branch
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListBranchesHeadCommit(ctx context.Context, owner string, repo string, sha string) ([]*github.BranchCommit, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListBranchesHeadCommit(ctx context.Context, owner string, repo string, sha string) ([]*github.BranchCommit, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListBranchesHeadCommit")
 	var zero0 []*github.BranchCommit
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListByAuthenticatedUser(ctx context.Context, opts *github.RepositoryListByAuthenticatedUserOptions) ([]*github.Repository, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListByAuthenticatedUser(ctx context.Context, opts *github.RepositoryListByAuthenticatedUserOptions) ([]*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListByAuthenticatedUser")
 	var zero0 []*github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListByOrg(ctx context.Context, org string, opts *github.RepositoryListByOrgOptions) ([]*github.Repository, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListByOrg(ctx context.Context, org string, opts *github.RepositoryListByOrgOptions) ([]*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListByOrg")
 	var zero0 []*github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListByUser(ctx context.Context, user string, opts *github.RepositoryListByUserOptions) ([]*github.Repository, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListByUser(ctx context.Context, user string, opts *github.RepositoryListByUserOptions) ([]*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListByUser")
 	var zero0 []*github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListCodeFrequency(ctx context.Context, owner string, repo string) ([]*github.WeeklyStats, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListCodeFrequency(ctx context.Context, owner string, repo string) ([]*github.WeeklyStats, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListCodeFrequency")
 	var zero0 []*github.WeeklyStats
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListCollaborators(ctx context.Context, owner string, repo string, opts *github.ListCollaboratorsOptions) ([]*github.User, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListCollaborators(ctx context.Context, owner string, repo string, opts *github.ListCollaboratorsOptions) ([]*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListCollaborators")
 	var zero0 []*github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListComments(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.RepositoryComment, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListComments(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.RepositoryComment, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListComments")
 	var zero0 []*github.RepositoryComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListCommitActivity(ctx context.Context, owner string, repo string) ([]*github.WeeklyCommitActivity, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListCommitActivity(ctx context.Context, owner string, repo string) ([]*github.WeeklyCommitActivity, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListCommitActivity")
 	var zero0 []*github.WeeklyCommitActivity
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListCommitComments(ctx context.Context, owner string, repo string, sha string, opts *github.ListOptions) ([]*github.RepositoryComment, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListCommitComments(ctx context.Context, owner string, repo string, sha string, opts *github.ListOptions) ([]*github.RepositoryComment, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListCommitComments")
 	var zero0 []*github.RepositoryComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListCommits(ctx context.Context, owner string, repo string, opts *github.CommitsListOptions) ([]*github.RepositoryCommit, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListCommits(ctx context.Context, owner string, repo string, opts *github.CommitsListOptions) ([]*github.RepositoryCommit, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListCommits")
 	var zero0 []*github.RepositoryCommit
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListContributors(ctx context.Context, owner string, repository string, opts *github.ListContributorsOptions) ([]*github.Contributor, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListContributors(ctx context.Context, owner string, repository string, opts *github.ListContributorsOptions) ([]*github.Contributor, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListContributors")
 	var zero0 []*github.Contributor
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListContributorsStats(ctx context.Context, owner string, repo string) ([]*github.ContributorStats, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListContributorsStats(ctx context.Context, owner string, repo string) ([]*github.ContributorStats, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListContributorsStats")
 	var zero0 []*github.ContributorStats
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListCustomDeploymentRuleIntegrations(ctx context.Context, owner string, repo string, environment string, opts *github.ListOptions) (*github.ListCustomDeploymentRuleIntegrationsResponse, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListCustomDeploymentRuleIntegrations(ctx context.Context, owner string, repo string, environment string, opts *github.ListOptions) (*github.ListCustomDeploymentRuleIntegrationsResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListCustomDeploymentRuleIntegrations")
 	var zero0 *github.ListCustomDeploymentRuleIntegrationsResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListDeploymentBranchPolicies(ctx context.Context, owner string, repo string, environment string, opts *github.ListOptions) (*github.DeploymentBranchPolicyResponse, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListDeploymentBranchPolicies(ctx context.Context, owner string, repo string, environment string, opts *github.ListOptions) (*github.DeploymentBranchPolicyResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListDeploymentBranchPolicies")
 	var zero0 *github.DeploymentBranchPolicyResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListDeploymentStatuses(ctx context.Context, owner string, repo string, deployment int64, opts *github.ListOptions) ([]*github.DeploymentStatus, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListDeploymentStatuses(ctx context.Context, owner string, repo string, deployment int64, opts *github.ListOptions) ([]*github.DeploymentStatus, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListDeploymentStatuses")
 	var zero0 []*github.DeploymentStatus
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListDeployments(ctx context.Context, owner string, repo string, opts *github.DeploymentsListOptions) ([]*github.Deployment, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListDeployments(ctx context.Context, owner string, repo string, opts *github.DeploymentsListOptions) ([]*github.Deployment, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListDeployments")
 	var zero0 []*github.Deployment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListEnvironments(ctx context.Context, owner string, repo string, opts *github.EnvironmentListOptions) (*github.EnvResponse, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListEnvironments(ctx context.Context, owner string, repo string, opts *github.EnvironmentListOptions) (*github.EnvResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListEnvironments")
 	var zero0 *github.EnvResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListForks(ctx context.Context, owner string, repo string, opts *github.RepositoryListForksOptions) ([]*github.Repository, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListForks(ctx context.Context, owner string, repo string, opts *github.RepositoryListForksOptions) ([]*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListForks")
 	var zero0 []*github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListHookDeliveries(ctx context.Context, owner string, repo string, id int64, opts *github.ListCursorOptions) ([]*github.HookDelivery, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListHookDeliveries(ctx context.Context, owner string, repo string, id int64, opts *github.ListCursorOptions) ([]*github.HookDelivery, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListHookDeliveries")
 	var zero0 []*github.HookDelivery
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListHooks(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.Hook, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListHooks(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.Hook, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListHooks")
 	var zero0 []*github.Hook
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListInvitations(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.RepositoryInvitation, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListInvitations(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.RepositoryInvitation, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListInvitations")
 	var zero0 []*github.RepositoryInvitation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListKeys(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.Key, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListKeys(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.Key, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListKeys")
 	var zero0 []*github.Key
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListLanguages(ctx context.Context, owner string, repo string) (map[string]int, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListLanguages(ctx context.Context, owner string, repo string) (map[string]int, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListLanguages")
 	var zero0 map[string]int
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListPagesBuilds(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.PagesBuild, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListPagesBuilds(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.PagesBuild, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListPagesBuilds")
 	var zero0 []*github.PagesBuild
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListParticipation(ctx context.Context, owner string, repo string) (*github.RepositoryParticipation, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListParticipation(ctx context.Context, owner string, repo string) (*github.RepositoryParticipation, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListParticipation")
 	var zero0 *github.RepositoryParticipation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListPreReceiveHooks(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.PreReceiveHook, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListPreReceiveHooks(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.PreReceiveHook, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListPreReceiveHooks")
 	var zero0 []*github.PreReceiveHook
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListPunchCard(ctx context.Context, owner string, repo string) ([]*github.PunchCard, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListPunchCard(ctx context.Context, owner string, repo string) ([]*github.PunchCard, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListPunchCard")
 	var zero0 []*github.PunchCard
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListReleaseAssets(ctx context.Context, owner string, repo string, id int64, opts *github.ListOptions) ([]*github.ReleaseAsset, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListReleaseAssets(ctx context.Context, owner string, repo string, id int64, opts *github.ListOptions) ([]*github.ReleaseAsset, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListReleaseAssets")
 	var zero0 []*github.ReleaseAsset
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListReleases(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.RepositoryRelease, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListReleases(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.RepositoryRelease, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListReleases")
 	var zero0 []*github.RepositoryRelease
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListRepositoryActivities(ctx context.Context, owner string, repo string, opts *github.ListRepositoryActivityOptions) ([]*github.RepositoryActivity, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListRepositoryActivities(ctx context.Context, owner string, repo string, opts *github.ListRepositoryActivityOptions) ([]*github.RepositoryActivity, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListRepositoryActivities")
 	var zero0 []*github.RepositoryActivity
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListRequiredStatusChecksContexts(ctx context.Context, owner string, repo string, branch string) (contexts []string, resp *github.Response, err error) {
+func (s UnimplementedRepositoriesService) ListRequiredStatusChecksContexts(ctx context.Context, owner string, repo string, branch string) (contexts []string, resp *github.Response, err error) {
+	s.Callback.call(ctx, "Repositories", "ListRequiredStatusChecksContexts")
 	var zero0 []string
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListRulesForBranch(ctx context.Context, owner string, repo string, branch string, opts *github.ListOptions) (*github.BranchRules, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListRulesForBranch(ctx context.Context, owner string, repo string, branch string, opts *github.ListOptions) (*github.BranchRules, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListRulesForBranch")
 	var zero0 *github.BranchRules
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListStatuses(ctx context.Context, owner string, repo string, ref string, opts *github.ListOptions) ([]*github.RepoStatus, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListStatuses(ctx context.Context, owner string, repo string, ref string, opts *github.ListOptions) ([]*github.RepoStatus, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListStatuses")
 	var zero0 []*github.RepoStatus
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListTagProtection(ctx context.Context, owner string, repo string) ([]*github.TagProtection, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListTagProtection(ctx context.Context, owner string, repo string) ([]*github.TagProtection, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListTagProtection")
 	var zero0 []*github.TagProtection
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListTags(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.RepositoryTag, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListTags(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.RepositoryTag, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListTags")
 	var zero0 []*github.RepositoryTag
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListTeamRestrictions(ctx context.Context, owner string, repo string, branch string) ([]*github.Team, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListTeamRestrictions(ctx context.Context, owner string, repo string, branch string) ([]*github.Team, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListTeamRestrictions")
 	var zero0 []*github.Team
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListTeams(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.Team, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListTeams(ctx context.Context, owner string, repo string, opts *github.ListOptions) ([]*github.Team, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListTeams")
 	var zero0 []*github.Team
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListTrafficClones(ctx context.Context, owner string, repo string, opts *github.TrafficBreakdownOptions) (*github.TrafficClones, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListTrafficClones(ctx context.Context, owner string, repo string, opts *github.TrafficBreakdownOptions) (*github.TrafficClones, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListTrafficClones")
 	var zero0 *github.TrafficClones
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListTrafficPaths(ctx context.Context, owner string, repo string) ([]*github.TrafficPath, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListTrafficPaths(ctx context.Context, owner string, repo string) ([]*github.TrafficPath, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListTrafficPaths")
 	var zero0 []*github.TrafficPath
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListTrafficReferrers(ctx context.Context, owner string, repo string) ([]*github.TrafficReferrer, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListTrafficReferrers(ctx context.Context, owner string, repo string) ([]*github.TrafficReferrer, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListTrafficReferrers")
 	var zero0 []*github.TrafficReferrer
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListTrafficViews(ctx context.Context, owner string, repo string, opts *github.TrafficBreakdownOptions) (*github.TrafficViews, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListTrafficViews(ctx context.Context, owner string, repo string, opts *github.TrafficBreakdownOptions) (*github.TrafficViews, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListTrafficViews")
 	var zero0 *github.TrafficViews
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ListUserRestrictions(ctx context.Context, owner string, repo string, branch string) ([]*github.User, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ListUserRestrictions(ctx context.Context, owner string, repo string, branch string) ([]*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ListUserRestrictions")
 	var zero0 []*github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) Merge(ctx context.Context, owner string, repo string, body *github.RepositoryMergeRequest) (*github.RepositoryCommit, *github.Response, error) {
+func (s UnimplementedRepositoriesService) Merge(ctx context.Context, owner string, repo string, body *github.RepositoryMergeRequest) (*github.RepositoryCommit, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "Merge")
 	var zero0 *github.RepositoryCommit
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) MergeUpstream(ctx context.Context, owner string, repo string, body *github.RepoMergeUpstreamRequest) (*github.RepoMergeUpstreamResult, *github.Response, error) {
+func (s UnimplementedRepositoriesService) MergeUpstream(ctx context.Context, owner string, repo string, body *github.RepoMergeUpstreamRequest) (*github.RepoMergeUpstreamResult, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "MergeUpstream")
 	var zero0 *github.RepoMergeUpstreamResult
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) OptionalSignaturesOnProtectedBranch(ctx context.Context, owner string, repo string, branch string) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) OptionalSignaturesOnProtectedBranch(ctx context.Context, owner string, repo string, branch string) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "OptionalSignaturesOnProtectedBranch")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) PingHook(ctx context.Context, owner string, repo string, id int64) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) PingHook(ctx context.Context, owner string, repo string, id int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "PingHook")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) RedeliverHookDelivery(ctx context.Context, owner string, repo string, hookID int64, deliveryID int64) (*github.HookDelivery, *github.Response, error) {
+func (s UnimplementedRepositoriesService) RedeliverHookDelivery(ctx context.Context, owner string, repo string, hookID int64, deliveryID int64) (*github.HookDelivery, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "RedeliverHookDelivery")
 	var zero0 *github.HookDelivery
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) RemoveAdminEnforcement(ctx context.Context, owner string, repo string, branch string) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) RemoveAdminEnforcement(ctx context.Context, owner string, repo string, branch string) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "RemoveAdminEnforcement")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) RemoveAppRestrictions(ctx context.Context, owner string, repo string, branch string, apps []string) ([]*github.App, *github.Response, error) {
+func (s UnimplementedRepositoriesService) RemoveAppRestrictions(ctx context.Context, owner string, repo string, branch string, apps []string) ([]*github.App, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "RemoveAppRestrictions")
 	var zero0 []*github.App
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) RemoveBranchProtection(ctx context.Context, owner string, repo string, branch string) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) RemoveBranchProtection(ctx context.Context, owner string, repo string, branch string) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "RemoveBranchProtection")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) RemoveCollaborator(ctx context.Context, owner string, repo string, user string) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) RemoveCollaborator(ctx context.Context, owner string, repo string, user string) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "RemoveCollaborator")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) RemovePullRequestReviewEnforcement(ctx context.Context, owner string, repo string, branch string) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) RemovePullRequestReviewEnforcement(ctx context.Context, owner string, repo string, branch string) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "RemovePullRequestReviewEnforcement")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) RemoveRequiredStatusChecks(ctx context.Context, owner string, repo string, branch string) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) RemoveRequiredStatusChecks(ctx context.Context, owner string, repo string, branch string) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "RemoveRequiredStatusChecks")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) RemoveTeamRestrictions(ctx context.Context, owner string, repo string, branch string, teams []string) ([]*github.Team, *github.Response, error) {
+func (s UnimplementedRepositoriesService) RemoveTeamRestrictions(ctx context.Context, owner string, repo string, branch string, teams []string) ([]*github.Team, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "RemoveTeamRestrictions")
 	var zero0 []*github.Team
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) RemoveUserRestrictions(ctx context.Context, owner string, repo string, branch string, users []string) ([]*github.User, *github.Response, error) {
+func (s UnimplementedRepositoriesService) RemoveUserRestrictions(ctx context.Context, owner string, repo string, branch string, users []string) ([]*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "RemoveUserRestrictions")
 	var zero0 []*github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) RenameBranch(ctx context.Context, owner string, repo string, branch string, newName string) (*github.Branch, *github.Response, error) {
+func (s UnimplementedRepositoriesService) RenameBranch(ctx context.Context, owner string, repo string, branch string, newName string) (*github.Branch, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "RenameBranch")
 	var zero0 *github.Branch
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ReplaceAllTopics(ctx context.Context, owner string, repo string, topics []string) ([]string, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ReplaceAllTopics(ctx context.Context, owner string, repo string, topics []string) ([]string, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ReplaceAllTopics")
 	var zero0 []string
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ReplaceAppRestrictions(ctx context.Context, owner string, repo string, branch string, body []string) ([]*github.App, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ReplaceAppRestrictions(ctx context.Context, owner string, repo string, branch string, body []string) ([]*github.App, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ReplaceAppRestrictions")
 	var zero0 []*github.App
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ReplaceTeamRestrictions(ctx context.Context, owner string, repo string, branch string, body []string) ([]*github.Team, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ReplaceTeamRestrictions(ctx context.Context, owner string, repo string, branch string, body []string) ([]*github.Team, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ReplaceTeamRestrictions")
 	var zero0 []*github.Team
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) ReplaceUserRestrictions(ctx context.Context, owner string, repo string, branch string, body []string) ([]*github.User, *github.Response, error) {
+func (s UnimplementedRepositoriesService) ReplaceUserRestrictions(ctx context.Context, owner string, repo string, branch string, body []string) ([]*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "ReplaceUserRestrictions")
 	var zero0 []*github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) RequestPageBuild(ctx context.Context, owner string, repo string) (*github.PagesBuild, *github.Response, error) {
+func (s UnimplementedRepositoriesService) RequestPageBuild(ctx context.Context, owner string, repo string) (*github.PagesBuild, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "RequestPageBuild")
 	var zero0 *github.PagesBuild
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) RequireSignaturesOnProtectedBranch(ctx context.Context, owner string, repo string, branch string) (*github.SignaturesProtectedBranch, *github.Response, error) {
+func (s UnimplementedRepositoriesService) RequireSignaturesOnProtectedBranch(ctx context.Context, owner string, repo string, branch string) (*github.SignaturesProtectedBranch, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "RequireSignaturesOnProtectedBranch")
 	var zero0 *github.SignaturesProtectedBranch
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) Subscribe(ctx context.Context, owner string, repo string, event string, callback string, secret []byte) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) Subscribe(ctx context.Context, owner string, repo string, event string, callback string, secret []byte) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "Subscribe")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) TestHook(ctx context.Context, owner string, repo string, id int64) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) TestHook(ctx context.Context, owner string, repo string, id int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "TestHook")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) Transfer(ctx context.Context, owner string, repo string, transfer github.TransferRequest) (*github.Repository, *github.Response, error) {
+func (s UnimplementedRepositoriesService) Transfer(ctx context.Context, owner string, repo string, transfer github.TransferRequest) (*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "Transfer")
 	var zero0 *github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) Unsubscribe(ctx context.Context, owner string, repo string, event string, callback string, secret []byte) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) Unsubscribe(ctx context.Context, owner string, repo string, event string, callback string, secret []byte) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "Unsubscribe")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) UpdateActionsPermissions(ctx context.Context, owner string, repo string, body github.ActionsPermissionsRepository) (*github.ActionsPermissionsRepository, *github.Response, error) {
+func (s UnimplementedRepositoriesService) UpdateActionsPermissions(ctx context.Context, owner string, repo string, body github.ActionsPermissionsRepository) (*github.ActionsPermissionsRepository, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "UpdateActionsPermissions")
 	var zero0 *github.ActionsPermissionsRepository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) UpdateArtifactAndLogRetentionPeriod(ctx context.Context, owner string, repo string, body github.ArtifactPeriodOpt) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) UpdateArtifactAndLogRetentionPeriod(ctx context.Context, owner string, repo string, body github.ArtifactPeriodOpt) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "UpdateArtifactAndLogRetentionPeriod")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) UpdateBranchProtection(ctx context.Context, owner string, repo string, branch string, body *github.ProtectionRequest) (*github.Protection, *github.Response, error) {
+func (s UnimplementedRepositoriesService) UpdateBranchProtection(ctx context.Context, owner string, repo string, branch string, body *github.ProtectionRequest) (*github.Protection, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "UpdateBranchProtection")
 	var zero0 *github.Protection
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) UpdateComment(ctx context.Context, owner string, repo string, id int64, body *github.RepositoryComment) (*github.RepositoryComment, *github.Response, error) {
+func (s UnimplementedRepositoriesService) UpdateComment(ctx context.Context, owner string, repo string, id int64, body *github.RepositoryComment) (*github.RepositoryComment, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "UpdateComment")
 	var zero0 *github.RepositoryComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) UpdateDefaultWorkflowPermissions(ctx context.Context, owner string, repo string, body github.DefaultWorkflowPermissionRepository) (*github.DefaultWorkflowPermissionRepository, *github.Response, error) {
+func (s UnimplementedRepositoriesService) UpdateDefaultWorkflowPermissions(ctx context.Context, owner string, repo string, body github.DefaultWorkflowPermissionRepository) (*github.DefaultWorkflowPermissionRepository, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "UpdateDefaultWorkflowPermissions")
 	var zero0 *github.DefaultWorkflowPermissionRepository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) UpdateDeploymentBranchPolicy(ctx context.Context, owner string, repo string, environment string, branchPolicyID int64, body *github.DeploymentBranchPolicyRequest) (*github.DeploymentBranchPolicy, *github.Response, error) {
+func (s UnimplementedRepositoriesService) UpdateDeploymentBranchPolicy(ctx context.Context, owner string, repo string, environment string, branchPolicyID int64, body *github.DeploymentBranchPolicyRequest) (*github.DeploymentBranchPolicy, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "UpdateDeploymentBranchPolicy")
 	var zero0 *github.DeploymentBranchPolicy
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) UpdateFile(ctx context.Context, owner string, repo string, path string, body *github.RepositoryContentFileOptions) (*github.RepositoryContentResponse, *github.Response, error) {
+func (s UnimplementedRepositoriesService) UpdateFile(ctx context.Context, owner string, repo string, path string, body *github.RepositoryContentFileOptions) (*github.RepositoryContentResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "UpdateFile")
 	var zero0 *github.RepositoryContentResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) UpdateHookConfiguration(ctx context.Context, owner string, repo string, id int64, body github.HookConfig) (*github.HookConfig, *github.Response, error) {
+func (s UnimplementedRepositoriesService) UpdateHookConfiguration(ctx context.Context, owner string, repo string, id int64, body github.HookConfig) (*github.HookConfig, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "UpdateHookConfiguration")
 	var zero0 *github.HookConfig
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) UpdateInvitation(ctx context.Context, owner string, repo string, invitationID int64, permissions string) (*github.RepositoryInvitation, *github.Response, error) {
+func (s UnimplementedRepositoriesService) UpdateInvitation(ctx context.Context, owner string, repo string, invitationID int64, permissions string) (*github.RepositoryInvitation, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "UpdateInvitation")
 	var zero0 *github.RepositoryInvitation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) UpdatePages(ctx context.Context, owner string, repo string, body *github.PagesUpdate) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) UpdatePages(ctx context.Context, owner string, repo string, body *github.PagesUpdate) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "UpdatePages")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) UpdatePagesGHES(ctx context.Context, owner string, repo string, body *github.PagesUpdateWithoutCNAME) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) UpdatePagesGHES(ctx context.Context, owner string, repo string, body *github.PagesUpdateWithoutCNAME) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "UpdatePagesGHES")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) UpdatePreReceiveHook(ctx context.Context, owner string, repo string, id int64, body *github.PreReceiveHook) (*github.PreReceiveHook, *github.Response, error) {
+func (s UnimplementedRepositoriesService) UpdatePreReceiveHook(ctx context.Context, owner string, repo string, id int64, body *github.PreReceiveHook) (*github.PreReceiveHook, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "UpdatePreReceiveHook")
 	var zero0 *github.PreReceiveHook
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) UpdatePrivateRepoForkPRWorkflowSettings(ctx context.Context, owner string, repo string, body *github.WorkflowsPermissionsOpt) (*github.Response, error) {
+func (s UnimplementedRepositoriesService) UpdatePrivateRepoForkPRWorkflowSettings(ctx context.Context, owner string, repo string, body *github.WorkflowsPermissionsOpt) (*github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "UpdatePrivateRepoForkPRWorkflowSettings")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) UpdatePullRequestReviewEnforcement(ctx context.Context, owner string, repo string, branch string, body *github.PullRequestReviewsEnforcementUpdate) (*github.PullRequestReviewsEnforcement, *github.Response, error) {
+func (s UnimplementedRepositoriesService) UpdatePullRequestReviewEnforcement(ctx context.Context, owner string, repo string, branch string, body *github.PullRequestReviewsEnforcementUpdate) (*github.PullRequestReviewsEnforcement, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "UpdatePullRequestReviewEnforcement")
 	var zero0 *github.PullRequestReviewsEnforcement
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) UpdateRelease(ctx context.Context, owner string, repo string, id int64, body github.UpdateReleaseRequest) (*github.RepositoryRelease, *github.Response, error) {
+func (s UnimplementedRepositoriesService) UpdateRelease(ctx context.Context, owner string, repo string, id int64, body github.UpdateReleaseRequest) (*github.RepositoryRelease, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "UpdateRelease")
 	var zero0 *github.RepositoryRelease
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) UpdateReleaseAsset(ctx context.Context, owner string, repo string, id int64, body github.UpdateReleaseAssetRequest) (*github.ReleaseAsset, *github.Response, error) {
+func (s UnimplementedRepositoriesService) UpdateReleaseAsset(ctx context.Context, owner string, repo string, id int64, body github.UpdateReleaseAssetRequest) (*github.ReleaseAsset, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "UpdateReleaseAsset")
 	var zero0 *github.ReleaseAsset
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) UpdateRequiredStatusChecks(ctx context.Context, owner string, repo string, branch string, body *github.RequiredStatusChecksRequest) (*github.RequiredStatusChecks, *github.Response, error) {
+func (s UnimplementedRepositoriesService) UpdateRequiredStatusChecks(ctx context.Context, owner string, repo string, branch string, body *github.RequiredStatusChecksRequest) (*github.RequiredStatusChecks, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "UpdateRequiredStatusChecks")
 	var zero0 *github.RequiredStatusChecks
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) UpdateRuleset(ctx context.Context, owner string, repo string, rulesetID int64, body github.RepositoryRuleset) (*github.RepositoryRuleset, *github.Response, error) {
+func (s UnimplementedRepositoriesService) UpdateRuleset(ctx context.Context, owner string, repo string, rulesetID int64, body github.RepositoryRuleset) (*github.RepositoryRuleset, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "UpdateRuleset")
 	var zero0 *github.RepositoryRuleset
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) UploadReleaseAsset(ctx context.Context, owner string, repo string, id int64, opts *github.UploadOptions, file *os.File) (*github.ReleaseAsset, *github.Response, error) {
+func (s UnimplementedRepositoriesService) UploadReleaseAsset(ctx context.Context, owner string, repo string, id int64, opts *github.UploadOptions, file *os.File) (*github.ReleaseAsset, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "UploadReleaseAsset")
 	var zero0 *github.ReleaseAsset
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedRepositoriesService) UploadReleaseAssetFromRelease(ctx context.Context, release *github.RepositoryRelease, opts *github.UploadOptions, reader io.Reader, size int64) (*github.ReleaseAsset, *github.Response, error) {
+func (s UnimplementedRepositoriesService) UploadReleaseAssetFromRelease(ctx context.Context, release *github.RepositoryRelease, opts *github.UploadOptions, reader io.Reader, size int64) (*github.ReleaseAsset, *github.Response, error) {
+	s.Callback.call(ctx, "Repositories", "UploadReleaseAssetFromRelease")
 	var zero0 *github.ReleaseAsset
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -12945,33 +14092,41 @@ type SCIMService interface {
 }
 
 // UnimplementedSCIMService may be embedded to implement only selected methods.
-type UnimplementedSCIMService struct{}
+type UnimplementedSCIMService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedSCIMService) DeleteSCIMUserFromOrg(ctx context.Context, org string, scimUserID string) (*github.Response, error) {
+func (s UnimplementedSCIMService) DeleteSCIMUserFromOrg(ctx context.Context, org string, scimUserID string) (*github.Response, error) {
+	s.Callback.call(ctx, "SCIM", "DeleteSCIMUserFromOrg")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedSCIMService) GetSCIMProvisioningInfoForUser(ctx context.Context, org string, scimUserID string) (*github.SCIMUserAttributes, *github.Response, error) {
+func (s UnimplementedSCIMService) GetSCIMProvisioningInfoForUser(ctx context.Context, org string, scimUserID string) (*github.SCIMUserAttributes, *github.Response, error) {
+	s.Callback.call(ctx, "SCIM", "GetSCIMProvisioningInfoForUser")
 	var zero0 *github.SCIMUserAttributes
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSCIMService) ListSCIMProvisionedIdentities(ctx context.Context, org string, opts *github.ListSCIMProvisionedIdentitiesOptions) (*github.SCIMProvisionedIdentities, *github.Response, error) {
+func (s UnimplementedSCIMService) ListSCIMProvisionedIdentities(ctx context.Context, org string, opts *github.ListSCIMProvisionedIdentitiesOptions) (*github.SCIMProvisionedIdentities, *github.Response, error) {
+	s.Callback.call(ctx, "SCIM", "ListSCIMProvisionedIdentities")
 	var zero0 *github.SCIMProvisionedIdentities
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSCIMService) ProvisionAndInviteSCIMUser(ctx context.Context, org string, body *github.SCIMUserAttributes) (*github.SCIMUserAttributes, *github.Response, error) {
+func (s UnimplementedSCIMService) ProvisionAndInviteSCIMUser(ctx context.Context, org string, body *github.SCIMUserAttributes) (*github.SCIMUserAttributes, *github.Response, error) {
+	s.Callback.call(ctx, "SCIM", "ProvisionAndInviteSCIMUser")
 	var zero0 *github.SCIMUserAttributes
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSCIMService) UpdateAttributeForSCIMUser(ctx context.Context, org string, scimUserID string, body github.UpdateAttributeForSCIMUserRequest) (*github.SCIMUserAttributes, *github.Response, error) {
+func (s UnimplementedSCIMService) UpdateAttributeForSCIMUser(ctx context.Context, org string, scimUserID string, body github.UpdateAttributeForSCIMUserRequest) (*github.SCIMUserAttributes, *github.Response, error) {
+	s.Callback.call(ctx, "SCIM", "UpdateAttributeForSCIMUser")
 	var zero0 *github.SCIMUserAttributes
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSCIMService) UpdateProvisionedOrgMembership(ctx context.Context, org string, scimUserID string, body github.UpdateProvisionedOrgMembershipRequest) (*github.SCIMUserAttributes, *github.Response, error) {
+func (s UnimplementedSCIMService) UpdateProvisionedOrgMembership(ctx context.Context, org string, scimUserID string, body github.UpdateProvisionedOrgMembershipRequest) (*github.SCIMUserAttributes, *github.Response, error) {
+	s.Callback.call(ctx, "SCIM", "UpdateProvisionedOrgMembership")
 	var zero0 *github.SCIMUserAttributes
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -13026,39 +14181,48 @@ type SearchService interface {
 }
 
 // UnimplementedSearchService may be embedded to implement only selected methods.
-type UnimplementedSearchService struct{}
+type UnimplementedSearchService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedSearchService) Code(ctx context.Context, query string, opts *github.SearchOptions) (*github.CodeSearchResult, *github.Response, error) {
+func (s UnimplementedSearchService) Code(ctx context.Context, query string, opts *github.SearchOptions) (*github.CodeSearchResult, *github.Response, error) {
+	s.Callback.call(ctx, "Search", "Code")
 	var zero0 *github.CodeSearchResult
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSearchService) Commits(ctx context.Context, query string, opts *github.SearchOptions) (*github.CommitsSearchResult, *github.Response, error) {
+func (s UnimplementedSearchService) Commits(ctx context.Context, query string, opts *github.SearchOptions) (*github.CommitsSearchResult, *github.Response, error) {
+	s.Callback.call(ctx, "Search", "Commits")
 	var zero0 *github.CommitsSearchResult
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSearchService) Issues(ctx context.Context, query string, opts *github.SearchOptions) (*github.IssuesSearchResult, *github.Response, error) {
+func (s UnimplementedSearchService) Issues(ctx context.Context, query string, opts *github.SearchOptions) (*github.IssuesSearchResult, *github.Response, error) {
+	s.Callback.call(ctx, "Search", "Issues")
 	var zero0 *github.IssuesSearchResult
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSearchService) Labels(ctx context.Context, repoID int64, query string, opts *github.SearchOptions) (*github.LabelsSearchResult, *github.Response, error) {
+func (s UnimplementedSearchService) Labels(ctx context.Context, repoID int64, query string, opts *github.SearchOptions) (*github.LabelsSearchResult, *github.Response, error) {
+	s.Callback.call(ctx, "Search", "Labels")
 	var zero0 *github.LabelsSearchResult
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSearchService) Repositories(ctx context.Context, query string, opts *github.SearchOptions) (*github.RepositoriesSearchResult, *github.Response, error) {
+func (s UnimplementedSearchService) Repositories(ctx context.Context, query string, opts *github.SearchOptions) (*github.RepositoriesSearchResult, *github.Response, error) {
+	s.Callback.call(ctx, "Search", "Repositories")
 	var zero0 *github.RepositoriesSearchResult
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSearchService) Topics(ctx context.Context, query string, opts *github.SearchOptions) (*github.TopicsSearchResult, *github.Response, error) {
+func (s UnimplementedSearchService) Topics(ctx context.Context, query string, opts *github.SearchOptions) (*github.TopicsSearchResult, *github.Response, error) {
+	s.Callback.call(ctx, "Search", "Topics")
 	var zero0 *github.TopicsSearchResult
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSearchService) Users(ctx context.Context, query string, opts *github.SearchOptions) (*github.UsersSearchResult, *github.Response, error) {
+func (s UnimplementedSearchService) Users(ctx context.Context, query string, opts *github.SearchOptions) (*github.UsersSearchResult, *github.Response, error) {
+	s.Callback.call(ctx, "Search", "Users")
 	var zero0 *github.UsersSearchResult
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -13165,64 +14329,78 @@ type SecretScanningService interface {
 }
 
 // UnimplementedSecretScanningService may be embedded to implement only selected methods.
-type UnimplementedSecretScanningService struct{}
+type UnimplementedSecretScanningService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedSecretScanningService) CreatePushProtectionBypass(ctx context.Context, owner string, repo string, body github.PushProtectionBypassRequest) (*github.PushProtectionBypass, *github.Response, error) {
+func (s UnimplementedSecretScanningService) CreatePushProtectionBypass(ctx context.Context, owner string, repo string, body github.PushProtectionBypassRequest) (*github.PushProtectionBypass, *github.Response, error) {
+	s.Callback.call(ctx, "SecretScanning", "CreatePushProtectionBypass")
 	var zero0 *github.PushProtectionBypass
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSecretScanningService) GetAlert(ctx context.Context, owner string, repo string, number int64) (*github.SecretScanningAlert, *github.Response, error) {
+func (s UnimplementedSecretScanningService) GetAlert(ctx context.Context, owner string, repo string, number int64) (*github.SecretScanningAlert, *github.Response, error) {
+	s.Callback.call(ctx, "SecretScanning", "GetAlert")
 	var zero0 *github.SecretScanningAlert
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSecretScanningService) GetScanHistory(ctx context.Context, owner string, repo string) (*github.SecretScanningScanHistory, *github.Response, error) {
+func (s UnimplementedSecretScanningService) GetScanHistory(ctx context.Context, owner string, repo string) (*github.SecretScanningScanHistory, *github.Response, error) {
+	s.Callback.call(ctx, "SecretScanning", "GetScanHistory")
 	var zero0 *github.SecretScanningScanHistory
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSecretScanningService) ListAlertsForEnterprise(ctx context.Context, enterprise string, opts *github.SecretScanningAlertListOptions) ([]*github.SecretScanningAlert, *github.Response, error) {
+func (s UnimplementedSecretScanningService) ListAlertsForEnterprise(ctx context.Context, enterprise string, opts *github.SecretScanningAlertListOptions) ([]*github.SecretScanningAlert, *github.Response, error) {
+	s.Callback.call(ctx, "SecretScanning", "ListAlertsForEnterprise")
 	var zero0 []*github.SecretScanningAlert
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSecretScanningService) ListAlertsForOrg(ctx context.Context, org string, opts *github.SecretScanningAlertListOptions) ([]*github.SecretScanningAlert, *github.Response, error) {
+func (s UnimplementedSecretScanningService) ListAlertsForOrg(ctx context.Context, org string, opts *github.SecretScanningAlertListOptions) ([]*github.SecretScanningAlert, *github.Response, error) {
+	s.Callback.call(ctx, "SecretScanning", "ListAlertsForOrg")
 	var zero0 []*github.SecretScanningAlert
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSecretScanningService) ListAlertsForRepo(ctx context.Context, owner string, repo string, opts *github.SecretScanningAlertListOptions) ([]*github.SecretScanningAlert, *github.Response, error) {
+func (s UnimplementedSecretScanningService) ListAlertsForRepo(ctx context.Context, owner string, repo string, opts *github.SecretScanningAlertListOptions) ([]*github.SecretScanningAlert, *github.Response, error) {
+	s.Callback.call(ctx, "SecretScanning", "ListAlertsForRepo")
 	var zero0 []*github.SecretScanningAlert
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSecretScanningService) ListLocationsForAlert(ctx context.Context, owner string, repo string, number int64, opts *github.ListOptions) ([]*github.SecretScanningAlertLocation, *github.Response, error) {
+func (s UnimplementedSecretScanningService) ListLocationsForAlert(ctx context.Context, owner string, repo string, number int64, opts *github.ListOptions) ([]*github.SecretScanningAlertLocation, *github.Response, error) {
+	s.Callback.call(ctx, "SecretScanning", "ListLocationsForAlert")
 	var zero0 []*github.SecretScanningAlertLocation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSecretScanningService) ListPatternConfigsForEnterprise(ctx context.Context, enterprise string) (*github.SecretScanningPatternConfigs, *github.Response, error) {
+func (s UnimplementedSecretScanningService) ListPatternConfigsForEnterprise(ctx context.Context, enterprise string) (*github.SecretScanningPatternConfigs, *github.Response, error) {
+	s.Callback.call(ctx, "SecretScanning", "ListPatternConfigsForEnterprise")
 	var zero0 *github.SecretScanningPatternConfigs
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSecretScanningService) ListPatternConfigsForOrg(ctx context.Context, org string) (*github.SecretScanningPatternConfigs, *github.Response, error) {
+func (s UnimplementedSecretScanningService) ListPatternConfigsForOrg(ctx context.Context, org string) (*github.SecretScanningPatternConfigs, *github.Response, error) {
+	s.Callback.call(ctx, "SecretScanning", "ListPatternConfigsForOrg")
 	var zero0 *github.SecretScanningPatternConfigs
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSecretScanningService) UpdateAlert(ctx context.Context, owner string, repo string, number int64, body *github.SecretScanningAlertUpdateOptions) (*github.SecretScanningAlert, *github.Response, error) {
+func (s UnimplementedSecretScanningService) UpdateAlert(ctx context.Context, owner string, repo string, number int64, body *github.SecretScanningAlertUpdateOptions) (*github.SecretScanningAlert, *github.Response, error) {
+	s.Callback.call(ctx, "SecretScanning", "UpdateAlert")
 	var zero0 *github.SecretScanningAlert
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSecretScanningService) UpdatePatternConfigsForEnterprise(ctx context.Context, enterprise string, body *github.SecretScanningPatternConfigsUpdateOptions) (*github.SecretScanningPatternConfigsUpdate, *github.Response, error) {
+func (s UnimplementedSecretScanningService) UpdatePatternConfigsForEnterprise(ctx context.Context, enterprise string, body *github.SecretScanningPatternConfigsUpdateOptions) (*github.SecretScanningPatternConfigsUpdate, *github.Response, error) {
+	s.Callback.call(ctx, "SecretScanning", "UpdatePatternConfigsForEnterprise")
 	var zero0 *github.SecretScanningPatternConfigsUpdate
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSecretScanningService) UpdatePatternConfigsForOrg(ctx context.Context, org string, body *github.SecretScanningPatternConfigsUpdateOptions) (*github.SecretScanningPatternConfigsUpdate, *github.Response, error) {
+func (s UnimplementedSecretScanningService) UpdatePatternConfigsForOrg(ctx context.Context, org string, body *github.SecretScanningPatternConfigsUpdateOptions) (*github.SecretScanningPatternConfigsUpdate, *github.Response, error) {
+	s.Callback.call(ctx, "SecretScanning", "UpdatePatternConfigsForOrg")
 	var zero0 *github.SecretScanningPatternConfigsUpdate
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -13271,34 +14449,42 @@ type SecurityAdvisoriesService interface {
 }
 
 // UnimplementedSecurityAdvisoriesService may be embedded to implement only selected methods.
-type UnimplementedSecurityAdvisoriesService struct{}
+type UnimplementedSecurityAdvisoriesService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedSecurityAdvisoriesService) CreateTemporaryPrivateFork(ctx context.Context, owner string, repo string, ghsaID string) (*github.Repository, *github.Response, error) {
+func (s UnimplementedSecurityAdvisoriesService) CreateTemporaryPrivateFork(ctx context.Context, owner string, repo string, ghsaID string) (*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "SecurityAdvisories", "CreateTemporaryPrivateFork")
 	var zero0 *github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSecurityAdvisoriesService) GetGlobalSecurityAdvisories(ctx context.Context, ghsaID string) (*github.GlobalSecurityAdvisory, *github.Response, error) {
+func (s UnimplementedSecurityAdvisoriesService) GetGlobalSecurityAdvisories(ctx context.Context, ghsaID string) (*github.GlobalSecurityAdvisory, *github.Response, error) {
+	s.Callback.call(ctx, "SecurityAdvisories", "GetGlobalSecurityAdvisories")
 	var zero0 *github.GlobalSecurityAdvisory
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSecurityAdvisoriesService) ListGlobalSecurityAdvisories(ctx context.Context, opts *github.ListGlobalSecurityAdvisoriesOptions) ([]*github.GlobalSecurityAdvisory, *github.Response, error) {
+func (s UnimplementedSecurityAdvisoriesService) ListGlobalSecurityAdvisories(ctx context.Context, opts *github.ListGlobalSecurityAdvisoriesOptions) ([]*github.GlobalSecurityAdvisory, *github.Response, error) {
+	s.Callback.call(ctx, "SecurityAdvisories", "ListGlobalSecurityAdvisories")
 	var zero0 []*github.GlobalSecurityAdvisory
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSecurityAdvisoriesService) ListRepositorySecurityAdvisories(ctx context.Context, owner string, repo string, opts *github.ListRepositorySecurityAdvisoriesOptions) ([]*github.SecurityAdvisory, *github.Response, error) {
+func (s UnimplementedSecurityAdvisoriesService) ListRepositorySecurityAdvisories(ctx context.Context, owner string, repo string, opts *github.ListRepositorySecurityAdvisoriesOptions) ([]*github.SecurityAdvisory, *github.Response, error) {
+	s.Callback.call(ctx, "SecurityAdvisories", "ListRepositorySecurityAdvisories")
 	var zero0 []*github.SecurityAdvisory
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSecurityAdvisoriesService) ListRepositorySecurityAdvisoriesForOrg(ctx context.Context, org string, opts *github.ListRepositorySecurityAdvisoriesOptions) ([]*github.SecurityAdvisory, *github.Response, error) {
+func (s UnimplementedSecurityAdvisoriesService) ListRepositorySecurityAdvisoriesForOrg(ctx context.Context, org string, opts *github.ListRepositorySecurityAdvisoriesOptions) ([]*github.SecurityAdvisory, *github.Response, error) {
+	s.Callback.call(ctx, "SecurityAdvisories", "ListRepositorySecurityAdvisoriesForOrg")
 	var zero0 []*github.SecurityAdvisory
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSecurityAdvisoriesService) RequestCVE(ctx context.Context, owner string, repo string, ghsaID string) (*github.Response, error) {
+func (s UnimplementedSecurityAdvisoriesService) RequestCVE(ctx context.Context, owner string, repo string, ghsaID string) (*github.Response, error) {
+	s.Callback.call(ctx, "SecurityAdvisories", "RequestCVE")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
@@ -13343,29 +14529,36 @@ type SubIssueService interface {
 }
 
 // UnimplementedSubIssueService may be embedded to implement only selected methods.
-type UnimplementedSubIssueService struct{}
+type UnimplementedSubIssueService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedSubIssueService) Add(ctx context.Context, owner string, repo string, issueNumber int64, body github.SubIssueRequest) (*github.SubIssue, *github.Response, error) {
+func (s UnimplementedSubIssueService) Add(ctx context.Context, owner string, repo string, issueNumber int64, body github.SubIssueRequest) (*github.SubIssue, *github.Response, error) {
+	s.Callback.call(ctx, "SubIssue", "Add")
 	var zero0 *github.SubIssue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSubIssueService) GetParentIssue(ctx context.Context, owner string, repo string, subIssueNumber int64) (*github.Issue, *github.Response, error) {
+func (s UnimplementedSubIssueService) GetParentIssue(ctx context.Context, owner string, repo string, subIssueNumber int64) (*github.Issue, *github.Response, error) {
+	s.Callback.call(ctx, "SubIssue", "GetParentIssue")
 	var zero0 *github.Issue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSubIssueService) ListByIssue(ctx context.Context, owner string, repo string, issueNumber int64, opts *github.ListOptions) ([]*github.SubIssue, *github.Response, error) {
+func (s UnimplementedSubIssueService) ListByIssue(ctx context.Context, owner string, repo string, issueNumber int64, opts *github.ListOptions) ([]*github.SubIssue, *github.Response, error) {
+	s.Callback.call(ctx, "SubIssue", "ListByIssue")
 	var zero0 []*github.SubIssue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSubIssueService) Remove(ctx context.Context, owner string, repo string, issueNumber int64, subIssue github.SubIssueRequest) (*github.SubIssue, *github.Response, error) {
+func (s UnimplementedSubIssueService) Remove(ctx context.Context, owner string, repo string, issueNumber int64, subIssue github.SubIssueRequest) (*github.SubIssue, *github.Response, error) {
+	s.Callback.call(ctx, "SubIssue", "Remove")
 	var zero0 *github.SubIssue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedSubIssueService) Reprioritize(ctx context.Context, owner string, repo string, issueNumber int64, body github.SubIssueRequest) (*github.SubIssue, *github.Response, error) {
+func (s UnimplementedSubIssueService) Reprioritize(ctx context.Context, owner string, repo string, issueNumber int64, body github.SubIssueRequest) (*github.SubIssue, *github.Response, error) {
+	s.Callback.call(ctx, "SubIssue", "Reprioritize")
 	var zero0 *github.SubIssue
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -13900,322 +15093,391 @@ type TeamsService interface {
 }
 
 // UnimplementedTeamsService may be embedded to implement only selected methods.
-type UnimplementedTeamsService struct{}
+type UnimplementedTeamsService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedTeamsService) AddTeamMembershipByID(ctx context.Context, orgID int64, teamID int64, user string, body *github.TeamAddTeamMembershipOptions) (*github.Membership, *github.Response, error) {
+func (s UnimplementedTeamsService) AddTeamMembershipByID(ctx context.Context, orgID int64, teamID int64, user string, body *github.TeamAddTeamMembershipOptions) (*github.Membership, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "AddTeamMembershipByID")
 	var zero0 *github.Membership
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) AddTeamMembershipBySlug(ctx context.Context, org string, slug string, user string, body *github.TeamAddTeamMembershipOptions) (*github.Membership, *github.Response, error) {
+func (s UnimplementedTeamsService) AddTeamMembershipBySlug(ctx context.Context, org string, slug string, user string, body *github.TeamAddTeamMembershipOptions) (*github.Membership, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "AddTeamMembershipBySlug")
 	var zero0 *github.Membership
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) AddTeamProjectByID(ctx context.Context, orgID int64, teamID int64, projectID int64, body *github.TeamProjectOptions) (*github.Response, error) {
+func (s UnimplementedTeamsService) AddTeamProjectByID(ctx context.Context, orgID int64, teamID int64, projectID int64, body *github.TeamProjectOptions) (*github.Response, error) {
+	s.Callback.call(ctx, "Teams", "AddTeamProjectByID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedTeamsService) AddTeamProjectBySlug(ctx context.Context, org string, slug string, projectID int64, body *github.TeamProjectOptions) (*github.Response, error) {
+func (s UnimplementedTeamsService) AddTeamProjectBySlug(ctx context.Context, org string, slug string, projectID int64, body *github.TeamProjectOptions) (*github.Response, error) {
+	s.Callback.call(ctx, "Teams", "AddTeamProjectBySlug")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedTeamsService) AddTeamRepoByID(ctx context.Context, orgID int64, teamID int64, owner string, repo string, body *github.TeamAddTeamRepoOptions) (*github.Response, error) {
+func (s UnimplementedTeamsService) AddTeamRepoByID(ctx context.Context, orgID int64, teamID int64, owner string, repo string, body *github.TeamAddTeamRepoOptions) (*github.Response, error) {
+	s.Callback.call(ctx, "Teams", "AddTeamRepoByID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedTeamsService) AddTeamRepoBySlug(ctx context.Context, org string, slug string, owner string, repo string, body *github.TeamAddTeamRepoOptions) (*github.Response, error) {
+func (s UnimplementedTeamsService) AddTeamRepoBySlug(ctx context.Context, org string, slug string, owner string, repo string, body *github.TeamAddTeamRepoOptions) (*github.Response, error) {
+	s.Callback.call(ctx, "Teams", "AddTeamRepoBySlug")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedTeamsService) CreateCommentByID(ctx context.Context, orgID int64, teamID int64, discussionNumber int, body github.DiscussionComment) (*github.DiscussionComment, *github.Response, error) {
+func (s UnimplementedTeamsService) CreateCommentByID(ctx context.Context, orgID int64, teamID int64, discussionNumber int, body github.DiscussionComment) (*github.DiscussionComment, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "CreateCommentByID")
 	var zero0 *github.DiscussionComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) CreateCommentBySlug(ctx context.Context, org string, slug string, discussionNumber int, body github.DiscussionComment) (*github.DiscussionComment, *github.Response, error) {
+func (s UnimplementedTeamsService) CreateCommentBySlug(ctx context.Context, org string, slug string, discussionNumber int, body github.DiscussionComment) (*github.DiscussionComment, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "CreateCommentBySlug")
 	var zero0 *github.DiscussionComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) CreateDiscussionByID(ctx context.Context, orgID int64, teamID int64, body github.TeamDiscussion) (*github.TeamDiscussion, *github.Response, error) {
+func (s UnimplementedTeamsService) CreateDiscussionByID(ctx context.Context, orgID int64, teamID int64, body github.TeamDiscussion) (*github.TeamDiscussion, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "CreateDiscussionByID")
 	var zero0 *github.TeamDiscussion
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) CreateDiscussionBySlug(ctx context.Context, org string, slug string, body github.TeamDiscussion) (*github.TeamDiscussion, *github.Response, error) {
+func (s UnimplementedTeamsService) CreateDiscussionBySlug(ctx context.Context, org string, slug string, body github.TeamDiscussion) (*github.TeamDiscussion, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "CreateDiscussionBySlug")
 	var zero0 *github.TeamDiscussion
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) CreateOrUpdateIDPGroupConnectionsByID(ctx context.Context, orgID int64, teamID int64, body github.IDPGroupList) (*github.IDPGroupList, *github.Response, error) {
+func (s UnimplementedTeamsService) CreateOrUpdateIDPGroupConnectionsByID(ctx context.Context, orgID int64, teamID int64, body github.IDPGroupList) (*github.IDPGroupList, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "CreateOrUpdateIDPGroupConnectionsByID")
 	var zero0 *github.IDPGroupList
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) CreateOrUpdateIDPGroupConnectionsBySlug(ctx context.Context, org string, slug string, body github.IDPGroupList) (*github.IDPGroupList, *github.Response, error) {
+func (s UnimplementedTeamsService) CreateOrUpdateIDPGroupConnectionsBySlug(ctx context.Context, org string, slug string, body github.IDPGroupList) (*github.IDPGroupList, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "CreateOrUpdateIDPGroupConnectionsBySlug")
 	var zero0 *github.IDPGroupList
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) CreateTeam(ctx context.Context, org string, body github.NewTeam) (*github.Team, *github.Response, error) {
+func (s UnimplementedTeamsService) CreateTeam(ctx context.Context, org string, body github.NewTeam) (*github.Team, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "CreateTeam")
 	var zero0 *github.Team
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) DeleteCommentByID(ctx context.Context, orgID int64, teamID int64, discussionNumber int, commentNumber int) (*github.Response, error) {
+func (s UnimplementedTeamsService) DeleteCommentByID(ctx context.Context, orgID int64, teamID int64, discussionNumber int, commentNumber int) (*github.Response, error) {
+	s.Callback.call(ctx, "Teams", "DeleteCommentByID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedTeamsService) DeleteCommentBySlug(ctx context.Context, org string, slug string, discussionNumber int, commentNumber int) (*github.Response, error) {
+func (s UnimplementedTeamsService) DeleteCommentBySlug(ctx context.Context, org string, slug string, discussionNumber int, commentNumber int) (*github.Response, error) {
+	s.Callback.call(ctx, "Teams", "DeleteCommentBySlug")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedTeamsService) DeleteDiscussionByID(ctx context.Context, orgID int64, teamID int64, discussionNumber int) (*github.Response, error) {
+func (s UnimplementedTeamsService) DeleteDiscussionByID(ctx context.Context, orgID int64, teamID int64, discussionNumber int) (*github.Response, error) {
+	s.Callback.call(ctx, "Teams", "DeleteDiscussionByID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedTeamsService) DeleteDiscussionBySlug(ctx context.Context, org string, slug string, discussionNumber int) (*github.Response, error) {
+func (s UnimplementedTeamsService) DeleteDiscussionBySlug(ctx context.Context, org string, slug string, discussionNumber int) (*github.Response, error) {
+	s.Callback.call(ctx, "Teams", "DeleteDiscussionBySlug")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedTeamsService) DeleteTeamByID(ctx context.Context, orgID int64, teamID int64) (*github.Response, error) {
+func (s UnimplementedTeamsService) DeleteTeamByID(ctx context.Context, orgID int64, teamID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Teams", "DeleteTeamByID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedTeamsService) DeleteTeamBySlug(ctx context.Context, org string, slug string) (*github.Response, error) {
+func (s UnimplementedTeamsService) DeleteTeamBySlug(ctx context.Context, org string, slug string) (*github.Response, error) {
+	s.Callback.call(ctx, "Teams", "DeleteTeamBySlug")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedTeamsService) EditCommentByID(ctx context.Context, orgID int64, teamID int64, discussionNumber int, commentNumber int, body github.DiscussionComment) (*github.DiscussionComment, *github.Response, error) {
+func (s UnimplementedTeamsService) EditCommentByID(ctx context.Context, orgID int64, teamID int64, discussionNumber int, commentNumber int, body github.DiscussionComment) (*github.DiscussionComment, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "EditCommentByID")
 	var zero0 *github.DiscussionComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) EditCommentBySlug(ctx context.Context, org string, slug string, discussionNumber int, commentNumber int, body github.DiscussionComment) (*github.DiscussionComment, *github.Response, error) {
+func (s UnimplementedTeamsService) EditCommentBySlug(ctx context.Context, org string, slug string, discussionNumber int, commentNumber int, body github.DiscussionComment) (*github.DiscussionComment, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "EditCommentBySlug")
 	var zero0 *github.DiscussionComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) EditDiscussionByID(ctx context.Context, orgID int64, teamID int64, discussionNumber int, body github.TeamDiscussion) (*github.TeamDiscussion, *github.Response, error) {
+func (s UnimplementedTeamsService) EditDiscussionByID(ctx context.Context, orgID int64, teamID int64, discussionNumber int, body github.TeamDiscussion) (*github.TeamDiscussion, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "EditDiscussionByID")
 	var zero0 *github.TeamDiscussion
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) EditDiscussionBySlug(ctx context.Context, org string, slug string, discussionNumber int, body github.TeamDiscussion) (*github.TeamDiscussion, *github.Response, error) {
+func (s UnimplementedTeamsService) EditDiscussionBySlug(ctx context.Context, org string, slug string, discussionNumber int, body github.TeamDiscussion) (*github.TeamDiscussion, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "EditDiscussionBySlug")
 	var zero0 *github.TeamDiscussion
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) EditTeamByID(ctx context.Context, orgID int64, teamID int64, body github.NewTeam, removeParent bool) (*github.Team, *github.Response, error) {
+func (s UnimplementedTeamsService) EditTeamByID(ctx context.Context, orgID int64, teamID int64, body github.NewTeam, removeParent bool) (*github.Team, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "EditTeamByID")
 	var zero0 *github.Team
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) EditTeamBySlug(ctx context.Context, org string, slug string, body github.NewTeam, removeParent bool) (*github.Team, *github.Response, error) {
+func (s UnimplementedTeamsService) EditTeamBySlug(ctx context.Context, org string, slug string, body github.NewTeam, removeParent bool) (*github.Team, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "EditTeamBySlug")
 	var zero0 *github.Team
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) GetCommentByID(ctx context.Context, orgID int64, teamID int64, discussionNumber int, commentNumber int) (*github.DiscussionComment, *github.Response, error) {
+func (s UnimplementedTeamsService) GetCommentByID(ctx context.Context, orgID int64, teamID int64, discussionNumber int, commentNumber int) (*github.DiscussionComment, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "GetCommentByID")
 	var zero0 *github.DiscussionComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) GetCommentBySlug(ctx context.Context, org string, slug string, discussionNumber int, commentNumber int) (*github.DiscussionComment, *github.Response, error) {
+func (s UnimplementedTeamsService) GetCommentBySlug(ctx context.Context, org string, slug string, discussionNumber int, commentNumber int) (*github.DiscussionComment, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "GetCommentBySlug")
 	var zero0 *github.DiscussionComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) GetDiscussionByID(ctx context.Context, orgID int64, teamID int64, discussionNumber int) (*github.TeamDiscussion, *github.Response, error) {
+func (s UnimplementedTeamsService) GetDiscussionByID(ctx context.Context, orgID int64, teamID int64, discussionNumber int) (*github.TeamDiscussion, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "GetDiscussionByID")
 	var zero0 *github.TeamDiscussion
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) GetDiscussionBySlug(ctx context.Context, org string, slug string, discussionNumber int) (*github.TeamDiscussion, *github.Response, error) {
+func (s UnimplementedTeamsService) GetDiscussionBySlug(ctx context.Context, org string, slug string, discussionNumber int) (*github.TeamDiscussion, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "GetDiscussionBySlug")
 	var zero0 *github.TeamDiscussion
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) GetExternalGroup(ctx context.Context, org string, groupID int64) (*github.ExternalGroup, *github.Response, error) {
+func (s UnimplementedTeamsService) GetExternalGroup(ctx context.Context, org string, groupID int64) (*github.ExternalGroup, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "GetExternalGroup")
 	var zero0 *github.ExternalGroup
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) GetTeamByID(ctx context.Context, orgID int64, teamID int64) (*github.Team, *github.Response, error) {
+func (s UnimplementedTeamsService) GetTeamByID(ctx context.Context, orgID int64, teamID int64) (*github.Team, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "GetTeamByID")
 	var zero0 *github.Team
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) GetTeamBySlug(ctx context.Context, org string, slug string) (*github.Team, *github.Response, error) {
+func (s UnimplementedTeamsService) GetTeamBySlug(ctx context.Context, org string, slug string) (*github.Team, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "GetTeamBySlug")
 	var zero0 *github.Team
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) GetTeamMembershipByID(ctx context.Context, orgID int64, teamID int64, user string) (*github.Membership, *github.Response, error) {
+func (s UnimplementedTeamsService) GetTeamMembershipByID(ctx context.Context, orgID int64, teamID int64, user string) (*github.Membership, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "GetTeamMembershipByID")
 	var zero0 *github.Membership
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) GetTeamMembershipBySlug(ctx context.Context, org string, slug string, user string) (*github.Membership, *github.Response, error) {
+func (s UnimplementedTeamsService) GetTeamMembershipBySlug(ctx context.Context, org string, slug string, user string) (*github.Membership, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "GetTeamMembershipBySlug")
 	var zero0 *github.Membership
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) IsTeamRepoByID(ctx context.Context, orgID int64, teamID int64, owner string, repo string) (*github.Repository, *github.Response, error) {
+func (s UnimplementedTeamsService) IsTeamRepoByID(ctx context.Context, orgID int64, teamID int64, owner string, repo string) (*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "IsTeamRepoByID")
 	var zero0 *github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) IsTeamRepoBySlug(ctx context.Context, org string, slug string, owner string, repo string) (*github.Repository, *github.Response, error) {
+func (s UnimplementedTeamsService) IsTeamRepoBySlug(ctx context.Context, org string, slug string, owner string, repo string) (*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "IsTeamRepoBySlug")
 	var zero0 *github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListChildTeamsByParentID(ctx context.Context, orgID int64, teamID int64, opts *github.ListOptions) ([]*github.Team, *github.Response, error) {
+func (s UnimplementedTeamsService) ListChildTeamsByParentID(ctx context.Context, orgID int64, teamID int64, opts *github.ListOptions) ([]*github.Team, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListChildTeamsByParentID")
 	var zero0 []*github.Team
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListChildTeamsByParentSlug(ctx context.Context, org string, slug string, opts *github.ListOptions) ([]*github.Team, *github.Response, error) {
+func (s UnimplementedTeamsService) ListChildTeamsByParentSlug(ctx context.Context, org string, slug string, opts *github.ListOptions) ([]*github.Team, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListChildTeamsByParentSlug")
 	var zero0 []*github.Team
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListCommentsByID(ctx context.Context, orgID int64, teamID int64, discussionNumber int, opts *github.DiscussionCommentListOptions) ([]*github.DiscussionComment, *github.Response, error) {
+func (s UnimplementedTeamsService) ListCommentsByID(ctx context.Context, orgID int64, teamID int64, discussionNumber int, opts *github.DiscussionCommentListOptions) ([]*github.DiscussionComment, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListCommentsByID")
 	var zero0 []*github.DiscussionComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListCommentsBySlug(ctx context.Context, org string, slug string, discussionNumber int, opts *github.DiscussionCommentListOptions) ([]*github.DiscussionComment, *github.Response, error) {
+func (s UnimplementedTeamsService) ListCommentsBySlug(ctx context.Context, org string, slug string, discussionNumber int, opts *github.DiscussionCommentListOptions) ([]*github.DiscussionComment, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListCommentsBySlug")
 	var zero0 []*github.DiscussionComment
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListDiscussionsByID(ctx context.Context, orgID int64, teamID int64, opts *github.DiscussionListOptions) ([]*github.TeamDiscussion, *github.Response, error) {
+func (s UnimplementedTeamsService) ListDiscussionsByID(ctx context.Context, orgID int64, teamID int64, opts *github.DiscussionListOptions) ([]*github.TeamDiscussion, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListDiscussionsByID")
 	var zero0 []*github.TeamDiscussion
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListDiscussionsBySlug(ctx context.Context, org string, slug string, opts *github.DiscussionListOptions) ([]*github.TeamDiscussion, *github.Response, error) {
+func (s UnimplementedTeamsService) ListDiscussionsBySlug(ctx context.Context, org string, slug string, opts *github.DiscussionListOptions) ([]*github.TeamDiscussion, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListDiscussionsBySlug")
 	var zero0 []*github.TeamDiscussion
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListExternalGroups(ctx context.Context, org string, opts *github.ListExternalGroupsOptions) (*github.ExternalGroupList, *github.Response, error) {
+func (s UnimplementedTeamsService) ListExternalGroups(ctx context.Context, org string, opts *github.ListExternalGroupsOptions) (*github.ExternalGroupList, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListExternalGroups")
 	var zero0 *github.ExternalGroupList
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListExternalGroupsForTeamBySlug(ctx context.Context, org string, slug string) (*github.ExternalGroupList, *github.Response, error) {
+func (s UnimplementedTeamsService) ListExternalGroupsForTeamBySlug(ctx context.Context, org string, slug string) (*github.ExternalGroupList, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListExternalGroupsForTeamBySlug")
 	var zero0 *github.ExternalGroupList
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListIDPGroupsForTeamByID(ctx context.Context, orgID int64, teamID int64) (*github.IDPGroupList, *github.Response, error) {
+func (s UnimplementedTeamsService) ListIDPGroupsForTeamByID(ctx context.Context, orgID int64, teamID int64) (*github.IDPGroupList, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListIDPGroupsForTeamByID")
 	var zero0 *github.IDPGroupList
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListIDPGroupsForTeamBySlug(ctx context.Context, org string, slug string) (*github.IDPGroupList, *github.Response, error) {
+func (s UnimplementedTeamsService) ListIDPGroupsForTeamBySlug(ctx context.Context, org string, slug string) (*github.IDPGroupList, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListIDPGroupsForTeamBySlug")
 	var zero0 *github.IDPGroupList
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListIDPGroupsInOrganization(ctx context.Context, org string, opts *github.ListIDPGroupsOptions) (*github.IDPGroupList, *github.Response, error) {
+func (s UnimplementedTeamsService) ListIDPGroupsInOrganization(ctx context.Context, org string, opts *github.ListIDPGroupsOptions) (*github.IDPGroupList, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListIDPGroupsInOrganization")
 	var zero0 *github.IDPGroupList
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListPendingTeamInvitationsByID(ctx context.Context, orgID int64, teamID int64, opts *github.ListOptions) ([]*github.Invitation, *github.Response, error) {
+func (s UnimplementedTeamsService) ListPendingTeamInvitationsByID(ctx context.Context, orgID int64, teamID int64, opts *github.ListOptions) ([]*github.Invitation, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListPendingTeamInvitationsByID")
 	var zero0 []*github.Invitation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListPendingTeamInvitationsBySlug(ctx context.Context, org string, slug string, opts *github.ListOptions) ([]*github.Invitation, *github.Response, error) {
+func (s UnimplementedTeamsService) ListPendingTeamInvitationsBySlug(ctx context.Context, org string, slug string, opts *github.ListOptions) ([]*github.Invitation, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListPendingTeamInvitationsBySlug")
 	var zero0 []*github.Invitation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListTeamMembersByID(ctx context.Context, orgID int64, teamID int64, opts *github.TeamListTeamMembersOptions) ([]*github.User, *github.Response, error) {
+func (s UnimplementedTeamsService) ListTeamMembersByID(ctx context.Context, orgID int64, teamID int64, opts *github.TeamListTeamMembersOptions) ([]*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListTeamMembersByID")
 	var zero0 []*github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListTeamMembersBySlug(ctx context.Context, org string, slug string, opts *github.TeamListTeamMembersOptions) ([]*github.User, *github.Response, error) {
+func (s UnimplementedTeamsService) ListTeamMembersBySlug(ctx context.Context, org string, slug string, opts *github.TeamListTeamMembersOptions) ([]*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListTeamMembersBySlug")
 	var zero0 []*github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListTeamProjectsByID(ctx context.Context, orgID int64, teamID int64) ([]*github.ProjectV2, *github.Response, error) {
+func (s UnimplementedTeamsService) ListTeamProjectsByID(ctx context.Context, orgID int64, teamID int64) ([]*github.ProjectV2, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListTeamProjectsByID")
 	var zero0 []*github.ProjectV2
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListTeamProjectsBySlug(ctx context.Context, org string, slug string) ([]*github.ProjectV2, *github.Response, error) {
+func (s UnimplementedTeamsService) ListTeamProjectsBySlug(ctx context.Context, org string, slug string) ([]*github.ProjectV2, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListTeamProjectsBySlug")
 	var zero0 []*github.ProjectV2
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListTeamReposByID(ctx context.Context, orgID int64, teamID int64, opts *github.ListOptions) ([]*github.Repository, *github.Response, error) {
+func (s UnimplementedTeamsService) ListTeamReposByID(ctx context.Context, orgID int64, teamID int64, opts *github.ListOptions) ([]*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListTeamReposByID")
 	var zero0 []*github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListTeamReposBySlug(ctx context.Context, org string, slug string, opts *github.ListOptions) ([]*github.Repository, *github.Response, error) {
+func (s UnimplementedTeamsService) ListTeamReposBySlug(ctx context.Context, org string, slug string, opts *github.ListOptions) ([]*github.Repository, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListTeamReposBySlug")
 	var zero0 []*github.Repository
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListTeams(ctx context.Context, org string, opts *github.ListOptions) ([]*github.Team, *github.Response, error) {
+func (s UnimplementedTeamsService) ListTeams(ctx context.Context, org string, opts *github.ListOptions) ([]*github.Team, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListTeams")
 	var zero0 []*github.Team
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ListUserTeams(ctx context.Context, opts *github.ListOptions) ([]*github.Team, *github.Response, error) {
+func (s UnimplementedTeamsService) ListUserTeams(ctx context.Context, opts *github.ListOptions) ([]*github.Team, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ListUserTeams")
 	var zero0 []*github.Team
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) RemoveConnectedExternalGroup(ctx context.Context, org string, slug string) (*github.Response, error) {
+func (s UnimplementedTeamsService) RemoveConnectedExternalGroup(ctx context.Context, org string, slug string) (*github.Response, error) {
+	s.Callback.call(ctx, "Teams", "RemoveConnectedExternalGroup")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedTeamsService) RemoveTeamMembershipByID(ctx context.Context, orgID int64, teamID int64, user string) (*github.Response, error) {
+func (s UnimplementedTeamsService) RemoveTeamMembershipByID(ctx context.Context, orgID int64, teamID int64, user string) (*github.Response, error) {
+	s.Callback.call(ctx, "Teams", "RemoveTeamMembershipByID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedTeamsService) RemoveTeamMembershipBySlug(ctx context.Context, org string, slug string, user string) (*github.Response, error) {
+func (s UnimplementedTeamsService) RemoveTeamMembershipBySlug(ctx context.Context, org string, slug string, user string) (*github.Response, error) {
+	s.Callback.call(ctx, "Teams", "RemoveTeamMembershipBySlug")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedTeamsService) RemoveTeamProjectByID(ctx context.Context, orgID int64, teamID int64, projectID int64) (*github.Response, error) {
+func (s UnimplementedTeamsService) RemoveTeamProjectByID(ctx context.Context, orgID int64, teamID int64, projectID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Teams", "RemoveTeamProjectByID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedTeamsService) RemoveTeamProjectBySlug(ctx context.Context, org string, slug string, projectID int64) (*github.Response, error) {
+func (s UnimplementedTeamsService) RemoveTeamProjectBySlug(ctx context.Context, org string, slug string, projectID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Teams", "RemoveTeamProjectBySlug")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedTeamsService) RemoveTeamRepoByID(ctx context.Context, orgID int64, teamID int64, owner string, repo string) (*github.Response, error) {
+func (s UnimplementedTeamsService) RemoveTeamRepoByID(ctx context.Context, orgID int64, teamID int64, owner string, repo string) (*github.Response, error) {
+	s.Callback.call(ctx, "Teams", "RemoveTeamRepoByID")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedTeamsService) RemoveTeamRepoBySlug(ctx context.Context, org string, slug string, owner string, repo string) (*github.Response, error) {
+func (s UnimplementedTeamsService) RemoveTeamRepoBySlug(ctx context.Context, org string, slug string, owner string, repo string) (*github.Response, error) {
+	s.Callback.call(ctx, "Teams", "RemoveTeamRepoBySlug")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ReviewTeamProjectsByID(ctx context.Context, orgID int64, teamID int64, projectID int64) (*github.ProjectV2, *github.Response, error) {
+func (s UnimplementedTeamsService) ReviewTeamProjectsByID(ctx context.Context, orgID int64, teamID int64, projectID int64) (*github.ProjectV2, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ReviewTeamProjectsByID")
 	var zero0 *github.ProjectV2
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) ReviewTeamProjectsBySlug(ctx context.Context, org string, slug string, projectID int64) (*github.ProjectV2, *github.Response, error) {
+func (s UnimplementedTeamsService) ReviewTeamProjectsBySlug(ctx context.Context, org string, slug string, projectID int64) (*github.ProjectV2, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "ReviewTeamProjectsBySlug")
 	var zero0 *github.ProjectV2
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedTeamsService) UpdateConnectedExternalGroup(ctx context.Context, org string, slug string, body *github.ExternalGroup) (*github.ExternalGroup, *github.Response, error) {
+func (s UnimplementedTeamsService) UpdateConnectedExternalGroup(ctx context.Context, org string, slug string, body *github.ExternalGroup) (*github.ExternalGroup, *github.Response, error) {
+	s.Callback.call(ctx, "Teams", "UpdateConnectedExternalGroup")
 	var zero0 *github.ExternalGroup
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
@@ -14601,241 +15863,294 @@ type UsersService interface {
 }
 
 // UnimplementedUsersService may be embedded to implement only selected methods.
-type UnimplementedUsersService struct{}
+type UnimplementedUsersService struct {
+	Callback UnimplementedCallback
+}
 
-func (UnimplementedUsersService) AcceptInvitation(ctx context.Context, invitationID int64) (*github.Response, error) {
+func (s UnimplementedUsersService) AcceptInvitation(ctx context.Context, invitationID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Users", "AcceptInvitation")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedUsersService) AddEmails(ctx context.Context, body []string) ([]*github.UserEmail, *github.Response, error) {
+func (s UnimplementedUsersService) AddEmails(ctx context.Context, body []string) ([]*github.UserEmail, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "AddEmails")
 	var zero0 []*github.UserEmail
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) AddSocialAccounts(ctx context.Context, accountURLs []string) ([]*github.SocialAccount, *github.Response, error) {
+func (s UnimplementedUsersService) AddSocialAccounts(ctx context.Context, accountURLs []string) ([]*github.SocialAccount, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "AddSocialAccounts")
 	var zero0 []*github.SocialAccount
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) BlockUser(ctx context.Context, user string) (*github.Response, error) {
+func (s UnimplementedUsersService) BlockUser(ctx context.Context, user string) (*github.Response, error) {
+	s.Callback.call(ctx, "Users", "BlockUser")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedUsersService) CreateGPGKey(ctx context.Context, armoredPublicKey string) (*github.GPGKey, *github.Response, error) {
+func (s UnimplementedUsersService) CreateGPGKey(ctx context.Context, armoredPublicKey string) (*github.GPGKey, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "CreateGPGKey")
 	var zero0 *github.GPGKey
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) CreateKey(ctx context.Context, body *github.Key) (*github.Key, *github.Response, error) {
+func (s UnimplementedUsersService) CreateKey(ctx context.Context, body *github.Key) (*github.Key, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "CreateKey")
 	var zero0 *github.Key
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) CreateSSHSigningKey(ctx context.Context, body *github.Key) (*github.SSHSigningKey, *github.Response, error) {
+func (s UnimplementedUsersService) CreateSSHSigningKey(ctx context.Context, body *github.Key) (*github.SSHSigningKey, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "CreateSSHSigningKey")
 	var zero0 *github.SSHSigningKey
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) DeclineInvitation(ctx context.Context, invitationID int64) (*github.Response, error) {
+func (s UnimplementedUsersService) DeclineInvitation(ctx context.Context, invitationID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Users", "DeclineInvitation")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedUsersService) DeleteEmails(ctx context.Context, emails []string) (*github.Response, error) {
+func (s UnimplementedUsersService) DeleteEmails(ctx context.Context, emails []string) (*github.Response, error) {
+	s.Callback.call(ctx, "Users", "DeleteEmails")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedUsersService) DeleteGPGKey(ctx context.Context, id int64) (*github.Response, error) {
+func (s UnimplementedUsersService) DeleteGPGKey(ctx context.Context, id int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Users", "DeleteGPGKey")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedUsersService) DeleteKey(ctx context.Context, id int64) (*github.Response, error) {
+func (s UnimplementedUsersService) DeleteKey(ctx context.Context, id int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Users", "DeleteKey")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedUsersService) DeletePackage(ctx context.Context, user string, packageType string, packageName string) (*github.Response, error) {
+func (s UnimplementedUsersService) DeletePackage(ctx context.Context, user string, packageType string, packageName string) (*github.Response, error) {
+	s.Callback.call(ctx, "Users", "DeletePackage")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedUsersService) DeleteSSHSigningKey(ctx context.Context, id int64) (*github.Response, error) {
+func (s UnimplementedUsersService) DeleteSSHSigningKey(ctx context.Context, id int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Users", "DeleteSSHSigningKey")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedUsersService) DeleteSocialAccounts(ctx context.Context, accountURLs []string) (*github.Response, error) {
+func (s UnimplementedUsersService) DeleteSocialAccounts(ctx context.Context, accountURLs []string) (*github.Response, error) {
+	s.Callback.call(ctx, "Users", "DeleteSocialAccounts")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedUsersService) DemoteSiteAdmin(ctx context.Context, user string) (*github.Response, error) {
+func (s UnimplementedUsersService) DemoteSiteAdmin(ctx context.Context, user string) (*github.Response, error) {
+	s.Callback.call(ctx, "Users", "DemoteSiteAdmin")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedUsersService) Edit(ctx context.Context, body *github.User) (*github.User, *github.Response, error) {
+func (s UnimplementedUsersService) Edit(ctx context.Context, body *github.User) (*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "Edit")
 	var zero0 *github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) Follow(ctx context.Context, user string) (*github.Response, error) {
+func (s UnimplementedUsersService) Follow(ctx context.Context, user string) (*github.Response, error) {
+	s.Callback.call(ctx, "Users", "Follow")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedUsersService) Get(ctx context.Context, user string) (*github.User, *github.Response, error) {
+func (s UnimplementedUsersService) Get(ctx context.Context, user string) (*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "Get")
 	var zero0 *github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) GetByID(ctx context.Context, id int64) (*github.User, *github.Response, error) {
+func (s UnimplementedUsersService) GetByID(ctx context.Context, id int64) (*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "GetByID")
 	var zero0 *github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) GetGPGKey(ctx context.Context, id int64) (*github.GPGKey, *github.Response, error) {
+func (s UnimplementedUsersService) GetGPGKey(ctx context.Context, id int64) (*github.GPGKey, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "GetGPGKey")
 	var zero0 *github.GPGKey
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) GetHovercard(ctx context.Context, user string, opts *github.HovercardOptions) (*github.Hovercard, *github.Response, error) {
+func (s UnimplementedUsersService) GetHovercard(ctx context.Context, user string, opts *github.HovercardOptions) (*github.Hovercard, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "GetHovercard")
 	var zero0 *github.Hovercard
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) GetKey(ctx context.Context, id int64) (*github.Key, *github.Response, error) {
+func (s UnimplementedUsersService) GetKey(ctx context.Context, id int64) (*github.Key, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "GetKey")
 	var zero0 *github.Key
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) GetPackage(ctx context.Context, user string, packageType string, packageName string) (*github.Package, *github.Response, error) {
+func (s UnimplementedUsersService) GetPackage(ctx context.Context, user string, packageType string, packageName string) (*github.Package, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "GetPackage")
 	var zero0 *github.Package
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) GetSSHSigningKey(ctx context.Context, id int64) (*github.SSHSigningKey, *github.Response, error) {
+func (s UnimplementedUsersService) GetSSHSigningKey(ctx context.Context, id int64) (*github.SSHSigningKey, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "GetSSHSigningKey")
 	var zero0 *github.SSHSigningKey
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) IsBlocked(ctx context.Context, user string) (bool, *github.Response, error) {
+func (s UnimplementedUsersService) IsBlocked(ctx context.Context, user string) (bool, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "IsBlocked")
 	var zero0 bool
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) IsFollowing(ctx context.Context, user string, target string) (bool, *github.Response, error) {
+func (s UnimplementedUsersService) IsFollowing(ctx context.Context, user string, target string) (bool, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "IsFollowing")
 	var zero0 bool
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) ListAll(ctx context.Context, opts *github.UserListOptions) ([]*github.User, *github.Response, error) {
+func (s UnimplementedUsersService) ListAll(ctx context.Context, opts *github.UserListOptions) ([]*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "ListAll")
 	var zero0 []*github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) ListAttestations(ctx context.Context, user string, subjectDigest string, opts *github.ListOptions) (*github.AttestationsResponse, *github.Response, error) {
+func (s UnimplementedUsersService) ListAttestations(ctx context.Context, user string, subjectDigest string, opts *github.ListOptions) (*github.AttestationsResponse, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "ListAttestations")
 	var zero0 *github.AttestationsResponse
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) ListBlockedUsers(ctx context.Context, opts *github.ListOptions) ([]*github.User, *github.Response, error) {
+func (s UnimplementedUsersService) ListBlockedUsers(ctx context.Context, opts *github.ListOptions) ([]*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "ListBlockedUsers")
 	var zero0 []*github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) ListEmails(ctx context.Context, opts *github.ListOptions) ([]*github.UserEmail, *github.Response, error) {
+func (s UnimplementedUsersService) ListEmails(ctx context.Context, opts *github.ListOptions) ([]*github.UserEmail, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "ListEmails")
 	var zero0 []*github.UserEmail
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) ListFollowers(ctx context.Context, user string, opts *github.ListOptions) ([]*github.User, *github.Response, error) {
+func (s UnimplementedUsersService) ListFollowers(ctx context.Context, user string, opts *github.ListOptions) ([]*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "ListFollowers")
 	var zero0 []*github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) ListFollowing(ctx context.Context, user string, opts *github.ListOptions) ([]*github.User, *github.Response, error) {
+func (s UnimplementedUsersService) ListFollowing(ctx context.Context, user string, opts *github.ListOptions) ([]*github.User, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "ListFollowing")
 	var zero0 []*github.User
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) ListGPGKeys(ctx context.Context, user string, opts *github.ListOptions) ([]*github.GPGKey, *github.Response, error) {
+func (s UnimplementedUsersService) ListGPGKeys(ctx context.Context, user string, opts *github.ListOptions) ([]*github.GPGKey, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "ListGPGKeys")
 	var zero0 []*github.GPGKey
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) ListInvitations(ctx context.Context, opts *github.ListOptions) ([]*github.RepositoryInvitation, *github.Response, error) {
+func (s UnimplementedUsersService) ListInvitations(ctx context.Context, opts *github.ListOptions) ([]*github.RepositoryInvitation, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "ListInvitations")
 	var zero0 []*github.RepositoryInvitation
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) ListKeys(ctx context.Context, user string, opts *github.ListOptions) ([]*github.Key, *github.Response, error) {
+func (s UnimplementedUsersService) ListKeys(ctx context.Context, user string, opts *github.ListOptions) ([]*github.Key, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "ListKeys")
 	var zero0 []*github.Key
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) ListPackageVersions(ctx context.Context, packageType string, packageName string, opts *github.ListPackageVersionsOptions) ([]*github.PackageVersion, *github.Response, error) {
+func (s UnimplementedUsersService) ListPackageVersions(ctx context.Context, packageType string, packageName string, opts *github.ListPackageVersionsOptions) ([]*github.PackageVersion, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "ListPackageVersions")
 	var zero0 []*github.PackageVersion
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) ListPackages(ctx context.Context, user string, opts *github.PackageListOptions) ([]*github.Package, *github.Response, error) {
+func (s UnimplementedUsersService) ListPackages(ctx context.Context, user string, opts *github.PackageListOptions) ([]*github.Package, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "ListPackages")
 	var zero0 []*github.Package
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) ListSSHSigningKeys(ctx context.Context, user string, opts *github.ListOptions) ([]*github.SSHSigningKey, *github.Response, error) {
+func (s UnimplementedUsersService) ListSSHSigningKeys(ctx context.Context, user string, opts *github.ListOptions) ([]*github.SSHSigningKey, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "ListSSHSigningKeys")
 	var zero0 []*github.SSHSigningKey
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) ListSocialAccounts(ctx context.Context, opts *github.ListOptions) ([]*github.SocialAccount, *github.Response, error) {
+func (s UnimplementedUsersService) ListSocialAccounts(ctx context.Context, opts *github.ListOptions) ([]*github.SocialAccount, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "ListSocialAccounts")
 	var zero0 []*github.SocialAccount
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) ListUserPackageVersions(ctx context.Context, user string, packageType string, packageName string) ([]*github.PackageVersion, *github.Response, error) {
+func (s UnimplementedUsersService) ListUserPackageVersions(ctx context.Context, user string, packageType string, packageName string) ([]*github.PackageVersion, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "ListUserPackageVersions")
 	var zero0 []*github.PackageVersion
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) ListUserSocialAccounts(ctx context.Context, username string, opts *github.ListOptions) ([]*github.SocialAccount, *github.Response, error) {
+func (s UnimplementedUsersService) ListUserSocialAccounts(ctx context.Context, username string, opts *github.ListOptions) ([]*github.SocialAccount, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "ListUserSocialAccounts")
 	var zero0 []*github.SocialAccount
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) PackageDeleteVersion(ctx context.Context, user string, packageType string, packageName string, packageVersionID int64) (*github.Response, error) {
+func (s UnimplementedUsersService) PackageDeleteVersion(ctx context.Context, user string, packageType string, packageName string, packageVersionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Users", "PackageDeleteVersion")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedUsersService) PackageGetVersion(ctx context.Context, user string, packageType string, packageName string, packageVersionID int64) (*github.PackageVersion, *github.Response, error) {
+func (s UnimplementedUsersService) PackageGetVersion(ctx context.Context, user string, packageType string, packageName string, packageVersionID int64) (*github.PackageVersion, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "PackageGetVersion")
 	var zero0 *github.PackageVersion
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) PackageRestoreVersion(ctx context.Context, user string, packageType string, packageName string, packageVersionID int64) (*github.Response, error) {
+func (s UnimplementedUsersService) PackageRestoreVersion(ctx context.Context, user string, packageType string, packageName string, packageVersionID int64) (*github.Response, error) {
+	s.Callback.call(ctx, "Users", "PackageRestoreVersion")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedUsersService) PromoteSiteAdmin(ctx context.Context, user string) (*github.Response, error) {
+func (s UnimplementedUsersService) PromoteSiteAdmin(ctx context.Context, user string) (*github.Response, error) {
+	s.Callback.call(ctx, "Users", "PromoteSiteAdmin")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedUsersService) RestorePackage(ctx context.Context, user string, packageType string, packageName string) (*github.Response, error) {
+func (s UnimplementedUsersService) RestorePackage(ctx context.Context, user string, packageType string, packageName string) (*github.Response, error) {
+	s.Callback.call(ctx, "Users", "RestorePackage")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedUsersService) SetEmailVisibility(ctx context.Context, visibility string) ([]*github.UserEmail, *github.Response, error) {
+func (s UnimplementedUsersService) SetEmailVisibility(ctx context.Context, visibility string) ([]*github.UserEmail, *github.Response, error) {
+	s.Callback.call(ctx, "Users", "SetEmailVisibility")
 	var zero0 []*github.UserEmail
 	var zero1 *github.Response
 	return zero0, zero1, ErrNotImplemented
 }
-func (UnimplementedUsersService) Suspend(ctx context.Context, user string, body *github.UserSuspendOptions) (*github.Response, error) {
+func (s UnimplementedUsersService) Suspend(ctx context.Context, user string, body *github.UserSuspendOptions) (*github.Response, error) {
+	s.Callback.call(ctx, "Users", "Suspend")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedUsersService) UnblockUser(ctx context.Context, user string) (*github.Response, error) {
+func (s UnimplementedUsersService) UnblockUser(ctx context.Context, user string) (*github.Response, error) {
+	s.Callback.call(ctx, "Users", "UnblockUser")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedUsersService) Unfollow(ctx context.Context, user string) (*github.Response, error) {
+func (s UnimplementedUsersService) Unfollow(ctx context.Context, user string) (*github.Response, error) {
+	s.Callback.call(ctx, "Users", "Unfollow")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }
-func (UnimplementedUsersService) Unsuspend(ctx context.Context, user string) (*github.Response, error) {
+func (s UnimplementedUsersService) Unsuspend(ctx context.Context, user string) (*github.Response, error) {
+	s.Callback.call(ctx, "Users", "Unsuspend")
 	var zero0 *github.Response
 	return zero0, ErrNotImplemented
 }

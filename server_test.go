@@ -31,6 +31,53 @@ type repositoryHooksStub struct {
 	unsub  func(context.Context, string, string, string, string, []byte) (*github.Response, error)
 }
 
+func TestUnimplementedServiceCallbackObservesClientRequest(t *testing.T) {
+	t.Parallel()
+	calls := make(chan UnimplementedCall, 1)
+	stub := UnimplementedRepositoriesService{
+		Callback: func(_ context.Context, call UnimplementedCall) {
+			calls <- call
+		},
+	}
+	server := httptest.NewServer(New(Services{Repositories: stub}, nil))
+	t.Cleanup(server.Close)
+	client := newGitHubClient(t, server.URL, "")
+	started := time.Now()
+
+	_, response, err := client.Repositories.GetHook(t.Context(), "octo", "demo", 41)
+
+	require.Error(t, err)
+	require.NotNil(t, response)
+	assert.Equal(t, http.StatusNotImplemented, response.StatusCode)
+	call := <-calls
+	assert.Equal(t, "Repositories", call.Service)
+	assert.Equal(t, "GetHook", call.Method)
+	assert.False(t, call.CalledAt.Before(started))
+}
+
+func TestImplementedServiceMethodDoesNotInvokeUnimplementedCallback(t *testing.T) {
+	t.Parallel()
+	callbackCalls := 0
+	stub := repositoryHooksStub{
+		UnimplementedRepositoriesService: UnimplementedRepositoriesService{
+			Callback: func(context.Context, UnimplementedCall) {
+				callbackCalls++
+			},
+		},
+		get: func(_ context.Context, _, _ string, id int64) (*github.Hook, *github.Response, error) {
+			return &github.Hook{ID: &id}, response(http.StatusOK), nil
+		},
+	}
+	server := httptest.NewServer(New(Services{Repositories: stub}, nil))
+	t.Cleanup(server.Close)
+	client := newGitHubClient(t, server.URL, "")
+
+	_, _, err := client.Repositories.GetHook(t.Context(), "octo", "demo", 41)
+
+	require.NoError(t, err)
+	assert.Zero(t, callbackCalls)
+}
+
 func (s repositoryHooksStub) CreateHook(ctx context.Context, owner, repo string, hook *github.Hook) (*github.Hook, *github.Response, error) {
 	return s.create(ctx, owner, repo, hook)
 }

@@ -64,6 +64,20 @@ func TestEveryGeneratedInterfaceMethodHasUpstreamAndRouteDocumentation(t *testin
 	assert.Contains(t, output, "// HTTP: GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/zip")
 }
 
+func TestUnimplementedServicesExposeAndInvokeCallback(t *testing.T) {
+	pkg, err := loadPackage()
+	require.NoError(t, err)
+	services, err := scan(pkg)
+	require.NoError(t, err)
+	generated, _, err := render(services)
+	require.NoError(t, err)
+
+	output := string(generated)
+	assert.Contains(t, output, "type UnimplementedRepositoriesService struct {\n\tCallback UnimplementedCallback\n}")
+	assert.Contains(t, output, "func (s UnimplementedRepositoriesService) GetHook")
+	assert.Contains(t, output, `s.Callback.call(ctx, "Repositories", "GetHook")`)
+}
+
 func TestGeneratorClassifiesEveryAnnotatedOperation(t *testing.T) {
 	pkg, err := loadPackage()
 	require.NoError(t, err)
