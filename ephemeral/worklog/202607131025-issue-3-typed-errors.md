@@ -56,8 +56,14 @@ doc_lookup: `github.CheckResponse` -> non-success bodies are decoded into `*gith
   - `go test -race ./...`
   - `go vet ./...`
   - `golangci-lint run ./...` (`0 issues`)
-- Commit: `500d027` (`fix: preserve typed GitHub errors`), subject to amendment
-  for this closeout entry before final push.
+- Proved PR head: `92e7e12bba3772470c294af0442dd08769fb6bbf`
+  (`fix: preserve typed GitHub errors`).
 - Pull request: https://github.com/tylergannon/go-github-server/pull/5
 - Runtime proof and all hygiene checks are included in the PR body.
-- Exact-head CI and auto-merge state pending after the final worklog amendment.
+- GitHub reported no configured status checks for the exact PR head.
+- Squash merge completed at 2026-07-13 10:30 CST as
+  `45fabca43d6cf4d1b02b04bf1fda7d77c5ea294d` on `origin/main`.
+- `gh pr merge --auto --squash --delete-branch` completed the remote merge but
+  could not perform local cleanup because `main` belongs to the root worktree;
+  the remote feature branch was then deleted explicitly.
+- Remaining debt: none identified.
