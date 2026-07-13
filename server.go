@@ -27,6 +27,24 @@ import (
 // ErrNotImplemented is returned by generated Unimplemented<Service> values.
 var ErrNotImplemented = errors.New("github service method is not implemented")
 
+// UnimplementedCall describes a call to a generated unimplemented service
+// method.
+type UnimplementedCall struct {
+	Service  string
+	Method   string
+	CalledAt time.Time
+}
+
+// UnimplementedCallback observes calls to generated unimplemented service
+// methods. Implementations must be safe for concurrent use and must not panic.
+type UnimplementedCallback func(context.Context, UnimplementedCall)
+
+func (callback UnimplementedCallback) call(ctx context.Context, service string, method string) {
+	if callback != nil {
+		callback(ctx, UnimplementedCall{Service: service, Method: method, CalledAt: time.Now()})
+	}
+}
+
 // Authenticator delegates interpretation and validation of opaque GitHub
 // credentials to the application. A returned context is installed on the
 // request before a service method is called.

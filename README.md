@@ -128,6 +128,32 @@ response.
 - Shared routes can fall through an embedded unimplemented method to another
   registered service implementation.
 
+## Unimplemented-method telemetry
+
+Set the callback on an embedded `Unimplemented<Service>Service` to observe calls
+to methods the service does not implement:
+
+```go
+type repositories struct {
+	githubserver.UnimplementedRepositoriesService
+}
+
+service := repositories{
+	UnimplementedRepositoriesService: githubserver.UnimplementedRepositoriesService{
+		Callback: func(ctx context.Context, call githubserver.UnimplementedCall) {
+			log.Printf("unimplemented GitHub method: %s.%s at %s",
+				call.Service, call.Method, call.CalledAt)
+		},
+	},
+}
+```
+
+The callback runs immediately before the method returns
+`ErrNotImplemented`. Calls may happen concurrently, so the callback must be
+concurrency-safe and must not panic. On shared HTTP routes, the server may try
+more than one candidate method; the callback reports each unimplemented method
+that is actually tried, even if a later candidate handles the request.
+
 ## Unmatched-route telemetry
 
 Use `WithNotFoundCallback` to observe requests that do not match any registered

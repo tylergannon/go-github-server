@@ -670,7 +670,9 @@ func render(services []*service) ([]byte, []coverageEntry, error) {
 		}
 		fmt.Fprintln(&declarations, "}")
 		fmt.Fprintf(&declarations, "\n// Unimplemented%sService may be embedded to implement only selected methods.\n", service.Name)
-		fmt.Fprintf(&declarations, "type Unimplemented%sService struct{}\n", service.Name)
+		fmt.Fprintf(&declarations, "type Unimplemented%sService struct {\n", service.Name)
+		fmt.Fprintln(&declarations, "\tCallback UnimplementedCallback")
+		fmt.Fprintln(&declarations, "}")
 		for _, method := range service.Methods {
 			renderUnimplemented(&declarations, service.Name, method, imports)
 		}
@@ -820,7 +822,8 @@ func (imports *importSet) qualifier(pkg *types.Package) string {
 func renderUnimplemented(output *bytes.Buffer, serviceName string, method *method, imports *importSet) {
 	name := method.Name
 	signature := method.Signature
-	fmt.Fprintf(output, "func (Unimplemented%sService) %s%s {\n", serviceName, name, signatureString(signature, imports))
+	fmt.Fprintf(output, "func (s Unimplemented%sService) %s%s {\n", serviceName, name, signatureString(signature, imports))
+	fmt.Fprintf(output, "\ts.Callback.call(ctx, %q, %q)\n", serviceName, name)
 	returns := signature.Results()
 	if returns.Len() == 0 {
 		fmt.Fprintln(output, "\treturn")
