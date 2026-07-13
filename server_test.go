@@ -69,7 +69,7 @@ func TestRepositoryHooksRoundTripThroughGoGitHubClient(t *testing.T) {
 			assert.Equal(t, "demo", repo)
 			assert.Equal(t, []string{"push"}, hook.Events)
 			assert.Equal(t, "https://example.test/hook", hook.Config.GetURL())
-			return &github.Hook{ID: github.Ptr(int64(41)), Events: hook.Events}, response(http.StatusCreated), nil
+			return &github.Hook{ID: new(int64(41)), Events: hook.Events}, response(http.StatusCreated), nil
 		},
 		list: func(_ context.Context, owner, repo string, opts *github.ListOptions) ([]*github.Hook, *github.Response, error) {
 			calls = append(calls, "list")
@@ -77,7 +77,7 @@ func TestRepositoryHooksRoundTripThroughGoGitHubClient(t *testing.T) {
 			assert.Equal(t, "demo", repo)
 			assert.Equal(t, 2, opts.Page)
 			assert.Equal(t, 50, opts.PerPage)
-			return []*github.Hook{{ID: github.Ptr(int64(41))}}, response(http.StatusOK), nil
+			return []*github.Hook{{ID: new(int64(41))}}, response(http.StatusOK), nil
 		},
 		get: func(_ context.Context, owner, repo string, id int64) (*github.Hook, *github.Response, error) {
 			calls = append(calls, "get")
@@ -106,7 +106,7 @@ func TestRepositoryHooksRoundTripThroughGoGitHubClient(t *testing.T) {
 	client := newGitHubClient(t, server.URL, "")
 
 	created, createdResponse, err := client.Repositories.CreateHook(t.Context(), "octo", "demo", &github.Hook{
-		Config: &github.HookConfig{URL: github.Ptr("https://example.test/hook")},
+		Config: &github.HookConfig{URL: new("https://example.test/hook")},
 		Events: []string{"push"},
 	})
 	require.NoError(t, err)
@@ -137,6 +137,7 @@ type authContextKey struct{}
 type recordingAuthenticator struct {
 	mu    sync.Mutex
 	calls []string
+	app   func(context.Context, string) (context.Context, error)
 }
 
 func (a *recordingAuthenticator) AuthenticateWithPAT(ctx context.Context, token string) (context.Context, error) {
@@ -151,6 +152,16 @@ func (a *recordingAuthenticator) AuthenticateWithInstallationToken(ctx context.C
 	a.calls = append(a.calls, "installation:"+token)
 	a.mu.Unlock()
 	return context.WithValue(ctx, authContextKey{}, "installation"), nil
+}
+
+func (a *recordingAuthenticator) AuthenticateWithAppJWT(ctx context.Context, token string) (context.Context, error) {
+	a.mu.Lock()
+	a.calls = append(a.calls, "app-jwt:"+token)
+	a.mu.Unlock()
+	if a.app != nil {
+		return a.app(ctx, token)
+	}
+	return context.WithValue(ctx, authContextKey{}, "app"), nil
 }
 
 func TestAuthenticationDelegatesPATAndInstallationTokens(t *testing.T) {
@@ -178,6 +189,121 @@ func TestAuthenticationDelegatesPATAndInstallationTokens(t *testing.T) {
 		"pat:github_pat_fine-grained-opaque",
 		"installation:ghs_installation-opaque",
 	}, auth.calls)
+}
+
+type appsStub struct {
+	UnimplementedAppsService
+	createInstallationToken func(context.Context, int64, *github.InstallationTokenOptions) (*github.InstallationToken, *github.Response, error)
+}
+
+func (s appsStub) CreateInstallationToken(ctx context.Context, id int64, opts *github.InstallationTokenOptions) (*github.InstallationToken, *github.Response, error) {
+	return s.createInstallationToken(ctx, id, opts)
+}
+
+func TestAppJWTReachesCreateInstallationTokenThroughGoGitHubClient(t *testing.T) {
+	t.Parallel()
+	const appJWT = "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiIxMjM0NSJ9.opaque-signature"
+	auth := &recordingAuthenticator{}
+	stub := appsStub{createInstallationToken: func(ctx context.Context, id int64, opts *github.InstallationTokenOptions) (*github.InstallationToken, *github.Response, error) {
+		assert.Equal(t, "app", ctx.Value(authContextKey{}))
+		assert.Equal(t, int64(42), id)
+		assert.Equal(t, []string{"octo/demo"}, opts.Repositories)
+		return &github.InstallationToken{Token: new("ghs_issued")}, response(http.StatusCreated), nil
+	}}
+	server := httptest.NewServer(New(Services{Apps: stub}, auth))
+	t.Cleanup(server.Close)
+	client := newGitHubClient(t, server.URL, appJWT)
+
+	token, result, err := client.Apps.CreateInstallationToken(t.Context(), 42, &github.InstallationTokenOptions{Repositories: []string{"octo/demo"}})
+	require.NoError(t, err)
+	assert.Equal(t, "ghs_issued", token.GetToken())
+	assert.Equal(t, http.StatusCreated, result.StatusCode)
+
+	auth.mu.Lock()
+	defer auth.mu.Unlock()
+	assert.Equal(t, []string{"app-jwt:" + appJWT}, auth.calls)
+}
+
+func TestAppJWTDelegateCanRejectCredentials(t *testing.T) {
+	t.Parallel()
+	rejected := []string{
+		"invalid.header.signature",
+		"expired.claims.signature",
+		"future-issued.claims.signature",
+		"overlong.claims.signature",
+		"wrong-algorithm.claims.signature",
+		"unknown-app.claims.signature",
+	}
+	auth := &recordingAuthenticator{app: func(context.Context, string) (context.Context, error) {
+		return nil, assert.AnError
+	}}
+	server := httptest.NewServer(New(Services{Apps: appsStub{}}, auth))
+	t.Cleanup(server.Close)
+	client := newGitHubClient(t, server.URL, "")
+
+	for _, appJWT := range rejected {
+		request, err := http.NewRequestWithContext(t.Context(), http.MethodPost, server.URL+"/app/installations/42/access_tokens", nil)
+		require.NoError(t, err)
+		request.Header.Set("Authorization", "Bearer "+appJWT)
+		result, err := client.Client().Do(request)
+		require.NoError(t, err)
+		require.NoError(t, result.Body.Close())
+		assert.Equal(t, http.StatusUnauthorized, result.StatusCode)
+	}
+
+	auth.mu.Lock()
+	defer auth.mu.Unlock()
+	require.Len(t, auth.calls, len(rejected))
+	for i, appJWT := range rejected {
+		assert.Equal(t, "app-jwt:"+appJWT, auth.calls[i])
+	}
+}
+
+func TestInstallationTokenCannotIssueInstallationTokenWithoutAppIdentity(t *testing.T) {
+	t.Parallel()
+	auth := &recordingAuthenticator{}
+	stub := appsStub{createInstallationToken: func(ctx context.Context, _ int64, _ *github.InstallationTokenOptions) (*github.InstallationToken, *github.Response, error) {
+		if ctx.Value(authContextKey{}) != "app" {
+			return nil, nil, assert.AnError
+		}
+		return &github.InstallationToken{Token: new("ghs_issued")}, response(http.StatusCreated), nil
+	}}
+	server := httptest.NewServer(New(Services{Apps: stub}, auth))
+	t.Cleanup(server.Close)
+	client := newGitHubClient(t, server.URL, "ghs_existing")
+
+	token, result, err := client.Apps.CreateInstallationToken(t.Context(), 42, nil)
+	require.Error(t, err)
+	assert.Nil(t, token)
+	assert.Equal(t, http.StatusInternalServerError, result.StatusCode)
+
+	auth.mu.Lock()
+	defer auth.mu.Unlock()
+	assert.Equal(t, []string{"installation:ghs_existing"}, auth.calls)
+}
+
+type legacyAuthenticator struct{}
+
+func (legacyAuthenticator) AuthenticateWithPAT(ctx context.Context, _ string) (context.Context, error) {
+	return ctx, nil
+}
+
+func (legacyAuthenticator) AuthenticateWithInstallationToken(ctx context.Context, _ string) (context.Context, error) {
+	return ctx, nil
+}
+
+func TestAppJWTDelegationIsOptIn(t *testing.T) {
+	t.Parallel()
+	server := httptest.NewServer(New(Services{Apps: appsStub{}}, legacyAuthenticator{}))
+	t.Cleanup(server.Close)
+	request, err := http.NewRequestWithContext(t.Context(), http.MethodPost, server.URL+"/app/installations/42/access_tokens", nil)
+	require.NoError(t, err)
+	request.Header.Set("Authorization", "Bearer header.claims.signature")
+
+	result, err := http.DefaultClient.Do(request)
+	require.NoError(t, err)
+	require.NoError(t, result.Body.Close())
+	assert.Equal(t, http.StatusUnauthorized, result.StatusCode)
 }
 
 func TestHubCollisionDispatchesByFormMode(t *testing.T) {
@@ -213,9 +339,9 @@ type contentsStub struct {
 func (contentsStub) GetContents(_ context.Context, owner, repo, path string, opts *github.RepositoryContentGetOptions) (*github.RepositoryContent, []*github.RepositoryContent, *github.Response, error) {
 	content := base64.StdEncoding.EncodeToString([]byte("hello from the server"))
 	return &github.RepositoryContent{
-		Type:     github.Ptr("file"),
+		Type:     new("file"),
 		Path:     &path,
-		Encoding: github.Ptr("base64"),
+		Encoding: new("base64"),
 		Content:  &content,
 	}, nil, response(http.StatusOK), nil
 }
@@ -248,7 +374,7 @@ type releaseAssetsStub struct {
 }
 
 func (releaseAssetsStub) GetReleaseAsset(_ context.Context, owner, repo string, id int64) (*github.ReleaseAsset, *github.Response, error) {
-	return &github.ReleaseAsset{ID: &id, Name: github.Ptr("artifact.zip")}, response(http.StatusOK), nil
+	return &github.ReleaseAsset{ID: &id, Name: new("artifact.zip")}, response(http.StatusOK), nil
 }
 
 func (releaseAssetsStub) DownloadReleaseAsset(_ context.Context, owner, repo string, id int64, client *http.Client) (io.ReadCloser, string, error) {
@@ -263,7 +389,7 @@ func (releaseAssetsStub) UploadReleaseAsset(_ context.Context, owner, repo strin
 	if string(payload) != "binary payload" {
 		return nil, nil, assert.AnError
 	}
-	return &github.ReleaseAsset{ID: github.Ptr(int64(99)), Name: &opts.Name}, response(http.StatusCreated), nil
+	return &github.ReleaseAsset{ID: new(int64(99)), Name: &opts.Name}, response(http.StatusCreated), nil
 }
 
 func TestReleaseAssetCollisionUsesAcceptAndUploadBody(t *testing.T) {
@@ -297,7 +423,7 @@ type organizationPermissionsStub struct {
 }
 
 func (organizationPermissionsStub) GetActionsPermissions(_ context.Context, org string) (*github.ActionsPermissions, *github.Response, error) {
-	return &github.ActionsPermissions{EnabledRepositories: github.Ptr("selected")}, response(http.StatusOK), nil
+	return &github.ActionsPermissions{EnabledRepositories: new("selected")}, response(http.StatusOK), nil
 }
 
 func TestCrossServiceAliasFallsThroughToImplementedService(t *testing.T) {
@@ -336,7 +462,7 @@ func (actionsVariableStub) CreateWorkflowDispatchEventByID(_ context.Context, ow
 	if owner != "octo" || repo != "demo" || workflowID != 77 || body.Ref != "main" {
 		return nil, nil, assert.AnError
 	}
-	return &github.WorkflowDispatchRunDetails{WorkflowRunID: github.Ptr(int64(88))}, response(http.StatusCreated), nil
+	return &github.WorkflowDispatchRunDetails{WorkflowRunID: new(int64(88))}, response(http.StatusCreated), nil
 }
 
 func TestPathParameterRehydratesEntityField(t *testing.T) {
@@ -345,13 +471,13 @@ func TestPathParameterRehydratesEntityField(t *testing.T) {
 	t.Cleanup(server.Close)
 	client := newGitHubClient(t, server.URL, "")
 
-	result, err := client.Actions.AddSelectedRepoToOrgVariable(t.Context(), "octo", "deploy-target", &github.Repository{ID: github.Ptr(int64(123))})
+	result, err := client.Actions.AddSelectedRepoToOrgVariable(t.Context(), "octo", "deploy-target", &github.Repository{ID: new(int64(123))})
 	require.NoError(t, err)
 	assert.Equal(t, http.StatusNoContent, result.StatusCode)
 	result, err = client.Actions.SetSelectedReposForOrgVariable(t.Context(), "octo", "deploy-target", []int64{123, 456})
 	require.NoError(t, err)
 	assert.Equal(t, http.StatusNoContent, result.StatusCode)
-	details, _, err := client.Actions.CreateWorkflowDispatchEventByID(t.Context(), "octo", "demo", 77, github.CreateWorkflowDispatchEventRequest{Ref: "main", ReturnRunDetails: github.Ptr(true)})
+	details, _, err := client.Actions.CreateWorkflowDispatchEventByID(t.Context(), "octo", "demo", 77, github.CreateWorkflowDispatchEventRequest{Ref: "main", ReturnRunDetails: new(true)})
 	require.NoError(t, err)
 	assert.Equal(t, int64(88), details.GetWorkflowRunID())
 }
@@ -426,7 +552,7 @@ func (archiveAndCompareStub) GetArchiveLink(_ context.Context, owner, repo strin
 }
 
 func (archiveAndCompareStub) CompareCommits(_ context.Context, owner, repo, base, head string, opts *github.ListOptions) (*github.CommitsComparison, *github.Response, error) {
-	return &github.CommitsComparison{Status: github.Ptr(base + "..." + head)}, response(http.StatusOK), nil
+	return &github.CommitsComparison{Status: new(base + "..." + head)}, response(http.StatusOK), nil
 }
 
 func TestRedirectFamiliesAndCompositeRefsRoundTrip(t *testing.T) {
@@ -461,7 +587,7 @@ type activitySubscriptionStub struct {
 }
 
 func (activitySubscriptionStub) GetRepositorySubscription(_ context.Context, owner, repo string) (*github.Subscription, *github.Response, error) {
-	return &github.Subscription{Subscribed: github.Ptr(true)}, response(http.StatusOK), nil
+	return &github.Subscription{Subscribed: new(true)}, response(http.StatusOK), nil
 }
 
 type issueImportStub struct {
