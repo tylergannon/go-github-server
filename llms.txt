@@ -76,6 +76,7 @@ Use a real `github.Client` against an `httptest.Server` for integration tests. T
 ## Project documentation
 
 - [README](https://raw.githubusercontent.com/tylergannon/go-github-server/main/README.md): Concise setup, authentication behavior, generation, and coverage guidance.
+- [Project license](https://raw.githubusercontent.com/tylergannon/go-github-server/main/LICENSE): Zero-Clause BSD license for original project code.
 - [Generated service reference](https://github.com/tylergannon/go-github-server/blob/main/zz_generated.go): All service interfaces and per-method prose, signatures, routes, deprecations, and GitHub documentation links.
 - [Route coverage inventory](https://raw.githubusercontent.com/tylergannon/go-github-server/main/coverage.json): Machine-readable mapping from HTTP method and path to service and method.
 - [Server API and adapter](https://github.com/tylergannon/go-github-server/blob/main/server.go): Public constructor, authenticator contract, routing, decoding, invocation, and response behavior.

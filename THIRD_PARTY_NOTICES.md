@@ -1,8 +1,8 @@
 # Third-party notices
 
-Method documentation in `zz_generated.go` is derived from
-[`google/go-github`](https://github.com/google/go-github), which is distributed
-under the following BSD 3-Clause license:
+The generated service API and method documentation in `zz_generated.go` are
+derived from [`google/go-github`](https://github.com/google/go-github), which is
+distributed under the following BSD 3-Clause license:
 
 Copyright (c) 2013 The go-github AUTHORS. All rights reserved.
 
