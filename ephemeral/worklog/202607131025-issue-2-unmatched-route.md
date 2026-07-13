@@ -44,6 +44,10 @@ doc_lookup: README.md -> public constructor currently returns `*http.ServeMux`; 
 - `go doc .WithNotFoundCallback`: confirmed the option is present in the exported package surface.
 - A live refresh found `origin/main` advanced from `f5f2149` to `762c276` through PRs #5-#7 after the worktree was created. The branch must be rebased and impacted gates rerun before publication.
 - Rebasing onto `762c276` produced one constructor-area conflict in `server.go` with the newly added `AppJWTAuthenticator`. Resolution retained both the JWT interface and the independent functional-option configuration; README and tests merged automatically.
+- Post-rebase `go generate ./...`, generator check, diff check, full tests, race tests, vet, and golangci-lint all passed; lint reported 0 issues.
+- Repeated runtime proof against the rebased source: all four requests returned 404, and callback logs again contained only the unknown path, wrong method, and original `/api/v3/unknown` request—not the matched resource-level 404.
+- Pushed implementation commit `55ba7ad90d76240a4d982340380ee4cc06bf7a6a` and opened PR #8: https://github.com/tylergannon/go-github-server/pull/8
+- Added the runtime request/status and callback transcript to the PR body.
 
 ## Open design question
 
@@ -52,6 +56,9 @@ doc_lookup: README.md -> public constructor currently returns `*http.ServeMux`; 
 
 decision: the library retains exclusive control of the unmatched response and always emits its existing 404 after invoking an optional telemetry callback
 correction: name and model the extension as `WithNotFoundCallback()` rather than a fallback HTTP handler
+correction: after the rebase exposed the adjacent App JWT extension, the user asked whether optional App JWT delegation should use the same functional-options paradigm instead of capability detection on the positional authenticator
+correction: App JWT validation must never move into `AppsService`, and an implementer must not need a constructor option to fulfill an authenticated endpoint
+decision: retain the positional authentication dependency and the existing optional `AppJWTAuthenticator` capability; constructor options remain reserved for optional server configuration such as not-found telemetry
 decision: extend `New` with variadic functional options; existing two-argument calls keep the same calling convention and are considered fully backward compatible
 decision: `WithNotFoundCallback` accepts `func(*http.Request)`; the request is observational/read-only and retains the original enterprise-prefixed URL and method
 decision: invoke the callback exactly once immediately before the library-owned `http.NotFound`
@@ -59,4 +66,4 @@ decision: nil callbacks are harmless and repeated callback options use conventio
 
 ## Status
 
-- Paused for the user's answer to the public opt-in API question; no source implementation change yet.
+- Implementation and proof are complete. PR #8 is open; this worklog closeout will be pushed as a final docs commit, then exact-head CI and auto-merge will be followed through completion.
